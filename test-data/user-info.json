@@ -1,0 +1,14 @@
+{
+  "valid_account": {
+    "email": "tuyentieple@gmail.com",
+    "password": "Test123456@",
+    "username": "tuyenle3101",
+    "accessToken": "NOuPdExvFToD1yrc1c225UN_1ye1bD-ddmCwyI-N3I0"
+  },
+  "valid_second_user": {
+    "email": "tuyen.le220215@vnuk.edu.vn",
+    "password": "Test123456789@",
+    "username": "tuyenletest3101",
+    "accessToken": "tZPhO_-oHX5R9vFEhoT7DlBDa4DewiQnfMM9p5kIkrQ"
+  }
+}
