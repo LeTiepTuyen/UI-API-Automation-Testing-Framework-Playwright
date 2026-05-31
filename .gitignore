@@ -74,7 +74,4 @@ __pycache__/
 sandbox/
 
 
-# Temporarily ignore repository governance and AI workflow files during initial source bootstrap
-.github/
-.claude/
 docs/

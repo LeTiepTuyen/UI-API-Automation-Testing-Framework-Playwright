@@ -6,6 +6,14 @@ Graduation Project for the Bachelor of Computer Science and Engineering program.
 
 This repository contains a Playwright + TypeScript automation framework for the Unsplash web application and its public API. The codebase is organized for reusable UI and API automation, stable test maintenance, and clear separation of concerns.
 
+## GitHub References
+
+- Repository name: `UI-API-Automation-Testing-Framework-Playwright`
+- Repository URL: https://github.com/LeTiepTuyen/UI-API-Automation-Testing-Framework-Playwright
+- Project board name: `Graduation-Project-Automation-Testing-Framework`
+- Project board URL: https://github.com/users/LeTiepTuyen/projects/3
+- The project board is linked to this repository as the default repo for phase and task tracking.
+
 ## Purpose
 
 The project demonstrates how to build a professional automation framework that supports:
