@@ -1,4 +1,3 @@
-import { time } from 'console';
 import { Element } from '../core/element/element';
 import { BrowserManagement } from '../core/browser/browser-management';
 
@@ -23,9 +22,26 @@ export class HomePage {
     return new Element(`xpath=//div[@data-testid='masonry-grid-count-three']//figure[@data-masonryposition='${photoNumber}']`);
   }
 
+  getPhotoAuthorLinkByNumber(photoNumber: number): Element {
+    return new Element(`xpath=//div[@data-testid='masonry-grid-count-three']//figure[@data-masonryposition='${photoNumber}']//a[contains(@href,'/@')]`);
+  }
+
+  getPhotoLinkByNumber(photoNumber: number): Element {
+    return new Element(`xpath=//div[@data-testid='masonry-grid-count-three']//figure[@data-masonryposition='${photoNumber}']//a[contains(@href,'/photos/')]`);
+  }
+
   async clickPhotoByNumber(photoNumber: number) {
     await this.getPhotoByNumber(photoNumber).waitForAnyElementToBeVisible();
     await this.getPhotoByNumber(photoNumber).click();
+  }
+
+  async clickPhotoAuthorByNumber(photoNumber: number) {
+    await this.getPhotoAuthorLinkByNumber(photoNumber).waitForAnyElementToBeVisible();
+    await this.getPhotoAuthorLinkByNumber(photoNumber).click();
+  }
+
+  async getPhotoHrefByNumber(photoNumber: number): Promise<string | null> {
+    return await this.getPhotoLinkByNumber(photoNumber).getAttribute('href');
   }
 
   async hoverPhotoAvatarIcon() {

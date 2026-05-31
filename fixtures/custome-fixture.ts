@@ -6,6 +6,7 @@ import { AccountPage } from '../page-object/account-page';
 import { LoginWorkflow } from '../workflow/login-workflow';
 import { LikePage } from '../page-object/like-page';
 import { CollectionPage } from '../page-object/collection-page';
+import { BookmarkPage } from '../page-object/bookmark-page';
 
 export const test = baseTest.extend<{
   homePage: HomePage;
@@ -15,6 +16,7 @@ export const test = baseTest.extend<{
   loginWorkflow: LoginWorkflow;
   likePage: LikePage;
   collectionPage: CollectionPage;
+  bookmarkPage: BookmarkPage;
 }>({
   homePage: async ({}, use) => {
     await use(new HomePage());
@@ -36,6 +38,9 @@ export const test = baseTest.extend<{
   },
   collectionPage: async ({}, use) => {
     await use(new CollectionPage());
+  },
+  bookmarkPage: async ({}, use) => {
+    await use(new BookmarkPage());
   },
 });
 
