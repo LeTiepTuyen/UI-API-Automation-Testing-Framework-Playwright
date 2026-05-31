@@ -1,14 +1,14 @@
-import { test, expect } from '../fixtures/custome-fixture';
-import { JsonHelper } from '../utils/json';
-import { BrowserUtils } from '../core/browser/browser-utils';
-import { UsersService } from '../api-service/users-service';
-import { UpdateUserProfileRequestData } from '../data-object/request/update-user-profile-request-data';
+import { test, expect } from '../../../fixtures/custome-fixture';
+import { JsonHelper } from '../../../utils/json';
+import { BrowserUtils } from '../../../core/browser/browser-utils';
+import { UsersService } from '../../../api-service/users-service';
+import { UpdateUserProfileRequestData } from '../../../data-object/request/update-user-profile-request-data';
 
 const user = JsonHelper.getUserInfo('valid_account');
 const accessToken = user.accessToken!;
 
-test.describe('Scenario 2: Update the user in the Profile page', () => {
-  test('Update username and verify profile full name', async ({ loginWorkflow, homePage, profilePage, accountPage }) => {
+test.describe('UI | Update photographer profile', () => {
+  test('updates username and verifies the profile full name', async ({ loginWorkflow, homePage, profilePage, accountPage }) => {
     await loginWorkflow.login(user.email, user.password);
 
     await homePage.clickUserAvatarIcon();
@@ -17,12 +17,12 @@ test.describe('Scenario 2: Update the user in the Profile page', () => {
     await profilePage.clickEditProfileButton();
     await accountPage.editTitle.waitForElementToBeVisible();
 
-    const newUsername = `${user.username}_upd${Math.floor(Math.random()*1000)}`;
+    const newUsername = `${user.username}_upd${Math.floor(Math.random() * 1000)}`;
     await accountPage.fillUsername(newUsername);
-    
+
     const firstName = await accountPage.getFirstName();
     const lastName = await accountPage.getLastName();
-    
+
     await accountPage.clickUpdateAccountButton();
     await accountPage.waitForSuccessMessage();
     await expect.soft(await accountPage.isSuccessMessageVisible()).toBeTruthy();
@@ -40,4 +40,3 @@ test.afterEach(async () => {
   resetRequest.username = user.username;
   await UsersService.updateCurrentUserProfile(resetRequest, accessToken);
 });
-
