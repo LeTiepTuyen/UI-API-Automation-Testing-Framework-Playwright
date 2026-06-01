@@ -48,6 +48,7 @@ Status values: `READY`, `NEEDS_EVIDENCE`, `NEEDS_SOURCE`, `REVIEWED`.
 | SRC-NOTE-DATA-CONFIG | Source note | `docs/thesis-workspace/source-notes/test-data-and-configuration.md` | Organized test data, constants, DTO, and environment-configuration evidence. |
 | SRC-NOTE-REPORTING | Source note | `docs/thesis-workspace/source-notes/reporting-and-execution.md` | Organized execution and reporting configuration evidence, with missing execution artifacts noted. |
 | SRC-NOTE-LIMITATIONS | Source note | `docs/thesis-workspace/source-notes/limitations-and-missing-evidence.md` | Organized limitations and missing-evidence register for drafting safeguards. |
+| SRC-NOTE-COPILOT-WORKFLOW | Source note | `docs/thesis-workspace/source-notes/copilot-agentic-automation-workflow.md` | Organized evidence for the project Copilot Agentic-AI workflow for automation testing development. |
 
 ---
 
@@ -57,8 +58,8 @@ Status values: `READY`, `NEEDS_EVIDENCE`, `NEEDS_SOURCE`, `REVIEWED`.
 |---|---|---|
 | Chapter 1: Introduction | Partially ready | Repository overview source note is ready; still needs approved outline, final problem/scope wording, and citation style. |
 | Chapter 2: Literature Review | Not ready | Needs official Playwright docs and academic/professional testing sources. |
-| Chapter 3: System Analysis and Framework Design | Partially ready | Architecture source note and project Copilot workflow sources are ready; still needs architecture/workflow diagram review and final source-to-section mapping. |
-| Chapter 4: Implementation | Partially ready | UI/API/configuration source notes and project workflow artifacts are ready; still needs representative excerpts selected and no secret leakage from test data. |
+| Chapter 3: System Analysis and Framework Design | Partially ready | Architecture source note and project Copilot workflow source note are ready; still needs architecture/workflow diagram review and final source-to-section mapping. |
+| Chapter 4: Implementation | Partially ready | UI/API/configuration source notes and project workflow source note are ready; still needs representative excerpts selected and no secret leakage from test data. |
 | Chapter 5: Evaluation and Discussion | Blocked | Needs actual execution output, pass/fail counts, report screenshots, trace evidence, and limitation evidence. |
 | Chapter 6: Conclusion and Future Work | Blocked | Needs reviewed Chapters 1-5 and verified evaluation evidence. |
 
@@ -92,10 +93,10 @@ Status values: `READY`, `NEEDS_EVIDENCE`, `NEEDS_SOURCE`, `REVIEWED`.
 | C-022 | Ch.4 | Static user test data is centralized in `test-data/user-info.json`. | SRC-REPO-TEST-DATA, SRC-REPO-UTILS, SRC-REPO-CONSTANTS, SRC-NOTE-DATA-CONFIG | READY | Cite location only; do not expose credentials or tokens. |
 | C-023 | Ch.5 | Generated report artifacts currently require verification before being used as evaluation evidence. | SRC-NOTE-REPORTING, SRC-NOTE-LIMITATIONS, SRC-EXECUTION-EVIDENCE | NEEDS_EVIDENCE | Existing artifacts must not be treated as final evidence without verified run context. |
 | C-024 | Ch.5 | External-system dependency is a limitation because tests target Unsplash UI and public API behavior. | SRC-REPO-README, SRC-REPO-OVERVIEW, SRC-NOTE-LIMITATIONS | READY | Keep wording as a limitation, not a measured failure. |
-| C-025 | Ch.3 | The project includes a Copilot Agentic-AI workflow intended to support automation test case design, Playwright script generation, and automation code review. | SRC-REPO-AGENTIC-WORKFLOW, SRC-REPO-GITHUB-AGENTS, SRC-REPO-GITHUB-PROMPTS, SRC-REPO-CLAUDE-SKILLS | READY | Describe as a project workflow feature; do not claim measured productivity improvement without evaluation evidence. |
-| C-026 | Ch.3 | The workflow is designed to wrap around the existing Playwright framework and preserve reuse-first repository conventions. | SRC-REPO-AGENTIC-WORKFLOW, SRC-REPO-COPILOT, SRC-REPO-GITHUB-AGENTS | READY | Keep the framework as the source of truth. |
-| C-027 | Ch.4 | The implemented workflow artifacts include repository-wide Copilot instructions, custom agents, reusable prompt files, and reusable skills. | SRC-REPO-AGENTIC-WORKFLOW, SRC-REPO-COPILOT, SRC-REPO-GITHUB-AGENTS, SRC-REPO-GITHUB-PROMPTS, SRC-REPO-CLAUDE-SKILLS | READY | Cite paths and describe artifact responsibilities only. |
-| C-028 | Ch.4 | The workflow encourages repository inspection, reuse of existing Page Objects/fixtures/workflows/services, optional Playwright MCP UI inspection, and code review before accepting generated automation code. | SRC-REPO-AGENTIC-WORKFLOW, SRC-REPO-COPILOT, SRC-REPO-GITHUB-AGENTS, SRC-REPO-CLAUDE-SKILLS | READY | This supports design/implementation discussion; execution effectiveness remains outside current evidence. |
+| C-025 | Ch.3 | The project includes a Copilot Agentic-AI workflow intended to support automation test case design, Playwright script generation, and automation code review. | SRC-REPO-AGENTIC-WORKFLOW, SRC-REPO-GITHUB-AGENTS, SRC-REPO-GITHUB-PROMPTS, SRC-REPO-CLAUDE-SKILLS, SRC-NOTE-COPILOT-WORKFLOW | READY | Describe as a project workflow feature; do not claim measured productivity improvement without evaluation evidence. |
+| C-026 | Ch.3 | The workflow is designed to wrap around the existing Playwright framework and preserve reuse-first repository conventions. | SRC-REPO-AGENTIC-WORKFLOW, SRC-REPO-COPILOT, SRC-REPO-GITHUB-AGENTS, SRC-NOTE-COPILOT-WORKFLOW | READY | Keep the framework as the source of truth. |
+| C-027 | Ch.4 | The implemented workflow artifacts include repository-wide Copilot instructions, custom agents, reusable prompt files, and reusable skills. | SRC-REPO-AGENTIC-WORKFLOW, SRC-REPO-COPILOT, SRC-REPO-GITHUB-AGENTS, SRC-REPO-GITHUB-PROMPTS, SRC-REPO-CLAUDE-SKILLS, SRC-NOTE-COPILOT-WORKFLOW | READY | Cite paths and describe artifact responsibilities only. |
+| C-028 | Ch.4 | The workflow encourages repository inspection, reuse of existing Page Objects/fixtures/workflows/services, optional Playwright MCP UI inspection, and code review before accepting generated automation code. | SRC-REPO-AGENTIC-WORKFLOW, SRC-REPO-COPILOT, SRC-REPO-GITHUB-AGENTS, SRC-REPO-CLAUDE-SKILLS, SRC-NOTE-COPILOT-WORKFLOW | READY | This supports design/implementation discussion; execution effectiveness remains outside current evidence. |
 | C-029 | Ch.5 | The effectiveness of the Copilot Agentic-AI workflow for automation development has been quantitatively evaluated. | SRC-EXECUTION-EVIDENCE | NEEDS_EVIDENCE | Do not add productivity, quality, or time-saving metrics unless a documented evaluation is performed. |
 
 ---

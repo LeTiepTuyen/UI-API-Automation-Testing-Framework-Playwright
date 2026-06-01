@@ -13,7 +13,7 @@ This file is the single source of truth for what has been checked, what remains 
 | Source/reference area | REVIEW | Actual source area is `docs/final-graduation-thesis-doc/`; `docs/final-gradation-thesis-doc/` is not present in the working tree. |
 | Outline | LOCKED_FOR_DRAFTING_PREPARATION | Outline has been refined for VNUK-style structure, chapter evidence mapping, allowed figure scope, and `NEEDS_EVIDENCE` markers. |
 | Evidence matrix | IN_PROGRESS | Initial repository evidence and missing evidence are tracked; evaluation evidence is still missing. |
-| Repository source notes | REVIEW | Nine source notes now summarize repository evidence under `docs/thesis-workspace/source-notes/`. |
+| Repository source notes | REVIEW | Ten source notes now summarize repository evidence under `docs/thesis-workspace/source-notes/`, including the project Copilot Agentic-AI automation workflow. |
 | Citation register | IN_PROGRESS | Repository and thesis-reference sources are grounded; official Playwright and testing-theory sources still need selection. |
 | Figure register | IN_PROGRESS | Initial planned diagrams are registered; F-02, F-03, and F-04 have rendered SVG outputs. |
 | Project Copilot workflow | INCLUDED_AS_PROJECT_FEATURE | The Copilot Agentic-AI workflow for automation testing is included as a project feature; the private thesis-writing harness remains excluded from thesis content. |
@@ -213,6 +213,39 @@ This file is the single source of truth for what has been checked, what remains 
 **Next recommended task**
 
 - Create and render the F-07 workflow diagram source, then prepare Chapter 3 drafting from repository architecture and project workflow evidence.
+
+### 2026-06-01 - Copilot Agentic-AI automation workflow source note created
+
+**Completed**
+
+- Created a dedicated source note for the project Copilot Agentic-AI workflow for automation testing development.
+- Summarized the workflow purpose, repository-wide Copilot instructions, `.github/AGENTS.md`, custom agents, prompt files, reusable skills, Playwright MCP preference, reuse-first compliance model, and source boundaries.
+- Added the new source note to the evidence matrix as `SRC-NOTE-COPILOT-WORKFLOW`.
+- Updated Chapter 3 and Chapter 4 AI-workflow pre-drafting tasks to `REVIEW` because the source note now exists, while drafting remains blocked until review and figure readiness are complete.
+
+**Files updated**
+
+- `docs/thesis-workspace/source-notes/copilot-agentic-automation-workflow.md`
+- `docs/thesis-workspace/evidence-matrix.md`
+- `docs/thesis-workspace/tasks.md`
+- `docs/thesis-workspace/progress.md`
+
+**Evidence added**
+
+- Organized project workflow evidence from `docs/agentic-workflow/workflow-overview.md`.
+- Organized repository workflow evidence from `.github/AGENTS.md`, `.github/copilot-instructions.md`, `.github/agents/`, and `.github/prompts/`.
+- Organized reusable skill evidence from `.claude/skills/`, including Playwright MCP, script generation, test-case design, and code-review reference materials.
+
+**Blockers**
+
+- F-07 still needs an editable Mermaid source, rendered output, and readability review.
+- Chapter 3 workflow subsection drafting is still blocked until F-07 and the source note are reviewed.
+- Chapter 4 workflow subsection drafting is still blocked until representative workflow artifact excerpts are selected.
+- Quantitative claims about workflow effectiveness remain `NEEDS_EVIDENCE`.
+
+**Next recommended task**
+
+- Create the F-07 Mermaid diagram source for the Copilot Agentic-AI automation workflow and render it through the existing diagram workflow.
 
 ---
 
