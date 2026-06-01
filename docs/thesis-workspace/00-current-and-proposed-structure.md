@@ -93,12 +93,12 @@ UI-API-Automation-Testing-Framework-Playwright/
 │           └── SKILL.md
 ├── docs/
 │   ├── final-graduation-thesis-doc/
-│   │   ├── templates/
-│   │   │   ├── thesis-template-vnuk.md
-│   │   │   └── thesis-truonghavu-vnuk-sample.md
-│   │   ├── playwright-samples/
-│   │   │   ├── thesis-playwright-duong-sample.md
-│   │   │   └── thesis-playwright-barbaglia-sample.md
+│   │   ├── thesis-template.md
+│   │   ├── reference-documents/
+│   │   │   ├── Thesis_HaVu_VNUK-Sample.md
+│   │   │   ├── Thesis_Playwright_Duong_Sample1.md
+│   │   │   ├── Thesis_Playwright_Barbaglia_Sofia_Sample2.md
+│   │   │   └── Thesis_VoLong_VNUK_Sample.md
 │   │   └── source-notes/
 │   │       ├── vnuk-template-analysis.md
 │   │       ├── vnuk-sample-analysis.md

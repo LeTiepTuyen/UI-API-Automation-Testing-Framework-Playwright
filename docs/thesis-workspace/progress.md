@@ -15,7 +15,7 @@ This file is the single source of truth for what has been checked, what remains 
 | Evidence matrix | IN_PROGRESS | Initial repository evidence and missing evidence are tracked; evaluation evidence is still missing. |
 | Repository source notes | REVIEW | Ten source notes now summarize repository evidence under `docs/thesis-workspace/source-notes/`, including the project Copilot Agentic-AI automation workflow. |
 | Citation register | IN_PROGRESS | Repository and thesis-reference sources are grounded; official Playwright and testing-theory sources still need selection. |
-| Figure register | IN_PROGRESS | Initial planned diagrams are registered; F-02, F-03, F-04, and F-07 have rendered SVG outputs. |
+| Figure register | IN_PROGRESS | Initial planned diagrams are registered; F-02, F-03, F-04, F-05, F-07, F-08, F-09, and F-10 have rendered SVG outputs. |
 | Project Copilot workflow | INCLUDED_AS_PROJECT_FEATURE | The Copilot Agentic-AI workflow for automation testing is included as a project feature; the private thesis-writing harness remains excluded from thesis content. |
 | Mermaid rendering | PARTIAL | `npx` rendering works with `@mermaid-js/mermaid-cli`; local Mermaid CLI is not installed in `node_modules`. |
 | Test execution evidence | BLOCKED | Requires an actual local test run and saved report/trace artifacts before evaluation claims. |
@@ -279,6 +279,53 @@ This file is the single source of truth for what has been checked, what remains 
 **Next recommended task**
 
 - Review F-07 visually in the target thesis layout, then proceed to Chapter 3 drafting preparation from repository architecture and project workflow evidence.
+
+### 2026-06-01 - Existing thesis diagrams simplified and split
+
+**Completed**
+
+- Audited `framework-architecture.mmd`: the previous version contained many folder-level nodes and was simplified into a high-level layer overview.
+- Audited `copilot-agentic-automation-workflow.mmd`: the previous version was too dense for one thesis figure and was simplified into the core automation-testing loop.
+- Split the Copilot workflow into focused detail diagrams for test-case design, Playwright script generation, and automation code review.
+- Added and rendered the Playwright reporting pipeline diagram from configuration-grounded evidence.
+- Reviewed the existing UI and API execution flow sequence diagrams; both remain accurate and did not require source changes.
+- Rendered all updated/new Mermaid diagrams to SVG with `npx -y @mermaid-js/mermaid-cli`.
+- Checked updated diagram source/output paths for private thesis-writing workflow terms; none were found.
+
+**Files updated**
+
+- `docs/thesis-workspace/assets/diagrams/src/framework-architecture.mmd`
+- `docs/thesis-workspace/assets/diagrams/src/copilot-agentic-automation-workflow.mmd`
+- `docs/thesis-workspace/assets/diagrams/src/copilot-test-case-design-workflow.mmd`
+- `docs/thesis-workspace/assets/diagrams/src/copilot-script-generation-workflow.mmd`
+- `docs/thesis-workspace/assets/diagrams/src/copilot-code-review-workflow.mmd`
+- `docs/thesis-workspace/assets/diagrams/src/playwright-reporting-pipeline.mmd`
+- `docs/thesis-workspace/assets/diagrams/out/framework-architecture.svg`
+- `docs/thesis-workspace/assets/diagrams/out/copilot-agentic-automation-workflow.svg`
+- `docs/thesis-workspace/assets/diagrams/out/copilot-test-case-design-workflow.svg`
+- `docs/thesis-workspace/assets/diagrams/out/copilot-script-generation-workflow.svg`
+- `docs/thesis-workspace/assets/diagrams/out/copilot-code-review-workflow.svg`
+- `docs/thesis-workspace/assets/diagrams/out/playwright-reporting-pipeline.svg`
+- `docs/thesis-workspace/figure-register.md`
+- `docs/thesis-workspace/tasks.md`
+- `docs/thesis-workspace/progress.md`
+
+**Evidence added**
+
+- F-02 remains grounded in repository architecture evidence and `docs/thesis-workspace/source-notes/framework-architecture.md`.
+- F-05 is grounded in `playwright.config.ts` and `docs/thesis-workspace/source-notes/reporting-and-execution.md`.
+- F-07 to F-10 are grounded in the project Copilot automation-testing workflow evidence and `docs/thesis-workspace/source-notes/copilot-agentic-automation-workflow.md`.
+
+**Blockers**
+
+- F-01 and F-06 still need source creation/rendering.
+- F-05 must not be used as final evaluation evidence until actual report, trace, and `results.xml` artifacts are verified.
+- F-07 remains wide because the core workflow is left-to-right; it should be checked in the target Word layout before insertion.
+- Chapter 3 and Chapter 4 drafting remain blocked until the user approves diagram readiness and representative evidence excerpts.
+
+**Next recommended task**
+
+- Review the rendered SVGs in the thesis layout, then approve the Chapter 3 figure set before drafting Chapter 3.
 
 ---
 

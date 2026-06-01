@@ -1,0 +1,29 @@
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, sans-serif", "primaryTextColor": "#1F2937", "lineColor": "#64748B", "clusterBkg": "#FFFFFF", "clusterBorder": "#CBD5E1"}}}%%
+flowchart LR
+    Request["Testing request"]
+    Context["Repository context"]
+    Assets["Existing tests<br/>and framework assets"]
+    Agent["DesignTestCase<br/>agent"]
+    Scenario["Automation-ready<br/>scenario"]
+    Criteria["Expected results<br/>and data needs"]
+    Gap["Evidence or scope<br/>gap"]
+
+    Request --> Context
+    Context --> Assets
+    Assets --> Agent
+    Agent --> Scenario
+    Agent --> Criteria
+    Agent -. flags .-> Gap
+    Scenario --> Criteria
+
+    classDef entry fill:#F8FAFC,stroke:#94A3B8,color:#1F2937
+    classDef context fill:#F1F5F9,stroke:#64748B,color:#1F2937
+    classDef agentic fill:#E0E7FF,stroke:#818CF8,color:#1F2937
+    classDef data fill:#FEF3C7,stroke:#F59E0B,color:#1F2937
+    classDef risk fill:#FFE4E6,stroke:#FB7185,color:#1F2937
+
+    class Request entry
+    class Context,Assets context
+    class Agent,Scenario agentic
+    class Criteria data
+    class Gap risk

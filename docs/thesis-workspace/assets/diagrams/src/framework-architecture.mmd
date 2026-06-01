@@ -1,45 +1,40 @@
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, sans-serif", "primaryTextColor": "#1F2937", "lineColor": "#64748B", "clusterBkg": "#FFFFFF", "clusterBorder": "#CBD5E1"}}}%%
 flowchart LR
-    subgraph TestLayer["Test Specifications"]
-        UITests["tests/ui\nUI test specs"]
-        APITests["tests/api\nAPI test specs"]
+    subgraph Framework["Playwright UI and API Automation Framework"]
+        direction LR
+        Tests["Test specifications<br/>UI and API specs"]
+        UI["UI interaction layer<br/>Page Objects and workflows"]
+        API["API service layer<br/>Services and endpoints"]
+        Core["Shared framework core<br/>Fixtures and utilities"]
+        Data["Data and configuration<br/>DTOs, constants, test data"]
+        Report["Reporting and evidence<br/>HTML, JUnit, traces"]
     end
 
-    subgraph ReuseLayer["Reusable Automation Layer"]
-        Fixtures["fixtures + core/fixtures\nDependency injection"]
-        Workflows["workflow\nReusable business flows"]
-        PageObjects["page-object\nPage Object Model"]
-        ApiServices["api-service\nEndpoint service classes"]
-    end
+    SUT["Unsplash UI and Public API"]
 
-    subgraph SupportLayer["Support and Data Layer"]
-        Core["core\nBrowser, API, element utilities"]
-        DTOs["data-object\nRequest/response DTOs"]
-        TestData["test-data\nStatic data and credentials"]
-        Constants["constants\nEndpoints and constants"]
-        Utils["utils\nShared helpers"]
-        Config["config\nEnvironment variables"]
-    end
+    Tests --> UI
+    Tests --> API
+    UI --> Core
+    API --> Core
+    Core --> SUT
+    Data -. supports .-> Tests
+    Data -. supports .-> UI
+    Data -. supports .-> API
+    Tests --> Report
+    Core --> Report
 
-    subgraph External["System Under Test"]
-        UnsplashUI["Unsplash Web UI"]
-        UnsplashAPI["Unsplash Public API"]
-    end
+    classDef entry fill:#F8FAFC,stroke:#94A3B8,color:#1F2937
+    classDef ui fill:#DBEAFE,stroke:#60A5FA,color:#1F2937
+    classDef api fill:#DCFCE7,stroke:#4ADE80,color:#1F2937
+    classDef core fill:#F1F5F9,stroke:#64748B,color:#1F2937
+    classDef data fill:#FEF3C7,stroke:#F59E0B,color:#1F2937
+    classDef report fill:#F3E8FF,stroke:#A78BFA,color:#1F2937
+    classDef context fill:#FFFFFF,stroke:#94A3B8,color:#1F2937
 
-    UITests --> Fixtures
-    UITests --> Workflows
-    Workflows --> PageObjects
-    PageObjects --> Core
-    Core --> UnsplashUI
-
-    APITests --> ApiServices
-    ApiServices --> Core
-    ApiServices --> Constants
-    ApiServices --> DTOs
-    APITests --> TestData
-    ApiServices --> UnsplashAPI
-
-    Fixtures --> PageObjects
-    Fixtures --> Workflows
-    Config --> Core
-    Utils --> UITests
-    Utils --> APITests
+    class Tests entry
+    class UI ui
+    class API api
+    class Core core
+    class Data data
+    class Report report
+    class SUT context

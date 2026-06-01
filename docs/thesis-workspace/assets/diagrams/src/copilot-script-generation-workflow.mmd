@@ -1,0 +1,30 @@
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, sans-serif", "primaryTextColor": "#1F2937", "lineColor": "#64748B", "clusterBkg": "#FFFFFF", "clusterBorder": "#CBD5E1"}}}%%
+flowchart LR
+    Scenario["Approved scenario"]
+    Reuse["Reuse-first scan"]
+    Agent["GenerateTestScript<br/>agent"]
+    MCP["Optional Playwright MCP"]
+    Framework["Framework assets<br/>POM, fixtures, services"]
+    Script["Playwright test<br/>script"]
+    Handoff["Review handoff"]
+
+    Scenario --> Reuse
+    Reuse --> Agent
+    Framework --> Agent
+    MCP -. informs UI work .-> Agent
+    Agent --> Script
+    Script --> Handoff
+
+    classDef entry fill:#F8FAFC,stroke:#94A3B8,color:#1F2937
+    classDef context fill:#F1F5F9,stroke:#64748B,color:#1F2937
+    classDef agentic fill:#E0E7FF,stroke:#818CF8,color:#1F2937
+    classDef ui fill:#DBEAFE,stroke:#60A5FA,color:#1F2937
+    classDef core fill:#DCFCE7,stroke:#4ADE80,color:#1F2937
+    classDef review fill:#F3E8FF,stroke:#A78BFA,color:#1F2937
+
+    class Scenario entry
+    class Reuse,Framework context
+    class Agent agentic
+    class MCP ui
+    class Script core
+    class Handoff review

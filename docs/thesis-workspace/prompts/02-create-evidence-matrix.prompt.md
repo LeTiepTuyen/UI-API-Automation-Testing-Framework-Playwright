@@ -15,7 +15,9 @@ Read:
 - api-service/users-service.ts
 - tests/ui/profile/update-profile.spec.ts
 - tests/api/users/get-public-profile.spec.ts
-- docs/final-graduation-thesis-doc/**/*.md if available
+- docs/final-graduation-thesis-doc/thesis-template.md
+- docs/final-graduation-thesis-doc/reference-documents/*.md
+- docs/final-graduation-thesis-doc/source-notes/*.md
 
 Output:
 1. Update evidence-matrix.md with claim-to-source mappings.

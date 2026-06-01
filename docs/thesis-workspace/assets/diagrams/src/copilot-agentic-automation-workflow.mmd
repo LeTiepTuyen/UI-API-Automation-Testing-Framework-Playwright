@@ -1,62 +1,35 @@
-flowchart TB
-    subgraph Inputs["Inputs"]
-        direction TB
-        UserRequest["User request"]
-        RepoDocs["Repository docs\nREADME, workflow overview"]
-        ExistingFramework["Existing framework\nTests, Page Objects, fixtures,\nworkflows, services, utilities"]
-        Scenario["UI or API scenario"]
-    end
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, sans-serif", "primaryTextColor": "#1F2937", "lineColor": "#64748B", "clusterBkg": "#FFFFFF", "clusterBorder": "#CBD5E1"}}}%%
+flowchart LR
+    Need["Testing need<br/>or user request"]
+    Context["Repository context<br/>docs and framework"]
+    Guidance["Copilot guidance<br/>instructions and agents"]
+    Design["Test-case design"]
+    Generate["Playwright script<br/>generation"]
+    Review["Automation code<br/>review"]
+    Output["Framework-compliant<br/>automation output"]
+    MCP["Optional Playwright MCP<br/>UI inspection"]
 
-    subgraph Controls["Workflow Guidance"]
-        direction TB
-        CopilotInstructions["Repository-wide\nCopilot instructions"]
-        CustomAgents["Custom agents\nDesignTestCase, GenerateTestScript,\nCodeReview"]
-        PromptFiles["Prompt files\nTask entrypoints"]
-        Skills["Reusable skills\nScenario design, script generation,\nreview guidance"]
-        PlaywrightMCP["Playwright MCP\nUI inspection and selector validation"]
-    end
-
-    subgraph AgentFlow["Copilot Agentic-AI Workflow"]
-        direction TB
-        Understand["Understand project context\nand reuse candidates"]
-        Design["DesignTestCase\nCreate automation-ready scenarios"]
-        Generate["GenerateTestScript\nCreate or update Playwright code"]
-        Review["CodeReview\nReview structure, selectors,\nreuse, and maintainability"]
-    end
-
-    subgraph Outputs["Outputs"]
-        direction TB
-        TestScenarios["UI/API test scenarios"]
-        PlaywrightScripts["Generated or updated\nPlaywright scripts"]
-        ReviewFindings["Review findings\nand recommendations"]
-        FrameworkChanges["Framework-compliant\nautomation changes"]
-    end
-
-    UserRequest --> Understand
-    RepoDocs --> Understand
-    ExistingFramework --> Understand
-    Scenario --> Design
-
-    CopilotInstructions -.-> Understand
-    CopilotInstructions -.-> Generate
-    CustomAgents -.-> Design
-    CustomAgents -.-> Generate
-    CustomAgents -.-> Review
-    PromptFiles -.-> Design
-    PromptFiles -.-> Generate
-    PromptFiles -.-> Review
-    Skills -.-> Design
-    Skills -.-> Generate
-    Skills -.-> Review
-    PlaywrightMCP -.-> Generate
-
-    Understand --> Design
+    Need --> Context
+    Context --> Guidance
+    Guidance --> Design
     Design --> Generate
     Generate --> Review
+    Review --> Output
 
-    Design --> TestScenarios
-    Generate --> PlaywrightScripts
-    Review --> ReviewFindings
-    Review --> FrameworkChanges
+    Context -. reuse first .-> Generate
+    MCP -. informs UI scripts .-> Generate
+    Review -. feedback .-> Generate
 
-    ExistingFramework -.-> Generate
+    classDef entry fill:#F8FAFC,stroke:#94A3B8,color:#1F2937
+    classDef context fill:#F1F5F9,stroke:#64748B,color:#1F2937
+    classDef agentic fill:#E0E7FF,stroke:#818CF8,color:#1F2937
+    classDef review fill:#F3E8FF,stroke:#A78BFA,color:#1F2937
+    classDef ui fill:#DBEAFE,stroke:#60A5FA,color:#1F2937
+    classDef core fill:#DCFCE7,stroke:#4ADE80,color:#1F2937
+
+    class Need entry
+    class Context context
+    class Guidance,Design,Generate agentic
+    class Review review
+    class Output core
+    class MCP ui

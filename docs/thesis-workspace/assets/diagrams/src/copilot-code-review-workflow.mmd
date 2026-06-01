@@ -1,0 +1,30 @@
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, sans-serif", "primaryTextColor": "#1F2937", "lineColor": "#64748B", "clusterBkg": "#FFFFFF", "clusterBorder": "#CBD5E1"}}}%%
+flowchart LR
+    Change["Generated change"]
+    Agent["CodeReview<br/>agent"]
+    Structure["Framework<br/>compliance"]
+    Reuse["Reuse and<br/>duplication check"]
+    Quality["Selector and<br/>TypeScript quality"]
+    Feedback["Review findings"]
+    Accepted["Accepted or revised<br/>automation code"]
+
+    Change --> Agent
+    Agent --> Structure
+    Agent --> Reuse
+    Agent --> Quality
+    Structure --> Feedback
+    Reuse --> Feedback
+    Quality --> Feedback
+    Feedback --> Accepted
+
+    classDef entry fill:#F8FAFC,stroke:#94A3B8,color:#1F2937
+    classDef agentic fill:#E0E7FF,stroke:#818CF8,color:#1F2937
+    classDef review fill:#F3E8FF,stroke:#A78BFA,color:#1F2937
+    classDef core fill:#F1F5F9,stroke:#64748B,color:#1F2937
+    classDef risk fill:#FFE4E6,stroke:#FB7185,color:#1F2937
+
+    class Change entry
+    class Agent agentic
+    class Structure,Reuse,Quality core
+    class Feedback review
+    class Accepted review

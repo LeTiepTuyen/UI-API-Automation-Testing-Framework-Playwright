@@ -1,13 +1,28 @@
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, sans-serif", "primaryTextColor": "#1F2937", "lineColor": "#64748B", "clusterBkg": "#FFFFFF", "clusterBorder": "#CBD5E1"}}}%%
 flowchart LR
-    Command["npx playwright test"] --> Config["playwright.config.ts"]
-    Config --> Runner["Playwright Test Runner"]
-    Runner --> UITests["UI tests"]
-    Runner --> APITests["API tests"]
-    UITests --> Results["Test results"]
-    APITests --> Results
-    Results --> HTML["HTML report"]
-    Results --> JUnit["JUnit XML results.xml"]
-    Results --> Trace["Trace on first retry"]
-    HTML --> Thesis["Thesis evidence and screenshots"]
-    JUnit --> Metrics["Execution metrics"]
-    Trace --> Debugging["Debugging and flakiness analysis"]
+    Run["Playwright test run"]
+    Config["playwright.config.ts"]
+    HTML["HTML report"]
+    JUnit["JUnit XML"]
+    Trace["Trace on retry"]
+    Evidence["Evaluation evidence<br/>package"]
+    Gate["Chapter 5<br/>evidence gate"]
+
+    Run --> Config
+    Config --> HTML
+    Config --> JUnit
+    Config --> Trace
+    HTML --> Evidence
+    JUnit --> Evidence
+    Trace --> Evidence
+    Evidence --> Gate
+
+    classDef entry fill:#F8FAFC,stroke:#94A3B8,color:#1F2937
+    classDef core fill:#F1F5F9,stroke:#64748B,color:#1F2937
+    classDef report fill:#F3E8FF,stroke:#A78BFA,color:#1F2937
+    classDef risk fill:#FFE4E6,stroke:#FB7185,color:#1F2937
+
+    class Run entry
+    class Config core
+    class HTML,JUnit,Trace,Evidence report
+    class Gate risk
