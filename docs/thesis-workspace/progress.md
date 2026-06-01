@@ -15,8 +15,8 @@ This file is the single source of truth for what has been checked, what remains 
 | Evidence matrix | IN_PROGRESS | Initial repository evidence and missing evidence are tracked; evaluation evidence is still missing. |
 | Repository source notes | REVIEW | Nine source notes now summarize repository evidence under `docs/thesis-workspace/source-notes/`. |
 | Citation register | IN_PROGRESS | Repository and thesis-reference sources are grounded; official Playwright and testing-theory sources still need selection. |
-| Figure register | IN_PROGRESS | Initial planned diagrams are registered; rendered outputs are not yet verified. |
-| Mermaid rendering | BLOCKED | `npx` is available, but local Mermaid CLI is not installed; existing render script would need `npx -y @mermaid-js/mermaid-cli`. |
+| Figure register | IN_PROGRESS | Initial planned diagrams are registered; F-02, F-03, and F-04 have rendered SVG outputs. |
+| Mermaid rendering | PARTIAL | `npx` rendering works with `@mermaid-js/mermaid-cli`; local Mermaid CLI is not installed in `node_modules`. |
 | Test execution evidence | BLOCKED | Requires an actual local test run and saved report/trace artifacts before evaluation claims. |
 | Final thesis assembly | BLOCKED | Wait until chapters, figures, references, and appendices are reviewed. |
 
@@ -121,6 +121,40 @@ This file is the single source of truth for what has been checked, what remains 
 **Next recommended task**
 
 - Review and approve the source notes, then collect official documentation and theory sources before drafting Chapter 1 or Chapter 2.
+
+### 2026-06-01 - Diagram rendering workflow validated
+
+**Completed**
+
+- Read the diagram workflow, figure register, diagram README, and Mermaid sources for framework architecture, UI execution flow, and API execution flow.
+- Confirmed the three inspected Mermaid sources can be rendered by Mermaid CLI.
+- Created the diagram output directory `docs/thesis-workspace/assets/diagrams/out/`.
+- Rendered three SVG outputs:
+  - `docs/thesis-workspace/assets/diagrams/out/framework-architecture.svg`
+  - `docs/thesis-workspace/assets/diagrams/out/ui-test-execution-flow.svg`
+  - `docs/thesis-workspace/assets/diagrams/out/api-test-execution-flow.svg`
+- Updated `figure-register.md` to mark F-02, F-03, and F-04 as `RENDERED`.
+
+**Render commands used**
+
+- `npx -y @mermaid-js/mermaid-cli -i docs/thesis-workspace/assets/diagrams/src/framework-architecture.mmd -o docs/thesis-workspace/assets/diagrams/out/framework-architecture.svg`
+- `npx -y @mermaid-js/mermaid-cli -i docs/thesis-workspace/assets/diagrams/src/ui-test-execution-flow.mmd -o docs/thesis-workspace/assets/diagrams/out/ui-test-execution-flow.svg`
+- `npx -y @mermaid-js/mermaid-cli -i docs/thesis-workspace/assets/diagrams/src/api-test-execution-flow.mmd -o docs/thesis-workspace/assets/diagrams/out/api-test-execution-flow.svg`
+
+**Errors**
+
+- Initial sandboxed `npx` attempts failed with `ENOTCACHED` because the Mermaid CLI package was not available in npm cache.
+- Rendering succeeded after running the same `npx` commands with network-capable execution.
+
+**Blockers**
+
+- Local Mermaid CLI is still not installed under `node_modules`.
+- Rendered diagrams still need visual readability review before insertion into thesis chapters.
+- Remaining planned diagrams F-01, F-05, and F-06 are not rendered yet.
+
+**Next recommended task**
+
+- Review the rendered SVGs for readability and consistency, then render the remaining planned diagrams when their evidence sources are ready.
 
 ---
 
