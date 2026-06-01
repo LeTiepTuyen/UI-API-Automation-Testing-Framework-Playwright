@@ -35,6 +35,15 @@ Status values: `READY`, `NEEDS_EVIDENCE`, `NEEDS_SOURCE`, `REVIEWED`.
 | SRC-PLAYWRIGHT-DOCS | Official documentation | To be added | Playwright official docs for test runner, fixtures, locators, APIRequestContext, traces, and reporters. |
 | SRC-TESTING-THEORY | Academic/professional source | To be added | Testing terminology, test automation benefits/limits, test pyramid, E2E reliability, and flakiness. |
 | SRC-EXECUTION-EVIDENCE | Execution artifact | To be collected | Actual test output, `results.xml`, HTML report screenshots, trace artifacts, and execution notes. |
+| SRC-NOTE-REPO-OVERVIEW | Source note | `docs/thesis-workspace/source-notes/repository-overview.md` | Organized repository overview evidence from project documents and manifests. |
+| SRC-NOTE-FRAMEWORK-ARCH | Source note | `docs/thesis-workspace/source-notes/framework-architecture.md` | Organized architecture evidence from repository structure and conventions. |
+| SRC-NOTE-PWCONFIG | Source note | `docs/thesis-workspace/source-notes/playwright-configuration.md` | Organized Playwright configuration evidence. |
+| SRC-NOTE-UI-LAYER | Source note | `docs/thesis-workspace/source-notes/ui-automation-layer.md` | Organized UI automation evidence from representative test, fixtures, workflow, and Page Objects. |
+| SRC-NOTE-API-LAYER | Source note | `docs/thesis-workspace/source-notes/api-automation-layer.md` | Organized API automation evidence from representative test, services, endpoint constants, and API utilities. |
+| SRC-NOTE-FIXTURES | Source note | `docs/thesis-workspace/source-notes/fixtures-and-workflows.md` | Organized fixture and workflow evidence. |
+| SRC-NOTE-DATA-CONFIG | Source note | `docs/thesis-workspace/source-notes/test-data-and-configuration.md` | Organized test data, constants, DTO, and environment-configuration evidence. |
+| SRC-NOTE-REPORTING | Source note | `docs/thesis-workspace/source-notes/reporting-and-execution.md` | Organized execution and reporting configuration evidence, with missing execution artifacts noted. |
+| SRC-NOTE-LIMITATIONS | Source note | `docs/thesis-workspace/source-notes/limitations-and-missing-evidence.md` | Organized limitations and missing-evidence register for drafting safeguards. |
 
 ---
 
@@ -42,10 +51,10 @@ Status values: `READY`, `NEEDS_EVIDENCE`, `NEEDS_SOURCE`, `REVIEWED`.
 
 | Chapter | Evidence readiness | Missing before drafting/finalizing |
 |---|---|---|
-| Chapter 1: Introduction | Partially ready | Needs approved outline, final problem/scope wording, and citation style. |
+| Chapter 1: Introduction | Partially ready | Repository overview source note is ready; still needs approved outline, final problem/scope wording, and citation style. |
 | Chapter 2: Literature Review | Not ready | Needs official Playwright docs and academic/professional testing sources. |
-| Chapter 3: System Analysis and Framework Design | Partially ready | Needs architecture diagram review and source-to-section mapping. |
-| Chapter 4: Implementation | Partially ready | Needs representative code evidence selection and no secret leakage from test data. |
+| Chapter 3: System Analysis and Framework Design | Partially ready | Architecture source note is ready; still needs architecture diagram review and final source-to-section mapping. |
+| Chapter 4: Implementation | Partially ready | UI/API/configuration source notes are ready; still needs representative excerpts selected and no secret leakage from test data. |
 | Chapter 5: Evaluation and Discussion | Blocked | Needs actual execution output, pass/fail counts, report screenshots, trace evidence, and limitation evidence. |
 | Chapter 6: Conclusion and Future Work | Blocked | Needs reviewed Chapters 1-5 and verified evaluation evidence. |
 
@@ -55,26 +64,30 @@ Status values: `READY`, `NEEDS_EVIDENCE`, `NEEDS_SOURCE`, `REVIEWED`.
 
 | Claim ID | Thesis section | Claim | Evidence source(s) | Status | Notes |
 |---|---|---|---|---|---|
-| C-001 | Ch.1 | The project is a Playwright + TypeScript automation framework for Unsplash UI and API testing. | SRC-REPO-README, SRC-REPO-OVERVIEW, SRC-REPO-PKG | READY | Use project-specific wording only after outline approval. |
-| C-002 | Ch.1 | The framework emphasizes maintainability, reuse, and separation of concerns. | SRC-REPO-README, SRC-REPO-OVERVIEW, SRC-REPO-COPILOT | READY | Supported by project docs and repository rules. |
-| C-003 | Ch.1 | The in-scope UI examples include photographer profile viewing, profile update, and bookmarked photos. | SRC-REPO-OVERVIEW, SRC-REPO-UI-TESTS | READY | Do not claim complete Unsplash UI coverage. |
-| C-004 | Ch.1 | The in-scope API examples include public profile, statistics, photos, and collections endpoints. | SRC-REPO-API-TESTS, SRC-REPO-API-SERVICE, SRC-REPO-CONSTANTS | READY | Do not claim full Unsplash API coverage. |
+| C-001 | Ch.1 | The project is a Playwright + TypeScript automation framework for Unsplash UI and API testing. | SRC-REPO-README, SRC-REPO-OVERVIEW, SRC-REPO-PKG, SRC-NOTE-REPO-OVERVIEW | READY | Use project-specific wording only after outline approval. |
+| C-002 | Ch.1 | The framework emphasizes maintainability, reuse, and separation of concerns. | SRC-REPO-README, SRC-REPO-OVERVIEW, SRC-REPO-COPILOT, SRC-NOTE-REPO-OVERVIEW | READY | Supported by project docs and repository rules. |
+| C-003 | Ch.1 | The in-scope UI examples include photographer profile viewing, profile update, and bookmarked photos. | SRC-REPO-OVERVIEW, SRC-REPO-UI-TESTS, SRC-NOTE-UI-LAYER | READY | Do not claim complete Unsplash UI coverage. |
+| C-004 | Ch.1 | The in-scope API examples include public profile, statistics, photos, and collections endpoints. | SRC-REPO-API-TESTS, SRC-REPO-API-SERVICE, SRC-REPO-CONSTANTS, SRC-NOTE-API-LAYER | READY | Do not claim full Unsplash API coverage. |
 | C-005 | Ch.2 | Modern test automation improves repeatability and regression efficiency but does not remove the need for manual judgment. | SRC-TESTING-THEORY | NEEDS_SOURCE | Add academic/professional citation before drafting. |
 | C-006 | Ch.2 | E2E tests validate integrated user-facing behavior but should be selected carefully because they can be costly and fragile. | SRC-TESTING-THEORY | NEEDS_SOURCE | Add theory/flakiness source before drafting. |
 | C-007 | Ch.2 | Playwright provides browser automation and test runner capabilities suitable for UI and API-related testing. | SRC-PLAYWRIGHT-DOCS, SRC-REPO-PKG, SRC-REPO-PWCONFIG | NEEDS_SOURCE | Add official Playwright docs before drafting. |
-| C-008 | Ch.3 | The framework uses a layered architecture separating tests, UI abstractions, workflows, API services, core utilities, data, constants, and configuration. | SRC-REPO-README, SRC-REPO-OVERVIEW, SRC-REPO-COPILOT, SRC-REPO-PWCONFIG | READY | Pair with Figure F-02 after diagram review. |
-| C-009 | Ch.3 | UI interactions are encapsulated in Page Object classes. | SRC-REPO-COPILOT, SRC-REPO-POM, SRC-REPO-UI-TESTS | READY | Use representative examples only. |
-| C-010 | Ch.3 | Playwright fixtures inject reusable Page Objects and workflows into tests. | SRC-REPO-FIXTURES, SRC-REPO-UI-TESTS | READY | Supported by `fixtures/custome-fixture.ts`. |
-| C-011 | Ch.3 | API endpoint logic is centralized in service classes rather than duplicated directly in API test files. | SRC-REPO-COPILOT, SRC-REPO-API-SERVICE, SRC-REPO-API-TESTS | READY | Use `UsersService` and endpoint constants as evidence. |
-| C-012 | Ch.4 | The Playwright configuration uses `./tests` as the test directory, Chromium project configuration, HTML and JUnit reporters, and trace collection on first retry. | SRC-REPO-PWCONFIG | READY | Avoid claiming successful report generation until execution evidence is collected. |
-| C-013 | Ch.4 | API utility methods centralize GET, POST, PUT, and DELETE request execution. | SRC-REPO-CORE-API | READY | JSON schema validation helper exists; do not claim broad schema coverage without test evidence. |
-| C-014 | Ch.4 | The UsersService encapsulates public user profile, photos, collections, statistics, and profile update API calls. | SRC-REPO-API-SERVICE, SRC-REPO-CONSTANTS | READY | Supported by `api-service/users-service.ts`. |
-| C-015 | Ch.4 | The update-profile UI test resets profile username through the API after each test. | SRC-REPO-UI-TESTS, SRC-REPO-API-SERVICE, SRC-REPO-DATA | READY | Useful for discussing cleanup and test independence. |
+| C-008 | Ch.3 | The framework uses a layered architecture separating tests, UI abstractions, workflows, API services, core utilities, data, constants, and configuration. | SRC-REPO-README, SRC-REPO-OVERVIEW, SRC-REPO-COPILOT, SRC-REPO-PWCONFIG, SRC-NOTE-FRAMEWORK-ARCH | READY | Pair with Figure F-02 after diagram review. |
+| C-009 | Ch.3 | UI interactions are encapsulated in Page Object classes. | SRC-REPO-COPILOT, SRC-REPO-POM, SRC-REPO-UI-TESTS, SRC-NOTE-UI-LAYER | READY | Use representative examples only. |
+| C-010 | Ch.3 | Playwright fixtures inject reusable Page Objects and workflows into tests. | SRC-REPO-FIXTURES, SRC-REPO-UI-TESTS, SRC-NOTE-FIXTURES | READY | Supported by `fixtures/custome-fixture.ts`. |
+| C-011 | Ch.3 | API endpoint logic is centralized in service classes rather than duplicated directly in API test files. | SRC-REPO-COPILOT, SRC-REPO-API-SERVICE, SRC-REPO-API-TESTS, SRC-NOTE-API-LAYER | READY | Use `UsersService` and endpoint constants as evidence. |
+| C-012 | Ch.4 | The Playwright configuration uses `./tests` as the test directory, Chromium project configuration, HTML and JUnit reporters, and trace collection on first retry. | SRC-REPO-PWCONFIG, SRC-NOTE-PWCONFIG, SRC-NOTE-REPORTING | READY | Avoid claiming successful report generation until execution evidence is collected. |
+| C-013 | Ch.4 | API utility methods centralize GET, POST, PUT, and DELETE request execution. | SRC-REPO-CORE-API, SRC-NOTE-API-LAYER | READY | JSON schema validation helper exists; do not claim broad schema coverage without test evidence. |
+| C-014 | Ch.4 | The UsersService encapsulates public user profile, photos, collections, statistics, and profile update API calls. | SRC-REPO-API-SERVICE, SRC-REPO-CONSTANTS, SRC-NOTE-API-LAYER | READY | Supported by `api-service/users-service.ts`. |
+| C-015 | Ch.4 | The update-profile UI test resets profile username through the API after each test. | SRC-REPO-UI-TESTS, SRC-REPO-API-SERVICE, SRC-REPO-DATA, SRC-NOTE-UI-LAYER | READY | Useful for discussing cleanup and test independence. |
 | C-016 | Ch.5 | The framework successfully executes all selected UI/API tests. | SRC-EXECUTION-EVIDENCE | NEEDS_EVIDENCE | Must run tests and record output before writing. |
 | C-017 | Ch.5 | The final number of UI/API tests, pass/fail/skipped counts, and execution time are known. | SRC-EXECUTION-EVIDENCE | NEEDS_EVIDENCE | Do not infer from file count alone. |
 | C-018 | Ch.5 | HTML report, JUnit result, and trace evidence are available for evaluation. | SRC-EXECUTION-EVIDENCE, SRC-REPO-PWCONFIG | NEEDS_EVIDENCE | Config supports reporters/traces; actual artifacts must be verified. |
 | C-019 | Ch.5 | External API rate limiting can affect API test reliability. | SRC-REPO-API-TESTS, SRC-EXECUTION-EVIDENCE | NEEDS_EVIDENCE | Tests handle rate-limit body text; execution evidence still required. |
 | C-020 | Ch.6 | The final contribution and limitations can be summarized. | Reviewed chapters, SRC-EXECUTION-EVIDENCE | NEEDS_EVIDENCE | Wait for reviewed chapters and evaluation results. |
+| C-021 | Ch.4 | The framework loads browser base URL and API base URL from environment variables. | SRC-REPO-PWCONFIG, SRC-REPO-UTILS, SRC-NOTE-DATA-CONFIG | READY | Do not disclose runtime values. |
+| C-022 | Ch.4 | Static user test data is centralized in `test-data/user-info.json`. | SRC-REPO-TEST-DATA, SRC-REPO-UTILS, SRC-REPO-CONSTANTS, SRC-NOTE-DATA-CONFIG | READY | Cite location only; do not expose credentials or tokens. |
+| C-023 | Ch.5 | Generated report artifacts currently require verification before being used as evaluation evidence. | SRC-NOTE-REPORTING, SRC-NOTE-LIMITATIONS, SRC-EXECUTION-EVIDENCE | NEEDS_EVIDENCE | Existing artifacts must not be treated as final evidence without verified run context. |
+| C-024 | Ch.5 | External-system dependency is a limitation because tests target Unsplash UI and public API behavior. | SRC-REPO-README, SRC-REPO-OVERVIEW, SRC-NOTE-LIMITATIONS | READY | Keep wording as a limitation, not a measured failure. |
 
 ---
 

@@ -13,6 +13,7 @@ This file is the single source of truth for what has been checked, what remains 
 | Source/reference area | REVIEW | Actual source area is `docs/final-graduation-thesis-doc/`; `docs/final-gradation-thesis-doc/` is not present in the working tree. |
 | Outline | DRAFT | Proposed outline exists and still needs user approval before drafting. |
 | Evidence matrix | IN_PROGRESS | Initial repository evidence and missing evidence are tracked; evaluation evidence is still missing. |
+| Repository source notes | REVIEW | Nine source notes now summarize repository evidence under `docs/thesis-workspace/source-notes/`. |
 | Citation register | IN_PROGRESS | Repository and thesis-reference sources are grounded; official Playwright and testing-theory sources still need selection. |
 | Figure register | IN_PROGRESS | Initial planned diagrams are registered; rendered outputs are not yet verified. |
 | Mermaid rendering | BLOCKED | `npx` is available, but local Mermaid CLI is not installed; existing render script would need `npx -y @mermaid-js/mermaid-cli`. |
@@ -80,6 +81,46 @@ This file is the single source of truth for what has been checked, what remains 
 **Next recommended task**
 
 - Finalize citation style and collect official/theory citations before drafting Chapter 1 or Chapter 2.
+
+### 2026-06-01 - Repository source notes created
+
+**Completed**
+
+- Created structured source notes from repository evidence without drafting thesis chapters.
+- Summarized project overview, architecture, Playwright configuration, UI automation, API automation, fixtures/workflows, test data/configuration, reporting/execution, and limitations.
+- Added path-based references inside each source note so later drafting can trace claims back to repository files.
+- Updated `evidence-matrix.md` to include the source notes as organized evidence assets.
+
+**Files updated**
+
+- `docs/thesis-workspace/source-notes/repository-overview.md`
+- `docs/thesis-workspace/source-notes/framework-architecture.md`
+- `docs/thesis-workspace/source-notes/playwright-configuration.md`
+- `docs/thesis-workspace/source-notes/ui-automation-layer.md`
+- `docs/thesis-workspace/source-notes/api-automation-layer.md`
+- `docs/thesis-workspace/source-notes/fixtures-and-workflows.md`
+- `docs/thesis-workspace/source-notes/test-data-and-configuration.md`
+- `docs/thesis-workspace/source-notes/reporting-and-execution.md`
+- `docs/thesis-workspace/source-notes/limitations-and-missing-evidence.md`
+- `docs/thesis-workspace/progress.md`
+- `docs/thesis-workspace/evidence-matrix.md`
+
+**Evidence added**
+
+- Repository-level evidence from `README.md`, `docs/project-overview.md`, `package.json`, and `playwright.config.ts`.
+- UI automation evidence from `fixtures/custome-fixture.ts`, `workflow/login-workflow.ts`, selected Page Objects, and `tests/ui/profile/update-profile.spec.ts`.
+- API automation evidence from `core/api/api.ts`, `api-service/users-service.ts`, endpoint constants, utilities, and `tests/api/users/get-public-profile.spec.ts`.
+- Configuration, reporting, and missing-evidence notes grounded in existing repository files.
+
+**Blockers**
+
+- No execution metrics have been collected yet.
+- Official Playwright documentation and academic/professional testing sources are still required before literature-review drafting.
+- Report screenshots, trace artifacts, and rendered diagram outputs are still missing.
+
+**Next recommended task**
+
+- Review and approve the source notes, then collect official documentation and theory sources before drafting Chapter 1 or Chapter 2.
 
 ---
 
