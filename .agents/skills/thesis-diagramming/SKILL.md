@@ -21,6 +21,9 @@ Create thesis-ready diagrams that are accurate, reproducible, version-controlled
 8. Keep labels in professional academic English for thesis use.
 9. Use readable left-to-right flow for process diagrams unless top-down is clearer.
 10. Avoid decorative complexity. Prefer simple, explanatory diagrams over dense posters.
+11. Apply the Academic Mermaid Visual Style Guide when creating Mermaid diagrams.
+12. Audit complexity before drawing; split large diagrams instead of forcing every concept into one figure.
+13. The project Copilot Agentic-AI workflow for Automation Testing may be diagrammed only as a project automation-testing workflow, never as a thesis-writing workflow.
 
 ## Tool selection policy
 
@@ -47,14 +50,103 @@ Use screenshots only for:
 - Playwright HTML report evidence
 - terminal/test execution evidence
 
+## Academic Mermaid visual style guide
+
+Mermaid thesis diagrams must use clean minimalist academic visuals. They should be readable in Word/PDF export, visually consistent across chapters, and modern without becoming decorative.
+
+Style requirements:
+
+- Separate groups, architectural layers, and workflow phases clearly.
+- Use distinct but soft colors for semantic groups.
+- Keep typography, spacing, node shapes, and connector style consistent.
+- Use concise node labels, normally under 6-8 words where possible.
+- Use strong contrast between section headers/groups and internal nodes.
+- Avoid excessive gradients, emojis, novelty icons, decorative clutter, and dense poster-like layouts.
+- Use professional academic English for all labels.
+- Do not include the private thesis-writing workflow, private agents, private skills, or thesis harness in thesis-facing diagrams.
+
+Recommended Mermaid conventions:
+
+- Use `%%{init: ... }%%` for Mermaid theme variables when useful.
+- Use `classDef` for semantic node groups and assign classes consistently.
+- Use soft border colors, light fills, readable dark text, and neutral connectors.
+- Use stronger title/header emphasis only where Mermaid supports it reliably.
+- Prefer SVG output as the master artifact.
+- Keep edge labels short and use them only when they clarify meaning.
+
+Reusable academic palette:
+
+- `core`: cool gray/slate for foundation and shared framework utilities.
+- `ui`: soft blue for UI tests, Page Objects, workflows, and browser interactions.
+- `api`: soft green for API tests, service classes, clients, and endpoints.
+- `data`: soft amber for DTOs, constants, test data, and configuration.
+- `reporting`: soft purple for reports, traces, screenshots, and result evidence.
+- `agentic`: soft indigo for the project Copilot automation-testing workflow.
+- `risk`: soft rose/red for missing evidence, limitations, risks, and blocked claims.
+- `neutral`: readable dark text and neutral connector colors.
+
+Suggested Mermaid scaffold:
+
+```mermaid
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial", "primaryTextColor": "#1F2937", "lineColor": "#64748B"}}}%%
+flowchart TB
+    classDef core fill:#F1F5F9,stroke:#64748B,color:#1F2937
+    classDef ui fill:#DBEAFE,stroke:#60A5FA,color:#1F2937
+    classDef api fill:#DCFCE7,stroke:#4ADE80,color:#1F2937
+    classDef data fill:#FEF3C7,stroke:#F59E0B,color:#1F2937
+    classDef reporting fill:#F3E8FF,stroke:#A78BFA,color:#1F2937
+    classDef agentic fill:#E0E7FF,stroke:#818CF8,color:#1F2937
+    classDef risk fill:#FFE4E6,stroke:#FB7185,color:#1F2937
+```
+
+## Complexity control and split rules
+
+Before creating or revising any diagram:
+
+1. Identify the one main idea the figure should explain.
+2. Estimate the node count.
+3. Count major phases/groups.
+4. Check for likely crossing edges, long labels, and mixed concerns.
+5. Decide whether to keep one figure or split it into multiple figures.
+
+Split a diagram when:
+
+- it exceeds about 12-15 nodes;
+- a workflow has more than 3 major phases;
+- it requires many crossing edges or long labels;
+- it attempts to show every repository folder/file at once;
+- it mixes architecture, implementation, reporting, and evaluation concerns in one figure.
+
+Use progressive disclosure:
+
+- start with one high-level overview;
+- add focused follow-up figures only when needed;
+- simplify large diagrams before inserting them into thesis chapters.
+
+Framework architecture may be split into:
+
+- high-level layered architecture;
+- UI automation layer detail;
+- API automation layer detail;
+- reporting/evidence pipeline.
+
+Copilot Agentic-AI workflow for Automation Testing may be split into:
+
+- overall agentic automation-testing workflow;
+- test-case design workflow;
+- script-generation workflow;
+- code-review workflow.
+
 ## Diagram workflow
 
 1. Identify the thesis section and the claim the figure supports.
-2. Add or update the planned figure in `figure-register.md`.
-3. Draft the diagram source in `assets/diagrams/src/`.
-4. Render it using the approved renderer.
-5. Review readability, label consistency, and caption quality.
-6. Update `figure-register.md`, `evidence-matrix.md`, and the target chapter.
+2. Audit complexity and decide whether the diagram should be split.
+3. Add or update the planned figure in `figure-register.md`.
+4. Draft the diagram source in `assets/diagrams/src/`.
+5. Apply the academic Mermaid style system when Mermaid is used.
+6. Render SVG using the approved renderer.
+7. Review readability, label consistency, caption quality, and Word/PDF suitability.
+8. Update `figure-register.md`, `evidence-matrix.md`, and the target chapter when chapter drafting is in scope.
 
 ## Output quality checklist
 
@@ -65,3 +157,5 @@ Before marking a diagram ready:
 - The diagram supports a specific paragraph or section.
 - The caption explains what the reader should understand.
 - The diagram does not expose secrets, tokens, private account data, or irrelevant implementation noise.
+- The diagram follows the Academic Mermaid Visual Style Guide when Mermaid is used.
+- The complexity audit supports keeping it as one figure; otherwise it has been split into focused figures.
