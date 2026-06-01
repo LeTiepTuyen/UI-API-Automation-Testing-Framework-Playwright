@@ -16,6 +16,7 @@ This file is the single source of truth for what has been checked, what remains 
 | Repository source notes | REVIEW | Nine source notes now summarize repository evidence under `docs/thesis-workspace/source-notes/`. |
 | Citation register | IN_PROGRESS | Repository and thesis-reference sources are grounded; official Playwright and testing-theory sources still need selection. |
 | Figure register | IN_PROGRESS | Initial planned diagrams are registered; F-02, F-03, and F-04 have rendered SVG outputs. |
+| Project Copilot workflow | INCLUDED_AS_PROJECT_FEATURE | The Copilot Agentic-AI workflow for automation testing is included as a project feature; the private thesis-writing harness remains excluded from thesis content. |
 | Mermaid rendering | PARTIAL | `npx` rendering works with `@mermaid-js/mermaid-cli`; local Mermaid CLI is not installed in `node_modules`. |
 | Test execution evidence | BLOCKED | Requires an actual local test run and saved report/trace artifacts before evaluation claims. |
 | Final thesis assembly | BLOCKED | Wait until chapters, figures, references, and appendices are reviewed. |
@@ -181,6 +182,37 @@ This file is the single source of truth for what has been checked, what remains 
 **Next recommended task**
 
 - Collect official documentation and academic/professional testing sources before drafting Chapter 2, or begin Chapter 1 drafting using repository evidence while keeping result claims marked until execution evidence is available.
+
+### 2026-06-01 - Thesis orchestration rules normalized before drafting
+
+**Completed**
+
+- Recorded the decision that the project Copilot Agentic-AI workflow for automation testing is part of the graduation project and may be included as a project feature.
+- Reconfirmed that the private thesis-writing harness remains excluded from thesis body text, appendices, references, figures, captions, and final Word output.
+- Updated the drafting order to start with Chapter 3 and Chapter 4, then pass through an execution-evidence gate before Chapter 5.
+- Added planning coverage for AI-assisted automation testing workflow design in Chapter 3 and Copilot workflow implementation in Chapter 4.
+- Registered a thesis-safe planned figure for the Copilot Agentic-AI workflow for automation test development.
+- Added evidence links for `docs/agentic-workflow/workflow-overview.md`, `.github/AGENTS.md`, `.github/copilot-instructions.md`, `.github/agents/`, `.github/prompts/`, and `.claude/skills/`.
+
+**Files updated**
+
+- `docs/thesis-workspace/plan.md`
+- `docs/thesis-workspace/outline.md`
+- `docs/thesis-workspace/tasks.md`
+- `docs/thesis-workspace/progress.md`
+- `docs/thesis-workspace/evidence-matrix.md`
+- `docs/thesis-workspace/figure-register.md`
+
+**Blockers**
+
+- The new Copilot workflow figure F-07 still needs an editable Mermaid source and rendered output.
+- Chapter 3 drafting still needs final diagram review for F-02, F-03, F-04, and F-07.
+- Chapter 4 drafting still needs representative artifact excerpts selected from `.github/` and `.claude/`.
+- Chapter 5 remains blocked until actual test execution, report, trace, screenshot, and `results.xml` evidence is collected.
+
+**Next recommended task**
+
+- Create and render the F-07 workflow diagram source, then prepare Chapter 3 drafting from repository architecture and project workflow evidence.
 
 ---
 

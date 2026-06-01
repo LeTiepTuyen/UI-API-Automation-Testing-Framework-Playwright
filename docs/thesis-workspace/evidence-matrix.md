@@ -13,6 +13,10 @@ Status values: `READY`, `NEEDS_EVIDENCE`, `NEEDS_SOURCE`, `REVIEWED`.
 | SRC-REPO-README | Repository document | `README.md` | Project title, overview, purpose, tech stack, key features, repository highlights, author/supervisor metadata. |
 | SRC-REPO-OVERVIEW | Repository document | `docs/project-overview.md` | Framework summary, testing scope, core areas, and design principles. |
 | SRC-REPO-COPILOT | Repository document | `.github/copilot-instructions.md` | Framework conventions for Page Objects, fixtures, workflows, API services, test naming, and reuse-first policy. |
+| SRC-REPO-AGENTIC-WORKFLOW | Project workflow document | `docs/agentic-workflow/workflow-overview.md` | Project Copilot Agentic-AI workflow for automation test case design, Playwright script generation, code review, prompt files, custom agents, and reusable skills. |
+| SRC-REPO-GITHUB-AGENTS | Project workflow artifacts | `.github/AGENTS.md`, `.github/agents/` | Custom agent roles for automation test scenario design, script generation, code review, and GitHub phase workflow. |
+| SRC-REPO-GITHUB-PROMPTS | Project workflow artifacts | `.github/prompts/` | Reusable prompt entrypoints for understanding the project, designing UI/API scenarios, generating UI/API scripts, and reviewing generated scripts. |
+| SRC-REPO-CLAUDE-SKILLS | Project workflow artifacts | `.claude/skills/` | Reusable automation-development skills for Playwright MCP usage, script generation, scenario design, and code review. |
 | SRC-REPO-PKG | Source config | `package.json` | Dependencies: Playwright, TypeScript-related packages, dotenv, Ajv. |
 | SRC-REPO-PWCONFIG | Source config | `playwright.config.ts` | Timeout, test directory, parallelism, CI retry behavior, workers, base URL, trace mode, HTML and JUnit reporters. |
 | SRC-REPO-UI-TESTS | Source code | `tests/ui/profile/` | UI scenario evidence for profile viewing, profile update, and bookmarked photos. |
@@ -53,8 +57,8 @@ Status values: `READY`, `NEEDS_EVIDENCE`, `NEEDS_SOURCE`, `REVIEWED`.
 |---|---|---|
 | Chapter 1: Introduction | Partially ready | Repository overview source note is ready; still needs approved outline, final problem/scope wording, and citation style. |
 | Chapter 2: Literature Review | Not ready | Needs official Playwright docs and academic/professional testing sources. |
-| Chapter 3: System Analysis and Framework Design | Partially ready | Architecture source note is ready; still needs architecture diagram review and final source-to-section mapping. |
-| Chapter 4: Implementation | Partially ready | UI/API/configuration source notes are ready; still needs representative excerpts selected and no secret leakage from test data. |
+| Chapter 3: System Analysis and Framework Design | Partially ready | Architecture source note and project Copilot workflow sources are ready; still needs architecture/workflow diagram review and final source-to-section mapping. |
+| Chapter 4: Implementation | Partially ready | UI/API/configuration source notes and project workflow artifacts are ready; still needs representative excerpts selected and no secret leakage from test data. |
 | Chapter 5: Evaluation and Discussion | Blocked | Needs actual execution output, pass/fail counts, report screenshots, trace evidence, and limitation evidence. |
 | Chapter 6: Conclusion and Future Work | Blocked | Needs reviewed Chapters 1-5 and verified evaluation evidence. |
 
@@ -88,6 +92,11 @@ Status values: `READY`, `NEEDS_EVIDENCE`, `NEEDS_SOURCE`, `REVIEWED`.
 | C-022 | Ch.4 | Static user test data is centralized in `test-data/user-info.json`. | SRC-REPO-TEST-DATA, SRC-REPO-UTILS, SRC-REPO-CONSTANTS, SRC-NOTE-DATA-CONFIG | READY | Cite location only; do not expose credentials or tokens. |
 | C-023 | Ch.5 | Generated report artifacts currently require verification before being used as evaluation evidence. | SRC-NOTE-REPORTING, SRC-NOTE-LIMITATIONS, SRC-EXECUTION-EVIDENCE | NEEDS_EVIDENCE | Existing artifacts must not be treated as final evidence without verified run context. |
 | C-024 | Ch.5 | External-system dependency is a limitation because tests target Unsplash UI and public API behavior. | SRC-REPO-README, SRC-REPO-OVERVIEW, SRC-NOTE-LIMITATIONS | READY | Keep wording as a limitation, not a measured failure. |
+| C-025 | Ch.3 | The project includes a Copilot Agentic-AI workflow intended to support automation test case design, Playwright script generation, and automation code review. | SRC-REPO-AGENTIC-WORKFLOW, SRC-REPO-GITHUB-AGENTS, SRC-REPO-GITHUB-PROMPTS, SRC-REPO-CLAUDE-SKILLS | READY | Describe as a project workflow feature; do not claim measured productivity improvement without evaluation evidence. |
+| C-026 | Ch.3 | The workflow is designed to wrap around the existing Playwright framework and preserve reuse-first repository conventions. | SRC-REPO-AGENTIC-WORKFLOW, SRC-REPO-COPILOT, SRC-REPO-GITHUB-AGENTS | READY | Keep the framework as the source of truth. |
+| C-027 | Ch.4 | The implemented workflow artifacts include repository-wide Copilot instructions, custom agents, reusable prompt files, and reusable skills. | SRC-REPO-AGENTIC-WORKFLOW, SRC-REPO-COPILOT, SRC-REPO-GITHUB-AGENTS, SRC-REPO-GITHUB-PROMPTS, SRC-REPO-CLAUDE-SKILLS | READY | Cite paths and describe artifact responsibilities only. |
+| C-028 | Ch.4 | The workflow encourages repository inspection, reuse of existing Page Objects/fixtures/workflows/services, optional Playwright MCP UI inspection, and code review before accepting generated automation code. | SRC-REPO-AGENTIC-WORKFLOW, SRC-REPO-COPILOT, SRC-REPO-GITHUB-AGENTS, SRC-REPO-CLAUDE-SKILLS | READY | This supports design/implementation discussion; execution effectiveness remains outside current evidence. |
+| C-029 | Ch.5 | The effectiveness of the Copilot Agentic-AI workflow for automation development has been quantitatively evaluated. | SRC-EXECUTION-EVIDENCE | NEEDS_EVIDENCE | Do not add productivity, quality, or time-saving metrics unless a documented evaluation is performed. |
 
 ---
 

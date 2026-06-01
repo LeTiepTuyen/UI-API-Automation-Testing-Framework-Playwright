@@ -73,6 +73,7 @@ Include only figures actually used in the thesis and registered in `docs/thesis-
 - Figure 3.1: layered framework architecture.
 - Figure 3.2: UI automation execution flow.
 - Figure 3.3: API automation execution flow.
+- Figure 3.4: Copilot Agentic-AI workflow for automation test development.
 - Figure 4.1: Playwright execution and reporting pipeline.
 - Figure 5.1: evaluation workflow.
 
@@ -112,6 +113,7 @@ Recommended definitions:
 Recommended abbreviations:
 
 - API: Application Programming Interface
+- AI: Artificial Intelligence
 - CI/CD: Continuous Integration and Continuous Delivery/Deployment
 - CLI: Command-Line Interface
 - DOM: Document Object Model
@@ -174,6 +176,7 @@ The aim of this project is to design, implement, and evaluate a comprehensive UI
 - Study modern software test automation practices and Playwright-based E2E testing.
 - Analyze requirements for a maintainable UI and API automation framework.
 - Design a layered automation architecture using Page Objects, workflows, fixtures, API services, DTOs, shared utilities, centralized constants, and test data.
+- Describe the project-supported Copilot Agentic-AI workflow for automation test case design, Playwright script generation, and automation code review.
 - Implement representative UI test scenarios for Unsplash user flows.
 - Implement representative API test scenarios for Unsplash public user endpoints.
 - Configure Playwright execution, trace collection, HTML reporting, and JUnit reporting.
@@ -302,7 +305,14 @@ Evidence basis:
 - `docs/thesis-workspace/source-notes/ui-automation-layer.md`
 - `docs/thesis-workspace/source-notes/api-automation-layer.md`
 - `docs/thesis-workspace/source-notes/fixtures-and-workflows.md`
+- `docs/agentic-workflow/workflow-overview.md`
+- `.github/AGENTS.md`
+- `.github/copilot-instructions.md`
+- `.github/agents/`
+- `.github/prompts/`
+- `.claude/skills/`
 - Figures F-02, F-03, and F-04 in `docs/thesis-workspace/figure-register.md`
+- Figure F-07 in `docs/thesis-workspace/figure-register.md`
 
 ## 3.1 Current Testing Context
 
@@ -319,6 +329,7 @@ Describe the selected target application and API: Unsplash web application and p
 - Support fixtures for object injection.
 - Support centralized test data and constants.
 - Generate test reports and traces.
+- Support an AI-assisted automation testing workflow for scenario design, Playwright script generation, and automation code review.
 
 ### 3.2.2 Non-Functional Requirements
 
@@ -367,6 +378,10 @@ Explain `test-data`, `.env`, access tokens, base URLs, credentials, and environm
 
 Explain HTML reporter, JUnit reporter, trace-on-first-retry, retry strategy, timeout strategy, and debugging commands.
 
+## 3.10 AI-Assisted Automation Testing Workflow Design
+
+Explain the project-level Copilot Agentic-AI workflow that supports automation test development. Cover scenario design, framework-aware Playwright script generation, reuse-first repository inspection, optional Playwright MCP-based UI inspection, and automation code review. Keep this section focused on the automation-testing workflow stored under `.github/` and `.claude/`.
+
 ---
 
 # Chapter 4: Implementation
@@ -389,6 +404,12 @@ Evidence basis:
 - `docs/thesis-workspace/source-notes/api-automation-layer.md`
 - `docs/thesis-workspace/source-notes/test-data-and-configuration.md`
 - `docs/thesis-workspace/source-notes/reporting-and-execution.md`
+- `docs/agentic-workflow/workflow-overview.md`
+- `.github/AGENTS.md`
+- `.github/copilot-instructions.md`
+- `.github/agents/`
+- `.github/prompts/`
+- `.claude/skills/`
 - Figure F-05 in `docs/thesis-workspace/figure-register.md`
 
 ## 4.1 Development Environment
@@ -439,6 +460,10 @@ Explain representative API scenarios:
 ## 4.10 Reporting and Debugging Implementation
 
 Include screenshots or examples of HTML report, JUnit result file, and Playwright trace viewer. `NEEDS_EVIDENCE`: use only verified artifacts from a known execution run.
+
+## 4.11 Copilot Agentic Workflow Implementation for Automation Testing
+
+Describe the implemented project workflow artifacts that support automation testing work: repository-wide Copilot instructions, custom agents for scenario design, Playwright script generation, and code review, prompt entrypoints, and reusable skills. This section must describe only how these artifacts support the Playwright automation framework.
 
 ---
 
@@ -537,6 +562,7 @@ Summarize the thesis aim, implemented framework, and evaluation.
 - Reusable Page Objects, workflows, fixtures, API services, DTOs, constants, utilities, and test data.
 - Representative UI and API tests for Unsplash flows.
 - Reporting and debugging setup using Playwright HTML report, trace-on-retry, and JUnit XML.
+- A project-level Copilot Agentic-AI workflow that supports automation test case design, Playwright script generation, and automation code review.
 
 ## 6.3 Lessons Learned
 
@@ -593,3 +619,7 @@ Map thesis concepts to source folders and files.
 ## Appendix D: Sample Reports and Trace Evidence
 
 Include report screenshots, trace viewer screenshots, and `results.xml` explanation. `NEEDS_EVIDENCE`: include only verified artifacts from a known execution run.
+
+## Appendix E: Copilot Agentic-AI Workflow Artifacts
+
+Optionally include a concise artifact map for the automation-testing workflow, such as `.github/AGENTS.md`, `.github/copilot-instructions.md`, `.github/agents/`, `.github/prompts/`, and `.claude/skills/`. Include only project automation-testing artifacts that are relevant to framework development and review.

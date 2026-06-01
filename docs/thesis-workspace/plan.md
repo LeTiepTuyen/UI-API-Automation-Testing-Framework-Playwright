@@ -24,6 +24,14 @@ The final output must be a professional academic thesis in English, aligned with
 
 ---
 
+## Workflow inclusion boundary
+
+The thesis may include the repository's Copilot Agentic-AI workflow for automation testing because it is part of the graduation project. This project feature supports automation test case design, Playwright script generation, and automation code review through `.github/` and `.claude/` workflow artifacts.
+
+The private thesis-writing harness remains private productivity infrastructure. It must not appear in the thesis body, appendices, references, figures, captions, or final Word document.
+
+---
+
 ## Phase 0: Repository and source-document discovery
 
 ### Goals
@@ -58,11 +66,11 @@ The final output must be a professional academic thesis in English, aligned with
    - `constants/`
    - `test-data/`
    - `utils/`
-3. Read converted Markdown versions of these thesis references in `docs/final-graduation-thesis-doc/`:
-   - VNUK thesis template
-   - VNUK completed sample thesis
-   - Playwright thesis by Duong
-   - Playwright thesis by Barbaglia
+3. Read converted Markdown versions of these thesis references:
+   - VNUK thesis template: `docs/final-graduation-thesis-doc/thesis-template.md`
+   - VNUK completed sample thesis: `docs/final-graduation-thesis-doc/reference-documents/Thesis_HaVu_VNUK-Sample.md`
+   - Playwright thesis by Duong: `docs/final-graduation-thesis-doc/reference-documents/Thesis_Playwright_Duong_Sample1.md`
+   - Playwright thesis by Barbaglia: `docs/final-graduation-thesis-doc/reference-documents/Thesis_Playwright_Barbaglia_Sofia_Sample2.md`
 4. Produce or update source notes:
    - `docs/final-graduation-thesis-doc/source-notes/vnuk-template-analysis.md`
    - `docs/final-graduation-thesis-doc/source-notes/vnuk-sample-analysis.md`
@@ -185,9 +193,11 @@ Turn the proposed outline into the final working outline.
 
 ---
 
-## Phase 4: Draft front matter
+## Phase 4: Prepare front matter after chapters
 
 ### Drafting order
+
+Front matter is prepared after the main chapters are stable so definitions, abbreviations, contribution wording, and the abstract match the actual thesis content.
 
 1. `front-matter/definitions.md`
 2. `front-matter/abbreviations.md`
@@ -226,16 +236,20 @@ For each chapter:
 
 ### Drafting order
 
-1. Chapter 1: Introduction
-2. Chapter 3: System Analysis and Framework Design
-3. Chapter 4: Implementation
-4. Chapter 2: Literature Review and Theoretical Background
-5. Chapter 5: Evaluation and Discussion
-6. Chapter 6: Conclusion and Future Work
+1. Chapter 3: System Analysis and Framework Design
+2. Chapter 4: Implementation
+3. Evidence Gate: collect actual test execution, report, trace, screenshot, and `results.xml` evidence
+4. Chapter 5: Evaluation and Discussion
+5. Chapter 2: Literature Review and Theoretical Background
+6. Chapter 1: Introduction
+7. Chapter 6: Conclusion and Future Work
+8. Front matter
+9. Appendices
+10. Final `thesis.md` assembly
 
 ### Rationale for this order
 
-Chapter 2 is easier to write accurately after the design and implementation chapters clarify which theoretical concepts are actually used. Chapter 5 must wait until execution evidence is available.
+Chapter 3 and Chapter 4 are drafted first because the repository design and implementation evidence is already organized. Chapter 5 must wait until the evidence gate is complete. Chapter 2 is drafted after the project-specific design and implementation scope is clear, so the literature review can focus on concepts actually used by the framework. Chapter 1 and Chapter 6 are drafted later so the introduction, contribution claims, limitations, and conclusion match the verified thesis content.
 
 ---
 
@@ -367,4 +381,4 @@ Minimum required diagram categories:
 - API test execution flow;
 - Playwright reporting pipeline;
 - evaluation workflow;
-- multi-agent thesis workflow.
+- Copilot Agentic-AI workflow for Automation Testing.
