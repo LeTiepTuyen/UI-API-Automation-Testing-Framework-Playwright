@@ -11,7 +11,7 @@ This file is the single source of truth for what has been checked, what remains 
 | Thesis writing | NOT_STARTED | Chapter files are placeholders only; no thesis prose should be treated as drafted. |
 | Preflight audit | REVIEW | Repository, thesis workspace, reference area, Mermaid readiness, and private-workflow exclusion have been checked. |
 | Source/reference area | REVIEW | Actual source area is `docs/final-graduation-thesis-doc/`; `docs/final-gradation-thesis-doc/` is not present in the working tree. |
-| Outline | DRAFT | Proposed outline exists and still needs user approval before drafting. |
+| Outline | LOCKED_FOR_DRAFTING_PREPARATION | Outline has been refined for VNUK-style structure, chapter evidence mapping, allowed figure scope, and `NEEDS_EVIDENCE` markers. |
 | Evidence matrix | IN_PROGRESS | Initial repository evidence and missing evidence are tracked; evaluation evidence is still missing. |
 | Repository source notes | REVIEW | Nine source notes now summarize repository evidence under `docs/thesis-workspace/source-notes/`. |
 | Citation register | IN_PROGRESS | Repository and thesis-reference sources are grounded; official Playwright and testing-theory sources still need selection. |
@@ -155,6 +155,32 @@ This file is the single source of truth for what has been checked, what remains 
 **Next recommended task**
 
 - Review the rendered SVGs for readability and consistency, then render the remaining planned diagrams when their evidence sources are ready.
+
+### 2026-06-01 - Thesis outline refined and locked for drafting preparation
+
+**Completed**
+
+- Reviewed the thesis outline against repository source notes, the evidence matrix, the figure register, and the available VNUK reference area.
+- Confirmed the requested `docs/final-gradation-thesis-doc/` path is not present and used the actual source/reference area `docs/final-graduation-thesis-doc/`.
+- Refined the outline to keep the topic focused on the Playwright UI and API automation testing framework.
+- Added chapter-level purpose and evidence-basis notes for Chapters 1 to 6.
+- Limited planned thesis figures to the test automation pyramid, framework architecture, UI/API execution flows, reporting pipeline, and evaluation workflow.
+- Marked abstract results, reporting artifacts, execution metrics, evaluation evidence, final references, and appendices that require verified artifacts as `NEEDS_EVIDENCE`.
+
+**Files updated**
+
+- `docs/thesis-workspace/outline.md`
+- `docs/thesis-workspace/progress.md`
+
+**Blockers**
+
+- Chapter 2 still needs official Playwright documentation and academic/professional software testing sources.
+- Chapter 5 remains blocked until test execution output, pass/fail/skipped counts, execution duration, report screenshots, JUnit output, and trace artifacts are collected.
+- Remaining planned diagrams F-01, F-05, and F-06 still need source creation/rendering and review.
+
+**Next recommended task**
+
+- Collect official documentation and academic/professional testing sources before drafting Chapter 2, or begin Chapter 1 drafting using repository evidence while keeping result claims marked until execution evidence is available.
 
 ---
 

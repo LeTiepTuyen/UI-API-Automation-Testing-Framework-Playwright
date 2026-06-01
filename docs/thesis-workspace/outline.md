@@ -22,6 +22,20 @@ VN-UK Institute for Research and Executive Education, The University of Danang
 
 ---
 
+## Outline Lock and Evidence Control
+
+Status: locked for drafting preparation.
+
+This outline defines the thesis structure for a Playwright UI and API automation testing framework. Sections marked `NEEDS_EVIDENCE` must not be finalized until the required repository evidence, external source, execution artifact, or figure review is available.
+
+Primary planning and evidence sources:
+
+- `docs/thesis-workspace/source-notes/`
+- `docs/thesis-workspace/evidence-matrix.md`
+- `docs/thesis-workspace/figure-register.md`
+- `docs/final-graduation-thesis-doc/thesis-template.md`
+- `docs/final-graduation-thesis-doc/source-notes/vnuk-template-analysis.md`
+
 # Front Matter
 
 ## Title Page
@@ -53,11 +67,18 @@ Generated later in Microsoft Word from headings after copying the Markdown thesi
 
 ## List of Figures
 
-Include only figures actually used in the thesis, such as framework architecture, Page Object Model structure, API service-layer structure, test execution flow, report screenshots, and evaluation workflow diagrams.
+Include only figures actually used in the thesis and registered in `docs/thesis-workspace/figure-register.md`:
+
+- Figure 2.1: practical test automation pyramid.
+- Figure 3.1: layered framework architecture.
+- Figure 3.2: UI automation execution flow.
+- Figure 3.3: API automation execution flow.
+- Figure 4.1: Playwright execution and reporting pipeline.
+- Figure 5.1: evaluation workflow.
 
 ## List of Tables
 
-Include only tables actually used in the thesis, such as tool comparison, framework requirements, test scenario matrix, evaluation metrics, and evidence traceability.
+Include only tables actually used in the thesis, such as tool comparison, framework requirements, test scenario matrix, evaluation metrics, and evidence traceability. Evaluation metric tables remain `NEEDS_EVIDENCE` until actual execution artifacts are collected.
 
 ## Author Contribution Statement
 
@@ -114,13 +135,27 @@ Recommended abstract structure:
 2. Problem: manual regression testing is repetitive, time-consuming, and difficult to scale.
 3. Aim: design and implement a maintainable Playwright + TypeScript automation framework.
 4. Method: combine Page Object Model, service-layer API abstractions, fixtures, workflows, centralized test data, and reports.
-5. Result: demonstrate automation coverage for selected Unsplash UI and API flows.
+5. Result: demonstrate automation coverage for selected Unsplash UI and API flows. `NEEDS_EVIDENCE`: final execution evidence and reviewed scenario coverage are required before writing the result statement.
 6. Contribution: provide a reusable enterprise-style automation framework for UI and API testing.
 7. Limitation: scope is limited to selected Unsplash UI/API scenarios and available public API constraints.
 
 ---
 
 # Chapter 1: Introduction
+
+## Chapter Purpose and Evidence Basis
+
+Purpose: establish the project context, problem, aim, objectives, scope, research questions, success criteria, and thesis structure.
+
+Evidence basis:
+
+- `README.md`
+- `docs/project-overview.md`
+- `docs/thesis-workspace/source-notes/repository-overview.md`
+- `docs/thesis-workspace/source-notes/limitations-and-missing-evidence.md`
+- `docs/thesis-workspace/evidence-matrix.md` claims C-001 to C-004
+
+`NEEDS_EVIDENCE`: final wording for result-oriented success criteria must wait for actual execution artifacts.
 
 ## 1.1 Background
 
@@ -166,7 +201,7 @@ Out of scope:
 
 - Full production coverage of all Unsplash features.
 - Performance testing beyond basic execution observations.
-- Security testing beyond basic API response/header checks already implemented or planned.
+- Full security testing beyond limited helper-level API response/header checks. Any security-oriented evaluation remains `NEEDS_EVIDENCE`.
 - Replacing manual exploratory testing entirely.
 - Ownership or modification of Unsplash application source code.
 
@@ -176,7 +211,7 @@ Out of scope:
 - UI and API tests are separated but share consistent conventions.
 - Test files reuse Page Objects, workflows, service classes, fixtures, and data helpers.
 - The framework can be installed and executed using documented commands.
-- Reports and traces are generated for debugging and CI-style review.
+- Playwright reporting and trace collection are configured for debugging and CI-style review. `NEEDS_EVIDENCE`: generated report and trace artifacts must be verified through an actual run.
 - The thesis explains design decisions, implementation details, evaluation, limitations, and future work.
 
 ## 1.8 Thesis Structure
@@ -186,6 +221,17 @@ Summarize Chapters 2 to 6.
 ---
 
 # Chapter 2: Literature Review and Theoretical Background
+
+## Chapter Purpose and Evidence Basis
+
+Purpose: define the theoretical background for software testing, test automation, UI testing, API testing, Playwright, reporting, and automation framework design patterns.
+
+Evidence basis:
+
+- Official Playwright documentation. `NEEDS_EVIDENCE`
+- Academic or professional software testing literature. `NEEDS_EVIDENCE`
+- `docs/thesis-workspace/evidence-matrix.md` claims C-005 to C-007
+- Figure F-01 in `docs/thesis-workspace/figure-register.md`
 
 ## 2.1 Software Testing Fundamentals
 
@@ -242,6 +288,21 @@ Discuss HTML reports, JUnit XML, traces, screenshots, logs, and evidence collect
 ---
 
 # Chapter 3: System Analysis and Framework Design
+
+## Chapter Purpose and Evidence Basis
+
+Purpose: analyze the selected system under test and present the proposed framework design before implementation details.
+
+Evidence basis:
+
+- `README.md`
+- `docs/project-overview.md`
+- `.github/copilot-instructions.md`
+- `docs/thesis-workspace/source-notes/framework-architecture.md`
+- `docs/thesis-workspace/source-notes/ui-automation-layer.md`
+- `docs/thesis-workspace/source-notes/api-automation-layer.md`
+- `docs/thesis-workspace/source-notes/fixtures-and-workflows.md`
+- Figures F-02, F-03, and F-04 in `docs/thesis-workspace/figure-register.md`
 
 ## 3.1 Current Testing Context
 
@@ -310,6 +371,26 @@ Explain HTML reporter, JUnit reporter, trace-on-first-retry, retry strategy, tim
 
 # Chapter 4: Implementation
 
+## Chapter Purpose and Evidence Basis
+
+Purpose: describe how the framework design is implemented in the repository through configuration, core utilities, Page Objects, workflows, API services, test data, and representative UI/API tests.
+
+Evidence basis:
+
+- `playwright.config.ts`
+- `package.json`
+- `fixtures/custome-fixture.ts`
+- `core/api/api.ts`
+- `api-service/users-service.ts`
+- `tests/ui/profile/update-profile.spec.ts`
+- `tests/api/users/get-public-profile.spec.ts`
+- `docs/thesis-workspace/source-notes/playwright-configuration.md`
+- `docs/thesis-workspace/source-notes/ui-automation-layer.md`
+- `docs/thesis-workspace/source-notes/api-automation-layer.md`
+- `docs/thesis-workspace/source-notes/test-data-and-configuration.md`
+- `docs/thesis-workspace/source-notes/reporting-and-execution.md`
+- Figure F-05 in `docs/thesis-workspace/figure-register.md`
+
 ## 4.1 Development Environment
 
 Describe Node.js, TypeScript, Playwright, dependency installation, environment variables, browser installation, and command-line execution.
@@ -357,11 +438,24 @@ Explain representative API scenarios:
 
 ## 4.10 Reporting and Debugging Implementation
 
-Include screenshots or examples of HTML report, JUnit result file, and Playwright trace viewer.
+Include screenshots or examples of HTML report, JUnit result file, and Playwright trace viewer. `NEEDS_EVIDENCE`: use only verified artifacts from a known execution run.
 
 ---
 
 # Chapter 5: Evaluation and Discussion
+
+## Chapter Purpose and Evidence Basis
+
+Purpose: evaluate the implemented framework using verified execution evidence, maintainability analysis, reporting artifacts, limitations, and threats to validity.
+
+Evidence basis:
+
+- `docs/thesis-workspace/source-notes/reporting-and-execution.md`
+- `docs/thesis-workspace/source-notes/limitations-and-missing-evidence.md`
+- `docs/thesis-workspace/evidence-matrix.md` claims C-016 to C-024
+- Figure F-06 in `docs/thesis-workspace/figure-register.md`
+
+`NEEDS_EVIDENCE`: Chapter 5 is blocked until actual command output, pass/fail/skipped counts, execution duration, report screenshots, JUnit output, and trace artifacts are collected.
 
 ## 5.1 Evaluation Methodology
 
@@ -377,7 +471,7 @@ Define how the framework is evaluated:
 
 ## 5.2 Test Execution Results
 
-Add actual command outputs and report screenshots after running tests.
+Add actual command outputs and report screenshots after running tests. `NEEDS_EVIDENCE`.
 
 Recommended table columns:
 
@@ -423,6 +517,16 @@ Discuss internal, external, construct, and conclusion validity.
 
 # Chapter 6: Conclusion and Future Work
 
+## Chapter Purpose and Evidence Basis
+
+Purpose: summarize the completed project, confirmed contributions, limitations, lessons learned, and future work.
+
+Evidence basis:
+
+- Reviewed Chapters 1 to 5. `NEEDS_EVIDENCE`
+- Verified evaluation evidence from Chapter 5. `NEEDS_EVIDENCE`
+- `docs/thesis-workspace/source-notes/limitations-and-missing-evidence.md`
+
 ## 6.1 Summary of the Project
 
 Summarize the thesis aim, implemented framework, and evaluation.
@@ -460,7 +564,7 @@ Close with the value of a maintainable UI/API automation framework and its relev
 
 # References
 
-Use IEEE, APA, or the citation style required by VNUK. Keep a single consistent style. References should include official Playwright documentation, official tool documentation where relevant, ISTQB glossary or syllabus materials, software testing textbooks or papers, and any academic sources used in the literature review.
+Use IEEE, APA, or the citation style required by VNUK. Keep a single consistent style. References should include official Playwright documentation, official tool documentation where relevant, ISTQB glossary or syllabus materials, software testing textbooks or papers, and any academic sources used in the literature review. `NEEDS_EVIDENCE`: final external references must be selected and registered before Chapter 2 drafting.
 
 ---
 
@@ -488,4 +592,4 @@ Map thesis concepts to source folders and files.
 
 ## Appendix D: Sample Reports and Trace Evidence
 
-Include report screenshots, trace viewer screenshots, and `results.xml` explanation.
+Include report screenshots, trace viewer screenshots, and `results.xml` explanation. `NEEDS_EVIDENCE`: include only verified artifacts from a known execution run.
