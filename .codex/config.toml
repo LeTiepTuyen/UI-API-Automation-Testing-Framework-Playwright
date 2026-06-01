@@ -1,0 +1,27 @@
+# Codex configuration template for the thesis-writing workflow.
+# Adjust model names and feature availability according to your installed Codex version and ChatGPT plan.
+
+# Recommended for long-form academic writing and repository reasoning.
+# In the VS Code UI, choose GPT-5.5 for thesis planning/drafting/review when available.
+# If this exact model id is unsupported in your local Codex version, select it from the UI instead.
+model = "gpt-5.5"
+model_reasoning_effort = "high"
+
+# Allow more project instruction context for AGENTS.md and thesis workspace guidance.
+project_doc_max_bytes = 65536
+project_doc_fallback_filenames = ["AGENTS.md", "README.md"]
+
+# Enable IDE goal tracking if your Codex version supports /goal.
+[features]
+goals = true
+
+# Keep subagent fan-out controlled to avoid cost, latency, and runaway delegation.
+[agents]
+max_threads = 6
+max_depth = 1
+job_max_runtime_seconds = 1800
+
+
+# Diagram workflow notes:
+# Use the thesis-diagramming skill and thesis-diagram-architect subagent for Mermaid/PlantUML/Graphviz diagrams.
+# Keep rendering local by default; avoid sending private source code to public rendering services.

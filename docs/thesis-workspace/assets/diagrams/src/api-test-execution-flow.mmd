@@ -1,0 +1,22 @@
+sequenceDiagram
+    autonumber
+    actor Tester as QA / Test Runner
+    participant Spec as API Spec File
+    participant Data as Test Data / DTOs
+    participant Service as API Service Class
+    participant Endpoint as Endpoint Constants
+    participant APIUtils as Core API Utilities
+    participant API as Unsplash Public API
+    participant Assert as Playwright Assertions
+
+    Tester->>Spec: Run API test
+    Spec->>Data: Load account, token, request data
+    Spec->>Service: Call reusable service method
+    Service->>Endpoint: Resolve endpoint path
+    Service->>APIUtils: Send HTTP request
+    APIUtils->>API: GET / PUT / POST request
+    API-->>APIUtils: HTTP response
+    APIUtils-->>Service: APIResponse
+    Service-->>Spec: Response object
+    Spec->>Assert: Validate status, schema, headers, and body
+    Assert-->>Tester: Pass / fail result

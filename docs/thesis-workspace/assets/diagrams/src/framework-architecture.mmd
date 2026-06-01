@@ -1,0 +1,45 @@
+flowchart LR
+    subgraph TestLayer["Test Specifications"]
+        UITests["tests/ui\nUI test specs"]
+        APITests["tests/api\nAPI test specs"]
+    end
+
+    subgraph ReuseLayer["Reusable Automation Layer"]
+        Fixtures["fixtures + core/fixtures\nDependency injection"]
+        Workflows["workflow\nReusable business flows"]
+        PageObjects["page-object\nPage Object Model"]
+        ApiServices["api-service\nEndpoint service classes"]
+    end
+
+    subgraph SupportLayer["Support and Data Layer"]
+        Core["core\nBrowser, API, element utilities"]
+        DTOs["data-object\nRequest/response DTOs"]
+        TestData["test-data\nStatic data and credentials"]
+        Constants["constants\nEndpoints and constants"]
+        Utils["utils\nShared helpers"]
+        Config["config\nEnvironment variables"]
+    end
+
+    subgraph External["System Under Test"]
+        UnsplashUI["Unsplash Web UI"]
+        UnsplashAPI["Unsplash Public API"]
+    end
+
+    UITests --> Fixtures
+    UITests --> Workflows
+    Workflows --> PageObjects
+    PageObjects --> Core
+    Core --> UnsplashUI
+
+    APITests --> ApiServices
+    ApiServices --> Core
+    ApiServices --> Constants
+    ApiServices --> DTOs
+    APITests --> TestData
+    ApiServices --> UnsplashAPI
+
+    Fixtures --> PageObjects
+    Fixtures --> Workflows
+    Config --> Core
+    Utils --> UITests
+    Utils --> APITests

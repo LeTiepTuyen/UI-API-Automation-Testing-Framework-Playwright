@@ -1,0 +1,9 @@
+flowchart TB
+    Manual["Manual Exploratory Testing\nHuman judgement and usability checks"]
+    E2E["End-to-End Tests\nCritical user flows"]
+    Integration["Integration / API Tests\nService and component interactions"]
+    Unit["Unit Tests\nSmall isolated functions"]
+
+    Manual --> E2E
+    E2E --> Integration
+    Integration --> Unit

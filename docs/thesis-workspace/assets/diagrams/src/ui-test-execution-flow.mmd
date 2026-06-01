@@ -1,0 +1,23 @@
+sequenceDiagram
+    autonumber
+    actor Tester as QA / Test Runner
+    participant Spec as UI Spec File
+    participant Fixture as Custom Fixture
+    participant Workflow as Login / Business Workflow
+    participant PO as Page Object
+    participant Browser as Browser Utilities / Page
+    participant UI as Unsplash Web UI
+    participant Assert as Playwright Assertions
+
+    Tester->>Spec: Run UI test
+    Spec->>Fixture: Request injected objects
+    Fixture-->>Spec: Provide pages and workflows
+    Spec->>Workflow: Execute reusable business flow
+    Workflow->>PO: Call page-level actions
+    PO->>Browser: Perform wrapped browser interactions
+    Browser->>UI: Navigate, click, fill, wait
+    UI-->>Browser: Render state and responses
+    Browser-->>PO: Return visible state or text
+    PO-->>Spec: Return result data
+    Spec->>Assert: Validate expected behavior
+    Assert-->>Tester: Pass / fail result

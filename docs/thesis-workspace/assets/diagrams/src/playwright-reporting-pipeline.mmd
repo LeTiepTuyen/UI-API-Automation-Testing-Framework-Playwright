@@ -1,0 +1,13 @@
+flowchart LR
+    Command["npx playwright test"] --> Config["playwright.config.ts"]
+    Config --> Runner["Playwright Test Runner"]
+    Runner --> UITests["UI tests"]
+    Runner --> APITests["API tests"]
+    UITests --> Results["Test results"]
+    APITests --> Results
+    Results --> HTML["HTML report"]
+    Results --> JUnit["JUnit XML results.xml"]
+    Results --> Trace["Trace on first retry"]
+    HTML --> Thesis["Thesis evidence and screenshots"]
+    JUnit --> Metrics["Execution metrics"]
+    Trace --> Debugging["Debugging and flakiness analysis"]

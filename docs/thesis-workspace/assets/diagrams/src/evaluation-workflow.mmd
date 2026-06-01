@@ -1,0 +1,10 @@
+flowchart TD
+    A["Define evaluation criteria"] --> B["Run selected UI and API test suites"]
+    B --> C["Collect reports and execution evidence"]
+    C --> D["Assess maintainability and reuse"]
+    C --> E["Assess reliability and flakiness"]
+    C --> F["Assess coverage of selected flows"]
+    D --> G["Evaluation discussion"]
+    E --> G
+    F --> G
+    G --> H["Limitations and future work"]
