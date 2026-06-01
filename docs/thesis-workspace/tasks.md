@@ -98,9 +98,9 @@ Drafting order:
 | DIA-002 | Review framework architecture diagram source against repository structure. | `assets/diagrams/src/framework-architecture.mmd` | TODO |
 | DIA-003 | Review UI and API execution flow diagram sources against tests, fixtures, workflows, Page Objects, services, and utilities. | `assets/diagrams/src/ui-test-execution-flow.mmd`, `assets/diagrams/src/api-test-execution-flow.mmd` | TODO |
 | DIA-004 | Review Playwright reporting and evaluation workflow diagrams against config and execution-evidence requirements. | `assets/diagrams/src/playwright-reporting-pipeline.mmd`, `assets/diagrams/src/evaluation-workflow.mmd` | TODO |
-| DIA-005 | Plan a thesis-safe Copilot Agentic-AI workflow diagram for automation test development only. | `figure-register.md`, `assets/diagrams/src/copilot-agentic-ai-automation-workflow.mmd` | TODO |
-| DIA-006 | Render diagram sources to SVG after Mermaid CLI availability is confirmed. | `assets/diagrams/out/` | BLOCKED |
-| DIA-007 | Review rendered diagrams for readability and thesis-safe content before chapter insertion. | `figure-register.md`, `assets/diagrams/out/` | BLOCKED |
+| DIA-005 | Create and render a thesis-safe Copilot Agentic-AI workflow diagram for automation test development only. | `figure-register.md`, `assets/diagrams/src/copilot-agentic-automation-workflow.mmd`, `assets/diagrams/out/copilot-agentic-automation-workflow.svg` | REVIEW |
+| DIA-006 | Render remaining planned diagram sources to SVG after their evidence is ready. | `assets/diagrams/out/` | BLOCKED |
+| DIA-007 | Review rendered diagrams for readability and thesis-safe content before chapter insertion. | `figure-register.md`, `assets/diagrams/out/` | REVIEW |
 
 ---
 

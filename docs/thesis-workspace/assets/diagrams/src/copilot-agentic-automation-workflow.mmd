@@ -1,0 +1,62 @@
+flowchart TB
+    subgraph Inputs["Inputs"]
+        direction TB
+        UserRequest["User request"]
+        RepoDocs["Repository docs\nREADME, workflow overview"]
+        ExistingFramework["Existing framework\nTests, Page Objects, fixtures,\nworkflows, services, utilities"]
+        Scenario["UI or API scenario"]
+    end
+
+    subgraph Controls["Workflow Guidance"]
+        direction TB
+        CopilotInstructions["Repository-wide\nCopilot instructions"]
+        CustomAgents["Custom agents\nDesignTestCase, GenerateTestScript,\nCodeReview"]
+        PromptFiles["Prompt files\nTask entrypoints"]
+        Skills["Reusable skills\nScenario design, script generation,\nreview guidance"]
+        PlaywrightMCP["Playwright MCP\nUI inspection and selector validation"]
+    end
+
+    subgraph AgentFlow["Copilot Agentic-AI Workflow"]
+        direction TB
+        Understand["Understand project context\nand reuse candidates"]
+        Design["DesignTestCase\nCreate automation-ready scenarios"]
+        Generate["GenerateTestScript\nCreate or update Playwright code"]
+        Review["CodeReview\nReview structure, selectors,\nreuse, and maintainability"]
+    end
+
+    subgraph Outputs["Outputs"]
+        direction TB
+        TestScenarios["UI/API test scenarios"]
+        PlaywrightScripts["Generated or updated\nPlaywright scripts"]
+        ReviewFindings["Review findings\nand recommendations"]
+        FrameworkChanges["Framework-compliant\nautomation changes"]
+    end
+
+    UserRequest --> Understand
+    RepoDocs --> Understand
+    ExistingFramework --> Understand
+    Scenario --> Design
+
+    CopilotInstructions -.-> Understand
+    CopilotInstructions -.-> Generate
+    CustomAgents -.-> Design
+    CustomAgents -.-> Generate
+    CustomAgents -.-> Review
+    PromptFiles -.-> Design
+    PromptFiles -.-> Generate
+    PromptFiles -.-> Review
+    Skills -.-> Design
+    Skills -.-> Generate
+    Skills -.-> Review
+    PlaywrightMCP -.-> Generate
+
+    Understand --> Design
+    Design --> Generate
+    Generate --> Review
+
+    Design --> TestScenarios
+    Generate --> PlaywrightScripts
+    Review --> ReviewFindings
+    Review --> FrameworkChanges
+
+    ExistingFramework -.-> Generate

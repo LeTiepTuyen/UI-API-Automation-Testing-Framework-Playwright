@@ -15,7 +15,7 @@ This file is the single source of truth for what has been checked, what remains 
 | Evidence matrix | IN_PROGRESS | Initial repository evidence and missing evidence are tracked; evaluation evidence is still missing. |
 | Repository source notes | REVIEW | Ten source notes now summarize repository evidence under `docs/thesis-workspace/source-notes/`, including the project Copilot Agentic-AI automation workflow. |
 | Citation register | IN_PROGRESS | Repository and thesis-reference sources are grounded; official Playwright and testing-theory sources still need selection. |
-| Figure register | IN_PROGRESS | Initial planned diagrams are registered; F-02, F-03, and F-04 have rendered SVG outputs. |
+| Figure register | IN_PROGRESS | Initial planned diagrams are registered; F-02, F-03, F-04, and F-07 have rendered SVG outputs. |
 | Project Copilot workflow | INCLUDED_AS_PROJECT_FEATURE | The Copilot Agentic-AI workflow for automation testing is included as a project feature; the private thesis-writing harness remains excluded from thesis content. |
 | Mermaid rendering | PARTIAL | `npx` rendering works with `@mermaid-js/mermaid-cli`; local Mermaid CLI is not installed in `node_modules`. |
 | Test execution evidence | BLOCKED | Requires an actual local test run and saved report/trace artifacts before evaluation claims. |
@@ -246,6 +246,39 @@ This file is the single source of truth for what has been checked, what remains 
 **Next recommended task**
 
 - Create the F-07 Mermaid diagram source for the Copilot Agentic-AI automation workflow and render it through the existing diagram workflow.
+
+### 2026-06-01 - Copilot Agentic-AI automation workflow diagram rendered
+
+**Completed**
+
+- Created the editable Mermaid source for Figure F-07, covering only the project Copilot Agentic-AI workflow for automation test development.
+- Rendered the SVG output with Mermaid CLI through `npx -y @mermaid-js/mermaid-cli`.
+- Updated the figure register to mark F-07 as `RENDERED`.
+- Checked the Mermaid source and rendered SVG for private thesis-writing workflow terms; none were found.
+- Updated diagram tasks to reflect that F-07 is ready for review before chapter insertion.
+
+**Files updated**
+
+- `docs/thesis-workspace/assets/diagrams/src/copilot-agentic-automation-workflow.mmd`
+- `docs/thesis-workspace/assets/diagrams/out/copilot-agentic-automation-workflow.svg`
+- `docs/thesis-workspace/figure-register.md`
+- `docs/thesis-workspace/tasks.md`
+- `docs/thesis-workspace/progress.md`
+
+**Evidence added**
+
+- Figure F-07 is grounded in `docs/agentic-workflow/workflow-overview.md`, `.github/AGENTS.md`, `.github/copilot-instructions.md`, `.github/agents/`, `.github/prompts/`, `.claude/skills/`, and `docs/thesis-workspace/source-notes/copilot-agentic-automation-workflow.md`.
+
+**Blockers**
+
+- Chapter 3 drafting still needs final diagram review for F-02, F-03, F-04, and F-07.
+- F-07 should be checked in the target Word layout because the rendered SVG is still relatively wide.
+- Chapter 4 workflow subsection drafting still needs representative workflow artifact excerpts selected.
+- Quantitative claims about workflow effectiveness remain `NEEDS_EVIDENCE`.
+
+**Next recommended task**
+
+- Review F-07 visually in the target thesis layout, then proceed to Chapter 3 drafting preparation from repository architecture and project workflow evidence.
 
 ---
 
