@@ -58,7 +58,7 @@ Status values: `READY`, `NEEDS_EVIDENCE`, `NEEDS_SOURCE`, `REVIEWED`.
 |---|---|---|
 | Chapter 1: Introduction | Partially ready | Repository overview source note is ready; still needs approved outline, final problem/scope wording, and citation style. |
 | Chapter 2: Literature Review | Not ready | Needs official Playwright docs and academic/professional testing sources. |
-| Chapter 3: System Analysis and Framework Design | Partially ready | Architecture source note and project Copilot workflow source note are ready; still needs architecture/workflow diagram review and final source-to-section mapping. |
+| Chapter 3: System Analysis and Framework Design | Draft ready for review | Chapter 3 draft now maps architecture, UI/API design, fixture design, data/configuration design, reporting design, and project Copilot workflow design to repository evidence and reviewed figures; still needs user review before moving to Chapter 4. |
 | Chapter 4: Implementation | Partially ready | UI/API/configuration source notes and project workflow source note are ready; still needs representative excerpts selected and no secret leakage from test data. |
 | Chapter 5: Evaluation and Discussion | Blocked | Needs actual execution output, pass/fail counts, report screenshots, trace evidence, and limitation evidence. |
 | Chapter 6: Conclusion and Future Work | Blocked | Needs reviewed Chapters 1-5 and verified evaluation evidence. |
@@ -98,6 +98,9 @@ Status values: `READY`, `NEEDS_EVIDENCE`, `NEEDS_SOURCE`, `REVIEWED`.
 | C-027 | Ch.4 | The implemented workflow artifacts include repository-wide Copilot instructions, custom agents, reusable prompt files, and reusable skills. | SRC-REPO-AGENTIC-WORKFLOW, SRC-REPO-COPILOT, SRC-REPO-GITHUB-AGENTS, SRC-REPO-GITHUB-PROMPTS, SRC-REPO-CLAUDE-SKILLS, SRC-NOTE-COPILOT-WORKFLOW | READY | Cite paths and describe artifact responsibilities only. |
 | C-028 | Ch.4 | The workflow encourages repository inspection, reuse of existing Page Objects/fixtures/workflows/services, optional Playwright MCP UI inspection, and code review before accepting generated automation code. | SRC-REPO-AGENTIC-WORKFLOW, SRC-REPO-COPILOT, SRC-REPO-GITHUB-AGENTS, SRC-REPO-CLAUDE-SKILLS, SRC-NOTE-COPILOT-WORKFLOW | READY | This supports design/implementation discussion; execution effectiveness remains outside current evidence. |
 | C-029 | Ch.5 | The effectiveness of the Copilot Agentic-AI workflow for automation development has been quantitatively evaluated. | SRC-EXECUTION-EVIDENCE | NEEDS_EVIDENCE | Do not add productivity, quality, or time-saving metrics unless a documented evaluation is performed. |
+| C-030 | Ch.3 | Test data, endpoint constants, DTOs, and environment-based configuration are centralized to reduce hardcoded values in tests. | SRC-REPO-PWCONFIG, SRC-REPO-TEST-DATA, SRC-REPO-CONSTANTS, SRC-REPO-DATA, SRC-REPO-UTILS, SRC-NOTE-DATA-CONFIG | READY | Cite file locations only; do not expose credential, token, or runtime environment values. |
+| C-031 | Ch.3 | The framework is configured for Chromium execution, HTML reporting, JUnit XML output, and trace collection on first retry. | SRC-REPO-PWCONFIG, SRC-NOTE-PWCONFIG, SRC-NOTE-REPORTING | READY | Configuration evidence only; generated report, trace, and `results.xml` artifacts still require verified execution evidence. |
+| C-032 | Ch.3 | The selected system scope is limited to representative Unsplash UI flows and public user API endpoints. | SRC-REPO-OVERVIEW, SRC-REPO-UI-TESTS, SRC-REPO-API-TESTS, SRC-NOTE-REPO-OVERVIEW, SRC-NOTE-LIMITATIONS | READY | Do not claim complete Unsplash product or API coverage. |
 
 ---
 

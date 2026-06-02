@@ -8,14 +8,14 @@ This file is the single source of truth for what has been checked, what remains 
 
 | Area | Status | Notes |
 |---|---|---|
-| Thesis writing | NOT_STARTED | Chapter files are placeholders only; no thesis prose should be treated as drafted. |
+| Thesis writing | CHAPTER_3_DRAFT_REVIEW | Chapter 3 has been drafted from repository evidence and is awaiting user review before Chapter 4 starts. |
 | Preflight audit | REVIEW | Repository, thesis workspace, reference area, Mermaid readiness, and private-workflow exclusion have been checked. |
 | Source/reference area | REVIEW | Actual source area is `docs/final-graduation-thesis-doc/`; `docs/final-gradation-thesis-doc/` is not present in the working tree. |
 | Outline | LOCKED_FOR_DRAFTING_PREPARATION | Outline has been refined for VNUK-style structure, chapter evidence mapping, allowed figure scope, and `NEEDS_EVIDENCE` markers. |
-| Evidence matrix | IN_PROGRESS | Initial repository evidence and missing evidence are tracked; evaluation evidence is still missing. |
+| Evidence matrix | IN_PROGRESS | Repository evidence and missing evidence are tracked; Chapter 3 data/configuration, reporting-design, and scope claims have been added; evaluation evidence is still missing. |
 | Repository source notes | REVIEW | Ten source notes now summarize repository evidence under `docs/thesis-workspace/source-notes/`, including the project Copilot Agentic-AI automation workflow. |
 | Citation register | IN_PROGRESS | Repository and thesis-reference sources are grounded; official Playwright and testing-theory sources still need selection. |
-| Figure register | IN_PROGRESS | Initial planned diagrams are registered; F-02, F-03, F-04, F-05, F-07, F-08, F-09, and F-10 have rendered SVG outputs. |
+| Figure register | IN_PROGRESS | Initial planned diagrams are registered; F-02, F-03, F-04, F-07, and F-08 have been reviewed for Chapter 3 use, with F-02, F-03, F-04, and F-07 inserted in the draft. |
 | Project Copilot workflow | INCLUDED_AS_PROJECT_FEATURE | The Copilot Agentic-AI workflow for automation testing is included as a project feature; the private thesis-writing harness remains excluded from thesis content. |
 | Mermaid rendering | PARTIAL | `npx` rendering works with `@mermaid-js/mermaid-cli`; local Mermaid CLI is not installed in `node_modules`. |
 | Test execution evidence | BLOCKED | Requires an actual local test run and saved report/trace artifacts before evaluation claims. |
@@ -326,6 +326,83 @@ This file is the single source of truth for what has been checked, what remains 
 **Next recommended task**
 
 - Review the rendered SVGs in the thesis layout, then approve the Chapter 3 figure set before drafting Chapter 3.
+
+### 2026-06-01 - Handoff note for next thesis thread
+
+**Current completed work**
+
+- Thesis planning, evidence tracking, source notes, outline refinement, diagram workflow validation, and diagram style/complexity rules have been initialized.
+- The current diagram/style pass is complete: F-02 was simplified as a high-level framework architecture overview; F-03 and F-04 were reviewed without source changes; F-05 was created/rendered as the Playwright reporting pipeline; F-07 was simplified as the core Copilot automation-testing loop; F-08, F-09, and F-10 were added as focused Copilot workflow detail diagrams.
+- Rendered SVG outputs now exist for F-02, F-03, F-04, F-05, F-07, F-08, F-09, and F-10. F-01 and F-06 remain planned.
+
+**Files changed in the current uncommitted diagram pass**
+
+- `docs/thesis-workspace/assets/diagrams/src/framework-architecture.mmd`
+- `docs/thesis-workspace/assets/diagrams/src/copilot-agentic-automation-workflow.mmd`
+- `docs/thesis-workspace/assets/diagrams/src/copilot-test-case-design-workflow.mmd`
+- `docs/thesis-workspace/assets/diagrams/src/copilot-script-generation-workflow.mmd`
+- `docs/thesis-workspace/assets/diagrams/src/copilot-code-review-workflow.mmd`
+- `docs/thesis-workspace/assets/diagrams/src/playwright-reporting-pipeline.mmd`
+- matching rendered SVG files under `docs/thesis-workspace/assets/diagrams/out/`
+- `docs/thesis-workspace/figure-register.md`
+- `docs/thesis-workspace/tasks.md`
+- `docs/thesis-workspace/progress.md`
+
+**Current blockers**
+
+- Chapter 5 remains blocked until actual test execution output, report screenshots, trace artifacts, and `results.xml` evidence are collected.
+- Chapter 2 remains blocked until official Playwright documentation and academic/professional testing theory sources are selected.
+- F-01 and F-06 still need source creation/rendering.
+- F-05 must not be used as final evaluation evidence until real execution artifacts are verified.
+- F-07 should still be checked in the target Word layout because it is a wide left-to-right workflow diagram.
+
+**Next task for the new thread**
+
+- Start Chapter 3 using the Main Orchestrator Prompt. Read `AGENTS.md`, `docs/thesis-workspace/plan.md`, `docs/thesis-workspace/outline.md`, `docs/thesis-workspace/tasks.md`, `docs/thesis-workspace/evidence-matrix.md`, `docs/thesis-workspace/figure-register.md`, and relevant source notes before drafting.
+- Draft only Chapter 3 in small evidence-grounded sections; do not draft Chapter 4 or evaluation content yet.
+
+**Boundary reminders**
+
+- The private Codex thesis-writing harness must not appear in thesis body text, appendices, references, figures, captions, or the final Word document.
+- The project Copilot Agentic-AI workflow for Automation Testing is allowed as a thesis project feature because it supports automation test case design, Playwright script generation, and automation code review. It must be described only as the project automation-testing workflow, not as a thesis-writing workflow.
+
+### 2026-06-02 - Chapter 3 draft prepared and reviewed
+
+**Completed**
+
+- Drafted `docs/thesis-workspace/chapters/chapter-3-system-analysis-and-design.md` according to `outline.md`.
+- Covered current testing context, requirements analysis, system under test, framework architecture, UI automation design, API automation design, fixture/dependency injection design, test data/configuration design, reporting/debugging design, the project Copilot Agentic-AI workflow design, and chapter summary.
+- Inserted Chapter 3 figure references and captions for F-02, F-03, F-04, and F-07.
+- Reviewed F-08 as thesis-safe but did not insert it in the Chapter 3 draft to keep the AI-assisted workflow section concise.
+- Kept all Copilot Agentic-AI workflow discussion grounded in project automation-testing evidence from `docs/agentic-workflow/`, `.github/`, `.claude/`, and `docs/thesis-workspace/source-notes/copilot-agentic-automation-workflow.md`.
+- Added Chapter 3 evidence matrix claims for test data/configuration design, reporting/debugging configuration, and selected system scope.
+- Updated Chapter 3 task statuses to review state.
+
+**Files updated**
+
+- `docs/thesis-workspace/chapters/chapter-3-system-analysis-and-design.md`
+- `docs/thesis-workspace/tasks.md`
+- `docs/thesis-workspace/progress.md`
+- `docs/thesis-workspace/evidence-matrix.md`
+- `docs/thesis-workspace/figure-register.md`
+
+**Evidence used**
+
+- Repository and project overview evidence from `README.md` and `docs/project-overview.md`.
+- Architecture, UI, API, fixture/workflow, data/configuration, reporting, and limitation source notes under `docs/thesis-workspace/source-notes/`.
+- Project Copilot Agentic-AI workflow evidence from `docs/agentic-workflow/workflow-overview.md`, `.github/AGENTS.md`, `.github/copilot-instructions.md`, `.github/agents/`, `.github/prompts/`, `.claude/skills/`, and the Copilot workflow source note.
+- Figure evidence from `docs/thesis-workspace/figure-register.md` and rendered SVG files under `docs/thesis-workspace/assets/diagrams/out/`.
+
+**Blockers**
+
+- Chapter 3 still requires user review and approval before it can be treated as accepted for the next drafting stage.
+- Chapter 4 must not start until the Chapter 3 approval gate is passed.
+- Chapter 5 remains blocked until actual execution output, pass/fail/skipped counts, execution duration, verified `results.xml`, report screenshots, and trace artifacts are collected.
+- Chapter 2 remains blocked until official Playwright documentation and academic/professional testing theory sources are selected.
+
+**Next recommended task**
+
+- Review and approve the Chapter 3 draft, or request revisions, before beginning Chapter 4.
 
 ---
 
