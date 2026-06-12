@@ -17,6 +17,11 @@ It contains a Playwright + TypeScript automation testing framework for Unsplash 
 - Preserve the existing Playwright framework structure.
 - Do not remove or rewrite existing `.github` or `.claude` agent files unless explicitly asked.
 - Use formal academic English for thesis content.
+- Write thesis prose as an academic research report, not as README content, repository documentation, or a technical note.
+- Prefer research framing such as "this research", "this study", "the proposed framework", and "the implemented framework"; avoid "the repository" in thesis prose unless mapping implementation evidence in design, implementation, appendices, or evidence tables.
+- Do not place raw repository folder/file paths in Chapter 1; Chapter 1 should frame the research problem, objectives, and questions.
+- Treat Unsplash as the selected demonstration system/system under test, while presenting the framework as applicable to modern web applications more broadly.
+- Do not self-define academic testing concepts; use academic, official, or professional source attribution and APA 7 in-text citations where needed.
 - Do not copy or closely paraphrase any thesis sample.
 - Mark missing evidence as `NEEDS_EVIDENCE` rather than inventing facts.
 
@@ -55,7 +60,11 @@ For thesis tasks, update these files continuously:
 - `docs/thesis-workspace/evidence-matrix.md`
 - `docs/thesis-workspace/citation-register.md`
 
+`docs/thesis-workspace/progress.md` is the active state and handoff file, not the full historical log. For every thesis work session, archive detailed entries from previous dates under `docs/thesis-workspace/progress-archive/YYYY-MM-DD.md` before finishing, then keep only the current status, archive index, current-day entry or latest handoff, and next recommended task in `progress.md`.
+
 ## Human approval gates
+
+After drafting any thesis chapter, Codex must run the Formal Chapter Review Gate before asking for user approval. The review output must be saved under `docs/thesis-workspace/reviews/` and summarized to the user. Codex must not mark the chapter final or proceed to the next chapter until the user explicitly approves the chapter review result.
 
 Ask for approval before:
 

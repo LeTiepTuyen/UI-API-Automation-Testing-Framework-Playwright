@@ -24,6 +24,7 @@ Create thesis-ready diagrams that are accurate, reproducible, version-controlled
 11. Apply the Academic Mermaid Visual Style Guide when creating Mermaid diagrams.
 12. Audit complexity before drawing; split large diagrams instead of forcing every concept into one figure.
 13. The project Copilot Agentic-AI workflow for Automation Testing may be diagrammed only as a project automation-testing workflow, never as a thesis-writing workflow.
+14. Prefer technically informative diagrams over overly sparse diagrams: each important node should normally communicate its role, mechanism, or repository-facing artifact, while still staying readable in Word/PDF.
 
 ## Tool selection policy
 
@@ -64,6 +65,9 @@ Style requirements:
 - Avoid excessive gradients, emojis, novelty icons, decorative clutter, and dense poster-like layouts.
 - Use professional academic English for all labels.
 - Do not include the private thesis-writing workflow, private agents, private skills, or thesis harness in thesis-facing diagrams.
+- Use compact technical labels that carry meaning. Prefer labels such as `Page Object<br/>selectors + actions` over vague labels such as `Page Object` when the extra detail helps the reader understand the mechanism.
+- Use short edge labels only when they explain responsibility transfer, such as `injects`, `calls`, `wraps`, `validates`, `resets state`, or `produces evidence`.
+- Avoid decorative detail, but include enough technical specificity for a reader to understand what is being abstracted, reused, validated, or configured.
 
 Recommended Mermaid conventions:
 
@@ -99,6 +103,25 @@ flowchart TB
     classDef risk fill:#FFE4E6,stroke:#FB7185,color:#1F2937
 ```
 
+## Technical density calibration
+
+The thesis diagrams should be richer than a presentation sketch but simpler than a full engineering blueprint. Use this calibration:
+
+- Overview diagrams: 8-12 nodes, 3-5 groups, and node labels that name the architectural responsibility.
+- Focused mechanism diagrams: 10-15 nodes, 2-4 groups, and node labels that include the concept plus its concrete role, such as `Fixture<br/>injects Page Objects`.
+- Sequence/process diagrams: 5-8 participants or phases, with concise messages that show data/control flow.
+- Avoid one-word nodes unless the surrounding group or edge label already makes the technical role obvious.
+- Prefer a small number of information-rich nodes over many tiny generic nodes.
+- If a figure needs more than 15 nodes, split it into a concept overview and one or more focused mechanism figures.
+
+Each technical diagram should answer at least two of these questions:
+
+- What responsibility does this component/concept own?
+- What concrete framework artifact demonstrates it?
+- What data, control, or dependency flows through it?
+- What quality attribute does it support, such as maintainability, reusability, traceability, reliability, or debuggability?
+- What limitation or evidence boundary must not be overclaimed?
+
 ## Complexity control and split rules
 
 Before creating or revising any diagram:
@@ -120,7 +143,7 @@ Split a diagram when:
 Use progressive disclosure:
 
 - start with one high-level overview;
-- add focused follow-up figures only when needed;
+- add focused follow-up figures when a concept is important enough to require more technical detail;
 - simplify large diagrams before inserting them into thesis chapters.
 
 Framework architecture may be split into:
@@ -128,6 +151,8 @@ Framework architecture may be split into:
 - high-level layered architecture;
 - UI automation layer detail;
 - API automation layer detail;
+- fixture/dependency injection detail;
+- test data and cleanup strategy detail;
 - reporting/evidence pipeline.
 
 Copilot Agentic-AI workflow for Automation Testing may be split into:

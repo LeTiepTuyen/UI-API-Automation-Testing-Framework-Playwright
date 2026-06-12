@@ -1,0 +1,4 @@
+Metric,Selenium,Playwright,Source,Boundary
+Website uptime (%),100.00,99.72,"Almabruk et al. (2025), Table 1",Original 24-hour uptime test used different hardware assignments.
+ROCOF on HP / HDD (failures per second),0.1208,0.0272,"Almabruk et al. (2025), Table 6",Lower is better; both tools had one failure per 10-test sequence.
+ROCOF on Dell / SSD (failures per second),0.1336,0.0279,"Almabruk et al. (2025), Table 6",Lower is better; both tools had one failure per 10-test sequence.

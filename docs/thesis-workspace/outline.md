@@ -24,9 +24,13 @@ VN-UK Institute for Research and Executive Education, The University of Danang
 
 ## Outline Lock and Evidence Control
 
-Status: locked for drafting preparation.
+Status: Chapters 1-3 were restructured after user-approved outline feedback on 2026-06-04, refined through T-078, further revised through T-079 for academic research voice, source diversity, and generalized framework framing, and approved by the user on 2026-06-08 after the T-081 Chapter 3 diagram and structure refinement. Chapter 4 was then revised under T-077 on 2026-06-08 to reduce duplication with the revised Chapter 3, group implementation mechanisms into broader academic sections, and keep reporting screenshots/evaluation evidence primarily in Chapter 5 and Appendix D.
 
 This outline defines the thesis structure for a Playwright UI and API automation testing framework. Sections marked `NEEDS_EVIDENCE` must not be finalized until the required repository evidence, external source, execution artifact, or figure review is available.
+
+Citation style decision: the final thesis will use **APA 7th edition**. Markdown drafts may keep stable citation keys for traceability, but final in-text citations and the reference list must be formatted according to APA 7th edition.
+
+Supervisor-feedback decision: Chapter 2 must remain a Literature Review chapter and should not explain repository-specific Page Object, fixture, service-layer, DTO, cleanup, reporting, or design-pattern implementation details. It may introduce Page Object Model only as a brief cited literature concept, while project application belongs to Chapter 3. Those technical framework-design mechanisms belong to Chapter 3. Chapter 1 should not explain repository folders or file paths; it should frame the research problem, objectives, questions, and evidence boundaries. Chapter 4 remains temporarily unchanged until Chapters 1-3 are approved again, after which Chapter 4 can be reviewed for duplicate or outdated design content. Chapter 5 is approved, but future Chapter 5/6 edits should respect the revised Chapter 2/3 scope.
 
 Primary planning and evidence sources:
 
@@ -69,17 +73,43 @@ Generated later in Microsoft Word from headings after copying the Markdown thesi
 
 Include only figures actually used in the thesis and registered in `docs/thesis-workspace/figure-register.md`:
 
-- Figure 2.1: practical test automation pyramid.
 - Figure 3.1: layered framework architecture.
-- Figure 3.2: UI automation execution flow.
-- Figure 3.3: API automation execution flow.
-- Figure 3.4: Copilot Agentic-AI workflow for automation test development.
-- Figure 4.1: Playwright execution and reporting pipeline.
-- Figure 5.1: evaluation workflow.
+- Figure 3.2: Page Object Model concept and separation of responsibilities.
+- Figure 3.3: practical workflow for applying the Page Object Model in an automation testing project.
+- Figure 3.4: fixture-based dependency injection and shared runtime context.
+- Figure 3.5: shared runtime context flow through Playwright fixtures and framework utilities.
+- Figure 3.6: API service abstraction and validation pipeline.
+- Figure 3.7: test data, DTO, and cleanup strategy.
+- Figure 3.8: automation framework concept map and quality-attribute relationships.
+- Figure 3.9: UI automation execution flow.
+- Figure 3.10: API automation execution flow.
+- Figure 3.11: Copilot Agentic-AI workflow for automation test development.
+- Figure 3.12: public Unsplash web interface used as contextual system-under-test evidence.
+- Figure 3.13: official Unsplash API documentation context for the selected public API scenarios.
+- Figure 4.1: VS Code Test Explorer and Playwright panel showing the implemented API and UI test organization.
+- Figure 4.2: Playwright execution and reporting pipeline.
+- Figure 4.3: Copilot-supported Playwright script-generation workflow.
+- Figure 4.4: Copilot-supported automation code-review workflow.
+- Figure 5.1: Playwright HTML report showing 18 passed tests from the verified 3 June 2026 full-suite run.
+- Figure 5.2: mean execution time, CPU usage, and RAM usage for Playwright, Cypress, and Selenium across ten test cases; source adapted from Moń and Pańczyk (2025).
+- Figure 5.3: twenty-four-hour uptime and ROCOF reliability comparison of Selenium and Playwright by hardware context; source adapted from Almabruk et al. (2025).
+- Figure 5.4: Playwright Trace Viewer loaded with a representative UI test trace, showing the action timeline, DOM snapshot, and network panel.
+
+Candidate screenshots and non-diagram visuals are tracked separately in `docs/thesis-workspace/visual-evidence-register.md`. They must not be added to the final List of Figures until they are captured, source-safe, evidence-checked, captioned, and accepted for a specific chapter or appendix.
 
 ## List of Tables
 
-Include only tables actually used in the thesis, such as tool comparison, framework requirements, test scenario matrix, evaluation metrics, and evidence traceability. Evaluation metric tables remain `NEEDS_EVIDENCE` until actual execution artifacts are collected.
+Include only tables actually used in the thesis, such as tool comparison, framework requirements, test scenario matrix, evaluation metrics, and evidence traceability. Current planned/inserted table groups include:
+
+- Chapter 2: manual and automated testing approaches; manual test case and automation script representations; automated test case design considerations; literature-based automation framework concepts.
+- Chapter 3: framework concept responsibility map; quality attributes mapped to framework design mechanisms.
+- Chapter 5: tool-selection criteria, Playwright/Cypress/Selenium comparison, verified execution evidence, and evaluation boundaries.
+
+Evaluation metric tables remain `NEEDS_EVIDENCE` until actual execution artifacts are collected.
+
+## Visual Evidence Policy
+
+Use screenshots and external images selectively. The thesis should prioritize diagrams and tables for conceptual explanations, and use screenshots mainly when they provide direct project evidence or improve reader understanding of the system under test, implemented workflow, execution report, or trace/debugging artifact. All screenshot candidates must be tracked in `visual-evidence-register.md`; external internet images or copied benchmark figures require citation and license review before use.
 
 ## Author Contribution Statement
 
@@ -129,6 +159,8 @@ Recommended abbreviations:
 - UI: User Interface
 - VCS: Version Control System
 
+Abbreviation finalization note (2026-06-11, T-032): the final `front-matter/abbreviations.md` keeps only abbreviations actually used in the thesis body (AI, API, CI/CD, CLI, DOM, DTO, E2E, HTML, HTTP, JSON, POM, UI). REST, SUT, TDM, and VCS were removed as unused after the Definitions/Abbreviations audit. Do not re-add them unless they are actually introduced in the prose.
+
 ## Abstract
 
 Recommended abstract structure:
@@ -147,7 +179,11 @@ Recommended abstract structure:
 
 ## Chapter Purpose and Evidence Basis
 
-Purpose: establish the project context, problem, aim, objectives, scope, research questions, success criteria, and thesis structure.
+Purpose: establish the project context, significance of the testing problem, project-specific problem statement, research objectives, research questions, and concise evidence boundaries.
+
+Length-control rule: Chapter 1 should be concise and framing-oriented, approximately 800 to 1,100 words after the latest user-approved concision revision. It must not repeat Chapter 2 theory, Chapter 3/4 implementation detail, or a chapter-by-chapter thesis structure summary. Scope and success/evaluation boundaries should be integrated briefly into the problem statement and Research Objectives section rather than expanded as separate sections.
+
+Visual decision: no main Chapter 1 figure is planned by default. Do not insert an external software testing pyramid or test automation pyramid image in Chapter 1; Chapter 2 already covers the relevant foundations, and F-01 is archived as excluded from thesis insertion. If a visual is explicitly approved later, prefer a source-safe project SUT context screenshot deferred to Chapter 3 or a compact author-created concept figure.
 
 Evidence basis:
 
@@ -155,9 +191,11 @@ Evidence basis:
 - `docs/project-overview.md`
 - `docs/thesis-workspace/source-notes/repository-overview.md`
 - `docs/thesis-workspace/source-notes/limitations-and-missing-evidence.md`
+- `docs/thesis-workspace/source-notes/chapter-5-execution-evidence-2026-06-03.md`
 - `docs/thesis-workspace/evidence-matrix.md` claims C-001 to C-004
+- `docs/thesis-workspace/evidence-matrix.md` claims C-016 to C-019, C-023, and C-054 to C-059 for concise evaluation framing
 
-`NEEDS_EVIDENCE`: final wording for result-oriented success criteria must wait for actual execution artifacts.
+The verified Chapter 5 evidence is now available for concise evaluation framing. Detailed execution results, tool comparison, and benchmark interpretation should remain in Chapter 5 rather than being repeated in the introduction.
 
 ## 1.1 Background
 
@@ -165,136 +203,90 @@ Introduce the growth of web applications, continuous delivery, and the increasin
 
 ## 1.2 Problem Statement
 
-Manual regression testing for web applications is repetitive, time-consuming, vulnerable to human error, and difficult to scale across frequent releases. UI-only automation can miss service-layer defects, while API-only automation cannot validate user-facing flows. A maintainable combined UI and API automation framework is therefore required.
+Split this section into two focused subsections:
 
-## 1.3 Project Aim
+- `1.2.1 Significance of the Problem`: briefly explain the broader software-testing problem, including repeated regression effort, inconsistency risk, and the complementary role of UI and API validation.
+- `1.2.2 Project Problem Statement`: state the project-specific problem: how to design, implement, and evaluate a maintainable UI and API automation framework for selected Unsplash regression scenarios, without claiming complete coverage or unsupported metrics.
 
-The aim of this project is to design, implement, and evaluate a comprehensive UI and API automation testing framework using Playwright and TypeScript for the Unsplash web application and public API.
+## 1.3 Research Objectives
 
-## 1.4 Objectives
+State the main objective first: design, implement, and evaluate a maintainable UI and API automation testing framework using Playwright and TypeScript for modern web applications, demonstrated through selected Unsplash web application and public API scenarios.
 
-- Study modern software test automation practices and Playwright-based E2E testing.
-- Analyze requirements for a maintainable UI and API automation framework.
-- Design a layered automation architecture using Page Objects, workflows, fixtures, API services, DTOs, shared utilities, centralized constants, and test data.
-- Describe the project-supported Copilot Agentic-AI workflow for automation test case design, Playwright script generation, and automation code review.
-- Implement representative UI test scenarios for Unsplash user flows.
-- Implement representative API test scenarios for Unsplash public user endpoints.
-- Configure Playwright execution, trace collection, HTML reporting, and JUnit reporting.
-- Evaluate the framework in terms of maintainability, reusability, readability, execution reliability, and extensibility.
-- Document the framework so it can be extended by future QA engineers.
+Then list four essential research objectives that align one-to-one with the four research questions:
 
-## 1.5 Research Questions
+- Analyze how a Playwright and TypeScript framework can structure UI and API automation scenarios for a modern web application in a maintainable way.
+- Design and implement reusable framework abstractions that improve separation of concerns, reduce duplication, and support long-term test-code maintainability.
+- Evaluate the implemented framework using verified Playwright execution evidence, HTML reporting, JUnit XML output, and trace-related debugging support where evidence is available.
+- Identify remaining limitations and future work related to coverage, scalability, reliability, evaluation depth, and workflow support boundaries.
+
+Mention the project-supported Copilot Agentic-AI workflow only as a support feature, without measured productivity claims.
+
+## 1.4 Research Questions
 
 - RQ1: How can a Playwright + TypeScript framework be structured to support both UI and API automation in a maintainable way?
-- RQ2: How do Page Objects, fixtures, workflows, service classes, DTOs, and centralized test data improve reusability and reduce duplication?
-- RQ3: How effectively can the implemented framework validate selected UI and API behavior of the Unsplash platform?
+- RQ2: How can reusable framework abstractions improve maintainability, reusability, and separation of concerns in web automation testing?
+- RQ3: What evidence does the implemented framework provide for validating selected UI and API behavior in the demonstration system?
 - RQ4: What limitations remain in the framework, and what future work is required to improve scalability, coverage, and reliability?
-
-## 1.6 Scope of the System
-
-In scope:
-
-- Playwright + TypeScript framework design.
-- UI automation for selected Unsplash flows such as viewing photographer profiles, updating profile information, and bookmarked/liked/collection-related profile flows.
-- API automation for selected Unsplash public user endpoints such as public profile, user photos, user collections, and user statistics.
-- Page Object Model, workflow abstraction, fixtures, API service classes, DTOs, test data, utilities, and reports.
-- Playwright HTML report, trace-on-retry, and JUnit XML output.
-
-Out of scope:
-
-- Full production coverage of all Unsplash features.
-- Performance testing beyond basic execution observations.
-- Full security testing beyond limited helper-level API response/header checks. Any security-oriented evaluation remains `NEEDS_EVIDENCE`.
-- Replacing manual exploratory testing entirely.
-- Ownership or modification of Unsplash application source code.
-
-## 1.7 Success Criteria
-
-- The repository contains a clear and reusable automation architecture.
-- UI and API tests are separated but share consistent conventions.
-- Test files reuse Page Objects, workflows, service classes, fixtures, and data helpers.
-- The framework can be installed and executed using documented commands.
-- Playwright reporting and trace collection are configured for debugging and CI-style review. `NEEDS_EVIDENCE`: generated report and trace artifacts must be verified through an actual run.
-- The thesis explains design decisions, implementation details, evaluation, limitations, and future work.
-
-## 1.8 Thesis Structure
-
-Summarize Chapters 2 to 6.
 
 ---
 
-# Chapter 2: Literature Review and Theoretical Background
+# Chapter 2: Literature Review
 
 ## Chapter Purpose and Evidence Basis
 
-Purpose: define the theoretical background for software testing, test automation, UI testing, API testing, Playwright, reporting, and automation framework design patterns.
+Purpose: provide theoretical background and methodology for software testing and test automation without explaining the repository-specific framework mechanisms. Chapter 2 should prepare readers for the framework design in Chapter 3, but it must not contain the detailed Page Object, fixture, API service, DTO, cleanup, reporting, or design-pattern diagrams now assigned to Chapter 3.
 
 Evidence basis:
 
-- Official Playwright documentation. `NEEDS_EVIDENCE`
-- Academic or professional software testing literature. `NEEDS_EVIDENCE`
-- `docs/thesis-workspace/evidence-matrix.md` claims C-005 to C-007
-- Figure F-01 in `docs/thesis-workspace/figure-register.md`
+- ISTQB/testing theory sources in `citation-register.md`.
+- Flaky-test literature for end-to-end testing methodology.
+- Official Playwright reporting/trace documentation only where reporting methodology is discussed.
+- `docs/final-graduation-thesis-doc/reference-documents/Thesis_Playwright_Duong_Sample1.md` may be used for structure inspiration only, not copied prose.
+
+Required tables:
+
+- Table 2.1: Manual and automated testing approaches.
+- Table 2.2: Manual test case and automation script representations.
+- Table 2.3: Test case design considerations for automated testing.
+- Table 2.4: Literature-based concepts of a test automation framework.
+
+Visual decision: no Chapter 2 diagram is planned after the 2026-06-04 restructuring and T-078 refinement. Use concise prose and literature-based tables only. Do not insert external screenshots or internet images into Chapter 2 unless a later explicit request approves a source/license-reviewed visual.
 
 ## 2.1 Software Testing Fundamentals
 
-Define verification, validation, functional testing, non-functional testing, manual testing, and automated testing.
+Define software testing, verification, validation, regression testing, and exploratory testing in the context of web application quality.
 
-## 2.2 Manual Testing and Automation Testing
+## 2.2 Manual Testing and Automated Testing Approaches
 
-Compare manual and automated testing in terms of speed, repeatability, human judgment, cost, maintenance, and regression suitability.
+Explain manual and automated testing as complementary approaches. Keep the section theoretical and concise; do not repeat the Chapter 1 project problem statement.
 
-## 2.3 The Test Pyramid and Test Levels
+## 2.3 Test Automation in Modern Web Application Testing
 
-Discuss unit, integration, API/service, E2E/UI, and manual exploratory testing. Explain why E2E tests should be meaningful and not excessive.
+Discuss web-application testing challenges such as dynamic UI behavior, asynchronous interactions, service dependencies, and the need for maintainable automation.
 
-## 2.4 End-to-End Testing for Web Applications
+## 2.4 End-to-End Testing Methodology
 
-Explain browser automation, user-flow simulation, assertions, selectors, synchronization, and flakiness.
+Explain the role, value, and risks of end-to-end testing, including careful scenario selection and flaky-test risk.
 
-## 2.5 API Testing in Modern Web Systems
+## 2.5 Test Case Design for Automated Testing
 
-Discuss REST APIs, request/response validation, status codes, headers, schemas, authentication, and API test benefits.
+Discuss scenario purpose, preconditions, input data, assertions, cleanup/reset needs, and evidence artifacts as automated test design concerns.
 
-## 2.6 UI and API Automation as a Combined Strategy
+## 2.6 Test Automation Framework Concepts
 
-Explain why combining UI and API testing gives broader confidence than relying on either layer alone.
+Introduce the general idea of a test automation framework using ISTQB glossary and Test Automation Engineering syllabus sources. Keep this conceptual and defer the concrete project mechanisms to Chapter 3. Page Object Model may be introduced briefly as a cited UI abstraction concept, but project-specific POM application belongs to Chapter 3.
 
-## 2.7 Playwright as an Automation Framework
+## 2.7 Test Data Generation and Reporting in Automated Testing
 
-Discuss Playwright concepts: browser contexts, locators, auto-waiting, fixtures, API request context, traces, screenshots, videos, HTML report, JUnit report, and parallel execution.
-
-## 2.8 Comparison of Automation Tools
-
-Compare Playwright, Selenium, Cypress, Puppeteer, and possibly WebdriverIO using criteria such as language support, browser support, auto-waiting, API testing support, parallelization, debugging, maintainability, and CI integration.
-
-## 2.9 Framework Design Patterns
-
-Cover:
-
-- Page Object Model
-- service-layer abstraction for API tests
-- fixtures and dependency injection
-- workflows/business-flow abstraction
-- DTOs and test data management
-- constants and configuration management
-- reusable utilities
-
-## 2.10 Test Data Management
-
-Explain static test data, environment variables, credentials handling, cleanup, isolation, and repeatability.
-
-## 2.11 Reporting, Debugging, and Traceability
-
-Discuss HTML reports, JUnit XML, traces, screenshots, logs, and evidence collection for thesis evaluation.
+Explain test data preparation/generation, data-driven testing, reporting, and execution evidence as automation methodology concerns. Do not make CI/CD a central topic because the current repository has no verified CI/CD implementation. Detailed project configuration and verified execution evidence remain in Chapters 3 to 5.
 
 ---
 
-# Chapter 3: System Analysis and Framework Design
+# Chapter 3: Framework Design
 
 ## Chapter Purpose and Evidence Basis
 
-Purpose: analyze the selected system under test and present the proposed framework design before implementation details.
+Purpose: present the project-specific framework design. Chapter 3 prioritizes framework design over general system analysis and now contains the technical framework mechanisms moved out of Chapter 2.
 
 Evidence basis:
 
@@ -311,76 +303,80 @@ Evidence basis:
 - `.github/agents/`
 - `.github/prompts/`
 - `.claude/skills/`
-- Figures F-02, F-03, and F-04 in `docs/thesis-workspace/figure-register.md`
-- Figure F-07 in `docs/thesis-workspace/figure-register.md`
+- Figures F-02, F-11, F-16, F-13, F-17, F-14, F-15, F-12, F-03, F-04, and F-07 in `docs/thesis-workspace/figure-register.md`
+- Inserted visual evidence V-01 and V-12 in `docs/thesis-workspace/visual-evidence-register.md`.
+- Candidate visual evidence V-07/V-08 in `docs/thesis-workspace/visual-evidence-register.md`, if later approved and captured.
 
-## 3.1 Current Testing Context
+Required tables:
 
-Describe the selected target application and API: Unsplash web application and public API. Explain why it is suitable for a graduation automation framework demonstration.
+- Table 3.1: Framework concept responsibility map.
+- Table 3.2: Quality attributes mapped to framework design mechanisms.
 
-## 3.2 Requirements Analysis
+## 3.1 Overall Framework Architecture
 
-### 3.2.1 Functional Requirements
+Place the layered framework architecture at the beginning of the chapter. Explain the relationship among UI/API tests, Page Objects, workflows, fixtures, API services, core utilities, DTOs, constants, configuration, data, and reporting.
 
-- Execute UI tests for selected user-facing flows.
-- Execute API tests for selected public endpoints.
-- Support reusable Page Objects.
-- Support reusable API service classes.
-- Support fixtures for object injection.
-- Support centralized test data and constants.
-- Generate test reports and traces.
-- Support an AI-assisted automation testing workflow for scenario design, Playwright script generation, and automation code review.
+## 3.2 UI Abstraction Design
 
-### 3.2.2 Non-Functional Requirements
+Explain the Page Object Model and the project element abstraction as framework-design mechanisms. Use sub-sections for:
 
-- Maintainability
-- Reusability
-- Readability
-- Scalability
-- Reliability
-- Debuggability
-- Extensibility
+- `3.2.1 Page Object Model Concept`
+- `3.2.2 Page Objects and Element Abstraction`
+- `3.2.3 Practical Page Object Workflow`
 
-## 3.3 System Under Test
+Use Figure 3.2 and Figure 3.3. Chapter 2 may introduce POM as a cited concept, but Chapter 3 explains project application.
 
-Describe Unsplash UI and API endpoints covered in the framework.
+## 3.3 Runtime Composition Design
 
-## 3.4 Proposed Framework Architecture
+Explain Playwright fixtures, dependency provisioning, base fixture runtime initialization, custom fixture object creation, typed test consumption, and shared runtime context. Use sub-sections for:
 
-Recommended figure: layered architecture diagram.
+- `3.3.1 Fixture-Based Dependency Provisioning`
+- `3.3.2 Shared Runtime Context`
 
-Layers:
+Use Figure 3.4.
+Use Figure 3.5 for the shared runtime context flow.
 
-1. Test specifications: `tests/ui`, `tests/api`
-2. Interaction abstractions: `page-object`, `workflow`
-3. Service abstractions: `api-service`
-4. Shared framework core: `core/api`, `core/browser`, `core/element`, `core/fixtures`
-5. Data and configuration: `test-data`, `data-object`, `constants`, `config`
-6. Reporting and execution: Playwright config, HTML report, JUnit XML, trace viewer
+## 3.4 API Automation Design
 
-## 3.5 UI Automation Design
+Explain API service classes, endpoint constants, URL helpers, authorization/header handling, core API utilities, and validation boundaries. Use sub-sections for:
 
-Explain Page Object Model, action methods, selectors, workflows, and fixture injection.
+- `3.4.1 Service-Layer Abstraction`
+- `3.4.2 Request Execution and Validation Scope`
 
-## 3.6 API Automation Design
+Use Figure 3.6.
 
-Explain API service classes, request/response models, endpoint constants, API utility layer, authentication headers, schema validation, and response assertions.
+## 3.5 Test Data and State Management Design
 
-## 3.7 Fixture and Dependency Injection Design
+Explain static test data, DTOs, endpoint/file-path constants, environment configuration, data loading helpers, and API-based cleanup for state-changing UI scenarios. Use sub-sections for:
 
-Explain how fixtures provide reusable page objects and workflows to tests.
+- `3.5.1 Centralized Test Data and Configuration`
+- `3.5.2 State Reset Through API Cleanup`
 
-## 3.8 Test Data and Configuration Design
+Use Figure 3.7.
 
-Explain `test-data`, `.env`, access tokens, base URLs, credentials, and environment-specific configuration.
+## 3.6 Framework Quality Design
 
-## 3.9 Reporting and Debugging Design
+Explain the design mechanisms as a coherent framework and explain reporting/debugging/traceability as design concerns. Use sub-sections for:
 
-Explain HTML reporter, JUnit reporter, trace-on-first-retry, retry strategy, timeout strategy, and debugging commands.
+- `3.6.1 Design Principles and Quality Goals`
+- `3.6.2 Execution Evidence and Debugging Support`
+  - `3.6.2.1 Reporting Artifacts`
+  - `3.6.2.2 Debugging and Traceability Scope`
 
-## 3.10 AI-Assisted Automation Testing Workflow Design
+Use Figure 3.8 and concise tables.
 
-Explain the project-level Copilot Agentic-AI workflow that supports automation test development. Cover scenario design, framework-aware Playwright script generation, reuse-first repository inspection, optional Playwright MCP-based UI inspection, and automation code review. Keep this section focused on the automation-testing workflow stored under `.github/` and `.claude/`.
+## 3.7 Automation Execution Flow
+
+Explain the UI and API automation execution flows. Use sub-sections for:
+
+- `3.7.1 UI Automation Flow`
+- `3.7.2 API Automation Flow`
+
+Use Figure 3.9 for UI execution and Figure 3.10 for API execution.
+
+## 3.8 Copilot Agentic-AI Workflow Design for Automation Testing
+
+Explain the project-level Copilot Agentic-AI workflow as an automation-testing support feature. Use Figure 3.11. Do not include or imply the private thesis-writing harness.
 
 ---
 
@@ -410,60 +406,36 @@ Evidence basis:
 - `.github/agents/`
 - `.github/prompts/`
 - `.claude/skills/`
-- Figure F-05 in `docs/thesis-workspace/figure-register.md`
+- Figures V-13, F-05, F-09, and F-10 in `docs/thesis-workspace/figure-register.md`
+- Candidate visual evidence V-02, V-03, V-07, and V-08 in `docs/thesis-workspace/visual-evidence-register.md`, if later approved and captured.
 
-## 4.1 Development Environment
+## 4.1 Implementation Environment and Configuration
 
-Describe Node.js, TypeScript, Playwright, dependency installation, environment variables, browser installation, and command-line execution.
+Describe the dependency set, direct Playwright commands, environment-variable loading, browser/API base URL configuration, test directory, Chromium project settings, timeout behavior, parallelism, CI retry/worker safeguards, reporters, and trace setting. Keep the section implementation-focused and do not treat configuration values as measured reliability or performance results.
 
-## 4.2 Repository Implementation Overview
+## 4.2 Implemented Framework Organization
 
-Describe the implemented folders and their responsibilities.
+Describe the concrete source organization that realizes the Chapter 3 design: UI/API tests, Page Objects, workflows, fixtures, API services, constants, DTOs, core utilities, test data, and shared helpers. Keep this as an implementation map rather than a long repository tour.
 
-## 4.3 Playwright Configuration
+## 4.3 Runtime and Utility Implementation
 
-Explain timeout, test directory, parallelism, CI retries, workers, base URL, trace mode, HTML report, and JUnit XML report.
+Explain how `BrowserManagement`, fixture injection, element wrappers, browser utilities, and `APIUtils` provide shared runtime and request behavior. Mention JSON schema and security-header helpers only as available utility capabilities, not as broad coverage.
 
-## 4.4 Core Utilities
+## 4.4 UI Automation Implementation
 
-Describe API utilities, browser management, browser utilities, and element wrappers.
+Explain representative UI implementation through the profile-update scenario, including fixture injection, Page Objects, login workflow reuse, centralized test data, UI validation, browser navigation, and API-assisted cleanup. Candidate V-02 may be inserted only after a safe verified capture if it adds more value than prose.
 
-## 4.5 Page Object Implementation
+## 4.5 API Automation Implementation
 
-Describe implemented Page Objects such as home, login, profile, account, liked/bookmarked/collection-related pages.
+Explain representative API implementation through `UsersService`, `PhotosService`, endpoint constants, API URL construction, public-read authorization behavior, and the public-profile API specification. Candidate V-03 may be inserted only after sanitized verified capture if it adds more value than prose or tables.
 
-## 4.6 Workflow Implementation
+## 4.6 Reporting and Debugging Configuration
 
-Describe reusable workflows such as login flow and other multi-step business flows.
+Use Figure 4.2 to show reporting and trace configuration as implementation evidence. Keep verified HTML report, JUnit XML, terminal output, and trace-viewer screenshots primarily in Chapter 5 and Appendix D.
 
-## 4.7 API Service Implementation
+## 4.7 Copilot-Supported Automation Workflow Implementation
 
-Describe UsersService, PhotosService, endpoint constants, data objects, and request execution.
-
-## 4.8 UI Test Implementation
-
-Explain representative UI scenarios:
-
-- viewing a photographer profile
-- updating a profile and verifying the full name
-- viewing bookmarked/liked/collection-related profile information, if implemented
-
-## 4.9 API Test Implementation
-
-Explain representative API scenarios:
-
-- valid public user profile returns expected data
-- invalid username returns 404
-- profile links are well formed
-- user photos, collections, and statistics endpoints return expected structures, if implemented
-
-## 4.10 Reporting and Debugging Implementation
-
-Include screenshots or examples of HTML report, JUnit result file, and Playwright trace viewer. `NEEDS_EVIDENCE`: use only verified artifacts from a known execution run.
-
-## 4.11 Copilot Agentic Workflow Implementation for Automation Testing
-
-Describe the implemented project workflow artifacts that support automation testing work: repository-wide Copilot instructions, custom agents for scenario design, Playwright script generation, and code review, prompt entrypoints, and reusable skills. This section must describe only how these artifacts support the Playwright automation framework.
+Describe only the project automation-testing support workflow artifacts: repository-wide instructions, custom agents, prompt entry points, reusable skills, and workflow diagrams F-09 and F-10. Avoid productivity, defect-reduction, coverage, or reliability claims without separate evaluation evidence.
 
 ---
 
@@ -471,72 +443,72 @@ Describe the implemented project workflow artifacts that support automation test
 
 ## Chapter Purpose and Evidence Basis
 
-Purpose: evaluate the implemented framework using verified execution evidence, maintainability analysis, reporting artifacts, limitations, and threats to validity.
+Purpose: justify the Playwright tool-selection decision through a project-specific comparison with Cypress and Selenium, then evaluate the implemented Playwright and TypeScript framework using verified execution evidence, reporting artifacts, and external benchmark context. Interpret the findings in relation to the research questions and consolidate all evaluation boundaries in one place. Revised structure applied 2026-06-11 (T-082 rewrite) to improve logical flow, add the missing Discussion section, relocate Figure 5.4, and consolidate boundaries.
 
 Evidence basis:
 
+- `docs/thesis-workspace/source-notes/chapter-5-tool-comparison-source-selection.md`
 - `docs/thesis-workspace/source-notes/reporting-and-execution.md`
 - `docs/thesis-workspace/source-notes/limitations-and-missing-evidence.md`
-- `docs/thesis-workspace/evidence-matrix.md` claims C-016 to C-024
-- Figure F-06 in `docs/thesis-workspace/figure-register.md`
+- `docs/thesis-workspace/evidence-matrix.md` claims C-016 to C-024 and C-054 to C-059
+- Official Playwright, Cypress, and Selenium documentation registered in `citation-register.md`
+- Mon and Panczyk (2025) registered as `mon_panczyk_tool_comparison_2025`
+- Almabruk et al. (2025) registered as `almabruk_selenium_playwright_reliability_2025`
+- `garousi_mantyla_automation_2016` for automation-versus-manual discussion (alongside `istqb_ctfl_syllabus_2024`)
+- `docs/thesis-workspace/source-notes/chapter-5-external-benchmark-references.md`
+- Inserted visual evidence V-04 and V-05, plus file-based evidence V-06 in `docs/thesis-workspace/visual-evidence-register.md`
+- Accepted external benchmark charts V-10 and V-11 in `docs/thesis-workspace/visual-evidence-register.md`
 
-`NEEDS_EVIDENCE`: Chapter 5 is blocked until actual command output, pass/fail/skipped counts, execution duration, report screenshots, JUnit output, and trace artifacts are collected.
+Verified execution evidence (do not change): 18 tests, 18 passed, 0 failed, 0 skipped, 0 errors, 28.890057s (JUnit). API=15 (4 spec files: get-public-profile×3, get-statistics×4, list-collections×4, list-photos×4). UI=3 (3 spec files: bookmarked-photos×1, update-profile×1, view-profile×1). The Chapter 5 comparison score table is a project-specific rubric, not a local Cypress/Selenium benchmark and not a universal tool ranking.
 
-## 5.1 Evaluation Methodology
+## 5.1 Evaluation Approach and Evidence Basis
 
-Define how the framework is evaluated:
+State the two evaluation strands: (a) tool-selection justification via project-specific rubric, capability comparison, and external empirical context; (b) framework evaluation via verified execution results, report artifacts, and discussion of automation value. Present the evaluation evidence basis and boundaries in a concise table. Do not scatter the full boundary list here — the complete consolidated boundaries belong to Section 5.7. Do not use the archived evaluation-workflow figure.
 
-- execution success rate
-- number of UI/API test scenarios
-- maintainability through reuse of framework layers
-- readability and naming conventions
-- trace/report availability
-- evidence of debugging support
-- limitations from external API rate limits or third-party UI changes
+Required table: overview of evidence basis and top-level boundaries for both evaluation strands.
 
-## 5.2 Test Execution Results
+## 5.2 Tool Selection Criteria and Weighting
 
-Add actual command outputs and report screenshots after running tests. `NEEDS_EVIDENCE`.
+Define primary and secondary criteria used to select an automation framework for this project. Cover: browser support, synchronization/action reliability, UI and API testing support together, TypeScript/POM/fixture/service architecture fit, reporting/debugging artifacts, parallel and CI-ready execution, setup simplicity, ecosystem maturity, cost, learning and documentation fit, and extensibility.
 
-Recommended table columns:
+Required table: tool selection criteria with weights (1–5 scale) and project rationale per criterion.
 
-| Test Suite | Number of Tests | Passed | Failed | Skipped | Execution Time | Evidence |
-|---|---:|---:|---:|---:|---:|---|
+## 5.3 Comparative Analysis of Playwright, Cypress, and Selenium
 
-## 5.3 UI Automation Evaluation
+Compare all three tools using official documentation, Mon and Panczyk (2025), and the project-specific weighted rubric from Section 5.2. The comparison should justify why Playwright is selected for this framework without claiming universal superiority. Place the "project-fit rubric, not an empirical benchmark" guard immediately adjacent to the score table. Distribute per-tool citation references into the capability discussion rather than stacking all citations in opening sentences.
 
-Discuss strengths, coverage, and limitations of UI automation in the project.
+Integrate the external benchmark context here (formerly separate §5.6/5.7) so the entire tool-selection argument forms one continuous strand.
 
-## 5.4 API Automation Evaluation
+Required tables:
+- Capability and literature summary table for the three tools.
+- Weighted framework evaluation table with scores, weighted scores, primary subtotal, secondary subtotal, and final rank.
 
-Discuss strengths, coverage, and limitations of API automation in the project.
+Required figures here (tool comparison context):
+- Figure 5.2 adapted from Mon and Panczyk (2025) — external benchmark chart.
+- Figure 5.3 adapted from Almabruk et al. (2025) — external reliability chart.
+Both must have explicit "external context, not this project's benchmark" framing.
 
-## 5.5 Framework Maintainability Evaluation
+## 5.4 Verified Test Execution Results
 
-Analyze reuse of Page Objects, fixtures, workflows, API services, constants, DTOs, and utilities.
+Present actual execution evidence from the verified 2026-06-03 full-suite run. Place Figure 5.4 (Trace Viewer screenshot) in this section because it is project execution/debugging evidence, not benchmark interpretation. The supplemental trace caveat must be stated adjacent to Figure 5.4.
 
-## 5.6 Reliability and Flakiness Discussion
+Required tables:
+- Full-suite result: tests, passed, failed, skipped, duration, evidence. Omit always-zero Errors column.
+- Per-spec breakdown from JUnit XML. Omit always-zero Errors column.
 
-Discuss retries, trace-on-first-retry, external API rate limits, UI selector stability, and third-party dependency risks.
+Required figures:
+- Figure 5.1 (V-04 HTML report overview).
+- Figure 5.4 (V-05 Trace Viewer screenshot, relocated here from the former §5.7).
 
-## 5.7 Comparison with Manual Testing
+Exact verified figures: 18 tests, 18 passed, 0 failed, 0 skipped, 28.890057s; API=15, UI=3. Do not change.
 
-Discuss the expected benefits of automation over repeated manual regression testing, while acknowledging that manual exploratory testing still has value.
+## 5.5 Automation Value Relative to Manual Testing
 
-## 5.8 Limitations
+Discuss the value of automation for repeatable regression checks compared with manual testing. Place this section AFTER the execution results (Section 5.4) so the 18-test evidence it references is already established. Acknowledge that manual exploratory testing retains value automation cannot replace.
 
-Possible limitations:
+Use `garousi_mantyla_automation_2016` alongside `istqb_ctfl_syllabus_2024` to avoid single-source reliance. State explicitly that no manual timing baseline was measured.
 
-- limited number of implemented scenarios
-- dependence on Unsplash public UI/API behavior
-- possible API rate limits
-- no full CI/CD pipeline unless added later
-- no large-scale performance testing
-- no full security testing
-
-## 5.9 Threats to Validity
-
-Discuss internal, external, construct, and conclusion validity.
+Condensed coverage: repeatability, speed for regression, evidence generation, human judgment, maintenance overhead, and automation risk (stale tests, false confidence). Can be short prose or a small table — do not use a large six-row table.
 
 ---
 
@@ -544,53 +516,68 @@ Discuss internal, external, construct, and conclusion validity.
 
 ## Chapter Purpose and Evidence Basis
 
-Purpose: summarize the completed project, confirmed contributions, limitations, lessons learned, and future work.
+Purpose: synthesize the research findings, confirm achievement of the research objectives and research questions, consolidate the evaluation limitations, and identify directions for future work. This chapter completes the thesis by interpreting what was found, confirming what was answered, and being honest about what remains open. Keep the chapter concise and analytical — avoid restating Chapter 5 tables or Chapter 3/4 implementation detail at length.
+
+Note on structure: Sections 5.6 (Discussion) and 5.7 (Evaluation Boundaries) from the previous outline have been relocated here as Section 6.1 (Discussion) and Section 6.3 (Limitations), following standard academic thesis structure in which the final chapter synthesizes findings, confirms conclusions, states limitations, and proposes future work.
 
 Evidence basis:
 
-- Reviewed Chapters 1 to 5. `NEEDS_EVIDENCE`
-- Verified evaluation evidence from Chapter 5. `NEEDS_EVIDENCE`
+- Verified execution evidence from Chapter 5 (18 tests, 18 passed, 28.890057s; JUnit XML and HTML report).
+- Framework design and implementation evidence from Chapters 3 and 4.
+- Tool-selection rationale and weighted rubric from Chapter 5 Sections 5.2 and 5.3.
+- Evaluation boundaries carried from Chapter 5 §5.7 content (now consolidated in Section 6.3).
 - `docs/thesis-workspace/source-notes/limitations-and-missing-evidence.md`
 
-## 6.1 Summary of the Project
+## 6.1 Discussion
 
-Summarize the thesis aim, implemented framework, and evaluation.
+Interpret the key findings of the research in relation to the framework design and evaluation evidence. This section is analytical and forward-looking — it synthesizes what the project demonstrated without restating tables or implementation detail.
 
-## 6.2 Key Contributions
+Cover concisely:
+- What the layered Playwright + TypeScript framework demonstrates about combining UI and API automation in a single maintainable codebase.
+- What the verified 18-test full-suite run confirms as practical automation evidence, including reporting artifacts.
+- How the design abstractions (POM, fixture-based DI, service-layer API) contributed to separation of concerns and reusability in practice.
+- Whether the tool-selection rationale (Playwright ranked first on the project-specific weighted rubric) was supported by the execution evidence.
+- The Copilot Agentic-AI workflow as a documented automation-testing support feature with clear stated boundaries around effectiveness claims.
 
-- A layered Playwright + TypeScript UI/API automation framework.
-- Reusable Page Objects, workflows, fixtures, API services, DTOs, constants, utilities, and test data.
-- Representative UI and API tests for Unsplash flows.
-- Reporting and debugging setup using Playwright HTML report, trace-on-retry, and JUnit XML.
-- A project-level Copilot Agentic-AI workflow that supports automation test case design, Playwright script generation, and automation code review.
+Do not repeat Chapter 5 tables verbatim. Write analytical prose that interprets findings rather than re-describes them. One to two paragraphs is sufficient.
 
-## 6.3 Lessons Learned
+## 6.2 Conclusion
 
-Discuss framework design, automation stability, data management, API validation, and documentation.
+State clearly whether the research objectives and four research questions have been answered by the available evidence, but write the conclusion as integrated academic prose rather than a question-by-question response list.
+
+Cover concisely:
+- Confirm that the main research objective was achieved through the design, implementation, and evaluation of the Playwright and TypeScript UI/API automation framework.
+- Synthesize the answer to RQ1 by explaining that UI and API automation can be structured within one maintainable TypeScript framework through layered responsibilities and shared execution evidence.
+- Synthesize the answer to RQ2 by explaining that Page Objects, fixtures, service-layer API abstractions, DTOs, centralized constants, and utilities support maintainability, reusability, and separation of concerns as design outcomes rather than measured scores.
+- Synthesize the answer to RQ3 by drawing from the verified 18-test passing run, HTML report, JUnit XML output, execution log, and supplemental trace artifact.
+- Synthesize the answer to RQ4 by leading naturally into Sections 6.3 and 6.4, where limitations and future work are consolidated.
+
+Close with one brief statement on the broader relevance of the framework approach for modern web application QA engineering. Do not create a separate Key Contributions subsection, and do not format Section 6.2 as a direct Q&A list.
+
+## 6.3 Limitations
+
+Consolidate the limitations of the framework and its evaluation into a few focused analytical paragraphs, replacing the former Chapter 5 §5.7. The bullets below are planning points only; the chapter prose should not present them as a numbered list. Develop each limitation by explaining what is bounded, why the boundary matters, and what claim the thesis therefore avoids. Cover the essential boundaries only:
+
+- Evaluation rests on a single verified local run — no CI/CD execution and no repeated-run reliability or flakiness measurement.
+- Coverage is limited to selected representative Unsplash UI and API scenarios, and excludes non-functional dimensions (accessibility, visual regression, performance, security).
+- Comparative and automation-versus-manual claims are qualitative: the Cypress/Selenium comparison rests on documentation and the author-constructed rubric, with no local benchmark suites or quantified manual baseline.
+- The framework depends on an external live system, exposing it to Unsplash API rate limiting, third-party UI changes, and token-validity risks across future runs.
+- The Copilot Agentic-AI workflow is documented as a support feature but its effectiveness is not quantitatively evaluated.
 
 ## 6.4 Future Work
 
-Potential future improvements:
+Recommend a small number of high-value directions, each tied directly to a limitation in Section 6.3. The bullets below are planning points only; the chapter prose should not present them as a numbered list. Write this section as forward-looking academic prose that explains how each direction extends the framework and what evidence it would enable in future research. Cover the essential directions only:
 
-- expand UI coverage to more Unsplash flows
-- expand API coverage and schema validation
-- improve test data cleanup and isolation
-- integrate GitHub Actions CI/CD
-- add visual regression testing
-- add accessibility testing
-- add performance smoke testing
-- add security-oriented API checks
-- improve reporting dashboards and trend analysis
-
-## 6.5 Final Conclusion
-
-Close with the value of a maintainable UI/API automation framework and its relevance to modern QA engineering.
+- Integrate a verified CI/CD pipeline (e.g., GitHub Actions) to enable repeatable runs and long-term flakiness measurement, addressing the single-run limitation.
+- Expand UI and API scenario coverage, with consistent JSON schema validation applied across the full API suite.
+- Extend evaluation into non-functional dimensions through accessibility auditing (e.g., axe-core), visual regression, and lightweight performance/security checks.
+- Adopt historical reporting and trend analysis (e.g., Allure or Grafana) to monitor stability and reliability over time.
 
 ---
 
 # References
 
-Use IEEE, APA, or the citation style required by VNUK. Keep a single consistent style. References should include official Playwright documentation, official tool documentation where relevant, ISTQB glossary or syllabus materials, software testing textbooks or papers, and any academic sources used in the literature review. `NEEDS_EVIDENCE`: final external references must be selected and registered before Chapter 2 drafting.
+Use **APA 7th edition** consistently. References should include official Playwright documentation, official tool documentation where relevant, ISTQB glossary or syllabus materials, software testing textbooks or papers, and any academic sources used in the literature review.
 
 ---
 
@@ -620,6 +607,10 @@ Map thesis concepts to source folders and files.
 
 Include report screenshots, trace viewer screenshots, and `results.xml` explanation. `NEEDS_EVIDENCE`: include only verified artifacts from a known execution run.
 
+Use `visual-evidence-register.md` entries V-04, V-05, and V-06 as the main Appendix D evidence set. V-04 and V-05 are already inserted in Chapter 5, while V-06 remains file-based terminal/JUnit evidence unless final formatting requires an additional screenshot.
+
 ## Appendix E: Copilot Agentic-AI Workflow Artifacts
 
 Optionally include a concise artifact map for the automation-testing workflow, such as `.github/AGENTS.md`, `.github/copilot-instructions.md`, `.github/agents/`, `.github/prompts/`, and `.claude/skills/`. Include only project automation-testing artifacts that are relevant to framework development and review.
+
+Optional screenshots, such as V-07 or V-08, may be included only if they demonstrate project workflow traceability and do not expose private thesis-writing workflow content.

@@ -6,6 +6,8 @@ This workflow defines how diagrams should be planned, created, rendered, reviewe
 
 The thesis must not rely only on screenshots. It should include clear diagrams that explain architecture, flows, testing layers, Playwright execution, API service abstraction, CI/CD readiness.
 
+The diagrams should be technically informative, not merely decorative or high-level. A good thesis diagram should show the role, mechanism, or repository-facing artifact behind each important concept while still staying simple enough for Word/PDF reading.
+
 ## 2. Recommended diagram stack
 
 ### Primary tool: Mermaid
@@ -84,6 +86,9 @@ Required style rules:
 - Keep all diagram labels in professional academic English.
 - Do not include the private thesis-writing workflow, private agents, private skills, or thesis harness in thesis-facing diagrams.
 - The Copilot Agentic-AI workflow for Automation Testing may appear only as a project automation-testing workflow, not as a thesis-writing workflow.
+- Prefer compact technical labels that include mechanism and responsibility when helpful, for example `Fixture<br/>injects Page Objects`, `API service<br/>wraps endpoints`, or `DTO<br/>typed request data`.
+- Use edge labels such as `injects`, `calls`, `wraps`, `validates`, `resets state`, and `produces evidence` when they clarify the relationship.
+- Avoid one-word nodes unless the surrounding context already explains their role.
 
 ### Mermaid styling conventions
 
@@ -124,6 +129,27 @@ flowchart TB
     classDef risk fill:#FFE4E6,stroke:#FB7185,color:#1F2937
 ```
 
+## 3.1 Technical density calibration
+
+Use this calibration to avoid both overly simple and overly complex diagrams:
+
+| Diagram type | Recommended detail level | Practical limit |
+|---|---|---|
+| Concept overview | Show the concept, major responsibilities, and quality goal. | 8-12 nodes and 3-5 groups. |
+| Focused mechanism diagram | Show concrete mechanism, repository artifact type, and flow. | 10-15 nodes and 2-4 groups. |
+| Sequence/process diagram | Show actors/components and the order of interactions. | 5-8 participants or phases. |
+| Evidence/evaluation diagram | Show artifact origin, verification step, and thesis use. | Keep result claims out until evidence exists. |
+
+Each technical diagram should answer at least two questions:
+
+- What responsibility does this component or concept own?
+- What concrete framework artifact demonstrates it?
+- What data, control, or dependency flows through it?
+- What quality attribute does it support?
+- What limitation or evidence boundary must not be overclaimed?
+
+If the diagram cannot answer these questions, revise it before registering it as thesis-ready.
+
 ## 4. Complexity control and split rules
 
 Before creating or revising a diagram, audit its complexity.
@@ -137,6 +163,7 @@ General rules:
 - Avoid placing every repository folder or file into one architecture diagram.
 - Prefer progressive disclosure: start with an overview figure, then add focused follow-up figures for UI detail, API detail, reporting, evidence, or workflow phases.
 - Large diagrams should be simplified before insertion into thesis chapters.
+- Sparse diagrams should be enriched before insertion when they fail to show the technical mechanism behind a concept.
 
 Explicit split decisions:
 
@@ -144,6 +171,8 @@ Explicit split decisions:
   - high-level layered architecture;
   - UI automation layer detail;
   - API automation layer detail;
+  - fixture/dependency injection detail;
+  - test data and cleanup strategy detail;
   - reporting/evidence pipeline.
 - Copilot Agentic-AI workflow for Automation Testing may be split into:
   - overall agentic automation-testing workflow;
@@ -204,17 +233,23 @@ Figure X.X. Layered architecture of the Playwright UI and API automation framewo
 
 Every caption must answer: what does this figure help the reader understand?
 
-## 8. Minimum planned figures for this thesis
+## 8. Active planned figures for this thesis
+
+The figure plan should avoid diagram overuse. After the 2026-06-03 figure-scope decision, the standalone test automation pyramid and evaluation methodology workflow diagrams are archived and excluded from planned thesis insertion. Their concepts should be covered with concise prose, lists, or evidence tables unless the user explicitly re-approves dedicated diagrams later. After the T-078 refinement, Chapter 2 should use source-attributed prose and literature-based tables rather than external screenshots or new diagrams by default.
 
 | Figure | Target chapter | Tool | Purpose |
 |---|---:|---|---|
-| Test Automation Pyramid | Chapter 2 | Mermaid | Explain levels of software testing and why E2E tests should be selective. |
+| Automation Framework Concept Map | Chapter 3 | Mermaid | Explain how POM, fixtures, workflows, services, DTOs, constants, utilities, and reporting support maintainability. |
+| Page Object Model Responsibility Flow | Chapter 3 / UI Abstraction Design | Mermaid | Explain how tests delegate page interaction details to Page Objects and element abstractions. |
+| Practical Page Object Model Application Workflow | Chapter 3 / UI Abstraction Design | Mermaid | Explain how a QA/QC engineer moves from manual scenario understanding to locator discovery, page-object mapping, autoscript writing, and reuse. |
+| Fixture and Dependency Injection Mechanism | Chapter 3 / Runtime Composition Design | Mermaid | Explain how Playwright fixtures provide runtime objects and reusable framework abstractions. |
+| Shared Runtime Context Flow | Chapter 3 / Runtime Composition Design | Mermaid | Explain how Playwright runtime objects, base fixtures, BrowserManagement, custom fixtures, utilities, and tests interact. |
+| Test Data and Cleanup Strategy | Chapter 3 / Test Data and State Management Design | Mermaid | Explain how centralized data, DTOs, API cleanup, and environment configuration support repeatability. |
 | Playwright Framework Layered Architecture | Chapter 3 | Mermaid | Show the relationship between tests, fixtures, workflows, page objects, API services, DTOs, utilities, and config. |
 | UI Test Execution Flow | Chapter 3/4 | Mermaid | Explain how a UI test moves through fixtures, workflows, page objects, browser utilities, and assertions. |
 | API Test Execution Flow | Chapter 3/4 | Mermaid | Explain how API tests use service classes, endpoint constants, API utilities, DTOs, and response assertions. |
 | Test Data and Cleanup Strategy | Chapter 4 | Mermaid | Explain how test data is centralized and how cleanup/reset flows protect test independence. |
 | Playwright Reporting Pipeline | Chapter 4/5 | Mermaid | Show trace, HTML report, JUnit report, and result artifacts. |
-| Evaluation Methodology | Chapter 5 | Mermaid | Show how results, maintainability, coverage, and limitations are evaluated. |
 
 ## 9. Diagram review checklist
 

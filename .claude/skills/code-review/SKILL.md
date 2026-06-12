@@ -1,198 +1,121 @@
 ---
-name: design-test-case
-description: Use this skill whenever the task is to design automation-ready test cases or test scenarios for the Unsplash automation framework. This includes breaking a feature or flow into meaningful UI or API scenarios, deciding positive and negative coverage, and producing practical scenario definitions that are realistic to automate within the current repository.
+name: code-review
+description: Use this skill whenever the task is to review Playwright automation code for correctness, maintainability, selector quality, Page Object Model compliance, and adherence to the Unsplash framework conventions.
 ---
 
-# Design Test Case Skill
+# Code Review Skill
 
-This skill helps design clear, practical, automation-ready test cases or scenarios for the current project.
+This skill guides a thorough review of Playwright automation code in the current project.
 
 Use this skill when:
-- the user wants to design scenarios for a feature or user flow
-- a new UI or API test area needs coverage planning
-- a feature is known, but the test scenarios are not yet defined
-- an agent needs a clean scenario set before script generation
+- the user asks for a code review of a test file, Page Object, workflow, or fixture
+- a generated script needs quality verification before merging
+- a Page Object needs POM convention compliance checking
+- selector quality or maintainability concerns are raised
+- an agent needs a structured code review before code is considered complete
 
-This skill is not for writing final automation code.  
-Its purpose is to create the right testing targets first.
+This skill is not for writing new automation code.
+Its purpose is to assess and improve existing code quality.
 
 ---
 
 ## Core objectives
 
-The goal is to produce test cases or scenarios that are:
-- meaningful
-- clear
-- realistic to automate
-- aligned with the current project
-- useful for downstream script generation
-
-The output should help answer:
-- what should be tested?
-- what is the happy path?
-- what are the most meaningful negative paths?
-- which edge cases are worth automating?
-- what is already covered and what is still missing?
+The goal is to produce a review that identifies:
+- correctness issues that could cause false passes or false failures
+- maintainability problems that increase test fragility
+- selector quality concerns that reduce stability
+- POM convention violations that break the framework pattern
+- reuse opportunities where existing framework assets are ignored
 
 ---
 
-## Design workflow
+## Review workflow
 
-### 1. Understand the requested feature or flow
-Clarify:
-- is the target UI or API?
-- is the user asking for:
-  - one scenario
-  - multiple scenarios
-  - a scenario set for a whole feature?
-- what business action or user goal is being tested?
-- what evidence exists in the repo, README, or docs?
+### 1. Understand the scope
+Identify:
+- which file or files are under review
+- is it a test file, Page Object, workflow, fixture, or API service?
+- what is the expected behavior the code should verify?
 
-### 2. Review repository context
-Before designing scenarios:
-- inspect existing tests
-- inspect existing Page Objects, workflows, and services
-- inspect project documentation or README if relevant
+### 2. Inspect existing framework assets
+Before reviewing:
+- check `page-object/` for existing POM classes
+- check `workflow/` for reusable workflow patterns
+- check `fixtures/` and `core/fixtures/` for existing fixture setup
+- check `api-service/` for existing API service patterns
 
-Your purpose is to:
-- understand how the feature behaves today
-- avoid proposing duplicate coverage unless a new variation adds value
-- keep the scenario design aligned with the maturity of the framework
-
-### 3. Understand the product behavior
-For UI scenarios:
-- infer the real user journey
-- identify meaningful entry point, action, state change, and expected outcome
-
-For API scenarios:
-- identify the endpoint purpose
-- identify expected request/response behavior
-- identify meaningful validations, failure cases, and business-rule behavior
-
-### 4. Design practical coverage
-Use testing design thinking pragmatically:
-- Boundary Value Analysis
-- Equivalence Partitioning
-- Decision Table thinking
-- State Transition thinking
-- Error Guessing
-
-Do not apply these mechanically.  
-Use them only when they genuinely improve scenario quality.
-
-### 5. Prioritize scenario value
-Always include:
-- the main happy path
-- important negative or validation cases
-- a few meaningful edge cases if practical
-
-Avoid:
-- over-fragmenting the scenario set
-- writing many low-value or repetitive cases
-- producing cases that are technically possible but poor candidates for automation in this framework
+### 3. Apply the review checklist
+Use the POM, selector, and maintainability checklists from `references/`.
 
 ---
 
-## UI scenario guidance
+## Correctness review
 
-For UI scenario design, prioritize:
-- main user journeys
-- meaningful user actions
-- visible state changes
-- important validations
-- realistic interactions a user would perform
-
-Examples in this project may include:
-- login flow
-- profile viewing
-- profile editing
-- likes flow
-- collection-related flows
-- navigation to user-specific sections
+Check:
+- assertions are specific and meaningful, not just `toBeTruthy()`
+- test steps match the described scenario intent
+- error conditions are handled or documented
+- async operations are awaited correctly
+- test isolation is preserved (no shared mutable state between tests)
+- test data does not rely on hardcoded values that will drift
 
 ---
 
-## API scenario guidance
+## POM compliance review
 
-For API scenario design, prioritize:
-- successful request handling
-- required field validation
-- invalid or missing input handling
-- response data verification
-- business-rule failures where meaningful
+Check:
+- UI interactions go through Page Object methods, not direct `page.click` in test files
+- Page Object methods represent meaningful user actions
+- Page Object constructor receives `page` from fixture, not created inline
+- Page Object does not contain test assertions (assertions belong in test files)
+- Page Object class is placed under `page-object/` matching the framework structure
 
-If the framework already has service-layer support for the area, design scenarios that can be automated cleanly through that service structure.
+---
+
+## Selector quality review
+
+Check:
+- selectors use stable attributes in preference order:
+  1. `data-testid`
+  2. stable `id`
+  3. stable `name`
+  4. stable accessible role
+  5. stable CSS based on meaningful attributes
+  6. XPath only for relationship-based refinement
+- selectors are not deeply nested structural paths that break on layout changes
+- selectors are not positional unless no stable alternative exists
+- selectors are unique and not ambiguous
+
+---
+
+## Maintainability review
+
+Check:
+- test file is placed under `tests/ui/` or `tests/api/` per framework conventions
+- test name describes the scenario in business-readable language
+- no duplicated logic that should be extracted to workflow or Page Object
+- no magic strings; prefer constants from `constants/`
+- fixture usage follows the project fixture pattern
 
 ---
 
 ## Output expectations
 
-Unless the user requests a different format, each test case should include:
-
-- **Title**
-- **Pre-conditions**
-- **Step Actions**
-- **Expected Results**
-- **Test Data**
-- **Priority**
-- **Test Type**
-
-If the user asks for a lighter-weight output, you may provide an automation-ready scenario list instead of full manual-style cases.
-
----
-
-## Writing rules
-
-- Keep each test case focused on one meaningful scenario
-- Keep titles clear and business-readable
-- Keep steps precise and testable
-- Keep expected results concrete
-- Prefer clarity over exhaustive verbosity
-- Make the output easy to hand off to script generation
-
----
-
-## Coverage rules
-
-Where practical:
-- include at least one strong positive scenario
-- include negative scenarios that represent realistic validation or failure behavior
-- include edge cases only if they add meaningful coverage value
-
-Do not force a fixed number of negative cases if the feature does not justify them.
-
----
-
-## Good scenario design in this project
-
-A good scenario set for this project:
-- maps to real product behavior
-- is realistic to automate with the current framework
-- can reuse existing framework assets
-- helps the next step generate maintainable automation code
-
-A poor scenario set:
-- is overly theoretical
-- ignores how the current framework is organized
-- duplicates existing coverage unnecessarily
-- contains many low-value cases
-
----
-
-## What to provide to downstream automation generation
-
-When this skill is used before script generation, include a short summary of:
-- target feature / flow
-- chosen scenarios
-- most important validations
-- possible reuse candidates in the repo
-- any assumptions that affect automation
+Return a structured review:
+- **Overall verdict**: PASS / MINOR_ISSUES / MAJOR_ISSUES
+- **Correctness findings** (numbered, specific)
+- **POM compliance findings**
+- **Selector quality findings**
+- **Maintainability findings**
+- **Reuse opportunities**
+- **Recommended fixes**
 
 ---
 
 ## When to read reference files
 
 Read files under `references/` only when needed:
-
-- `ui-scenario-patterns.md` → when designing UI-focused scenarios
-- `api-scenario-patterns.md` → when designing API-focused scenarios
+- `pom-review.md` → when reviewing Page Object structure and method design
+- `selector-review.md` → when selector quality or stability is in question
+- `maintainability-checklist.md` → when assessing overall test code health

@@ -35,6 +35,11 @@ Use this skill when:
 - Never fabricate citation keys, page numbers, URLs, or result metrics.
 - If evidence is missing, mark `NEEDS_EVIDENCE`.
 - If a source is missing, mark `NEEDS_SOURCE`.
+- Add in-text citations only where source attribution is needed in the body: theory claims, official documentation claims, external benchmark claims, execution result claims, and specific repository/source-code evidence.
+- Avoid over-citing every sentence when one citation clearly supports the paragraph or a group of closely related factual statements.
+- Do not self-define academic or specialized testing concepts. Definition paragraphs must identify an academic, official, or professional source.
+- For Literature Review chapters, avoid relying almost entirely on one source family when broader academic or professional literature is available.
+- Use repository/source-code citations for implementation evidence, but avoid raw folder/file-path discussion in Chapter 1.
 - Ensure every reference used in body text appears in the reference list.
 - Ensure every figure and table has a caption and is cited in the body.
 

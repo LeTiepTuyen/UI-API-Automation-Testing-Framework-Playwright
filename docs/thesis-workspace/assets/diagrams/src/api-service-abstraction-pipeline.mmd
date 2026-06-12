@@ -1,0 +1,23 @@
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial", "primaryTextColor": "#1F2937", "lineColor": "#64748B"}}}%%
+flowchart LR
+    classDef test fill:#F1F5F9,stroke:#64748B,color:#1F2937
+    classDef api fill:#DCFCE7,stroke:#4ADE80,color:#1F2937
+    classDef data fill:#FEF3C7,stroke:#F59E0B,color:#1F2937
+
+    T["API test specification<br/>scenario + assertions"]
+    S["Service method<br/>endpoint operation"]
+    D["Request inputs<br/>params, DTO, headers"]
+    U["APIUtils<br/>HTTP method wrapper"]
+    R["Playwright request context<br/>HTTP execution"]
+    A["Response validation<br/>status, body, headers"]
+
+    T -->|calls| S
+    S -->|combines| D
+    D -->|passed to| U
+    S -->|delegates| U
+    U --> R
+    R --> A
+
+    class T test
+    class S,U,R,A api
+    class D data

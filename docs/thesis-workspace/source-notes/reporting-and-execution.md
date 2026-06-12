@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This source note summarizes execution and reporting evidence from repository configuration. It does not record actual test results.
+This source note summarizes execution and reporting evidence from repository configuration and records the current verified execution-evidence boundary. Detailed run evidence is stored in the dated Chapter 5 execution evidence source note.
 
 ## Execution Commands
 
@@ -34,7 +34,24 @@ These commands are documentation evidence for how the framework is intended to b
 - JUnit XML output through `['junit', { outputFile: 'results.xml' }]`.
 - trace collection through `trace: 'on-first-retry'`.
 
-The repository root currently includes `results.xml`, `playwright-report/`, and `test-results/` in the working tree, but the thesis should not use them as final evaluation evidence until their source run, timestamp, and relevance are verified.
+The repository root includes `results.xml`, `playwright-report/`, and `test-results/` in the working tree. A verified local execution run was collected on `2026-06-03` and copied into thesis evidence artifacts. Use the dated source note and copied artifacts rather than relying on any later overwritten root-level report files.
+
+Verified `2026-06-03` full-suite evidence:
+
+- source note: `docs/thesis-workspace/source-notes/chapter-5-execution-evidence-2026-06-03.md`;
+- JUnit XML snapshot: `docs/thesis-workspace/assets/tables/execution-2026-06-03/playwright-results-2026-06-03.xml`;
+- HTML report snapshot: `docs/thesis-workspace/assets/tables/execution-2026-06-03/playwright-html-report-index-2026-06-03.html`;
+- execution log snapshot: `docs/thesis-workspace/assets/tables/execution-2026-06-03/playwright-test-run-2026-06-03.log`;
+- HTML report screenshot: `docs/thesis-workspace/assets/figures/playwright-html-report-overview.png`.
+
+The verified full-suite run executed 18 tests with 18 passed, 0 failed, 0 skipped, 0 errors, and 28.890057 seconds recorded in JUnit XML.
+
+Trace evidence boundary:
+
+- The full-suite run did not produce traces because `trace: 'on-first-retry'` only records traces on retry, and the run passed without retry.
+- A supplemental representative trace run was collected for `tests/ui/profile/view-profile.spec.ts` with `--trace on --reporter=line`.
+- The trace zip is stored at `docs/thesis-workspace/assets/tables/execution-2026-06-03/playwright-trace-view-profile-2026-06-03.zip`.
+- The current trace-viewer screenshot should not be inserted because it shows the upload screen rather than a loaded trace.
 
 ## Mermaid Diagram Rendering Evidence
 
@@ -44,7 +61,8 @@ Preflight checks showed that `npx` is available, but local Mermaid CLI is not in
 
 ## Evidence Gaps
 
-- Actual test execution output is required before claiming pass/fail counts.
-- Actual execution time is required before discussing performance or duration.
-- Verified report screenshots and trace artifacts are required before using them in Chapter 5 or appendices.
+- The first verified full-suite execution output is now available for Chapter 5.
+- The first verified execution duration is now available for Chapter 5, but it supports only this local run and not long-term performance claims.
+- Verified HTML report evidence is available.
+- A supplemental trace zip is available, but a loaded trace-viewer screenshot still needs capture if a screenshot is required.
 - Mermaid-rendered SVG outputs still need to be generated and reviewed before figure insertion.

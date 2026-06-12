@@ -1,7 +1,5 @@
 # Title Page
 
-NEEDS_INPUT: Copy into the VNUK Word template title page.
-
 **THE UNIVERSITY OF DA NANG**
 
 **VNUK INSTITUTE FOR RESEARCH AND EXECUTIVE EDUCATION**
@@ -22,4 +20,4 @@ In Computer Science and Engineering
 
 DANANG, 2026
 
-© 2026 Le Tiep Tuyen
+Copyright 2026 Le Tiep Tuyen

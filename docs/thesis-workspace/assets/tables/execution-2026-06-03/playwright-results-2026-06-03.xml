@@ -1,0 +1,52 @@
+<testsuites id="" name="" tests="18" failures="0" skipped="0" errors="0" time="28.890057">
+<testsuite name="api\users\get-public-profile.spec.ts" timestamp="2026-06-03T09:08:35.499Z" hostname="chromium" tests="3" failures="0" skipped="0" time="4.466" errors="0">
+<testcase name="API | GET /users/:username/public-profile › returns 200 and public profile data for a valid username" classname="api\users\get-public-profile.spec.ts" time="1.72">
+</testcase>
+<testcase name="API | GET /users/:username/public-profile › returns 404 when username does not exist" classname="api\users\get-public-profile.spec.ts" time="1.683">
+</testcase>
+<testcase name="API | GET /users/:username/public-profile › returns well-formed public profile links" classname="api\users\get-public-profile.spec.ts" time="1.063">
+</testcase>
+</testsuite>
+<testsuite name="api\users\get-statistics.spec.ts" timestamp="2026-06-03T09:08:35.499Z" hostname="chromium" tests="4" failures="0" skipped="0" time="8.782" errors="0">
+<testcase name="API | GET /users/:username/statistics › returns totals and historical stats with defaults" classname="api\users\get-statistics.spec.ts" time="3.426">
+</testcase>
+<testcase name="API | GET /users/:username/statistics › supports custom resolution and quantity" classname="api\users\get-statistics.spec.ts" time="2.4">
+</testcase>
+<testcase name="API | GET /users/:username/statistics › rejects unsupported resolution or out-of-range quantity" classname="api\users\get-statistics.spec.ts" time="0.538">
+</testcase>
+<testcase name="API | GET /users/:username/statistics › returns the expected metric groups" classname="api\users\get-statistics.spec.ts" time="2.418">
+</testcase>
+</testsuite>
+<testsuite name="api\users\list-collections.spec.ts" timestamp="2026-06-03T09:08:35.499Z" hostname="chromium" tests="4" failures="0" skipped="0" time="4.405" errors="0">
+<testcase name="API | GET /users/:username/collections › returns collection summaries for a valid user" classname="api\users\list-collections.spec.ts" time="0.819">
+</testcase>
+<testcase name="API | GET /users/:username/collections › supports pagination with page and per_page" classname="api\users\list-collections.spec.ts" time="1.843">
+</testcase>
+<testcase name="API | GET /users/:username/collections › returns valid collection link relations" classname="api\users\list-collections.spec.ts" time="1.369">
+</testcase>
+<testcase name="API | GET /users/:username/collections › returns 404 when username does not exist" classname="api\users\list-collections.spec.ts" time="0.374">
+</testcase>
+</testsuite>
+<testsuite name="api\users\list-photos.spec.ts" timestamp="2026-06-03T09:08:35.499Z" hostname="chromium" tests="4" failures="0" skipped="0" time="2.254" errors="0">
+<testcase name="API | GET /users/:username/photos › returns the default abbreviated photo list shape" classname="api\users\list-photos.spec.ts" time="0.424">
+</testcase>
+<testcase name="API | GET /users/:username/photos › supports pagination with page and per_page" classname="api\users\list-photos.spec.ts" time="1.047">
+</testcase>
+<testcase name="API | GET /users/:username/photos › includes statistics when stats is true" classname="api\users\list-photos.spec.ts" time="0.422">
+</testcase>
+<testcase name="API | GET /users/:username/photos › returns 404 when username does not exist" classname="api\users\list-photos.spec.ts" time="0.361">
+</testcase>
+</testsuite>
+<testsuite name="ui\profile\bookmarked-photos.spec.ts" timestamp="2026-06-03T09:08:35.499Z" hostname="chromium" tests="1" failures="0" skipped="0" time="13.963" errors="0">
+<testcase name="UI | Bookmarked photos section › displays bookmarked photos in the Bookmarks section" classname="ui\profile\bookmarked-photos.spec.ts" time="13.963">
+</testcase>
+</testsuite>
+<testsuite name="ui\profile\update-profile.spec.ts" timestamp="2026-06-03T09:08:35.499Z" hostname="chromium" tests="1" failures="0" skipped="0" time="22.199" errors="0">
+<testcase name="UI | Update photographer profile › updates username and verifies the profile full name" classname="ui\profile\update-profile.spec.ts" time="22.199">
+</testcase>
+</testsuite>
+<testsuite name="ui\profile\view-profile.spec.ts" timestamp="2026-06-03T09:08:35.499Z" hostname="chromium" tests="1" failures="0" skipped="0" time="15.399" errors="0">
+<testcase name="UI | Photographer profile page › displays photographer profile for a valid account" classname="ui\profile\view-profile.spec.ts" time="15.399">
+</testcase>
+</testsuite>
+</testsuites>

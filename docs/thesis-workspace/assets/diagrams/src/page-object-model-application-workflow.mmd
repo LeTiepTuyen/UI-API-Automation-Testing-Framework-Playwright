@@ -1,0 +1,27 @@
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial", "primaryTextColor": "#1F2937", "lineColor": "#64748B"}}}%%
+flowchart LR
+    classDef manual fill:#F8FAFC,stroke:#64748B,color:#1F2937
+    classDef ui fill:#DBEAFE,stroke:#60A5FA,color:#1F2937
+    classDef core fill:#F1F5F9,stroke:#64748B,color:#1F2937
+    classDef data fill:#FEF3C7,stroke:#F59E0B,color:#1F2937
+    classDef reporting fill:#F3E8FF,stroke:#A78BFA,color:#1F2937
+
+    M1["Manual test case walkthrough<br/>execute scenario first"]
+    M2["Flow mapping<br/>pages, actions, expected states"]
+    L1["DevTools locator discovery<br/>stable UI locators"]
+    P1["POM mapping<br/>one page = object + locators"]
+    A1["Page action methods<br/>click, fill, submit, verify"]
+    A2["Automated test scenario<br/>fixture-injected Page Objects"]
+    R1["Run, refine, and reuse<br/>waits, locators, assertions"]
+
+    M1 -->|reveals| M2
+    M2 -->|guides| L1
+    L1 -->|supports| P1
+    P1 -->|defines| A1
+    A1 -->|used by| A2
+    A2 -->|validated by| R1
+
+    class M1,M2 manual
+    class L1,P1 ui
+    class A1,A2 core
+    class R1 reporting

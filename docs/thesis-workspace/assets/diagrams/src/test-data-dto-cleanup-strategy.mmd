@@ -1,0 +1,33 @@
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial", "primaryTextColor": "#1F2937", "lineColor": "#64748B"}}}%%
+flowchart LR
+    classDef test fill:#F1F5F9,stroke:#64748B,color:#1F2937
+    classDef ui fill:#DBEAFE,stroke:#60A5FA,color:#1F2937
+    classDef api fill:#DCFCE7,stroke:#4ADE80,color:#1F2937
+    classDef data fill:#FEF3C7,stroke:#F59E0B,color:#1F2937
+
+    subgraph DATA["Centralized data"]
+        J["user-info.json + JsonHelper<br/>selected account data"]
+        ENV["Environment + constants<br/>base URLs, endpoints, settings"]
+    end
+
+    subgraph UI["State-changing UI flow"]
+        T["UI test<br/>scenario + assertion"]
+        UIA["Page Objects<br/>edit and submit profile"]
+    end
+
+    subgraph CLEAN["Cleanup path"]
+        DTO["UpdateUserProfileRequestData<br/>reset payload"]
+        S["UsersService + APIUtils PUT<br/>API reset call"]
+    end
+
+    J -->|feeds| T
+    ENV --> S
+    T -->|temporary update data| UIA
+    UIA -->|feedback checked by| T
+    T -->|afterEach| DTO
+    DTO --> S
+
+    class J,ENV,DTO data
+    class T test
+    class UIA ui
+    class S api

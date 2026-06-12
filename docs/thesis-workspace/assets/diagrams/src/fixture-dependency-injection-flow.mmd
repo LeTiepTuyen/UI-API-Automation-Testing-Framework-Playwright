@@ -1,0 +1,38 @@
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial", "primaryTextColor": "#1F2937", "lineColor": "#64748B"}}}%%
+flowchart LR
+    classDef core fill:#F1F5F9,stroke:#64748B,color:#1F2937
+    classDef ui fill:#DBEAFE,stroke:#60A5FA,color:#1F2937
+    classDef api fill:#DCFCE7,stroke:#4ADE80,color:#1F2937
+    classDef data fill:#FEF3C7,stroke:#F59E0B,color:#1F2937
+    classDef reporting fill:#F3E8FF,stroke:#A78BFA,color:#1F2937
+
+    subgraph PW["Playwright runtime"]
+        RUNTIME["Browser/context/page/request<br/>runtime objects"]
+    end
+
+    subgraph BF["Base fixture"]
+        BF1["Automatic fixture<br/>initializes runtime references"]
+        BM["BrowserManagement<br/>stores page/context/request"]
+    end
+
+    subgraph CF["Custom fixture"]
+        PO["Page Objects + LoginWorkflow<br/>reusable test objects"]
+    end
+
+    T["Test specification<br/>receives injected objects"]
+    U["Framework utilities<br/>UI actions + API requests"]
+    Q["Quality effect<br/>less setup duplication"]
+
+    RUNTIME -->|provided to| BF1
+    BF1 -->|sets| BM
+    BF1 -->|extends| CF
+    PO -->|injects| T
+    BM -->|shared access| U
+    U -->|supports| T
+    CF -. supports .-> Q
+
+    class RUNTIME core
+    class BF1,BM core
+    class PO,T ui
+    class U api
+    class Q reporting

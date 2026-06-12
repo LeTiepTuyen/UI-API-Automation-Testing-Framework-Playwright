@@ -1,0 +1,62 @@
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial", "primaryTextColor": "#1F2937", "lineColor": "#64748B"}}}%%
+flowchart TB
+    classDef core fill:#F1F5F9,stroke:#64748B,color:#1F2937
+    classDef ui fill:#DBEAFE,stroke:#60A5FA,color:#1F2937
+    classDef api fill:#DCFCE7,stroke:#4ADE80,color:#1F2937
+    classDef data fill:#FEF3C7,stroke:#F59E0B,color:#1F2937
+    classDef reporting fill:#F3E8FF,stroke:#A78BFA,color:#1F2937
+
+    F["Automation framework design<br/>separation of responsibilities"]
+
+    subgraph UI["UI automation concepts"]
+        P["Page Objects<br/>page actions + selectors"]
+        E["Element abstraction<br/>locator actions + waits"]
+        W["Workflow layer<br/>multi-page business flow"]
+    end
+
+    subgraph API["API automation concepts"]
+        S["Service layer<br/>endpoint methods + auth"]
+        U["API utilities<br/>HTTP methods + validation helpers"]
+        V["Validation support<br/>status, headers, schema helper"]
+    end
+
+    subgraph DATA["Data and configuration"]
+        D["DTOs + test data<br/>typed inputs + fixtures data"]
+        C["Constants + environment<br/>paths, URLs, endpoints"]
+        CL["Cleanup strategy<br/>API reset after state changes"]
+    end
+
+    subgraph Q["Quality goals"]
+        M["Maintainability<br/>localized changes"]
+        R["Reusability<br/>shared framework objects"]
+        RD["Readability<br/>scenario-level abstractions"]
+        RL["Reliability<br/>waits, assertions, cleanup"]
+        G["Debuggability<br/>reports, traces, logs"]
+        T["Traceability<br/>reports + source evidence"]
+    end
+
+    F --> P
+    F --> S
+    F --> D
+    P --> E
+    P --> W
+    S --> U
+    U --> V
+    D --> C
+    D --> CL
+    P -. supports .-> M
+    S -. supports .-> M
+    W -. supports .-> R
+    D -. supports .-> R
+    U -. supports .-> G
+    C -. supports .-> T
+    CL -. supports .-> R
+    P -. supports .-> RD
+    W -. supports .-> RL
+    V -. supports .-> RL
+
+    class F core
+    class P,E,W ui
+    class S,U,V api
+    class D,C,CL data
+    class M,R,RD,RL,G,T reporting

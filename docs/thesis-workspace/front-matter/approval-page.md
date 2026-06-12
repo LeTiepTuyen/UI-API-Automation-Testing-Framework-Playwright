@@ -6,14 +6,9 @@ VN-UK Institute for Research and Executive Education, The University of Danang
 
 Thesis Advisor: Dr. Le Dinh Dung
 
-Thesis Co-Advisor: NEEDS_INPUT
+Thesis Co-Advisor: None (individual graduation project)
 
-Committee Member: NEEDS_INPUT
+Department Chair/College Dean (Head of Department, Computer Science and Engineering): Dr. Le Dinh Dung
 
-Committee Member: NEEDS_INPUT
-
-Committee Member: NEEDS_INPUT
-
-Committee Member: NEEDS_INPUT
-
-Department Chair/College Dean: NEEDS_INPUT
+<!-- Defense committee members are intentionally deferred. The committee section will be completed at/after the thesis defense when the panel is assigned. -->
+Committee Members: To be completed at the thesis defense.

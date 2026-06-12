@@ -42,6 +42,17 @@ List the expected deliverables for this task.
 
 ---
 
+## Evidence / Visual Artifacts
+
+If this task produces thesis evidence, screenshots, reports, traces, benchmark tables, or other visual artifacts, list the expected artifact paths and any source/safety requirements.
+
+- Artifact path(s):
+- Source or capture method:
+- Citation/license review needed:
+- Secret or private-data safety check:
+
+---
+
 ## Dependencies
 
 List any dependencies or linked issues.

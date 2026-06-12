@@ -20,10 +20,11 @@ Use this skill when the user asks Codex to:
 1. Read `docs/thesis-workspace/outline.md`.
 2. Read `docs/thesis-workspace/plan.md`.
 3. Read `docs/thesis-workspace/tasks.md`.
-4. Read `docs/thesis-workspace/progress.md`.
+4. Read `docs/thesis-workspace/progress.md` for current state and recent entries.
+   - Read `docs/thesis-workspace/progress-archive/` only when older historical context is needed.
 5. Identify the smallest next useful task.
 6. Do not edit chapter prose unless the user asks for drafting.
-7. Update `tasks.md` and `progress.md` after planning changes.
+7. Update `tasks.md` and compact `progress.md` after planning changes.
 
 ## Output format
 
@@ -42,6 +43,8 @@ Return:
 - Keep tasks small and reviewable.
 - Do not mark blocked tasks as ready until the blocker is resolved.
 - Do not claim test results unless execution evidence exists.
+- Keep `progress.md` compact: archive older entries by date under `progress-archive/YYYY-MM-DD.md` and preserve only current status, archive index, current-day entry or latest handoff, and next recommended task in the active file.
+- Before ending a thesis planning session, verify that `progress.md` does not contain detailed entries from multiple dates.
 
 ## Private workflow exclusion
 

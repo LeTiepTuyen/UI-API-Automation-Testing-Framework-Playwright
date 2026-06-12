@@ -1,6 +1,6 @@
 # Thesis Progress Log
 
-This file is the single source of truth for what has been checked, what remains open, and what evidence is missing before thesis drafting starts.
+This file is the active state snapshot for thesis work. It is not the full historical log; historical entries are archived by date under `docs/thesis-workspace/progress-archive/`.
 
 ---
 
@@ -8,407 +8,159 @@ This file is the single source of truth for what has been checked, what remains 
 
 | Area | Status | Notes |
 |---|---|---|
-| Thesis writing | CHAPTER_3_DRAFT_REVIEW | Chapter 3 has been drafted from repository evidence and is awaiting user review before Chapter 4 starts. |
-| Preflight audit | REVIEW | Repository, thesis workspace, reference area, Mermaid readiness, and private-workflow exclusion have been checked. |
-| Source/reference area | REVIEW | Actual source area is `docs/final-graduation-thesis-doc/`; `docs/final-gradation-thesis-doc/` is not present in the working tree. |
-| Outline | LOCKED_FOR_DRAFTING_PREPARATION | Outline has been refined for VNUK-style structure, chapter evidence mapping, allowed figure scope, and `NEEDS_EVIDENCE` markers. |
-| Evidence matrix | IN_PROGRESS | Repository evidence and missing evidence are tracked; Chapter 3 data/configuration, reporting-design, and scope claims have been added; evaluation evidence is still missing. |
-| Repository source notes | REVIEW | Ten source notes now summarize repository evidence under `docs/thesis-workspace/source-notes/`, including the project Copilot Agentic-AI automation workflow. |
-| Citation register | IN_PROGRESS | Repository and thesis-reference sources are grounded; official Playwright and testing-theory sources still need selection. |
-| Figure register | IN_PROGRESS | Initial planned diagrams are registered; F-02, F-03, F-04, F-07, and F-08 have been reviewed for Chapter 3 use, with F-02, F-03, F-04, and F-07 inserted in the draft. |
-| Project Copilot workflow | INCLUDED_AS_PROJECT_FEATURE | The Copilot Agentic-AI workflow for automation testing is included as a project feature; the private thesis-writing harness remains excluded from thesis content. |
-| Mermaid rendering | PARTIAL | `npx` rendering works with `@mermaid-js/mermaid-cli`; local Mermaid CLI is not installed in `node_modules`. |
-| Test execution evidence | BLOCKED | Requires an actual local test run and saved report/trace artifacts before evaluation claims. |
-| Final thesis assembly | BLOCKED | Wait until chapters, figures, references, and appendices are reviewed. |
+| Thesis writing | MARKDOWN_THESIS_ASSEMBLED | Chapters 1-6 approved/final. References, appendices, definitions, abbreviations, abstract, acknowledgements, title page, approval page, and final `thesis.md` assembly are complete. Approval-page defense committee members remain deferred until the thesis defense. |
+| Next approval gate | READY_FOR_T-092_BOOTSTRAP | T-091 and T-090 are DONE; APA 7 confirmed; MiKTeX installed and verified. Proceed to LaTeX skeleton bootstrap before any chapter conversion. |
+| Next thesis task | T-092_BOOTSTRAP_LATEX_SKELETON | Create `docs/thesis-latex/` skeleton and migration harness from `latex-migration-spec.md`; do not convert chapter prose yet. |
+| Task board | CURRENT | All chapter tasks DONE. T-032, T-035, T-036, T-051, T-060, T-065, T-083, T-090, and T-091 DONE. T-030 IN_PROGRESS (committee deferred to defense). T-092 TODO. |
+| Outline | UPDATED_2026_06_11 | Chapter 6 uses 6.1 Discussion, 6.2 Conclusion, 6.3 Limitations, and 6.4 Future Work. Abbreviation list trimmed to used terms only (REST/SUT/TDM/VCS removed). |
+| Evidence and citations | UPDATED_2026_06_11 | Chapter 6 uses existing evidence only. No new execution metrics or citation keys were introduced. References finalized (72 keys, APA 7-style). |
+| Visual and diagram evidence | UNCHANGED_FOR_CH6 | Chapter 6 introduces no new figures, screenshots, or diagrams. |
+| Test execution evidence | UNCHANGED | Verified 2026-06-03 full-suite run: 18 tests, 18 passed, 0 failed, 0 skipped, 0 errors, 28.890057s. Do not claim new metrics without new execution evidence. |
+| Progress tracking | COMPACTED_2026_06_12 | Older daily history is archived through 2026-06-11. |
+| Final thesis assembly | DONE | T-065 completed on 2026-06-12. `thesis.md` was assembled from approved sources, front-matter workflow markers were removed, relative image paths were normalized, and citation/image link checks passed. |
+| LaTeX/Overleaf migration | MARKDOWN_BASELINE_FROZEN | Canonical execution spec created 2026-06-12: `docs/thesis-workspace/latex-migration/latex-migration-spec.md` (source of truth for both agents). Decisions locked: pdfLaTeX+Biber, APA 7 (`biblatex style=apa`), dedicated Overleaf project, fix sample page-numbering bug. T-092 is the next actionable task before conversion. |
 
 ---
 
-## Progress entries
+## Progress archive index
 
-### 2026-05-31 - Initial blueprint created
+Historical progress entries are archived by date so this file remains fast to read at the start of each thesis session. Read archive files only when older context is needed for traceability, review, or debugging.
 
-**Completed**
+| Date | Archive file | Entries |
+|---|---|---:|
+| 2026-05-31 | `progress-archive/2026-05-31.md` | 1 |
+| 2026-06-01 | `progress-archive/2026-06-01.md` | 9 |
+| 2026-06-02 | `progress-archive/2026-06-02.md` | 12 |
+| 2026-06-03 | `progress-archive/2026-06-03.md` | 15 |
+| 2026-06-04 | `progress-archive/2026-06-04.md` | 8 |
+| 2026-06-05 | `progress-archive/2026-06-05.md` | 2 |
+| 2026-06-08 | `progress-archive/2026-06-08.md` | 3 |
+| 2026-06-10 | `progress-archive/2026-06-10.md` | 1 |
+| 2026-06-11 | `progress-archive/2026-06-11.md` | 6 |
 
-- Proposed a dedicated thesis workspace structure under `docs/thesis-workspace/`.
-- Proposed root and nested instruction files.
-- Proposed project-scoped planning, research, drafting, review, and citation-audit harness files.
-- Proposed a six-chapter thesis outline aligned with VNUK structure and Playwright automation thesis patterns.
+---
 
-**Open decisions**
+## Current-day progress entry
 
-- Confirm final title capitalization required by VNUK.
-- Confirm whether the final thesis will use APA, IEEE, or another citation style.
-- Confirm whether CI/CD evidence will be included or postponed to future work.
-- Confirm whether screenshots of test reports and trace viewer will be added to appendices.
-
-**Blocked items**
-
-- Exact test execution results are blocked until the framework is run locally.
-- Exact number of final UI/API tests is blocked until source inventory and execution are complete.
-
-### 2026-06-01 - Preflight validation for thesis planning and evidence tracking
+### 2026-06-12 - Front matter completed (acknowledgements, approval/title pages); progress compacted (Claude)
 
 **Completed**
 
-- Inspected repository source structure for UI/API tests, Page Objects, fixtures, workflows, API services, DTOs, constants, test data, utilities, and Playwright configuration.
-- Inspected thesis workspace structure, including chapter placeholders, front matter, appendices, references, diagram sources, and tracking files.
-- Confirmed actual thesis source/reference area as `docs/final-graduation-thesis-doc/`.
-- Checked Mermaid rendering readiness: `npx` is available; local `mmdc` and local `@mermaid-js/mermaid-cli` are not installed.
-- Scanned thesis-facing body/chapter/front-matter/appendix/figure-register files for private workflow references and found none.
+- T-035 Acknowledgements written per user scope: thanks the supervisor (Dr. Le Dinh Dung) and the VNUK Institute faculty/staff only; no AI-tool or private-workflow acknowledgement. Marked DONE.
+- T-030 approval page filled: Thesis Advisor and Department Chair both Dr. Le Dinh Dung; Co-Advisor = None (individual project). Defense committee members deferred by user to the thesis defense. Title page confirmed complete. T-030 IN_PROGRESS (committee fill-in is a post-defense step and does not block assembly).
+- Applied the earlier T-032 abbreviation decision (Option A): removed REST/SUT/TDM/VCS from `abbreviations.md` (unused in the body); added a finalization note to `outline.md`.
+- Independent audits saved for the Codex-completed tasks: `reviews/references-audit-2026-06-11.md`, `reviews/appendices-audit-2026-06-11.md`, `reviews/definitions-abbreviations-audit-2026-06-11.md`, `reviews/abstract-audit-2026-06-11.md` â€” all PASS.
+- Archived the six 2026-06-11 entries to `progress-archive/2026-06-11.md` and compacted this file.
 
-**Files updated**
+**Verification**
 
-- `docs/thesis-workspace/tasks.md`
-- `docs/thesis-workspace/progress.md`
-- `docs/thesis-workspace/evidence-matrix.md`
-- `docs/thesis-workspace/citation-register.md`
-- `docs/thesis-workspace/figure-register.md`
+| Check | Result |
+|---|---|
+| Acknowledgements scope-limited (supervisor + VNUK only) | Yes |
+| AI/private-workflow mentioned in front matter | No |
+| Approval page co-advisor resolved | Yes (None) |
+| Committee members | Deferred to defense (intentional) |
+| New execution metrics invented | No |
+| Source automation code modified | No |
 
-**Evidence added**
-
-- Repository structure and project documents are available for Chapter 1, Chapter 3, and Chapter 4 claims.
-- UI tests exist under `tests/ui/profile/`.
-- API tests exist under `tests/api/users/`.
-- Framework implementation evidence exists under `page-object/`, `fixtures/`, `core/fixtures/`, `workflow/`, `api-service/`, `core/`, `data-object/`, `constants/`, `test-data/`, and `utils/`.
-- Playwright execution/reporting configuration exists in `playwright.config.ts`.
-
-**Blockers**
-
-- Chapter 2 needs official Playwright documentation and academic/professional testing sources.
-- Chapter 5 needs actual execution output, pass/fail counts, report screenshots, trace evidence, and saved artifacts.
-- Diagram rendering is not locally verified until Mermaid CLI is available.
-- The working tree contains source-reference path changes outside this preflight whitelist; commit staging must remain scoped.
-
-**Next recommended task**
-
-- Finalize citation style and collect official/theory citations before drafting Chapter 1 or Chapter 2.
-
-### 2026-06-01 - Repository source notes created
+### 2026-06-12 - T-091 LaTeX audit completed; citation-style conflict found (Claude)
 
 **Completed**
 
-- Created structured source notes from repository evidence without drafting thesis chapters.
-- Summarized project overview, architecture, Playwright configuration, UI automation, API automation, fixtures/workflows, test data/configuration, reporting/execution, and limitations.
-- Added path-based references inside each source note so later drafting can trace claims back to repository files.
-- Updated `evidence-matrix.md` to include the source notes as organized evidence assets.
+- Created the canonical English migration spec `latex-migration/latex-migration-spec.md` (source of truth for both agents) and wired it into `tasks.md`, `next-chat-handoff.md`, and `Latex_approach_recommendation.md`.
+- Ran T-091: audited the official VNUK template, sample-analysis notes, and the friend's LaTeX sample against the spec. Recorded findings in spec Section 11.
+- Confirmed consistent: front-matter order, auto-generated TOC/LoF/LoT, 6-chapter structure, roman→arabic page numbering.
+- TeX tooling: Cách 1 completed the same day — MiKTeX 25.12 installed and verified (pdflatex/biber/latexmk; compile smoke test passed; on-the-fly install = Always). No tooling prerequisite remains before T-092.
 
-**Files updated**
+**DECISION RESOLVED (2026-06-12)**
 
-- `docs/thesis-workspace/source-notes/repository-overview.md`
-- `docs/thesis-workspace/source-notes/framework-architecture.md`
-- `docs/thesis-workspace/source-notes/playwright-configuration.md`
-- `docs/thesis-workspace/source-notes/ui-automation-layer.md`
-- `docs/thesis-workspace/source-notes/api-automation-layer.md`
-- `docs/thesis-workspace/source-notes/fixtures-and-workflows.md`
-- `docs/thesis-workspace/source-notes/test-data-and-configuration.md`
-- `docs/thesis-workspace/source-notes/reporting-and-execution.md`
-- `docs/thesis-workspace/source-notes/limitations-and-missing-evidence.md`
-- `docs/thesis-workspace/progress.md`
-- `docs/thesis-workspace/evidence-matrix.md`
+- Citation-style conflict (template IEEE vs approved APA 7) was escalated to the user, who **confirmed APA 7**. The template's generic IEEE line is intentionally overridden. T-096 uses `biblatex style=apa`; no rework.
+- Minor (open, optional): template recommends abstract < 150 words; current abstract ~250 words (within the hard 1-page limit). User may optionally condense later.
 
-**Evidence added**
+**Verification**
 
-- Repository-level evidence from `README.md`, `docs/project-overview.md`, `package.json`, and `playwright.config.ts`.
-- UI automation evidence from `fixtures/custome-fixture.ts`, `workflow/login-workflow.ts`, selected Page Objects, and `tests/ui/profile/update-profile.spec.ts`.
-- API automation evidence from `core/api/api.ts`, `api-service/users-service.ts`, endpoint constants, utilities, and `tests/api/users/get-public-profile.spec.ts`.
-- Configuration, reporting, and missing-evidence notes grounded in existing repository files.
+| Check | Result |
+|---|---|
+| T-091 audit recorded in spec | Yes |
+| Citation-style conflict surfaced (not silently changed) | Yes |
+| TeX install need recorded (Cách 1) | Yes |
+| Content/prose modified | No |
+| Source automation code modified | No |
 
-**Blockers**
-
-- No execution metrics have been collected yet.
-- Official Playwright documentation and academic/professional testing sources are still required before literature-review drafting.
-- Report screenshots, trace artifacts, and rendered diagram outputs are still missing.
-
-**Next recommended task**
-
-- Review and approve the source notes, then collect official documentation and theory sources before drafting Chapter 1 or Chapter 2.
-
-### 2026-06-01 - Diagram rendering workflow validated
+### 2026-06-12 - Final Markdown thesis assembly completed (Codex)
 
 **Completed**
 
-- Read the diagram workflow, figure register, diagram README, and Mermaid sources for framework architecture, UI execution flow, and API execution flow.
-- Confirmed the three inspected Mermaid sources can be rendered by Mermaid CLI.
-- Created the diagram output directory `docs/thesis-workspace/assets/diagrams/out/`.
-- Rendered three SVG outputs:
-  - `docs/thesis-workspace/assets/diagrams/out/framework-architecture.svg`
-  - `docs/thesis-workspace/assets/diagrams/out/ui-test-execution-flow.svg`
-  - `docs/thesis-workspace/assets/diagrams/out/api-test-execution-flow.svg`
-- Updated `figure-register.md` to mark F-02, F-03, and F-04 as `RENDERED`.
+- Confirmed T-030 and T-035 status: T-035 is DONE; T-030 is sufficiently complete for assembly, with defense committee names intentionally deferred to the thesis defense.
+- Cleaned front-matter workflow markers from `title-page.md` and `author-contribution.md`.
+- Removed a private-workflow reference from Appendix D safety prose while preserving the screenshot safety rule.
+- Assembled `docs/thesis-workspace/thesis.md` from approved front matter, Chapters 1-6, References, and Appendices A-E.
+- Normalized image links in the assembled root-level `thesis.md` from chapter-relative `../assets/...` paths to `assets/...`.
+- Marked T-065 DONE and unblocked T-090 to TODO.
 
-**Render commands used**
+**Verification**
 
-- `npx -y @mermaid-js/mermaid-cli -i docs/thesis-workspace/assets/diagrams/src/framework-architecture.mmd -o docs/thesis-workspace/assets/diagrams/out/framework-architecture.svg`
-- `npx -y @mermaid-js/mermaid-cli -i docs/thesis-workspace/assets/diagrams/src/ui-test-execution-flow.mmd -o docs/thesis-workspace/assets/diagrams/out/ui-test-execution-flow.svg`
-- `npx -y @mermaid-js/mermaid-cli -i docs/thesis-workspace/assets/diagrams/src/api-test-execution-flow.mmd -o docs/thesis-workspace/assets/diagrams/out/api-test-execution-flow.svg`
+| Check | Result |
+|---|---|
+| `thesis.md` assembled | Yes |
+| Citation keys in assembled thesis | 72 |
+| Missing citation keys in `references.bib` | 0 |
+| Image links in assembled thesis | 21 |
+| Missing image assets | 0 |
+| `NEEDS_` / `PLACEHOLDER` / private workflow markers in `thesis.md` | 0 |
+| New execution metrics invented | No |
+| Source automation code modified | No |
 
-**Errors**
-
-- Initial sandboxed `npx` attempts failed with `ENOTCACHED` because the Mermaid CLI package was not available in npm cache.
-- Rendering succeeded after running the same `npx` commands with network-capable execution.
-
-**Blockers**
-
-- Local Mermaid CLI is still not installed under `node_modules`.
-- Rendered diagrams still need visual readability review before insertion into thesis chapters.
-- Remaining planned diagrams F-01, F-05, and F-06 are not rendered yet.
-
-**Next recommended task**
-
-- Review the rendered SVGs for readability and consistency, then render the remaining planned diagrams when their evidence sources are ready.
-
-### 2026-06-01 - Thesis outline refined and locked for drafting preparation
+### 2026-06-12 - T-090 Markdown content freeze completed (Codex)
 
 **Completed**
 
-- Reviewed the thesis outline against repository source notes, the evidence matrix, the figure register, and the available VNUK reference area.
-- Confirmed the requested `docs/final-gradation-thesis-doc/` path is not present and used the actual source/reference area `docs/final-graduation-thesis-doc/`.
-- Refined the outline to keep the topic focused on the Playwright UI and API automation testing framework.
-- Added chapter-level purpose and evidence-basis notes for Chapters 1 to 6.
-- Limited planned thesis figures to the test automation pyramid, framework architecture, UI/API execution flows, reporting pipeline, and evaluation workflow.
-- Marked abstract results, reporting artifacts, execution metrics, evaluation evidence, final references, and appendices that require verified artifacts as `NEEDS_EVIDENCE`.
-
-**Files updated**
-
-- `docs/thesis-workspace/outline.md`
-- `docs/thesis-workspace/progress.md`
-
-**Blockers**
-
-- Chapter 2 still needs official Playwright documentation and academic/professional software testing sources.
-- Chapter 5 remains blocked until test execution output, pass/fail/skipped counts, execution duration, report screenshots, JUnit output, and trace artifacts are collected.
-- Remaining planned diagrams F-01, F-05, and F-06 still need source creation/rendering and review.
-
-**Next recommended task**
-
-- Collect official documentation and academic/professional testing sources before drafting Chapter 2, or begin Chapter 1 drafting using repository evidence while keeping result claims marked until execution evidence is available.
-
-### 2026-06-01 - Thesis orchestration rules normalized before drafting
-
-**Completed**
-
-- Recorded the decision that the project Copilot Agentic-AI workflow for automation testing is part of the graduation project and may be included as a project feature.
-- Reconfirmed that the private thesis-writing harness remains excluded from thesis body text, appendices, references, figures, captions, and final Word output.
-- Updated the drafting order to start with Chapter 3 and Chapter 4, then pass through an execution-evidence gate before Chapter 5.
-- Added planning coverage for AI-assisted automation testing workflow design in Chapter 3 and Copilot workflow implementation in Chapter 4.
-- Registered a thesis-safe planned figure for the Copilot Agentic-AI workflow for automation test development.
-- Added evidence links for `docs/agentic-workflow/workflow-overview.md`, `.github/AGENTS.md`, `.github/copilot-instructions.md`, `.github/agents/`, `.github/prompts/`, and `.claude/skills/`.
-
-**Files updated**
-
-- `docs/thesis-workspace/plan.md`
-- `docs/thesis-workspace/outline.md`
-- `docs/thesis-workspace/tasks.md`
-- `docs/thesis-workspace/progress.md`
-- `docs/thesis-workspace/evidence-matrix.md`
-- `docs/thesis-workspace/figure-register.md`
-
-**Blockers**
-
-- The new Copilot workflow figure F-07 still needs an editable Mermaid source and rendered output.
-- Chapter 3 drafting still needs final diagram review for F-02, F-03, F-04, and F-07.
-- Chapter 4 drafting still needs representative artifact excerpts selected from `.github/` and `.claude/`.
-- Chapter 5 remains blocked until actual test execution, report, trace, screenshot, and `results.xml` evidence is collected.
-
-**Next recommended task**
-
-- Create and render the F-07 workflow diagram source, then prepare Chapter 3 drafting from repository architecture and project workflow evidence.
-
-### 2026-06-01 - Copilot Agentic-AI automation workflow source note created
-
-**Completed**
-
-- Created a dedicated source note for the project Copilot Agentic-AI workflow for automation testing development.
-- Summarized the workflow purpose, repository-wide Copilot instructions, `.github/AGENTS.md`, custom agents, prompt files, reusable skills, Playwright MCP preference, reuse-first compliance model, and source boundaries.
-- Added the new source note to the evidence matrix as `SRC-NOTE-COPILOT-WORKFLOW`.
-- Updated Chapter 3 and Chapter 4 AI-workflow pre-drafting tasks to `REVIEW` because the source note now exists, while drafting remains blocked until review and figure readiness are complete.
-
-**Files updated**
-
-- `docs/thesis-workspace/source-notes/copilot-agentic-automation-workflow.md`
-- `docs/thesis-workspace/evidence-matrix.md`
-- `docs/thesis-workspace/tasks.md`
-- `docs/thesis-workspace/progress.md`
-
-**Evidence added**
-
-- Organized project workflow evidence from `docs/agentic-workflow/workflow-overview.md`.
-- Organized repository workflow evidence from `.github/AGENTS.md`, `.github/copilot-instructions.md`, `.github/agents/`, and `.github/prompts/`.
-- Organized reusable skill evidence from `.claude/skills/`, including Playwright MCP, script generation, test-case design, and code-review reference materials.
-
-**Blockers**
-
-- F-07 still needs an editable Mermaid source, rendered output, and readability review.
-- Chapter 3 workflow subsection drafting is still blocked until F-07 and the source note are reviewed.
-- Chapter 4 workflow subsection drafting is still blocked until representative workflow artifact excerpts are selected.
-- Quantitative claims about workflow effectiveness remain `NEEDS_EVIDENCE`.
-
-**Next recommended task**
-
-- Create the F-07 Mermaid diagram source for the Copilot Agentic-AI automation workflow and render it through the existing diagram workflow.
-
-### 2026-06-01 - Copilot Agentic-AI automation workflow diagram rendered
-
-**Completed**
-
-- Created the editable Mermaid source for Figure F-07, covering only the project Copilot Agentic-AI workflow for automation test development.
-- Rendered the SVG output with Mermaid CLI through `npx -y @mermaid-js/mermaid-cli`.
-- Updated the figure register to mark F-07 as `RENDERED`.
-- Checked the Mermaid source and rendered SVG for private thesis-writing workflow terms; none were found.
-- Updated diagram tasks to reflect that F-07 is ready for review before chapter insertion.
-
-**Files updated**
-
-- `docs/thesis-workspace/assets/diagrams/src/copilot-agentic-automation-workflow.mmd`
-- `docs/thesis-workspace/assets/diagrams/out/copilot-agentic-automation-workflow.svg`
-- `docs/thesis-workspace/figure-register.md`
-- `docs/thesis-workspace/tasks.md`
-- `docs/thesis-workspace/progress.md`
-
-**Evidence added**
-
-- Figure F-07 is grounded in `docs/agentic-workflow/workflow-overview.md`, `.github/AGENTS.md`, `.github/copilot-instructions.md`, `.github/agents/`, `.github/prompts/`, `.claude/skills/`, and `docs/thesis-workspace/source-notes/copilot-agentic-automation-workflow.md`.
-
-**Blockers**
-
-- Chapter 3 drafting still needs final diagram review for F-02, F-03, F-04, and F-07.
-- F-07 should be checked in the target Word layout because the rendered SVG is still relatively wide.
-- Chapter 4 workflow subsection drafting still needs representative workflow artifact excerpts selected.
-- Quantitative claims about workflow effectiveness remain `NEEDS_EVIDENCE`.
-
-**Next recommended task**
-
-- Review F-07 visually in the target thesis layout, then proceed to Chapter 3 drafting preparation from repository architecture and project workflow evidence.
-
-### 2026-06-01 - Existing thesis diagrams simplified and split
-
-**Completed**
-
-- Audited `framework-architecture.mmd`: the previous version contained many folder-level nodes and was simplified into a high-level layer overview.
-- Audited `copilot-agentic-automation-workflow.mmd`: the previous version was too dense for one thesis figure and was simplified into the core automation-testing loop.
-- Split the Copilot workflow into focused detail diagrams for test-case design, Playwright script generation, and automation code review.
-- Added and rendered the Playwright reporting pipeline diagram from configuration-grounded evidence.
-- Reviewed the existing UI and API execution flow sequence diagrams; both remain accurate and did not require source changes.
-- Rendered all updated/new Mermaid diagrams to SVG with `npx -y @mermaid-js/mermaid-cli`.
-- Checked updated diagram source/output paths for private thesis-writing workflow terms; none were found.
-
-**Files updated**
-
-- `docs/thesis-workspace/assets/diagrams/src/framework-architecture.mmd`
-- `docs/thesis-workspace/assets/diagrams/src/copilot-agentic-automation-workflow.mmd`
-- `docs/thesis-workspace/assets/diagrams/src/copilot-test-case-design-workflow.mmd`
-- `docs/thesis-workspace/assets/diagrams/src/copilot-script-generation-workflow.mmd`
-- `docs/thesis-workspace/assets/diagrams/src/copilot-code-review-workflow.mmd`
-- `docs/thesis-workspace/assets/diagrams/src/playwright-reporting-pipeline.mmd`
-- `docs/thesis-workspace/assets/diagrams/out/framework-architecture.svg`
-- `docs/thesis-workspace/assets/diagrams/out/copilot-agentic-automation-workflow.svg`
-- `docs/thesis-workspace/assets/diagrams/out/copilot-test-case-design-workflow.svg`
-- `docs/thesis-workspace/assets/diagrams/out/copilot-script-generation-workflow.svg`
-- `docs/thesis-workspace/assets/diagrams/out/copilot-code-review-workflow.svg`
-- `docs/thesis-workspace/assets/diagrams/out/playwright-reporting-pipeline.svg`
-- `docs/thesis-workspace/figure-register.md`
-- `docs/thesis-workspace/tasks.md`
-- `docs/thesis-workspace/progress.md`
-
-**Evidence added**
-
-- F-02 remains grounded in repository architecture evidence and `docs/thesis-workspace/source-notes/framework-architecture.md`.
-- F-05 is grounded in `playwright.config.ts` and `docs/thesis-workspace/source-notes/reporting-and-execution.md`.
-- F-07 to F-10 are grounded in the project Copilot automation-testing workflow evidence and `docs/thesis-workspace/source-notes/copilot-agentic-automation-workflow.md`.
-
-**Blockers**
-
-- F-01 and F-06 still need source creation/rendering.
-- F-05 must not be used as final evaluation evidence until actual report, trace, and `results.xml` artifacts are verified.
-- F-07 remains wide because the core workflow is left-to-right; it should be checked in the target Word layout before insertion.
-- Chapter 3 and Chapter 4 drafting remain blocked until the user approves diagram readiness and representative evidence excerpts.
-
-**Next recommended task**
-
-- Review the rendered SVGs in the thesis layout, then approve the Chapter 3 figure set before drafting Chapter 3.
-
-### 2026-06-01 - Handoff note for next thesis thread
-
-**Current completed work**
-
-- Thesis planning, evidence tracking, source notes, outline refinement, diagram workflow validation, and diagram style/complexity rules have been initialized.
-- The current diagram/style pass is complete: F-02 was simplified as a high-level framework architecture overview; F-03 and F-04 were reviewed without source changes; F-05 was created/rendered as the Playwright reporting pipeline; F-07 was simplified as the core Copilot automation-testing loop; F-08, F-09, and F-10 were added as focused Copilot workflow detail diagrams.
-- Rendered SVG outputs now exist for F-02, F-03, F-04, F-05, F-07, F-08, F-09, and F-10. F-01 and F-06 remain planned.
-
-**Files changed in the current uncommitted diagram pass**
-
-- `docs/thesis-workspace/assets/diagrams/src/framework-architecture.mmd`
-- `docs/thesis-workspace/assets/diagrams/src/copilot-agentic-automation-workflow.mmd`
-- `docs/thesis-workspace/assets/diagrams/src/copilot-test-case-design-workflow.mmd`
-- `docs/thesis-workspace/assets/diagrams/src/copilot-script-generation-workflow.mmd`
-- `docs/thesis-workspace/assets/diagrams/src/copilot-code-review-workflow.mmd`
-- `docs/thesis-workspace/assets/diagrams/src/playwright-reporting-pipeline.mmd`
-- matching rendered SVG files under `docs/thesis-workspace/assets/diagrams/out/`
-- `docs/thesis-workspace/figure-register.md`
-- `docs/thesis-workspace/tasks.md`
-- `docs/thesis-workspace/progress.md`
-
-**Current blockers**
-
-- Chapter 5 remains blocked until actual test execution output, report screenshots, trace artifacts, and `results.xml` evidence are collected.
-- Chapter 2 remains blocked until official Playwright documentation and academic/professional testing theory sources are selected.
-- F-01 and F-06 still need source creation/rendering.
-- F-05 must not be used as final evaluation evidence until real execution artifacts are verified.
-- F-07 should still be checked in the target Word layout because it is a wide left-to-right workflow diagram.
-
-**Next task for the new thread**
-
-- Start Chapter 3 using the Main Orchestrator Prompt. Read `AGENTS.md`, `docs/thesis-workspace/plan.md`, `docs/thesis-workspace/outline.md`, `docs/thesis-workspace/tasks.md`, `docs/thesis-workspace/evidence-matrix.md`, `docs/thesis-workspace/figure-register.md`, and relevant source notes before drafting.
-- Draft only Chapter 3 in small evidence-grounded sections; do not draft Chapter 4 or evaluation content yet.
-
-**Boundary reminders**
-
-- The private Codex thesis-writing harness must not appear in thesis body text, appendices, references, figures, captions, or the final Word document.
-- The project Copilot Agentic-AI workflow for Automation Testing is allowed as a thesis project feature because it supports automation test case design, Playwright script generation, and automation code review. It must be described only as the project automation-testing workflow, not as a thesis-writing workflow.
-
-### 2026-06-02 - Chapter 3 draft prepared and reviewed
-
-**Completed**
-
-- Drafted `docs/thesis-workspace/chapters/chapter-3-system-analysis-and-design.md` according to `outline.md`.
-- Covered current testing context, requirements analysis, system under test, framework architecture, UI automation design, API automation design, fixture/dependency injection design, test data/configuration design, reporting/debugging design, the project Copilot Agentic-AI workflow design, and chapter summary.
-- Inserted Chapter 3 figure references and captions for F-02, F-03, F-04, and F-07.
-- Reviewed F-08 as thesis-safe but did not insert it in the Chapter 3 draft to keep the AI-assisted workflow section concise.
-- Kept all Copilot Agentic-AI workflow discussion grounded in project automation-testing evidence from `docs/agentic-workflow/`, `.github/`, `.claude/`, and `docs/thesis-workspace/source-notes/copilot-agentic-automation-workflow.md`.
-- Added Chapter 3 evidence matrix claims for test data/configuration design, reporting/debugging configuration, and selected system scope.
-- Updated Chapter 3 task statuses to review state.
-
-**Files updated**
-
-- `docs/thesis-workspace/chapters/chapter-3-system-analysis-and-design.md`
-- `docs/thesis-workspace/tasks.md`
-- `docs/thesis-workspace/progress.md`
-- `docs/thesis-workspace/evidence-matrix.md`
-- `docs/thesis-workspace/figure-register.md`
-
-**Evidence used**
-
-- Repository and project overview evidence from `README.md` and `docs/project-overview.md`.
-- Architecture, UI, API, fixture/workflow, data/configuration, reporting, and limitation source notes under `docs/thesis-workspace/source-notes/`.
-- Project Copilot Agentic-AI workflow evidence from `docs/agentic-workflow/workflow-overview.md`, `.github/AGENTS.md`, `.github/copilot-instructions.md`, `.github/agents/`, `.github/prompts/`, `.claude/skills/`, and the Copilot workflow source note.
-- Figure evidence from `docs/thesis-workspace/figure-register.md` and rendered SVG files under `docs/thesis-workspace/assets/diagrams/out/`.
-
-**Blockers**
-
-- Chapter 3 still requires user review and approval before it can be treated as accepted for the next drafting stage.
-- Chapter 4 must not start until the Chapter 3 approval gate is passed.
-- Chapter 5 remains blocked until actual execution output, pass/fail/skipped counts, execution duration, verified `results.xml`, report screenshots, and trace artifacts are collected.
-- Chapter 2 remains blocked until official Playwright documentation and academic/professional testing theory sources are selected.
-
-**Next recommended task**
-
-- Review and approve the Chapter 3 draft, or request revisions, before beginning Chapter 4.
+- Ran the Phase 0 freeze checks against the assembled Markdown thesis and thesis registers.
+- Confirmed Chapters 1-6, front matter, References, and Appendices A-E are complete for the Markdown baseline.
+- Confirmed `thesis.md` contains no unresolved `NEEDS_*`, `PLACEHOLDER`, `TODO`, `FIXME`, or private thesis-writing workflow markers.
+- Confirmed citation integrity: 72 citation keys used in `thesis.md`, 76 BibTeX entries in `references.bib`, 0 missing keys.
+- Confirmed visual integrity: 21 image links in `thesis.md`, 0 missing image assets.
+- Saved the freeze audit under `reviews/latex-freeze-audit-2026-06-12.md`.
+- Marked T-090 DONE and unblocked T-092 to TODO.
+- Created the git checkpoint and the `task/thesis-latex-migration` branch for the LaTeX/Overleaf migration.
+
+**Verification**
+
+| Check | Result |
+|---|---|
+| Markdown thesis baseline frozen | Yes |
+| Missing citation keys | 0 |
+| Missing image assets | 0 |
+| Unresolved thesis-body markers | 0 |
+| Optional unused visual candidates still marked in registers | Yes; not blockers because they are not inserted in `thesis.md` |
+| New execution metrics invented | No |
+| Source automation code modified | No |
+
+---
+
+## Next recommended task
+
+T-090 is complete. The next actionable task is **T-092 - Bootstrap LaTeX skeleton**:
+
+1. Create `docs/thesis-latex/` according to `latex-migration-spec.md` Section 3.
+2. Create the LaTeX migration harness files under `.agents/skills/`, `.codex/agents/`, and `docs/thesis-workspace/latex-migration/`.
+3. Add `main.tex`, config files, front matter/chapter/appendix placeholders, bibliography placeholder, figure folders, and scripts.
+4. Compile the empty/stub project with `latexmk -pdf -file-line-error -interaction=nonstopmode -halt-on-error main.tex`.
+5. Do not convert thesis chapter prose during T-092.
 
 ---
 
 ## How this file should be updated
 
-Each progress entry must include date, task IDs or areas updated, files changed, key decisions, evidence added, blockers, and the next recommended task.
+Each thesis work session must update `tasks.md` and `progress.md` together. Keep `progress.md` compact by using this structure only:
+
+1. current status summary;
+2. progress archive index;
+3. current-day entry or latest handoff;
+4. next recommended task;
+5. update rules and thesis-content exclusion rule.
+
+Before ending a thesis work session, archive any progress entries older than the current date into `progress-archive/YYYY-MM-DD.md` and update the archive index. Do not keep multiple days of detailed history in `progress.md`. Read archive files only when older context is necessary.
 
 ## Thesis content exclusion rule
 

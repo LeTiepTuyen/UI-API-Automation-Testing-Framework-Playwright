@@ -1,0 +1,25 @@
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial", "primaryTextColor": "#1F2937", "lineColor": "#64748B"}}}%%
+flowchart LR
+    classDef runtime fill:#F1F5F9,stroke:#64748B,color:#1F2937
+    classDef fixture fill:#DBEAFE,stroke:#60A5FA,color:#1F2937
+    classDef utility fill:#DCFCE7,stroke:#4ADE80,color:#1F2937
+    classDef test fill:#FEF3C7,stroke:#F59E0B,color:#1F2937
+
+    PW["Playwright test runtime<br/>browser, context, page, request"]
+    BF["Base fixture<br/>auto initialization"]
+    BM["BrowserManagement<br/>stores active references"]
+    CF["Custom fixture<br/>creates Page Objects + workflow"]
+    U["Framework utilities<br/>read page or request"]
+    T["Test scenario<br/>uses injected objects"]
+
+    PW -->|provides objects| BF
+    BF -->|initializes| BM
+    BM -->|shared access| U
+    BF -->|extends| CF
+    CF -->|injects| T
+    U -->|supports actions| T
+
+    class PW runtime
+    class BF,CF fixture
+    class BM,U utility
+    class T test

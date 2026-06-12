@@ -73,5 +73,7 @@ __pycache__/
 .local/
 sandbox/
 
+# Reference PDF conversion image/page dumps can exceed Windows git path limits.
+docs/final-graduation-thesis-doc/reference-documents/converted-markdown/*_assets/
 
 docs/others/

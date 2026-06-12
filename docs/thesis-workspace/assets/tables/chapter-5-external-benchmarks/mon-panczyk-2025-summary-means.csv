@@ -1,0 +1,4 @@
+Metric,Playwright,Cypress,Selenium,Source
+Execution time (s),6.26,6.48,6.10,"Mon and Panczyk (2025), Tables 3-5"
+CPU usage (%),17.57,20.63,19.98,"Mon and Panczyk (2025), Tables 3-5"
+RAM usage (%),28.77,33.51,28.08,"Mon and Panczyk (2025), Tables 3-5"

@@ -27,6 +27,12 @@ Before drafting, read:
 ## Drafting rules
 
 - Use formal academic English.
+- Write thesis prose as an academic research report, not as README content, repository documentation, or a technical note.
+- Prefer research framing such as "this research", "this study", "the proposed framework", "the implemented framework", and "the selected system under test".
+- Avoid "the repository" and raw folder/file paths in Chapter 1; use project source paths only in design, implementation, appendices, or evidence-mapping contexts where they are necessary.
+- Generalize the framework contribution to modern web applications and describe Unsplash as the selected demonstration system or system under test.
+- Do not self-define specialized testing concepts; use academic, official, or professional source attribution with necessary APA 7 in-text citations.
+- Avoid listing-style headings; use concise conceptual parent headings and sub-sections for grouped technical mechanisms.
 - Follow the approved outline.
 - Do not copy sample thesis wording.
 - Keep paragraphs focused and coherent.

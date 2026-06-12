@@ -18,9 +18,12 @@ The final output must be a professional academic thesis in English, aligned with
 2. **VNUK compliance first**: the VNUK template and VNUK sample define the required thesis structure and front matter.
 3. **Do not plagiarize samples**: sample theses are used only to learn structure, chapter flow, and academic style.
 4. **Write in small reviewable increments**: draft one section or chapter at a time.
-5. **Update tracking files continuously**: every completed task must update `tasks.md`, `progress.md`, and, when relevant, `evidence-matrix.md` and `citation-register.md`.
+5. **Update tracking files continuously**: every completed task must update `tasks.md`, `progress.md`, and, when relevant, `evidence-matrix.md` and `citation-register.md`. Keep `progress.md` compact by preserving current state, the archive index, the current-day entry or latest handoff, and the next recommended task while archiving older daily entries under `progress-archive/`.
 6. **Human approval gates**: stop for review after each chapter, after each major outline change, and before final assembly.
 7. **No fake results**: test counts, pass rates, execution times, screenshots, and report evidence must come from actual runs or be marked `NEEDS_EVIDENCE`.
+8. **Citation style**: the final thesis uses APA 7th edition. Markdown drafts may use stable citation keys for traceability, but final in-text citations and the reference list must be formatted according to APA 7 during final assembly and Word migration.
+9. **In-text citation placement**: add in-text citations where source attribution is necessary for theory, official documentation, external benchmarks, execution results, or repository/source-code evidence; avoid excessive citation repetition when one citation clearly supports the paragraph.
+10. **Academic research voice**: thesis prose must read as an academic research report, not README content or repository documentation. Use research framing, avoid raw folder/file paths in Chapter 1, use source-attributed definitions, synthesize multiple source families in Literature Review chapters, and use concise conceptual headings with sub-sections for grouped mechanisms.
 
 ---
 
@@ -140,11 +143,16 @@ Create a traceability layer before drafting prose.
 
 1. Fill `evidence-matrix.md` with claims related to:
    - framework purpose
+   - manual testing versus automation testing rationale
+   - automation testing fundamentals
    - repository structure
    - UI test design
    - API test design
    - fixtures
    - Page Object Model
+   - automation framework design patterns
+   - OOP/SOLID-oriented engineering principles where supported by repository evidence
+   - DTOs and data-driven testing
    - API services
    - Playwright config
    - reporting and traces
@@ -163,12 +171,15 @@ Create a traceability layer before drafting prose.
    - `docs/thesis-workspace/assets/figures/`
    - `docs/thesis-workspace/assets/tables/`
    - `docs/thesis-workspace/appendices/`
+5. Track non-diagram visual evidence in:
+   - `docs/thesis-workspace/visual-evidence-register.md`
 
 ### Done criteria
 
 - Every planned chapter has at least one evidence source.
 - Missing evidence is explicitly marked `NEEDS_EVIDENCE`.
 - No result metric is invented.
+- Screenshot and report evidence candidates are registered, source-safe, and marked `NEEDS_EVIDENCE` until captured from a verified run or reviewed source.
 
 ---
 
@@ -230,26 +241,38 @@ For each chapter:
 3. Read relevant references from `citation-register.md`.
 4. Draft only the target chapter file.
 5. Add `NEEDS_EVIDENCE` markers where exact evidence is missing.
-6. Review for academic tone, structure, coherence, and citation coverage.
-7. Update `tasks.md` and `progress.md`.
-8. Ask for user approval before moving to the next chapter.
+6. Run the formal Chapter Review Gate in `chapter-review-gate.md`, covering academic thesis review, technical review, evidence/citation audit, and diagram review.
+7. Save the complete gate result under `docs/thesis-workspace/reviews/chapter-X-review.md`.
+8. Return the Chapter Review Gate Summary table and ask for user approval.
+9. Update `tasks.md` and compact `progress.md` only after the review outcome and approval state are clear.
+10. Move to the next chapter only after explicit user approval.
 
 ### Drafting order
 
-1. Chapter 3: System Analysis and Framework Design
+1. Chapter 3: Framework Design
 2. Chapter 4: Implementation
-3. Evidence Gate: collect actual test execution, report, trace, screenshot, and `results.xml` evidence
-4. Chapter 5: Evaluation and Discussion
-5. Chapter 2: Literature Review and Theoretical Background
-6. Chapter 1: Introduction
-7. Chapter 6: Conclusion and Future Work
-8. Front matter
-9. Appendices
-10. Final `thesis.md` assembly
+3. Chapter 2 source and citation preparation
+4. Chapter 2: Literature Review
+5. Chapter 1 pre-drafting alignment only: problem, aim, scope, research questions, and success criteria skeleton
+6. Evidence Gate: collect actual test execution, report, trace, screenshot, and `results.xml` evidence
+7. Chapter 5: Evaluation and Discussion
+8. Chapter 1: Introduction
+9. User-approved restructuring pass for Chapters 1-3 after supervisor feedback: Chapter 2 becomes Literature Review only, and framework-design mechanisms move to Chapter 3
+10. Follow-up refinement pass for Chapters 1-3: align research objectives/questions, strengthen Chapter 2 citation attribution and literature-based tables, and improve Chapter 3 parent/sub-section hierarchy
+11. Academic-style refinement pass for Chapters 1-3: strengthen research-report voice, generalize the framework beyond Unsplash, diversify Chapter 2 academic sources, and improve Chapter 3 concept/heading style
+12. Chapter 4 duplication review after the revised Chapters 1-3 are approved
+13. Chapter 6: Conclusion and Future Work
+14. Appendices
+15. Front matter
+16. Final `thesis.md` assembly
 
 ### Rationale for this order
 
-Chapter 3 and Chapter 4 are drafted first because the repository design and implementation evidence is already organized. Chapter 5 must wait until the evidence gate is complete. Chapter 2 is drafted after the project-specific design and implementation scope is clear, so the literature review can focus on concepts actually used by the framework. Chapter 1 and Chapter 6 are drafted later so the introduction, contribution claims, limitations, and conclusion match the verified thesis content.
+Chapter 3 and Chapter 4 were drafted first because the repository design and implementation evidence was already organized. After later supervisor/user feedback, the chapter boundary was revised: Chapter 2 is now a Literature Review chapter for theoretical background and methodology only, while concrete framework-design mechanisms such as Page Object Model, fixture-based dependency injection, API service abstraction, DTO/data/cleanup strategy, reporting/traceability design, and framework design principles belong to Chapter 3.
+
+The full Chapter 1 draft is intentionally delayed until after Chapter 5. Chapter 1 contains problem framing, objectives, research questions, success criteria, and contribution wording, which should align with the verified evaluation evidence. A limited Chapter 1 pre-drafting alignment step may be performed after Chapter 2 to keep the introduction direction clear, but full Chapter 1 prose should wait until execution evidence and Chapter 5 are available. Chapter 5 must wait until the execution-evidence gate is complete, because test counts, pass/fail/skipped results, execution duration, report screenshots, trace artifacts, and `results.xml` evidence must not be invented.
+
+As of the 2026-06-04 restructuring, T-078 refinement, and T-079 academic-style refinement, Chapters 1-3 must be re-reviewed and approved again before Chapter 4 is edited for duplication cleanup and before Chapter 6 drafting begins. Chapter 1 must frame the framework as generally applicable to modern web applications while treating Unsplash as the selected demonstration system. Chapter 2 definitions must use source attribution from academic, official, or professional references and should draw from more than one source family where appropriate. Chapter 3 should use logical parent sections and sub-sections for related framework mechanisms and should introduce major concepts with citations before explaining the project application.
 
 ---
 
@@ -257,12 +280,16 @@ Chapter 3 and Chapter 4 are drafted first because the repository design and impl
 
 ### Review passes
 
-1. Structural review: does every section match the outline?
-2. Evidence review: is every technical claim supported?
-3. Citation review: are citations complete and consistent?
-4. Academic tone review: is the writing formal and precise?
-5. Consistency review: are terms, abbreviations, figure/table labels, and file paths consistent?
-6. Word-template migration review: can the Markdown be copied into the VNUK `.docx` template cleanly?
+1. Chapter Review Gate: run `chapter-review-gate.md` after each chapter draft before user approval.
+2. Structural review: does every section match the outline?
+3. Technical review: are architecture, implementation, source-path, and framework claims repository-grounded?
+4. Evidence review: is every technical claim supported?
+5. Citation review: are citations complete and consistent?
+6. Academic tone review: is the writing formal and precise?
+7. Diagram review: are figures registered, cited, captioned, readable, and grounded in evidence?
+8. Visual evidence review: are screenshots, report captures, browser captures, GitHub project images, and external visuals registered, source-safe, citation-safe, and useful enough to include?
+9. Consistency review: are terms, abbreviations, figure/table labels, and file paths consistent?
+10. Word-template migration review: can the Markdown be copied into the VNUK `.docx` template cleanly?
 
 ### Done criteria
 
@@ -270,6 +297,7 @@ Chapter 3 and Chapter 4 are drafted first because the repository design and impl
 - No broken internal references.
 - No duplicated or contradictory definitions.
 - All figures and tables have captions.
+- All accepted screenshots and external visuals have registered sources, safety notes, and captions.
 
 ---
 
@@ -302,6 +330,7 @@ Chapter 3 and Chapter 4 are drafted first because the repository design and impl
 - All references are cited in the body.
 - No citation appears in the body without a reference-list entry.
 - No reference-list entry is unused unless VNUK allows bibliography-only sources.
+- All in-text citations and reference-list entries follow APA 7th edition.
 - No placeholder text remains.
 - No source-code paths are wrong.
 - No test result is claimed without evidence.
@@ -362,6 +391,20 @@ Codex must stop and ask for approval after:
 - claiming final evaluation results
 - modifying source code outside `docs/thesis-workspace`, `.codex`, `.agents`, or `AGENTS.md`
 
+## Progress compaction policy
+
+`docs/thesis-workspace/progress.md` is the active state file, not the full historical log. It should stay fast to read at the start of a new session.
+
+Maintain it with this structure:
+
+1. current status summary;
+2. progress archive index;
+3. current-day progress entry or latest handoff;
+4. next recommended task;
+5. update rules and thesis-content exclusion rule.
+
+Archive older entries by date under `docs/thesis-workspace/progress-archive/YYYY-MM-DD.md`. Before ending any thesis work session, move detailed entries from previous dates out of `progress.md`, update the archive index, and leave only the compact active state. A future session should read archive files only when older context is needed for traceability, review, or debugging. Do not delete archive files unless the user explicitly asks.
+
 
 ## Diagram and figure production gate
 
@@ -374,11 +417,40 @@ For every major chapter, evaluate whether a diagram would improve reader compreh
 5. insert a figure reference and academic caption into the relevant chapter;
 6. update `progress.md` and `tasks.md`.
 
-Minimum required diagram categories:
+Active required diagram categories:
 
+After the 2026-06-03 figure-scope decision, standalone test automation pyramid and evaluation workflow diagrams are not required for the thesis. Test-level context and evaluation methodology should be presented through concise prose, lists, and evidence tables unless the user explicitly re-approves dedicated diagrams later.
+
+After the 2026-06-04 Chapter 2/3 restructuring, the framework mechanism diagrams are assigned to Chapter 3 rather than Chapter 2. Chapter 2 should rely mainly on literature-review prose and concise tables.
+
+- automation framework concept map and quality-attribute relationships;
 - framework layered architecture;
+- Page Object Model concept and separation of responsibilities;
+- practical Page Object Model application workflow;
+- fixture-based dependency injection and shared runtime context;
+- shared runtime context flow through Playwright fixtures and framework utilities;
+- API service abstraction and validation pipeline;
+- test data, DTO, and cleanup strategy;
 - UI test execution flow;
 - API test execution flow;
 - Playwright reporting pipeline;
-- evaluation workflow;
 - Copilot Agentic-AI workflow for Automation Testing.
+
+## Screenshot and visual evidence gate
+
+For every major chapter, evaluate whether a screenshot or non-diagram image would add real evidence or reader comprehension. Use screenshots sparingly. When a screenshot or external visual is useful, the assistant must:
+
+1. consult `visual-evidence-register.md`;
+2. store accepted project screenshots under `assets/figures/`;
+3. register the source/capture method, target chapter, evidence status, and safety notes;
+4. verify that no credentials, tokens, private account data, or private thesis-writing workflow content are visible;
+5. use external images only after source, citation, and copyright/license review;
+6. avoid using screenshots of thesis samples or benchmark charts when a cited original table or paraphrased discussion is academically cleaner;
+7. update `evidence-matrix.md`, `citation-register.md`, `tasks.md`, and `progress.md` when the visual supports a claim.
+
+Recommended screenshot priorities:
+
+- Chapter 3: optional sanitized Unsplash system-under-test context screenshot.
+- Chapter 4: optional scenario-state or sanitized API evidence screenshot only if it improves implementation explanation.
+- Chapter 5: high-priority verified Playwright HTML report, trace viewer, terminal output, and `results.xml` evidence after the execution-evidence gate.
+- Appendices: detailed report, trace, command-output, GitHub project, or workflow artifact screenshots that would crowd the main chapters.
