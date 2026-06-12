@@ -5,7 +5,7 @@ Use this prompt in Codex from the repository root.
 ```text
 /plan You are working in the repository UI-API-Automation-Testing-Framework-Playwright.
 
-Goal: bootstrap the thesis writing harness for the graduation thesis "A Comprehensive UI and API Automation Testing Framework Using Playwright: An Enterprise-Standard Approach".
+Goal: bootstrap the thesis writing harness for the graduation thesis "A COMPREHENSIVE UI AND API AUTOMATION TESTING FRAMEWORK USING PLAYWRIGHT".
 
 Read first:
 - README.md

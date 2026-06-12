@@ -2,7 +2,7 @@
 
 ## 3.1 Overall Framework Architecture
 
-The proposed framework is designed as a layered Playwright and TypeScript automation framework for modern web applications, demonstrated through selected Unsplash UI and public API scenarios. Its main design goal is to separate scenario intent from low-level interaction details, request construction, runtime setup, test data, and reporting configuration. This structure follows the implementation evidence described in the project documentation and source-code layout [@project_readme_2026; @project_overview_2026].
+The proposed framework is designed as a layered Playwright and TypeScript automation framework for modern web applications, demonstrated through selected Unsplash UI and public API scenarios. Its main design goal is to separate scenario intent from low-level interaction details, request construction, runtime setup, test data, and reporting configuration. This structure follows the implementation evidence described in the project documentation and source-code layout.
 
 Figure 3.1 presents the overall architecture. The top layer contains UI and API test specifications. UI tests express browser-based user flows, while API tests express endpoint-level validation. Supporting layers provide Page Objects, workflows, API services, fixtures, core utilities, DTOs, constants, configuration, test data, and reporting support.
 
@@ -10,7 +10,7 @@ Figure 3.1 presents the overall architecture. The top layer contains UI and API 
 
 *Figure 3.1. Layered architecture of the Playwright UI and API automation framework.*
 
-The architecture assigns each concern to a distinct layer. Test specifications reside under `tests/ui/` and `tests/api/`; page-level abstractions under `page-object/`; reusable business workflows under `workflow/`; fixture definitions under `fixtures/` and `core/fixtures/`; service logic under `api-service/`; shared utilities under `core/`; and data and configuration concerns under `data-object/`, `constants/`, `test-data/`, `config/`, and `utils/` [@project_page_objects_2026; @project_custom_fixture_2026; @project_users_service_2026; @project_data_constants_utils_2026].
+The architecture assigns each concern to a distinct layer. Test specifications reside under `tests/ui/` and `tests/api/`; page-level abstractions under `page-object/`; reusable business workflows under `workflow/`; fixture definitions under `fixtures/` and `core/fixtures/`; service logic under `api-service/`; shared utilities under `core/`; and data and configuration concerns under `data-object/`, `constants/`, `test-data/`, `config/`, and `utils/`.
 
 The framework is intentionally scoped. It is not designed to prove complete Unsplash coverage, full security testing, visual regression testing, accessibility testing, or production CI/CD maturity. Instead, it demonstrates how a maintainable framework can support representative UI and API automation with clear design boundaries.
 
@@ -38,9 +38,9 @@ Figure 3.2 explains the concept at a design level. A test begins from user-visib
 
 ### 3.2.2 Page-Level and Element-Level Abstraction
 
-In the implemented framework, Page Object classes such as `HomePage`, `LoginPage`, `ProfilePage`, and `AccountPage` encapsulate the UI interactions needed for browser-based scenarios. Among these, `ProfilePage` and `AccountPage` are directly involved in profile-viewing and profile-update flows, while `HomePage` and `LoginPage` handle navigation and authentication. This allows a test to call methods such as opening a profile, clicking an edit-profile button, filling profile fields, or checking a visible message, while page-specific selector and action details remain in the Page Object layer [@project_page_objects_2026; @project_ui_profile_tests_2026].
+In the implemented framework, Page Object classes such as `HomePage`, `LoginPage`, `ProfilePage`, and `AccountPage` encapsulate the UI interactions needed for browser-based scenarios. Among these, `ProfilePage` and `AccountPage` are directly involved in profile-viewing and profile-update flows, while `HomePage` and `LoginPage` handle navigation and authentication. This allows a test to call methods such as opening a profile, clicking an edit-profile button, filling profile fields, or checking a visible message, while page-specific selector and action details remain in the Page Object layer.
 
-The implemented framework also uses an element wrapper under `core/element/element.ts`. Playwright recommends user-facing locators and provides locator APIs for role, text, label, placeholder, alternative text, title, test id, and default locator expressions [@playwright_docs_locators_2026]. The project wrapper centralizes common locator operations and checks around these strategies [@project_browser_element_utils_2026]. While Playwright documentation recommends user-facing locators for resilience, the implemented Page Objects use a combination of locator strategies, including XPath-based selectors through the default locator type, depending on the available UI structure. This combination reduces duplicated low-level Playwright calls inside Page Objects and supports more consistent UI interaction handling.
+The implemented framework also uses an element wrapper under `core/element/element.ts`. Playwright recommends user-facing locators and provides locator APIs for role, text, label, placeholder, alternative text, title, test id, and default locator expressions[@playwright_docs_locators_2026]. The project wrapper centralizes common locator operations and checks around these strategies. While Playwright documentation recommends user-facing locators for resilience, the implemented Page Objects use a combination of locator strategies, including XPath-based selectors through the default locator type, depending on the available UI structure. This combination reduces duplicated low-level Playwright calls inside Page Objects and supports more consistent UI interaction handling.
 
 ### 3.2.3 Practical Page Object Workflow
 
@@ -60,7 +60,7 @@ This workflow clarifies the placement of Page Object Model in the thesis. Chapte
 
 The framework uses Playwright fixtures to provide reusable objects and runtime context to tests. Playwright supports custom fixtures through `test.extend()`, allowing a project to define setup logic and make objects available to test functions [@playwright_docs_fixtures_2026]. Fowler describes dependency injection as an approach in which configuration and object construction responsibilities are separated from the consuming code [@fowler_dependency_injection_2004]; the fixture-based provisioning in this framework applies the same principle, providing reusable objects to test functions through framework setup rather than inline construction.
 
-Figure 3.4 shows the fixture-based dependency injection flow. The Playwright runtime provides browser, context, page, and request objects. The base fixture initializes shared runtime references through `BrowserManagement`. The custom fixture then creates reusable Page Objects and `LoginWorkflow`, and test specifications consume those objects as typed fixture parameters [@project_custom_fixture_2026; @project_login_workflow_2026; @project_browser_element_utils_2026].
+Figure 3.4 shows the fixture-based dependency injection flow. The Playwright runtime provides browser, context, page, and request objects. The base fixture initializes shared runtime references through `BrowserManagement`. The custom fixture then creates reusable Page Objects and `LoginWorkflow`, and test specifications consume those objects as typed fixture parameters.
 
 ![Figure 3.4. Fixture-based dependency injection and shared runtime context.](../assets/diagrams/out/fixture-dependency-injection-flow.svg)
 
@@ -68,7 +68,7 @@ Figure 3.4 shows the fixture-based dependency injection flow. The Playwright run
 
 ### 3.3.2 Shared Runtime Context
 
-The shared runtime context is the mechanism that makes the active Playwright browser page and API request context available to framework utilities after fixture initialization. In this framework, the automatic base fixture receives Playwright's `browser`, `context`, `page`, and `request` objects and stores them through `BrowserManagement`; the custom fixture then provides Page Objects and workflow objects to test specifications [@playwright_docs_fixtures_2026; @project_custom_fixture_2026; @project_browser_element_utils_2026].
+The shared runtime context is the mechanism that makes the active Playwright browser page and API request context available to framework utilities after fixture initialization. In this framework, the automatic base fixture receives Playwright's `browser`, `context`, `page`, and `request` objects and stores them through `BrowserManagement`; the custom fixture then provides Page Objects and workflow objects to test specifications[@playwright_docs_fixtures_2026].
 
 Figure 3.5 summarizes this runtime relationship. It separates the Playwright runtime objects, the base fixture initialization step, the shared `BrowserManagement` references, the custom fixture objects, and the test scenario that consumes the injected abstractions.
 
@@ -76,7 +76,7 @@ Figure 3.5 summarizes this runtime relationship. It separates the Playwright run
 
 *Figure 3.5. Shared runtime context flow through Playwright fixtures and framework utilities.*
 
-This design keeps test files focused on scenario behavior because a UI test can import `test` and `expect` from the custom fixture layer and receive objects such as `homePage`, `profilePage`, `accountPage`, and `loginWorkflow` [@project_ui_profile_tests_2026]. This thesis therefore describes the runtime context as an implemented design mechanism, not as evidence of long-term runtime reliability.
+This design keeps test files focused on scenario behavior because a UI test can import `test` and `expect` from the custom fixture layer and receive objects such as `homePage`, `profilePage`, `accountPage`, and `loginWorkflow`. This thesis therefore describes the runtime context as an implemented design mechanism, not as evidence of long-term runtime reliability.
 
 ## 3.4 API Automation Design
 
@@ -94,9 +94,9 @@ Figure 3.6 presents the API service abstraction and validation pipeline. The tes
 
 ### 3.4.2 Request Execution and Validation Scope
 
-The implemented framework realizes this design through `UsersService` and `PhotosService`. `UsersService` encapsulates public profile retrieval, user photos, user collections, user statistics, and current-user profile update operations. `PhotosService` encapsulates random-photo retrieval, like, and unlike operations. Endpoint paths are centralized in `constants/api-endpoints.ts`, API URLs are constructed through `utils/api-url.ts`, and HTTP methods are executed through `core/api/api.ts` [@project_users_service_2026; @project_photos_service_2026; @project_api_utils_2026; @project_data_constants_utils_2026].
+The implemented framework realizes this design through `UsersService` and `PhotosService`. `UsersService` encapsulates public profile retrieval, user photos, user collections, user statistics, and current-user profile update operations. `PhotosService` encapsulates random-photo retrieval, like, and unlike operations. Endpoint paths are centralized in `constants/api-endpoints.ts`, API URLs are constructed through `utils/api-url.ts`, and HTTP methods are executed through `core/api/api.ts`.
 
-The API utility layer also contains JSON schema validation support through Ajv. JSON Schema is a declarative approach for describing and validating JSON document structure [@json_schema_overview_2026]. This chapter therefore describes schema validation as an available utility capability, but it does not claim broad schema-validation coverage because that would require specific test coverage and execution evidence [@project_api_utils_2026].
+The API utility layer also contains JSON schema validation support through Ajv. JSON Schema is a declarative approach for describing and validating JSON document structure[@json_schema_overview_2026]. This chapter therefore describes schema validation as an available utility capability, but it does not claim broad schema-validation coverage because that would require specific test coverage and execution evidence.
 
 ## 3.5 Test Data and State Management Design
 
@@ -110,11 +110,11 @@ Figure 3.7 shows the relationship among test data, DTOs, scenario execution, API
 
 *Figure 3.7. Test data, DTO, and cleanup strategy for repeatable automation.*
 
-The implemented framework applies these ideas through `test-data/user-info.json`, `utils/json.ts`, `constants/file-paths.ts`, `constants/api-endpoints.ts`, `utils/api-url.ts`, and DTO/model files under `data-object/` [@project_data_constants_utils_2026]. Runtime values such as base URLs are loaded from environment variables, keeping environment-specific values outside the committed test code [@project_playwright_config_2026].
+The implemented framework applies these ideas through `test-data/user-info.json`, `utils/json.ts`, `constants/file-paths.ts`, `constants/api-endpoints.ts`, `utils/api-url.ts`, and DTO/model files under `data-object/`. Runtime values such as base URLs are loaded from environment variables, keeping environment-specific values outside the committed test code.
 
 ### 3.5.2 State Reset Through API Cleanup
 
-The update-profile UI scenario demonstrates the cleanup strategy. After a profile update, the test constructs an `UpdateUserProfileRequestData` object and calls `UsersService.updateCurrentUserProfile()` in `test.afterEach()` to restore the original username [@project_ui_profile_tests_2026; @project_users_service_2026]. This supports the design claim that API-based cleanup is implemented.
+The update-profile UI scenario demonstrates the cleanup strategy. After a profile update, the test constructs an `UpdateUserProfileRequestData` object and calls `UsersService.updateCurrentUserProfile()` in `test.afterEach()` to restore the original username. This supports the design claim that API-based cleanup is implemented.
 
 The cleanup mechanism should be interpreted cautiously. It shows that the framework includes a reset path for a state-changing UI scenario, but it does not by itself prove long-term cleanup reliability. That claim would require repeated execution evidence and stability analysis, which belongs to evaluation rather than framework design.
 
@@ -151,11 +151,11 @@ Evidence boundaries remain important, but they are not retained as a separate de
 
 #### 3.6.2.1 Reporting Artifacts
 
-Reporting is part of framework design because automated tests must produce evidence that can be reviewed. Playwright documentation describes reporter support, including HTML reporting and JUnit XML output [@playwright_docs_reporters_2026]. The implemented framework configures HTML reporting and JUnit output to `results.xml` in `playwright.config.ts` [@project_playwright_config_2026].
+Reporting is part of framework design because automated tests must produce evidence that can be reviewed. Playwright documentation describes reporter support, including HTML reporting and JUnit XML output[@playwright_docs_reporters_2026]. The implemented framework configures HTML reporting and JUnit output to `results.xml` in `playwright.config.ts`.
 
 #### 3.6.2.2 Debugging and Traceability Scope
 
-Debugging support is also part of the design boundary. Playwright trace viewing can help inspect recorded actions and artifacts when traces are collected [@playwright_docs_trace_viewer_2026]. The implemented framework configures trace collection on first retry, which means trace evidence depends on execution conditions and should not be treated as guaranteed for every passing run [@project_playwright_config_2026].
+Debugging support is also part of the design boundary. Playwright trace viewing can help inspect recorded actions and artifacts when traces are collected[@playwright_docs_trace_viewer_2026]. The implemented framework configures trace collection on first retry, which means trace evidence depends on execution conditions and should not be treated as guaranteed for every passing run.
 
 This design supports traceability in two ways. First, test execution can produce artifacts such as reports and result files. Second, source organization makes it possible to trace a test scenario to Page Objects, workflows, services, DTOs, constants, and utilities. Chapter 5 evaluates verified execution evidence, while this chapter describes only the design that enables such evidence to be produced.
 
@@ -182,7 +182,7 @@ The UI execution flow begins with a UI test specification. The test receives reu
 
 *Figure 3.9. UI automation execution flow using fixtures, workflows, and Page Objects.*
 
-The representative update-profile scenario shows this flow in source code. It loads centralized user data, logs in through `LoginWorkflow`, navigates through Page Objects, updates account data, asserts a success message, navigates to the updated profile URL, and verifies the displayed full name [@project_ui_profile_tests_2026; @project_login_workflow_2026; @project_page_objects_2026].
+The representative update-profile scenario shows this flow in source code. It loads centralized user data, logs in through `LoginWorkflow`, navigates through Page Objects, updates account data, asserts a success message, navigates to the updated profile URL, and verifies the displayed full name.
 
 ### 3.7.2 API Automation Flow
 
@@ -192,11 +192,11 @@ The API execution flow starts with an API test specification. The test calls a s
 
 *Figure 3.10. API automation execution flow using service classes and API utilities.*
 
-The representative public-profile API test demonstrates this structure by calling `UsersService.getUserPublicProfile()`, validating a successful public profile response, validating an invalid username response, and checking profile-link patterns [@project_api_users_tests_2026; @project_users_service_2026]. The API tests therefore remain focused on endpoint behavior rather than repeated request-construction details.
+The representative public-profile API test demonstrates this structure by calling `UsersService.getUserPublicProfile()`, validating a successful public profile response, validating an invalid username response, and checking profile-link patterns. The API tests therefore remain focused on endpoint behavior rather than repeated request-construction details.
 
 ## 3.8 Copilot Agentic-AI Workflow Design for Automation Testing
 
-The project also includes a documented Copilot Agentic-AI workflow for automation testing development. This workflow is a support feature around the Playwright framework, not a replacement for the framework architecture. It is described through project artifacts under `docs/agentic-workflow/`, `.github/`, and `.claude/` [@project_agentic_workflow_2026; @project_copilot_instructions_2026; @project_github_agents_2026; @project_github_prompts_2026; @project_claude_skills_2026].
+The project also includes a documented Copilot Agentic-AI workflow for automation testing development. This workflow is a support feature around the Playwright framework, not a replacement for the framework architecture. It is described through project artifacts under `docs/agentic-workflow/`, `.github/`, and `.claude/`.
 
 Figure 3.11 summarizes the automation-testing workflow. It begins with framework understanding, continues into automation scenario design, proceeds to framework-aware Playwright script generation, and ends with code review against framework conventions.
 

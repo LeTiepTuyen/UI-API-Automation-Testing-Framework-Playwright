@@ -76,4 +76,20 @@ sandbox/
 # Reference PDF conversion image/page dumps can exceed Windows git path limits.
 docs/final-graduation-thesis-doc/reference-documents/converted-markdown/*_assets/
 
+# Local LaTeX build artifacts
+docs/thesis-latex/build/
+docs/thesis-latex/*.aux
+docs/thesis-latex/*.bbl
+docs/thesis-latex/*.bcf
+docs/thesis-latex/*.blg
+docs/thesis-latex/*.fdb_latexmk
+docs/thesis-latex/*.fls
+docs/thesis-latex/*.lof
+docs/thesis-latex/*.log
+docs/thesis-latex/*.lot
+docs/thesis-latex/*.out
+docs/thesis-latex/*.pdf
+docs/thesis-latex/*.run.xml
+docs/thesis-latex/*.toc
+
 docs/others/

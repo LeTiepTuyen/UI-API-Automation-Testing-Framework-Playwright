@@ -2,7 +2,7 @@
 
 This document is the project overview for the graduation project:
 
-**A Comprehensive UI and API Automation Testing Framework Using Playwright: An Enterprise-Standard Approach**
+**A COMPREHENSIVE UI AND API AUTOMATION TESTING FRAMEWORK USING PLAYWRIGHT**
 
 ## Summary
 

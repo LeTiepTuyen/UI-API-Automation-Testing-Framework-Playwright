@@ -1,0 +1,54 @@
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[utf8]{inputenc}
+  \usepackage[T1]{fontenc}
+  \usepackage[sfdefault]{carlito}
+\else
+  \usepackage{fontspec}
+  \IfFontExistsTF{Calibri}{%
+    \setmainfont{Calibri}
+    \setsansfont{Calibri}
+  }{%
+    \setmainfont{Carlito}
+    \setsansfont{Carlito}
+  }
+\fi
+\usepackage[english]{babel}
+\usepackage[
+  a4paper,
+  left=3.0cm,
+  right=2.0cm,
+  top=2.0cm,
+  bottom=2.0cm,
+  headheight=15pt
+]{geometry}
+
+\usepackage{microtype}
+\usepackage{setspace}
+\usepackage{indentfirst}
+\usepackage{titlesec}
+\usepackage{tocloft}
+
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{ragged2e}
+\usepackage[table]{xcolor}
+
+\usepackage{enumitem}
+\usepackage{listings}
+\usepackage{xurl}
+\usepackage{csquotes}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage[
+  backend=biber,
+  style=apa,
+  sorting=nyt
+]{biblatex}

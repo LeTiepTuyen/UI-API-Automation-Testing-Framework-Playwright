@@ -1,0 +1,79 @@
+\onehalfspacing
+% Academic paragraph style: keep a first-line indent and add a modest space
+% between paragraphs so blocks are visually separated (1.5-spaced body).
+\setlength{\parindent}{1.25cm}
+\setlength{\parskip}{0.6\baselineskip plus 2pt minus 1pt}
+\setlist{nosep}
+\emergencystretch=0.5em
+% Avoid orphan/widow lines (e.g. a single trailing line pushed to a new page).
+\clubpenalty=10000
+\widowpenalty=10000
+\displaywidowpenalty=10000
+\raggedbottom
+\pagestyle{plain}
+\AtBeginDocument{\RaggedRight}
+\graphicspath{{figures/}{figures/logos/}{figures/architecture/}{figures/workflows/}{figures/screenshots/}{figures/reports/}}
+
+\titleformat{\chapter}[block]
+  {\normalfont\bfseries\fontsize{14pt}{16pt}\selectfont\RaggedRight}
+  {Chapter \thechapter}
+  {0.75em}
+  {}
+\titleformat{name=\chapter,numberless}[block]
+  {\normalfont\bfseries\fontsize{14pt}{16pt}\selectfont\RaggedRight}
+  {}
+  {0pt}
+  {}
+\titlespacing*{\chapter}{0pt}{0pt}{1.5\baselineskip}
+
+\titleformat{\section}
+  {\normalfont\bfseries\normalsize\RaggedRight}
+  {\thesection}
+  {0.75em}
+  {}
+\titleformat{\subsection}
+  {\normalfont\bfseries\normalsize\RaggedRight}
+  {\thesubsection}
+  {0.75em}
+  {}
+\titleformat{\subsubsection}
+  {\normalfont\bfseries\normalsize\RaggedRight}
+  {\thesubsubsection}
+  {0.75em}
+  {}
+
+% Table of Contents: title "Table of Contents"; dotted leaders for every level
+% (including chapter-level entries) to match the VNUK template.
+% Set via \AtBeginDocument so babel's \captionsenglish does not override it.
+\AtBeginDocument{\renewcommand{\contentsname}{Table of Contents}}
+% Only top-level entries (chapters and chapter-level front matter) are bold;
+% all section/subsection children are normal weight.
+\renewcommand{\cftchapfont}{\bfseries}
+\renewcommand{\cftchappagefont}{\bfseries}
+\renewcommand{\cftchapleader}{\bfseries\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecfont}{\normalfont}
+\renewcommand{\cftsecpagefont}{\normalfont}
+\renewcommand{\cftsubsecfont}{\normalfont}
+\renewcommand{\cftsubsecpagefont}{\normalfont}
+\setlength{\cftbeforechapskip}{6pt}
+
+\captionsetup{
+  font={small,stretch=1},
+  labelfont=bf,
+  labelsep=colon,
+  format=plain,
+  justification=raggedright,
+  singlelinecheck=false,
+  position=bottom
+}
+
+\lstdefinestyle{thesislisting}{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  columns=fullflexible,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny,
+  tabsize=2
+}
+\lstset{style=thesislisting}

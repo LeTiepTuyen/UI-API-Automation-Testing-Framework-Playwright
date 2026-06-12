@@ -6,7 +6,7 @@ Use Codex as a disciplined thesis-writing and repository-analysis assistant to p
 
 The thesis topic remains:
 
-**A Comprehensive UI and API Automation Testing Framework Using Playwright: An Enterprise-Standard Approach**
+**A COMPREHENSIVE UI AND API AUTOMATION TESTING FRAMEWORK USING PLAYWRIGHT**
 
 The final output must be a professional academic thesis in English, aligned with the VNUK thesis template and supported by the current GitHub repository implementation.
 

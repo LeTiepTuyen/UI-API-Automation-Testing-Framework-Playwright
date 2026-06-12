@@ -1,0 +1,6 @@
+$pdf_mode = 5;
+$bibtex_use = 2;
+$xelatex = 'xelatex -file-line-error -interaction=nonstopmode -halt-on-error %O %S';
+$biber = 'biber %O %B';
+$out_dir = 'build';
+$aux_dir = 'build';

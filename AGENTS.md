@@ -4,7 +4,7 @@
 
 This repository is the graduation project:
 
-**A Comprehensive UI and API Automation Testing Framework Using Playwright: An Enterprise-Standard Approach**
+**A COMPREHENSIVE UI AND API AUTOMATION TESTING FRAMEWORK USING PLAYWRIGHT**
 
 It contains a Playwright + TypeScript automation testing framework for Unsplash UI and API testing, plus documentation and agentic workflows for maintaining the framework and writing the final thesis.
 

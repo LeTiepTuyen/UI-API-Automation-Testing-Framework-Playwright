@@ -2,7 +2,7 @@
 
 ## 1. Purpose
 
-This workflow defines how diagrams should be planned, created, rendered, reviewed, and inserted for the thesis **A Comprehensive UI and API Automation Testing Framework Using Playwright: An Enterprise-Standard Approach**.
+This workflow defines how diagrams should be planned, created, rendered, reviewed, and inserted for the thesis **A COMPREHENSIVE UI AND API AUTOMATION TESTING FRAMEWORK USING PLAYWRIGHT**.
 
 The thesis must not rely only on screenshots. It should include clear diagrams that explain architecture, flows, testing layers, Playwright execution, API service abstraction, CI/CD readiness.
 

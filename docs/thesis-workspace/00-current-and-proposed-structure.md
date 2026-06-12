@@ -4,7 +4,7 @@
 
 This document defines the recommended repository structure for writing the final graduation thesis titled:
 
-**A Comprehensive UI and API Automation Testing Framework Using Playwright: An Enterprise-Standard Approach**
+**A COMPREHENSIVE UI AND API AUTOMATION TESTING FRAMEWORK USING PLAYWRIGHT**
 
 The goal is to let Codex work in a process-centric, evidence-driven, and reviewable way: discover context, plan, split work into tasks, draft chapter-by-chapter, review, update progress, and preserve traceability from thesis claims to project evidence.
 

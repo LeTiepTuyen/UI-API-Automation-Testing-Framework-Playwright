@@ -6,6 +6,19 @@ Selected citation style: **APA 7th edition**.
 
 Drafting note: Markdown chapter drafts may continue to use stable Pandoc-style citation keys such as `[@playwright_docs_configuration_2026]` for traceability. During final thesis assembly and Word migration, in-text citations and the reference list must be formatted according to APA 7th edition author-date rules.
 
+## APA 7 in-text citation convention (authoritative)
+
+Every in-text citation uses one of two APA 7 forms. The author/year text is generated automatically by `biblatex` `style=apa` (LaTeX) or by APA author-date formatting (Markdown/Word) from `references.bib`. Author names, years, and the "et al." rule are NEVER typed by hand, never bold, never shown as raw keys with underscores.
+
+| Form | Use when | LaTeX | Markdown (Pandoc) | Renders as |
+|---|---|---|---|---|
+| Parenthetical | The source supports the statement (author not in the sentence) | `\autocite{key}` / `\autocite{a,b}` | `[@key]` / `[@a; @b]` | `(Kim & Ham, 2016)` / `(Garcia et al., 2009; E. Kim & Ham, 2016)` |
+| Narrative | The author is the subject of the sentence | `\textcite{key}` | `@key` | `Kim and Ham (2016) found that ...` |
+
+- Two authors: `&` in parentheses, "and" in narrative. 3+ authors → "et al." automatically. Same author/year → `2026a`, `2026b` automatically.
+- **A citation that prints as a bold raw key with underscores (e.g. `istqb_ctfl_syllabus_2024`) is NOT a prose error** — it means the LaTeX `bibliography/references.bib` is still the empty placeholder. Fix by porting `references.bib` (T-096), not by editing chapter text. Full rules: `latex-migration/latex-migration-spec.md` Section 5a.
+- **NO self-repository citations:** do not cite the author's own GitHub repository or source files (the removed `project_*_2026` keys). Describe the implemented framework directly instead.
+
 Current chapter-boundary note: after the 2026-06-04 restructuring, T-078 refinement, and T-079 academic-style update, Chapter 2 is a Literature Review chapter for theoretical background and methodology only. Specialized definitions in Chapter 2, such as test automation, test automation framework, test case, test data preparation, and test report, must use academic, official, or professional source attribution with necessary APA 7 in-text citations. Literature Review paragraphs should synthesize multiple source families where appropriate and should not rely almost entirely on ISTQB when broader testing literature is available. Repository-specific Page Object, fixture, API service, DTO, cleanup, design-pattern, and reporting-configuration citations should be used mainly in Chapter 3 and Chapter 4, not as detailed implementation explanation in Chapter 2.
 
 Chapter 3 revision note: after the T-081 Chapter 3 refinement, concept introductions in Chapter 3 should cite academic, official, or professional sources before project application. Evidence-boundary material should not appear as decorative or low-value diagram nodes; keep it as concise scope prose in Chapter 3 and reserve detailed evaluation boundaries for Chapter 5.
@@ -14,7 +27,9 @@ Chapter 4 revision note: after the T-077 Chapter 4 refinement on 2026-06-08, Cha
 
 Chapter 6 note: Chapter 6 was drafted by Codex on 2026-06-11, reviewed by Claude's Formal Chapter Review Gate, and approved by the user on 2026-06-11 (final). It uses existing citation keys only — repository evidence for framework abstractions, verified execution artifacts for the 18-test local run, and the project Copilot Agentic-AI workflow source as an automation-testing support feature. No new citation keys were introduced.
 
-References finalization note: T-083 was completed by Codex on 2026-06-11. `docs/thesis-workspace/references/references.md` now contains APA 7-style reference entries for the 72 bracket citation keys used across Chapters 1-6. All used keys resolve to `references/references.bib`. Chapter-level Pandoc citation keys remain in the approved Markdown drafts for traceability until final in-text author-date conversion during final assembly / Word or LaTeX migration.
+References finalization note: T-083 was completed by Codex on 2026-06-11. `docs/thesis-workspace/references/references.md` contains APA 7-style reference entries; all used keys resolve to `references/references.bib`. Chapter-level Pandoc citation keys remain in the approved Markdown drafts for traceability until final in-text author-date conversion during final assembly / Word or LaTeX migration.
+
+Self-repository citation removal (user decision, 2026-06-12): all 19 `project_*_2026` self-citations to the author's own GitHub repository (README, project-overview, source-code files, configs, and workflow artifacts) were removed from the thesis because citing one's own unpublished repository in-text is not appropriate academic practice. The corresponding prose now reads normally (the implemented framework is described directly), and the 19 entries were removed from both `references.bib` files and `references.md`. Citation counts dropped from 72 used / 76 bib entries to **54 used / 57 bib entries**. The mapping table below is retained only as engineering traceability of which repository files back which claims; these are NO LONGER cited in the thesis.
 
 Front matter terminology note: T-032 was completed by Codex on 2026-06-11. `front-matter/definitions.md` uses only existing registered citation keys for source-attributed definitions of testing, automation, Playwright, Page Object Model, fixtures, test data management, CI, flakiness, Trace Viewer, HTML reporting, and JUnit reporting. No new citation keys were introduced. `front-matter/abbreviations.md` is a terminology list and does not require new sources.
 
@@ -23,6 +38,8 @@ Abstract note: T-036 was completed by Codex on 2026-06-11. `front-matter/abstrac
 ---
 
 ## Project and repository sources
+
+> **REMOVED FROM THESIS (2026-06-12).** Per the user decision, none of the `project_*_2026` keys below are cited in the thesis anymore (no in-text citations, no reference-list entries). The table is kept only as engineering traceability of which repository files support which claims. Do not re-introduce these as citations.
 
 | Citation key | Type | Source | Intended use | Status |
 |---|---|---|---|---|

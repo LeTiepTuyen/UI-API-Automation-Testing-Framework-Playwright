@@ -52,44 +52,6 @@ ISTQB Glossary. (2026f). *Test report*. Retrieved June 5, 2026, from https://ist
 
 JSON Schema. (2026). *What is JSON Schema?* Retrieved June 3, 2026, from https://json-schema.org/overview/what-is-jsonschema
 
-Le, T. T. (2026a). *A comprehensive UI and API automation testing framework using Playwright: An enterprise-standard approach: Repository README* [Repository document]. Unpublished project repository.
-
-Le, T. T. (2026b). *Agentic workflow overview for automation testing* [Repository document]. Unpublished project repository.
-
-Le, T. T. (2026c). *API users test source files* [Repository source files]. Unpublished project repository.
-
-Le, T. T. (2026d). *API utilities source file* [Repository source file]. Unpublished project repository.
-
-Le, T. T. (2026e). *Browser runtime and element utility source files* [Repository source files]. Unpublished project repository.
-
-Le, T. T. (2026f). *Custom fixture and base fixture source files* [Repository source files]. Unpublished project repository.
-
-Le, T. T. (2026g). *Data objects, constants, test data, and utility source files* [Repository source files]. Unpublished project repository.
-
-Le, T. T. (2026h). *GitHub agent definitions for automation workflow support* [Repository artifacts]. Unpublished project repository.
-
-Le, T. T. (2026i). *GitHub Copilot instructions for the automation framework* [Repository document]. Unpublished project repository.
-
-Le, T. T. (2026j). *GitHub prompt files for automation workflow support* [Repository artifacts]. Unpublished project repository.
-
-Le, T. T. (2026k). *Login workflow source file* [Repository source file]. Unpublished project repository.
-
-Le, T. T. (2026l). *Package manifest* [Repository source file]. Unpublished project repository.
-
-Le, T. T. (2026m). *Page object source files* [Repository source files]. Unpublished project repository.
-
-Le, T. T. (2026n). *Photos service source file* [Repository source file]. Unpublished project repository.
-
-Le, T. T. (2026o). *Playwright configuration source file* [Repository source file]. Unpublished project repository.
-
-Le, T. T. (2026p). *Project overview documentation* [Repository document]. Unpublished project repository.
-
-Le, T. T. (2026q). *Reusable automation development skills and review references* [Repository artifacts]. Unpublished project repository.
-
-Le, T. T. (2026r). *UI profile test source files* [Repository source files]. Unpublished project repository.
-
-Le, T. T. (2026s). *Users service source file* [Repository source file]. Unpublished project repository.
-
 Leotta, M., Clerissi, D., Ricca, F., & Tonella, P. (2016). Approaches and tools for automated end-to-end web testing. *Advances in Computers, 101*, 193-237. https://doi.org/10.1016/bs.adcom.2015.11.007
 
 Martin, R. C. (2000). *Design principles and design patterns* [Professional software design paper].

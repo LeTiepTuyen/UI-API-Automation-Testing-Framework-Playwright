@@ -24,19 +24,19 @@
 
 | Item | Decision |
 |---|---|
-| Compiler | pdfLaTeX |
+| Compiler | XeLaTeX |
 | Bibliography backend / style | Biber + `biblatex` with `style=apa` (APA 7th). **Confirmed by the user on 2026-06-12** (T-023 reaffirmed); the template's generic IEEE line is intentionally overridden. The sample's `style=ieee` is NOT reused. |
-| Document class | `report`, 12pt, A4, `oneside` |
-| Page geometry | left 3.0 cm; right/top/bottom 2.5 cm (confirm against official VNUK template in T-091) |
+| Document class | `report`, 11pt, A4, `oneside` |
+| Page geometry | single-sided binding layout: left/inside 3.0 cm; right/top/bottom 2.0 cm |
 | Line spacing | `\onehalfspacing` (setspace) |
-| Body font | `newtxtext` + `newtxmath` (Times-like); `microtype` enabled |
+| Body font | Calibri through XeLaTeX `fontspec`; fallback Carlito if Calibri is unavailable; `microtype` enabled where supported |
 | Paragraph | `\parindent` 1.25 cm; `\parskip` 0 |
 | Code listings | `listings` (NOT `minted` — Overleaf restricts shell-escape) |
 | Tables | `booktabs` + `tabularx`/`longtable`; avoid vertical rules |
 | Cross-references | `hyperref` + `cleveref` (`\cref`/`\Cref`) |
 | Diagrams | Mermaid SVG masters → PDF vector for LaTeX; screenshots stay PNG/JPG |
 | Citations in text | `\autocite{key}` (parenthetical) / `\textcite{key}` (narrative); never hard-code `[12]` |
-| Page numbering | Roman (i, ii, iii) for front matter; switch to arabic (1, 2, 3) once, immediately before Chapter 1. **Fix the sample bug:** remove the stray `\pagenumbering{arabic}` from `frontmatter/frontmatter.tex`. |
+| Page numbering | Cover pages unnumbered; preliminary pages lower-case roman (i, ii, iii); switch to arabic (1, 2, 3) once, immediately before Chapter 1; bottom-centered page numbers via `plain` page style. |
 | Overleaf project | A dedicated project containing only `docs/thesis-latex/`; synced via Overleaf Git integration; keep < ~100 MB; no `node_modules`/framework source. |
 
 ## 3. Target structure
@@ -88,11 +88,31 @@ Migration control docs live under `docs/thesis-workspace/latex-migration/`: this
 - **Headings:** `# Chapter N` → `\chapter{...}`; `##` → `\section`; `###` → `\subsection`; `####` → `\subsubsection`.
 - **Labels:** add stable semantic labels — `\label{ch:introduction}`, `\label{sec:framework-architecture}`, `\label{fig:framework-architecture}`, `\label{tab:tool-comparison}`.
 - **Cross-refs:** `\cref{...}`/`\Cref{...}`; never hard-code "Figure 3.1".
-- **Citations:** `[@key]` → `\autocite{key}`; `[@a; @b]` → `\autocite{a,b}`; narrative "X (2025) shows" → `\textcite{key}`.
+- **Citations (APA 7 — MANDATORY CONVENTION):** Author names and years are produced automatically by `biblatex` `style=apa` from `bibliography/references.bib`. NEVER type author names, years, raw keys, brackets, or numeric markers by hand, and never bold or underscore a citation. Use exactly two forms (see Section 5a):
+  - **Parenthetical:** LaTeX `\autocite{key}` → `(Author, Year)`; multiple `\autocite{a,b}` → `(Author A, Year; Author B, Year)`. Markdown source: `[@key]` / `[@a; @b]`. Two authors joined by `&`.
+  - **Narrative:** LaTeX `\textcite{key}` → `Author (Year)`. Markdown source: `@key`. Two authors joined by "and".
 - **Figures:** `\begin{figure}[htbp]\centering\includegraphics[width=...]{figures/.../name}\caption{...}\label{fig:...}\end{figure}`. Prefer PDF vector for diagrams.
 - **Tables:** `booktabs`; wide tables use `tabularx` with the `Y` ragged-right column; multi-page use `longtable`.
 - **Code:** fenced blocks → `lstlisting` with an appropriate language; inline code → `\code{...}` (detokenized `\texttt`).
 - **Escaping:** escape `% & _ # $ { } ~ ^ \` and URLs via `\url{}`/`hyperref`.
+
+## 5a. APA 7 in-text citation convention (authoritative)
+
+Every in-text citation in the thesis MUST be one of two APA 7 forms. The author/year text is rendered by `biblatex` `style=apa` from `bibliography/references.bib`; it is never written by hand.
+
+| Form | When to use | LaTeX | Markdown (Pandoc) | Renders as |
+|---|---|---|---|---|
+| Parenthetical | The cited work supports a statement; author is not part of the sentence | `\autocite{key}` ; `\autocite{a,b}` | `[@key]` ; `[@a; @b]` | `(Kim & Ham, 2016)` ; `(Garcia et al., 2009; E. Kim & Ham, 2016)` |
+| Narrative | The author is the grammatical subject of the sentence | `\textcite{key}` | `@key` | `Kim and Ham (2016) found that ...` |
+
+Rules:
+- Two authors: `&` inside parentheses, "and" in narrative — handled automatically by the style.
+- 3+ authors collapse to "et al." automatically; never hand-write "et al."
+- Same author + same year auto-disambiguate (`2026a`, `2026b`).
+- NEVER type author names, years, raw keys, numeric markers (`[12]`), brackets, bold, or underscores in body text.
+- **A citation that prints as a bold raw key with underscores (e.g. `istqb_ctfl_syllabus_2024`) means `references.bib` is the empty/placeholder file — the bibliography has not been migrated (T-096). This is a tooling state, NOT a prose error. Fix it by porting `references.bib`, never by editing the rendered text.**
+- To correct a wrong rendered name/year, fix the `.bib` entry, not the chapter `.tex`.
+- **NO self-repository citations.** Do NOT cite the author's own GitHub repository, README, project-overview, source-code files, configs, or workflow artifacts (the former `project_*_2026` keys, removed 2026-06-12). Describe the implementation directly ("the implemented framework ..."). When converting Chapters 2–6, drop any `[@project_*_2026]` markers and keep only academic/official keys in mixed brackets.
 
 ## 6. Front-matter specifics
 
@@ -120,9 +140,11 @@ Migration control docs live under `docs/thesis-workspace/latex-migration/`: this
 
 ```powershell
 # from docs/thesis-latex
-latexmk -pdf -file-line-error -interaction=nonstopmode -halt-on-error main.tex
+latexmk -xelatex -file-line-error -interaction=nonstopmode -halt-on-error main.tex
 latexmk -C   # clean
 ```
+
+`latexmkrc` sets `$pdf_mode = 5`, and the build script calls `latexmk -xelatex` explicitly so the Calibri/fontspec configuration is used.
 
 ## 9. QA gate checklist (T-098)
 
@@ -154,7 +176,7 @@ Audited `docs/final-graduation-thesis-doc/thesis-template.md` (official template
 - Template recommends abstracts **< 150 words** (hard limit: 1 page single-spaced). The current abstract is ~250 words — within the hard limit but above the recommendation. User may optionally request a condensed <150-word abstract before/at the LaTeX stage.
 
 ### Formatting note
-- The template is a Word/style-based document and does not state explicit cm margins in prose; it relies on named styles ("Normal" body = 12 pt). The spec's geometry (left 3.0 cm / others 2.5 cm, 12 pt Times-like, 1.5 spacing) is retained as a standard VNUK-style default and should be confirmed against the actual VNUK `.docx` styles during T-098 QA.
+- The active LaTeX configuration was later updated from the earlier 12 pt Times-like baseline to the user-provided formatting guideline: Calibri-style 11 pt body text, A4, single-sided output, left/inside binding margin 3.0 cm, all other margins 2.0 cm, 1.5 line spacing, left-aligned body text, 14 pt bold left-aligned chapter headings, bottom captions, and APA references.
 
 ### Tooling — TeX distribution (Cách 1 — DONE 2026-06-12)
 - **MiKTeX 25.12 installed and verified** (per-user). Tools: `pdflatex` (MiKTeX-pdfTeX 4.23), `biber` 2.21, `latexmk` 4.88. A minimal `pdflatex` compile produced a PDF (exit 0). MiKTeX on-the-fly package install set to **Always**, so compiles auto-fetch missing packages without prompting.
@@ -176,3 +198,14 @@ Audited `docs/final-graduation-thesis-doc/thesis-template.md` (official template
 - Marker check: 0 unresolved `NEEDS_*`, `PLACEHOLDER`, `TODO`, or `FIXME` markers in the assembled thesis and thesis source content.
 - Optional candidate visual entries that remain `NEEDS_EVIDENCE` / `NEEDS_SOURCE` in registers are not blockers because they are not inserted in the assembled thesis.
 - Git checkpoint and branch `task/thesis-latex-migration` created. T-092 is unblocked.
+
+## 13. T-092 bootstrap findings (2026-06-12)
+
+- `docs/thesis-latex/` skeleton created with `main.tex`, `latexmkrc`, config files, front matter placeholders, six chapter placeholders, appendix placeholders, bibliography placeholder, figures, tables, and scripts.
+- Migration harness created: `.agents/skills/thesis-latex-migration/SKILL.md` and `.codex/agents/thesis-latex-architect.toml`.
+- Migration control docs created under `docs/thesis-workspace/latex-migration/`.
+- The reference sample's page-numbering bug is avoided: cover pages are unnumbered, roman numbering starts after cover pages, and arabic numbering starts once immediately before Chapter 1.
+- No chapter prose was converted in T-092.
+- `latexmk` is blocked locally because MiKTeX cannot find the required Perl script engine.
+- Direct `pdflatex` fallback compiled the stub project successfully and produced a 22-page PDF. The empty bibliography warning is expected until T-096.
+- T-093 is unblocked for Chapter 1 conversion only.

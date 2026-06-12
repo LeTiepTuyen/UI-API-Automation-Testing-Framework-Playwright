@@ -26,4 +26,4 @@
 
 **HTML Report.** An HTML report is a Playwright reporter output that presents test execution results in a browser-readable report format for review, debugging, and evidence documentation [@playwright_docs_reporters_2026].
 
-**JUnit Report.** A JUnit report is an XML-style test report output commonly used for machine-readable test-result integration and archival; in this research, Playwright is configured to produce JUnit XML output as part of the verified execution evidence [@playwright_docs_reporters_2026; @project_playwright_config_2026].
+**JUnit Report.** A JUnit report is an XML-style test report output commonly used for machine-readable test-result integration and archival; in this research, Playwright is configured to produce JUnit XML output as part of the verified execution evidence[@playwright_docs_reporters_2026].

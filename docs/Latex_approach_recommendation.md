@@ -884,9 +884,9 @@ Verified directly from the extracted files:
 
 | Decision | Choice | Reason |
 |---|---|---|
-| Compiler | **pdfLaTeX + Biber** | Matches the sample's package set (`newtxtext`, `inputenc utf8`), is the Overleaf default, and supports `biblatex`/`biber`. XeLaTeX is not needed since there is no custom OpenType font or complex script requirement. |
+| Compiler | **XeLaTeX + Biber** | Updated after the user-provided formatting guideline required Calibri-style 11-point text. XeLaTeX supports system fonts through `fontspec`. |
 | Bibliography style | **APA 7th via `biblatex` `style=apa` + `biber`** | The thesis citation-style decision is already locked to APA 7th in `outline.md`, `citation-register.md`, and `references.bib`. The sample's `style=ieee` is **not** reused. |
-| Document class / layout | `report`, 12 pt, A4, `oneside`; geometry left 3.0 cm, others 2.5 cm; `\onehalfspacing` | Standard VNUK-style thesis layout; matches the sample and typical VNUK margins. Confirm exact margins against the official VNUK template in T-091. |
+| Document class / layout | `report`, 11 pt, A4, `oneside`; single-sided binding layout with left/inside 3.0 cm and all other margins 2.0 cm; `\onehalfspacing` | Updated to match the user-provided formatting guideline. |
 | Source of truth | Markdown stays authoritative until migration approved; then **freeze Markdown → LaTeX becomes final publication source** | Prevents content drift between two formats. |
 | Code listings | `listings` (not `minted`) | `minted` needs shell-escape, which Overleaf restricts; `listings` is portable. |
 | Diagrams | SVG master → **PDF vector**; screenshots stay PNG/JPG | Vector diagrams stay sharp at any zoom; raster screenshots are fine as PNG. |
@@ -911,7 +911,7 @@ Author/supervisor metadata source of truth (`README.md`):
 
 - Author: **Le Tiep Tuyen**, Student ID **22020015**, Cohort **K22**, Computer Science and Engineering, VNUK Institute for Research and Executive Education, The University of Danang.
 - Supervisor: **Le Dinh Dung, PhD** (PhD in Computer Science; Lecturer), VNUK Institute for Research and Executive Education, The University of Danang.
-- Title: **A Comprehensive UI and API Automation Testing Framework Using Playwright: An Enterprise-Standard Approach**.
+- Title: **A COMPREHENSIVE UI AND API AUTOMATION TESTING FRAMEWORK USING PLAYWRIGHT**.
 - Place/Year: Da Nang, 2026.
 
 ### 4.1 Outside cover (LaTeX target `cover.tex`, page 1)
@@ -922,7 +922,7 @@ VNUK INSTITUTE FOR RESEARCH AND EXECUTIVE EDUCATION
             [VNUK logo]
 
 A COMPREHENSIVE UI AND API AUTOMATION TESTING FRAMEWORK
-USING PLAYWRIGHT: AN ENTERPRISE-STANDARD APPROACH
+USING PLAYWRIGHT
 
                     by
               LE TIEP TUYEN
@@ -939,7 +939,7 @@ VNUK Institute for Research and Executive Education,
 
 ```text
 A COMPREHENSIVE UI AND API AUTOMATION TESTING FRAMEWORK
-USING PLAYWRIGHT: AN ENTERPRISE-STANDARD APPROACH
+USING PLAYWRIGHT
 
                     by
               Le Tiep Tuyen

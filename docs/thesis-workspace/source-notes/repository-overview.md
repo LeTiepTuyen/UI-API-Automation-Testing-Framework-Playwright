@@ -6,7 +6,7 @@ This source note summarizes repository-level evidence for the thesis project. It
 
 ## Repository Identity
 
-The repository is titled **A Comprehensive UI and API Automation Testing Framework Using Playwright: An Enterprise-Standard Approach**. According to `README.md`, it is a graduation project for the Bachelor of Computer Science and Engineering program. The same project title is repeated in `docs/project-overview.md`.
+The repository is titled **A COMPREHENSIVE UI AND API AUTOMATION TESTING FRAMEWORK USING PLAYWRIGHT**. According to `README.md`, it is a graduation project for the Bachelor of Computer Science and Engineering program. The same project title is repeated in `docs/project-overview.md`.
 
 The repository describes itself as a Playwright and TypeScript automation framework for the Unsplash web application and its public API. The stated purpose is to demonstrate a maintainable automation framework that supports both UI and API testing.
 
