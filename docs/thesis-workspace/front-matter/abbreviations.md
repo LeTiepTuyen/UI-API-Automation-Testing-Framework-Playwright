@@ -14,3 +14,5 @@
 | JSON | JavaScript Object Notation |
 | POM | Page Object Model |
 | UI | User Interface |
+| URL | Uniform Resource Locator |
+| XML | Extensible Markup Language |

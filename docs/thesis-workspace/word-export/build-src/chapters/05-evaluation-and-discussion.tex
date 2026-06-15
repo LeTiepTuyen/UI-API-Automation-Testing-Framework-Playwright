@@ -1,0 +1,252 @@
+\chapter{Evaluation and Discussion}
+\label{ch:evaluation-and-discussion}
+\begingroup
+\sloppy
+\setlength{\emergencystretch}{3em}
+
+\section{Evaluation Approach and Evidence Basis}
+\label{sec:ch5-evaluation-approach-evidence-basis}
+
+This chapter evaluates the research along two complementary strands. The first strand justifies the selection of Playwright as the automation tool for the proposed framework by examining it against Cypress and Selenium through a set of project-specific criteria, a capability comparison grounded in official documentation and academic literature, and external empirical benchmark context. The second strand evaluates the implemented Playwright and TypeScript framework itself, using the verified test execution evidence collected on 3 June 2026, the associated reporting artifacts, and a qualitative discussion of automation value relative to manual testing. Chapter~6 then interprets these findings in relation to the four research questions established in Chapter~1 and consolidates all evaluation boundaries.
+
+Each strand draws on a distinct evidence type, and each evidence type carries a distinct boundary. Tool-capability claims rest on official documentation and a recent academic comparison of the three tools, whereas execution claims rest only on a single verified local run of the implemented framework. To prevent these boundaries from being scattered throughout the chapter, \Cref{tab:ch5-evidence-basis-boundaries} states the top-level evidence basis and the principal limitation for each strand; the complete and authoritative set of evaluation boundaries is consolidated in the limitations discussion of Chapter~6 rather than repeated across sections.
+
+\begin{table}[htbp]
+  \centering
+  \tablefont
+  \begin{tabularx}{\textwidth}{YYYY}
+    \toprule
+    Evaluation strand & Primary evidence used & What the evidence supports & Top-level boundary \\
+    \midrule
+    Tool selection & Official Playwright, Cypress, and Selenium documentation; academic comparison literature; an author-constructed weighted rubric & Capability comparison and project-fit ranking of the three tools & Not a local benchmark of Cypress or Selenium \\
+    Framework execution & Verified \code{npx playwright test} run on 3 June 2026; HTML report, JUnit XML, and a supplemental trace artifact & Observed execution outcome and reviewable evidence for the selected scenarios & A single passing local run does not establish long-term reliability \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Evidence basis and top-level boundaries for the two evaluation strands.}
+  \label{tab:ch5-evidence-basis-boundaries}
+\end{table}
+
+The remainder of the chapter develops these two strands in turn, beginning with the criteria that frame the tool-selection decision.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{playwright-html-report-overview.png}
+  \caption[Playwright HTML report showing 18 passed tests.]{Playwright HTML report showing 18 passed tests from the verified 3 June 2026 full-suite run.}
+  \label{fig:playwright-html-report-overview}
+\end{figure}
+
+\section{Tool Selection Criteria and Weighting}
+\label{sec:ch5-tool-selection-criteria-weighting}
+
+The selection of an automation tool for this research is not an abstract preference but a decision constrained by the technical character of the proposed framework, which combines browser-based UI automation and public API testing within a single TypeScript codebase organized around Page Objects, fixtures, and service-layer abstractions. Because these architectural commitments were established before the tool decision, the selection criteria must reflect them directly rather than evaluating tools against generic automation needs. Accordingly, the criteria below weight cross-cutting concerns such as combined UI and API support, synchronization reliability for dynamic interfaces, and architectural fit more heavily than peripheral concerns, while still accounting for secondary factors such as ecosystem maturity and cost that influence the framework's maintainability beyond the duration of this project.
+
+\Cref{tab:ch5-tool-selection-criteria} defines the eleven project-specific criteria, grouped into primary and secondary concerns, together with a weight on a one-to-five scale and the rationale that ties each criterion to the requirements of this research.
+
+\begin{table}[htbp]
+  \centering
+  \tablefont
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{0.17\textwidth}>{\RaggedRight\arraybackslash}p{0.28\textwidth}>{\RaggedLeft\arraybackslash}p{0.08\textwidth}Y}
+    \toprule
+    Criteria group & Criterion & Weight & Reason for this project \\
+    \midrule
+    Primary & Browser engine coverage and project browser fit & 5 & UI automation must execute browser interactions reliably and remain extensible beyond a single-browser assumption. \\
+    Primary & Synchronization and action reliability for dynamic UI & 5 & The selected Unsplash UI scenarios depend on waiting for visible state, action readiness, navigation, and assertions. \\
+    Primary & UI and API testing support in the same framework & 5 & The research deliberately combines browser-based UI tests and public API tests rather than treating them as unrelated suites. \\
+    Primary & TypeScript, POM, fixture, and service-layer architecture fit & 4 & The framework is implemented in TypeScript and relies on Page Objects, fixtures, workflows, API services, DTOs, and utilities. \\
+    Primary & Reporting, trace, and debugging artifacts & 4 & The evaluation requires verifiable report evidence, and the framework needs debugging support for failed automation runs. \\
+    Primary & Parallel and CI-ready execution & 4 & The framework should be prepared for future continuous integration use, even though no verified CI run is claimed in this study. \\
+    Primary & Setup simplicity for a Node.js project & 3 & The framework should remain reproducible for future engineers through documented commands and minimal tool fragmentation. \\
+    Secondary & Ecosystem maturity and long-term support & 3 & Community size, documentation quality, and tool maturity affect maintainability after the project concludes. \\
+    Secondary & Cost and open-source availability & 2 & The graduation project should remain reproducible without paid tool lock-in. \\
+    Secondary & Learning and documentation fit & 3 & The framework should be understandable to new automation engineers and maintainable by future contributors. \\
+    Secondary & Extensibility beyond current scope & 3 & Future work may add UI flows, API coverage, schema validation, CI dashboards, visual testing, or accessibility checks. \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Tool selection criteria and project-specific weights.}
+  \label{tab:ch5-tool-selection-criteria}
+\end{table}
+
+These weighted criteria provide the rubric against which the three candidate tools are compared in the following section.
+
+\section{Comparative Analysis of Playwright, Cypress, and Selenium}
+\label{sec:ch5-comparative-analysis}
+
+\subsection{Capability Comparison}
+\label{subsec:ch5-capability-comparison}
+
+Playwright, Cypress, and Selenium are all credible automation tools, but each occupies a distinct position with respect to the criteria defined above, and the comparison is therefore framed as one of fit rather than of absolute quality. Playwright integrates cross-browser automation, an actionability-based synchronization model, fixtures, API request support, reporters, and tracing within a single Playwright Test ecosystem, which aligns closely with a project that combines UI and API testing in TypeScript. Cypress is well suited to JavaScript-centric browser testing and offers a retryability model and command-level HTTP support, while Selenium represents a mature WebDriver ecosystem whose breadth comes at the cost of additional framework assembly for combined UI and API work. The recent comparative study by \textcite{mon_panczyk_tool_comparison_2025} evaluated the same three tools through repeated test executions, resource measurement, and documentation review, and it provides external academic context for treating these tools as a coherent comparison set rather than as a ranked hierarchy.
+
+\Cref{tab:ch5-capability-literature-summary} summarizes the principal capability dimensions, distributing the supporting documentation references across the rows so that each capability claim is attributed to its corresponding source.
+
+\begin{table}[htbp]
+  \centering
+  \tablefont
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{0.13\textwidth}YYY>{\RaggedRight\arraybackslash}p{0.14\textwidth}}
+    \toprule
+    Evidence dimension & Playwright & Cypress & Selenium & Boundary \\
+    \midrule
+    Browser and platform capability & Chromium, Firefox, and WebKit support through Playwright tooling \autocite{playwright_docs_intro_2026} & Chrome, Firefox, and Edge support, with experimental WebKit \autocite{cypress_browser_support_2026} & Broad WebDriver browser coverage across major browsers \autocite{selenium_docs_browsers_2026} & Browser support alone does not establish reliability \\
+    Synchronization model & Actionability and web-first auto-waiting model \autocite{playwright_docs_actionability_2026} & Retryability for queries and assertions \autocite{cypress_docs_retryability_2026} & Explicit and implicit waits, with dynamic-UI timing noted as a common challenge \autocite{selenium_docs_waits_2026} & Actual flakiness requires repeated-run evidence \\
+    API support & Built-in API testing and request contexts \autocite{playwright_docs_api_testing_2026} & \code{cy.request()} issues HTTP requests \autocite{cypress_docs_request_2026} & WebDriver is browser-focused; API testing typically needs additional libraries \autocite{selenium_webdriver_2026} & This project needs UI and API support together \\
+    Reporting and debugging & Built-in HTML and JUnit reporters and a trace viewer \autocite{playwright_docs_reporters_2026,playwright_docs_trace_viewer_2026} & Screenshots, videos, and configurable reporters \autocite{cypress_docs_screenshots_videos_2026,cypress_docs_reporters_2026} & Reporting and debugging depend more on surrounding integrations \autocite{selenium_page_object_models_2026} & Artifact availability differs from project-specific evidence \\
+    Parallel execution & Worker-based parallelism and retries \autocite{playwright_docs_parallelism_2026,playwright_docs_retries_2026} & Cloud-supported parallelization \autocite{cypress_docs_parallelization_2026} & Distributed execution through Selenium Grid \autocite{selenium_docs_grid_2026} & Parallel capability does not by itself prove stability \\
+    Academic comparison context & Reported effective and flexible across most tested cases \autocite{mon_panczyk_tool_comparison_2025} & JavaScript and TypeScript focus with a strong developer experience & Mature and multi-language, with a long browser-automation history & External study results are not this project's measured results \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Capability and literature summary for Playwright, Cypress, and Selenium.}
+  \label{tab:ch5-capability-literature-summary}
+\end{table}
+
+The capability comparison indicates that all three tools satisfy the basic requirements of browser automation, but only Playwright provides combined UI and API support, integrated reporting, and tracing without additional assembly, which is the decisive consideration for a framework that treats UI and API testing as a unified concern.
+
+\subsection{Weighted Framework Evaluation}
+\label{subsec:ch5-weighted-framework-evaluation}
+
+The capability comparison is qualitative; to translate it into a defensible decision, the criteria and weights from \Cref{sec:ch5-tool-selection-criteria-weighting} are applied as a scoring rubric in \Cref{tab:ch5-weighted-framework-evaluation}. This table reflects a project-specific evaluation rubric, not an empirical benchmark. Each tool receives a score on the one-to-five scale for every criterion, the score is multiplied by the criterion weight, and the weighted values are summed into primary and secondary subtotals and a final total.
+
+\begin{table}[htbp]
+  \centering
+  \tablefont
+  \setlength{\tabcolsep}{4pt}
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}X r rr rr rr}
+    \toprule
+     & & \multicolumn{2}{c}{Playwright} & \multicolumn{2}{c}{Cypress} & \multicolumn{2}{c}{Selenium} \\
+    \cmidrule(lr){3-4}\cmidrule(lr){5-6}\cmidrule(lr){7-8}
+    Evaluation criterion & W & Sc & Wtd & Sc & Wtd & Sc & Wtd \\
+    \midrule
+    Browser engine coverage and project browser fit & 5 & 5 & 25 & 4 & 20 & 5 & 25 \\
+    Synchronization and action reliability for dynamic UI & 5 & 5 & 25 & 5 & 25 & 3 & 15 \\
+    UI and API testing support in the same framework & 5 & 5 & 25 & 4 & 20 & 2 & 10 \\
+    TypeScript, POM, fixture, and service-layer architecture fit & 4 & 5 & 20 & 4 & 16 & 4 & 16 \\
+    Reporting, trace, and debugging artifacts & 4 & 5 & 20 & 4 & 16 & 3 & 12 \\
+    Parallel and CI-ready execution & 4 & 5 & 20 & 4 & 16 & 5 & 20 \\
+    Setup simplicity for a Node.js project & 3 & 5 & 15 & 5 & 15 & 3 & 9 \\
+    \textbf{Primary subtotal} & -- & -- & \textbf{150} & -- & \textbf{128} & -- & \textbf{107} \\
+    \midrule
+    Ecosystem maturity and long-term support & 3 & 4 & 12 & 4 & 12 & 5 & 15 \\
+    Cost and open-source availability & 2 & 5 & 10 & 5 & 10 & 5 & 10 \\
+    Learning and documentation fit & 3 & 5 & 15 & 5 & 15 & 3 & 9 \\
+    Extensibility beyond current scope & 3 & 5 & 15 & 4 & 12 & 5 & 15 \\
+    \textbf{Secondary subtotal} & -- & -- & \textbf{52} & -- & \textbf{49} & -- & \textbf{49} \\
+    \midrule
+    \textbf{Total score} & -- & -- & \textbf{202} & -- & \textbf{177} & -- & \textbf{156} \\
+    \textbf{Rank} & -- & -- & \textbf{1} & -- & \textbf{2} & -- & \textbf{3} \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Weighted framework evaluation for this project (Sc = score, Wtd = weighted; W = criterion weight).}
+  \label{tab:ch5-weighted-framework-evaluation}
+\end{table}
+
+Under the project-specific rubric, Playwright ranks first with 202 out of a possible 205 points, followed by Cypress with 177 and Selenium with 156. This ordering is best interpreted as a measure of fit with the particular requirements of this research rather than as a claim of universal superiority: Selenium retains clear advantages where broad WebDriver maturity and Grid-based distributed execution are the primary concerns, and Cypress remains well suited to fast, JavaScript-centric UI testing. Playwright is the most appropriate tool for the requirements of this project because it most directly matches the framework's combined UI and API scope, its TypeScript and fixture-oriented architecture, and its reporting and traceability needs within a single ecosystem.
+
+\subsection{External Benchmark Context}
+\label{subsec:ch5-external-benchmark-context}
+
+The weighted rubric is an author-constructed decision instrument, and it is strengthened when set alongside independent empirical evidence on the same three tools. Two external studies are used here as contextual support rather than as measurements produced by this research: \textcite{mon_panczyk_tool_comparison_2025} report mean execution time, CPU usage, and RAM usage across repeated executions of ten test cases, and \textcite{almabruk_selenium_playwright_reliability_2025} report twenty-four-hour uptime and rate-of-occurrence-of-failures (ROCOF) reliability measures for Selenium and Playwright. These studies used different systems under test, hardware configurations, test designs, and tool versions from this project, and their figures are therefore presented as external context and not as transferable measurements of the implemented framework.
+
+\Cref{fig:external-tool-benchmark-summary} presents mean values derived from the benchmark tables reported by \textcite{mon_panczyk_tool_comparison_2025}. The pattern is one of nuanced trade-offs rather than uniform dominance: in that study, Selenium recorded the lowest mean execution time and RAM usage, while Playwright recorded the lowest mean CPU usage and remained close to Selenium on the other two metrics. The figure therefore supports a measured interpretation in which no single tool is empirically superior across every resource dimension.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{external-tool-benchmark-summary-mon-panczyk-2025.png}
+  \caption[External tool benchmark summary.]{Mean execution time, CPU usage, and RAM usage for Playwright, Cypress, and Selenium across ten test cases (lower values are better). Source: Adapted from \protect\textcite{mon_panczyk_tool_comparison_2025}, Tables 3--5.}
+  \label{fig:external-tool-benchmark-summary}
+\end{figure}
+
+\Cref{fig:external-reliability-benchmark} adds reliability context from \textcite{almabruk_selenium_playwright_reliability_2025}. In their twenty-four-hour observation, Selenium reached full uptime while Playwright reached 99.72 percent uptime, yet their ROCOF summary reported fewer failures per second for Playwright across the reported hardware contexts. Because the hardware assignments differ between the tools in parts of that study, the result reinforces the interpretation of tool selection as a trade-off among reliability, speed, resource use, architectural fit, and project constraints.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{external-reliability-benchmark-almabruk-2025.png}
+  \caption[External reliability benchmark summary.]{Twenty-four-hour uptime and ROCOF reliability comparison of Selenium and Playwright by hardware context (lower ROCOF is better). Source: Adapted from \protect\textcite{almabruk_selenium_playwright_reliability_2025}, Tables 1 and 6.}
+  \label{fig:external-reliability-benchmark}
+\end{figure}
+
+Taken together, the capability comparison, the weighted rubric, and the external benchmark context support a single bounded conclusion for the first evaluation strand: Playwright is the most appropriate tool for this research because of its alignment with the framework's combined UI and API design, while the external evidence confirms that this selection should be understood as project fit rather than as a universal ranking. With the tool-selection decision established, the chapter turns to the verified execution of the implemented framework.
+
+\section{Verified Test Execution Results}
+\label{sec:ch5-verified-test-execution-results}
+
+The execution evidence presented in this section derives from a single verified run of the implemented framework, invoked with the command \code{npx playwright test} on a local development environment. The run began at \code{2026-06-03T16:08:33.8884807+07:00} and finished at \code{2026-06-03T16:09:04.3780466+07:00}; the terminal output reported \code{18 passed (28.9s)}, and the JUnit XML recorded 18 tests, 0 failures, 0 skipped tests, and a total duration of \code{28.890057} seconds. The full execution log and JUnit XML results are reproduced in Appendix~D.
+
+\Cref{tab:ch5-full-suite-execution-result} summarizes the full-suite outcome, separating the API and UI suites and reporting the combined total.
+
+\begin{table}[htbp]
+  \centering
+  \tablefont
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}p{0.16\textwidth}rrrr>{\RaggedRight\arraybackslash}p{0.2\textwidth}Y}
+    \toprule
+    Test suite & Tests & Passed & Failed & Skipped & Duration & Evidence \\
+    \midrule
+    API tests & 15 & 15 & 0 & 0 & See per-spec breakdown & JUnit XML and execution log \\
+    UI tests & 3 & 3 & 0 & 0 & See per-spec breakdown & JUnit XML and execution log \\
+    Full suite & 18 & 18 & 0 & 0 & 28.890057s & JUnit XML, terminal log, HTML report \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Verified local full-suite execution result on 3 June 2026.}
+  \label{tab:ch5-full-suite-execution-result}
+\end{table}
+
+The per-specification breakdown in \Cref{tab:ch5-per-spec-breakdown} shows how the eighteen tests distribute across the four API specification files and the three UI specification files, with the duration recorded for each file in the JUnit XML output.
+
+\begin{table}[htbp]
+  \centering
+  \tablefont
+  \begin{tabularx}{\textwidth}{>{\RaggedRight\arraybackslash}X>{\RaggedRight\arraybackslash}p{0.09\textwidth}rrrr}
+    \toprule
+    Specification file & Type & Tests & Failures & Skipped & Time \\
+    \midrule
+    \path{tests/api/users/get-public-profile.spec.ts} & API & 3 & 0 & 0 & 4.466s \\
+    \path{tests/api/users/get-statistics.spec.ts} & API & 4 & 0 & 0 & 8.782s \\
+    \path{tests/api/users/list-collections.spec.ts} & API & 4 & 0 & 0 & 4.405s \\
+    \path{tests/api/users/list-photos.spec.ts} & API & 4 & 0 & 0 & 2.254s \\
+    \path{tests/ui/profile/bookmarked-photos.spec.ts} & UI & 1 & 0 & 0 & 13.963s \\
+    \path{tests/ui/profile/update-profile.spec.ts} & UI & 1 & 0 & 0 & 22.199s \\
+    \path{tests/ui/profile/view-profile.spec.ts} & UI & 1 & 0 & 0 & 15.399s \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Per-specification breakdown from the verified JUnit XML output.}
+  \label{tab:ch5-per-spec-breakdown}
+\end{table}
+
+\Cref{fig:playwright-html-report-overview} presents the Playwright HTML report overview captured from the same verified run. The report renders the passing status of each test and the overall duration in a readable form, and it complements the numerical evidence in \Cref{tab:ch5-full-suite-execution-result,tab:ch5-per-spec-breakdown}, which remains grounded in the execution log and JUnit XML.
+
+The framework also supports trace-based debugging, although the verified full-suite run produced no trace artifacts. The Playwright configuration collects traces under the \code{trace: 'on-first-retry'} setting, and because all eighteen tests passed without any retry, no trace was recorded for this run. \Cref{fig:playwright-trace-viewer} is therefore drawn from a supplemental single-test trace run executed to demonstrate the type of inspection available; it shows the timeline, action list, DOM snapshots, console, network, and source information that the Trace Viewer exposes when a trace is collected; the supplemental trace artifact is provided in Appendix~D.
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth,height=0.72\textheight,keepaspectratio]{playwright-trace-viewer-loaded-trace-sanitized.png}
+  \caption[Playwright Trace Viewer loaded with a representative UI test trace.]{Playwright Trace Viewer loaded with a representative UI test trace, showing the action timeline, DOM snapshot, and network panel. Screenshot sanitized; profile details removed.}
+  \label{fig:playwright-trace-viewer}
+\end{figure}
+
+These results confirm that the implemented framework executed the selected UI and API scenarios successfully and generated reviewable evidence in one verified local run. The outcome should nonetheless be interpreted with care: a single passing local run does not establish long-term reliability, freedom from flakiness, production readiness, or stability across other machines, browsers, networks, and dates.
+
+\section{Automation Value Relative to Manual Testing}
+\label{sec:ch5-automation-value-relative-to-manual-testing}
+
+Having established the verified execution outcome, it is appropriate to consider what value the automated framework provides relative to performing the same regression checks manually. Comparing automation with manual testing clarifies why a maintainable automated suite is worthwhile for repeatable verification, while also guarding against the assumption that automation displaces manual testing entirely. The literature is consistent on this point: automation is most beneficial for repeatable checks with stable, well-defined expected results, yet the decision of what to automate must weigh execution benefits against creation and maintenance cost \autocite{garousi_mantyla_automation_2016}, and automated and manual testing are complementary rather than substitutive activities \autocite{istqb_ctfl_syllabus_2024}.
+
+\Cref{tab:ch5-manual-automation-comparison} summarizes this comparison across four dimensions relevant to the regression scenarios in this research.
+
+\begin{table}[htbp]
+  \centering
+  \tablefont
+  \begin{tabularx}{\textwidth}{YYY}
+    \toprule
+    Dimension & Manual testing & Automation in this framework \\
+    \midrule
+    Repeatability & Each run depends on the tester following steps consistently & A single command re-executes the same selected checks identically \\
+    Speed and evidence & Repeated navigation and result recording consume human time and produce informal evidence & The verified run executed 18 tests in 28.890057 seconds and produced JUnit XML and an HTML report \\
+    Human judgment & Strong for exploration, usability, and discovery of unexpected behavior & Limited to encoded assertions and the implemented flows \\
+    Risk & Human error can occur during repetitive execution & Tests can become stale or yield false confidence if not maintained \\
+    \bottomrule
+  \end{tabularx}
+  \caption{Condensed comparison of manual testing and automation for the selected regression scenarios.}
+  \label{tab:ch5-manual-automation-comparison}
+\end{table}
+
+The verified run demonstrates that the framework can perform the selected regression checks repeatably and generate reviewable evidence in a fraction of the time that manual execution would require. It does not, however, quantify the manual effort saved, because no manual timing baseline was measured for this project; any efficiency comparison therefore remains qualitative. Crucially, manual exploratory testing retains judgment-based value that the automated suite cannot replace, particularly for usability assessment and the discovery of behavior that the encoded assertions do not anticipate.
+
+\endgroup

@@ -2,7 +2,7 @@
 
 This file summarizes the current thesis LaTeX document setup for quick reference.
 
-**Last updated:** 2026-06-12 (formatting fix pass: font 12pt, paragraph spacing, signature alignment, widow/orphan control, blank page after cover removed).
+**Last updated:** 2026-06-12 (table spacing convention added after Chapter 2 review).
 
 ## Document Setup
 
@@ -17,7 +17,7 @@ This file summarizes the current thesis LaTeX document setup for quick reference
 
 ## Page Layout
 
-- Inside / binding margin for single-sided output: `3.0cm` on the left
+- Inside / binding margin for single-sided output: `2.0cm` on the left (intentional deviation from the formatting guideline's 3.0cm binding margin; user confirmed the uniform 2.0cm layout on 2026-06-14 during the T-098 QA gate)
 - Right margin: `2.0cm`
 - Top margin: `2.0cm`
 - Bottom margin: `2.0cm`
@@ -75,6 +75,9 @@ This file summarizes the current thesis LaTeX document setup for quick reference
 - Table packages: `booktabs`, `array`, `tabularx`, `longtable`, `ragged2e`, `xcolor`
 - Custom flexible column: `Y`
 - Table font helper: `\tablefont` maps to `\footnotesize`
+- Table style: `booktabs` horizontal rules, no vertical rules, bottom captions, and labels immediately after captions.
+- Global row readability settings in `config/formatting.tex`: `\arraystretch=1.22`, `\extrarowheight=1.5pt`, `\tabcolsep=5.5pt`, and modest `booktabs` rule spacing.
+- Default table construction for prose-heavy thesis tables: `tabularx` with `Y` columns; use `longtable` only when a table must break across pages.
 
 ## Code Listings
 

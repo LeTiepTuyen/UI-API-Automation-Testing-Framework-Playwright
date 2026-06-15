@@ -1,12 +1,11 @@
 %%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, sans-serif", "primaryTextColor": "#1F2937", "lineColor": "#64748B", "clusterBkg": "#FFFFFF", "clusterBorder": "#CBD5E1"}}}%%
-flowchart LR
+flowchart TB
     Run["Playwright test run"]
-    Config["playwright.config.ts"]
+    Config["playwright.config.ts<br/>reporter configuration"]
     HTML["HTML report"]
-    JUnit["JUnit XML"]
-    Trace["Trace on retry"]
-    Evidence["Evaluation evidence<br/>package"]
-    Gate["Chapter 5<br/>evidence gate"]
+    JUnit["JUnit XML<br/>(results.xml)"]
+    Trace["Trace on<br/>first retry"]
+    Evidence["Reporting and<br/>evidence artifacts"]
 
     Run --> Config
     Config --> HTML
@@ -15,14 +14,13 @@ flowchart LR
     HTML --> Evidence
     JUnit --> Evidence
     Trace --> Evidence
-    Evidence --> Gate
 
     classDef entry fill:#F8FAFC,stroke:#94A3B8,color:#1F2937
     classDef core fill:#F1F5F9,stroke:#64748B,color:#1F2937
     classDef report fill:#F3E8FF,stroke:#A78BFA,color:#1F2937
-    classDef risk fill:#FFE4E6,stroke:#FB7185,color:#1F2937
+    classDef output fill:#DCFCE7,stroke:#34D399,color:#1F2937
 
     class Run entry
     class Config core
-    class HTML,JUnit,Trace,Evidence report
-    class Gate risk
+    class HTML,JUnit,Trace report
+    class Evidence output

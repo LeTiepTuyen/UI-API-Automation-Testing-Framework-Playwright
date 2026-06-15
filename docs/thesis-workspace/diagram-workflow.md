@@ -102,6 +102,16 @@ When Mermaid supports the diagram type:
 - Prefer SVG output as the master artifact; PNG is optional only for preview or Word insertion constraints.
 - Keep edge labels short and use them only when they add meaning.
 
+### Orientation rule for the LaTeX (portrait A4) thesis
+
+The thesis is single-column portrait A4 (text column ~16 cm). Wide left-to-right (`flowchart LR`) linear flows render very small when fitted to the column (a 7-node LR chain can drop to ~1 cm tall and become unreadable in print).
+
+- Prefer vertical (`flowchart TB`) for linear flows and pipelines so each node spans the column width and stays legible.
+- Reserve `LR` only for genuinely short, low-node-count relations.
+- For inherently wide breadth diagrams (many parallel nodes), accept full-width placement or use a landscape page (`sidewaysfigure`); do not restructure approved diagram content just to force a direction.
+- Render PDFs cropped to content (`npx @mermaid-js/mermaid-cli -i <src>.mmd -o <out>.pdf --pdfFit`) and place them under `docs/thesis-latex/figures/architecture|workflows/`.
+- In LaTeX, size diagram figures with `\includegraphics[width=\textwidth,height=0.8\textheight,keepaspectratio]{...}` so tall figures bind on height and wide ones on width, and nothing overflows the page.
+
 Reusable academic Mermaid palette:
 
 | Semantic group | Recommended fill | Recommended border | Intended use |

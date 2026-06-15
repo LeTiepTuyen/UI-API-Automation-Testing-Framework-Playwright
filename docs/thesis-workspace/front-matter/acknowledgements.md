@@ -1,5 +1,13 @@
 # Acknowledgements
 
-I would like to express my sincere gratitude to my supervisor, Dr. Le Dinh Dung, for his thoughtful guidance, technical insight, and consistent encouragement throughout this graduation project. His feedback on testing methodology and software design substantially shaped the direction and quality of this work.
+I would like to express my deepest and most sincere gratitude to my supervisor, Dr. Le Dinh Dung, whose guidance has been the cornerstone of this graduation project. I am profoundly thankful for his patience, his generous sharing of technical and academic expertise, and his steady encouragement at every stage of this work. His thoughtful feedback on testing methodology, software design, and research direction not only shaped the quality of this thesis but also deepened my understanding of how to approach engineering problems with rigour and care. Working under his mentorship has been a genuinely formative experience, and for that I will always be grateful.
 
-I am also grateful to the lecturers and staff of the VNUK Institute for Research and Executive Education, The University of Danang, for the academic foundation and supportive learning environment that made this research possible.
+I am also deeply grateful to the lecturers and staff of the Department of Computer Science and Engineering at the VNUK Institute for Research and Executive Education, The University of Danang. The knowledge, values, and professional discipline they have patiently cultivated throughout my studies form the very foundation on which this research was built. I sincerely appreciate the supportive and inspiring learning environment that the Department and the Institute have provided, which gave me both the confidence and the resources to carry this project through to completion.
+
+My appreciation further extends to my friends and fellow students in the Computer Science and Engineering programme, whose companionship, shared effort, and encouragement made this journey far more meaningful. To everyone who has supported and accompanied me throughout my time at VNUK, I offer my heartfelt thanks.
+
+Da Nang, June 10, 2026
+
+*Author*
+
+Le Tiep Tuyen

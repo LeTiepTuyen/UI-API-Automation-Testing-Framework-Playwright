@@ -1,47 +1,69 @@
 \begin{titlepage}
-  \centering
-  \singlespacing
+  \thispagestyle{empty}
+  % Thin border framing the A4 text area (kept inside the page margins).
+  \setlength{\fboxrule}{0.8pt}
+  \setlength{\fboxsep}{0pt}
+  \noindent\fbox{%
+    \begin{minipage}[c][\dimexpr\textheight-2\fboxrule\relax][c]{\dimexpr\textwidth-2\fboxrule\relax}%
+      \centering
+      \singlespacing
+      \vspace{0.7cm}
 
-  {\large \textbf{\MakeUppercase{\university}}\par}
-  {\large \textbf{\MakeUppercase{\institution}}\par}
+      {\large \textbf{\MakeUppercase{\university}}\par}
+      {\large \textbf{\MakeUppercase{\institution}}\par}
 
-  \vspace{1.2cm}
+      \vspace{1.0cm}
 
-  \IfFileExists{figures/logos/vn-uk-logo.png}{%
-    \includegraphics[width=0.28\textwidth]{figures/logos/vn-uk-logo.png}
-  }{%
-    \fbox{\parbox[c][2.5cm][c]{0.28\textwidth}{\centering VNUK logo}}
+      % The University of Danang logo (left) beside the VNUK logo (right),
+      % rendered at the same height and vertically centred so they balance.
+      \begin{tabular}{@{}m{3cm}@{\hspace{1.4cm}}m{5.6cm}@{}}
+        \centering
+        \IfFileExists{figures/logos/danang-university-logo.png}{%
+          \includegraphics[height=2.7cm]{figures/logos/danang-university-logo.png}%
+        }{%
+          \fbox{\parbox[c][2.7cm][c]{3cm}{\centering UDN logo}}%
+        } &
+        \centering
+        \IfFileExists{figures/logos/vn-uk-logo.png}{%
+          \includegraphics[height=2.7cm]{figures/logos/vn-uk-logo.png}%
+        }{%
+          \fbox{\parbox[c][2.7cm][c]{5cm}{\centering VNUK logo}}%
+        }
+        \tabularnewline
+      \end{tabular}
+
+      \vspace{1.3cm}
+
+      {\Large\bfseries\MakeUppercase{\thesistitle}\par}
+
+      \vspace{0.8cm}
+
+      {\large\textit{by}\par}
+      \vspace{0.2cm}
+      {\large\bfseries\MakeUppercase{\thesisauthor}\par}
+
+      \vspace{0.8cm}
+
+      {\large\textit{under the supervision of}\par}
+      \vspace{0.2cm}
+      {\large\bfseries \supervisor \par}
+      \vspace{0.1cm}
+      {\small \institution, \university \par}
+
+      \vspace{1.2cm}
+
+      {\large A THESIS\par}
+      \vspace{0.2cm}
+      {\small Submitted in Partial Fulfillment of the Requirements for the Degree of\par}
+      \vspace{0.1cm}
+      {\large\bfseries \degreeaward \par}
+
+      \vfill
+
+      {\large\textbf{\submissionplace, \submissionyear}\par}
+      \vspace{0.3cm}
+      {\small\textcopyright\ \submissionyear\ \thesisauthor\par}
+      \vspace{0.6cm}
+    \end{minipage}%
   }
-
-  \vspace{1.4cm}
-
-  {\Large\bfseries\MakeUppercase{\thesistitle}\par}
-
-  \vspace{0.8cm}
-
-  {\large\textit{by}\par}
-  \vspace{0.2cm}
-  {\large\bfseries\MakeUppercase{\thesisauthor}\par}
-
-  \vspace{0.8cm}
-
-  {\large\textit{under the supervision of}\par}
-  \vspace{0.2cm}
-  {\large\bfseries \supervisor \par}
-  \vspace{0.1cm}
-  {\small \institution, \university \par}
-
-  \vspace{1.2cm}
-
-  {\large A THESIS\par}
-  \vspace{0.2cm}
-  {\small Submitted in Partial Fulfillment of the Requirements for the Degree of\par}
-  \vspace{0.1cm}
-  {\large\bfseries \degreeaward \par}
-
-  \vfill
-
-  {\large\textbf{\submissionplace, \submissionyear}\par}
-  \vspace{0.3cm}
-  {\small\textcopyright\ \submissionyear\ \thesisauthor\par}
 \end{titlepage}

@@ -32,6 +32,7 @@ Use this skill when the user asks Codex to:
 - Record content issues in `docs/thesis-workspace/latex-migration/compile-issue-log.md`; do not silently fix approved prose.
 - Convert one chapter at a time and stop for approval before moving to the next chapter.
 - Do not include private thesis-writing workflow details in thesis-facing `.tex` output.
+- Keep thesis tables in the shared professional style: `booktabs` rules, no vertical rules, `tabularx` with `Y` columns for wide prose tables, `longtable` for multi-page tables, bottom captions, labels immediately after captions, and the global table spacing configured in `docs/thesis-latex/config/formatting.tex`.
 
 ## Bootstrap Workflow
 
@@ -54,9 +55,9 @@ For T-093 and later:
 
 1. Read the source Markdown and target LaTeX mapping.
 2. Convert headings, citations, figures, tables, code, and cross-references without changing meaning.
+   - For tables, preserve approved cell text while converting to `booktabs` + `tabularx`/`longtable`; do not add manual row-by-row spacing unless a specific table needs a documented exception.
 3. Update `source-map.md`, `conversion-register.md`, and `latex-progress.md`.
 4. Compile the full LaTeX project.
 5. Fix LaTeX syntax or layout issues only.
 6. Record unresolved content or formatting problems in `compile-issue-log.md`.
 7. Stop for user approval after each chapter conversion.
-

@@ -1,0 +1,19 @@
+# LaTeX build artifacts — never sync these to Overleaf or the main repo.
+build/
+*.aux
+*.bbl
+*.bcf
+*.blg
+*.fdb_latexmk
+*.fls
+*.lof
+*.log
+*.lot
+*.out
+*.run.xml
+*.toc
+*.synctex.gz
+*.pdf
+
+# Allow figure PDFs (they are real source assets, not build output).
+!figures/**/*.pdf

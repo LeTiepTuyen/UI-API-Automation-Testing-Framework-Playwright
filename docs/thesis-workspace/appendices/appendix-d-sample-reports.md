@@ -32,20 +32,13 @@ This appendix records the execution artifacts that support the evaluation discus
 
 ## D.3 Registered Evidence Artifacts
 
-Verified `2026-06-03` evidence artifacts:
+The following artifacts from the verified 3 June 2026 run are preserved as internal project evidence; they are referenced here by identifier and file name, and their exact repository location may change as the project documents are finalized:
 
-- V-04: Playwright HTML report overview from the verified full-suite execution run.
-  - `docs/thesis-workspace/assets/figures/playwright-html-report-overview.png`
-- V-05: sanitized Playwright Trace Viewer screenshot from a supplemental representative UI trace artifact.
-  - `docs/thesis-workspace/assets/figures/playwright-trace-viewer-loaded-trace-sanitized.png`
-  - Trace artifact: `docs/thesis-workspace/assets/tables/execution-2026-06-03/playwright-trace-view-profile-2026-06-03.zip`
-- V-06: terminal execution output and JUnit `results.xml` evidence from the verified full-suite run.
-  - `docs/thesis-workspace/assets/tables/execution-2026-06-03/playwright-test-run-2026-06-03.log`
-  - `docs/thesis-workspace/assets/tables/execution-2026-06-03/playwright-results-2026-06-03.xml`
+- V-04 — Playwright HTML report overview from the verified full-suite run: `playwright-html-report-overview.png`.
+- V-05 — sanitized Playwright Trace Viewer screenshot from a supplemental representative UI trace, with its trace artifact: `playwright-trace-viewer-loaded-trace-sanitized.png`; `playwright-trace-view-profile-2026-06-03.zip`.
+- V-06 — terminal execution output and JUnit `results.xml` evidence from the verified full-suite run: `playwright-test-run-2026-06-03.log`; `playwright-results-2026-06-03.xml`.
 
-Primary run context source:
-
-- `docs/thesis-workspace/source-notes/chapter-5-execution-evidence-2026-06-03.md`
+The primary run-context source note is `chapter-5-execution-evidence-2026-06-03.md`.
 
 ## D.4 Trace Evidence Boundary
 

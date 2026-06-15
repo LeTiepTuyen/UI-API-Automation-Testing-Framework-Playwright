@@ -1,0 +1,82 @@
+\documentclass[12pt,a4paper,oneside]{report}
+
+\input{config/metadata}
+\input{config/packages}
+\input{config/formatting}
+\input{config/commands}
+
+\addbibresource{bibliography/references.bib}
+
+\begin{document}
+
+\pagenumbering{gobble}
+\hypersetup{pageanchor=false}
+\input{frontmatter/cover}
+\clearpage
+
+\hypersetup{pageanchor=true}
+\pagenumbering{roman}
+\input{frontmatter/approval}
+\clearpage
+
+\tableofcontents
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{LIST OF FIGURES}
+\listoffigures
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{LIST OF TABLES}
+\listoftables
+\clearpage
+
+\input{frontmatter/author-contribution}
+\clearpage
+\input{frontmatter/acknowledgements}
+\clearpage
+\input{frontmatter/definitions}
+\clearpage
+\input{frontmatter/abbreviations}
+\clearpage
+\input{frontmatter/abstract}
+\clearpage
+
+\pagenumbering{arabic}
+
+\input{chapters/01-introduction}
+\input{chapters/02-literature-review}
+\input{chapters/03-framework-design}
+\input{chapters/04-implementation}
+\input{chapters/05-evaluation-and-discussion}
+\input{chapters/06-conclusion-and-future-work}
+
+% APPENDICES grouped under a single Table-of-Contents entry, like the Reference
+% List. The divider page lists the appendices; each appendix follows as an
+% indented section-level entry (international scientific reporting convention).
+\clearpage
+\phantomsection
+\addcontentsline{toc}{chapter}{APPENDICES}
+\chapter*{APPENDICES}
+\noindent The following appendices provide supporting material referenced throughout this thesis:
+\begin{itemize}[leftmargin=2em,itemsep=0.2em]
+  \item Appendix A --- Installation and Execution Guide
+  \item Appendix B --- Test Scenario Matrix
+  \item Appendix C --- Framework Source Code Map
+  \item Appendix D --- Sample Reports and Trace Evidence
+  \item Appendix E --- Copilot Agentic-AI Workflow Artifacts
+\end{itemize}
+
+\input{appendices/appendix-a-installation}
+\input{appendices/appendix-b-test-scenarios}
+\input{appendices/appendix-c-source-code-map}
+\input{appendices/appendix-d-sample-reports}
+\input{appendices/appendix-e-copilot-workflow}
+
+\clearpage
+\defbibheading{thesisbib}{%
+  \chapter*{#1}%
+  \addcontentsline{toc}{chapter}{\MakeUppercase{#1}}%
+}
+\printbibliography[heading=thesisbib,title={Reference List}]
+
+\end{document}

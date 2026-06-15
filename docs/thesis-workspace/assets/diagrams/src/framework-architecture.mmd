@@ -1,27 +1,38 @@
 %%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, sans-serif", "primaryTextColor": "#1F2937", "lineColor": "#64748B", "clusterBkg": "#FFFFFF", "clusterBorder": "#CBD5E1"}}}%%
-flowchart LR
-    subgraph Framework["Playwright UI and API Automation Framework"]
+flowchart TB
+    subgraph L1["Test specification layer"]
         direction LR
-        Tests["Test specifications<br/>UI and API specs"]
-        UI["UI interaction layer<br/>Page Objects and workflows"]
-        API["API service layer<br/>Services and endpoints"]
-        Core["Shared framework core<br/>Fixtures and utilities"]
-        Data["Data and configuration<br/>DTOs, constants, test data"]
-        Report["Reporting and evidence<br/>HTML, JUnit, traces"]
+        UITests["<b>UI test specs</b><br/><i>tests/ui</i>"]
+        APITests["<b>API test specs</b><br/><i>tests/api</i>"]
     end
 
-    SUT["Unsplash UI and Public API"]
+    subgraph L2["Abstraction layer"]
+        direction LR
+        POM["<b>Page Objects &amp; workflows</b><br/><i>page-object, workflow</i>"]
+        APISvc["<b>API services</b><br/><i>api-service</i>"]
+    end
 
-    Tests --> UI
-    Tests --> API
-    UI --> Core
-    API --> Core
-    Core --> SUT
-    Data -. supports .-> Tests
-    Data -. supports .-> UI
-    Data -. supports .-> API
-    Tests --> Report
-    Core --> Report
+    subgraph L3["Framework core layer"]
+        direction LR
+        Fixtures["<b>Fixtures</b><br/><i>fixtures, core/fixtures</i>"]
+        CoreUtil["<b>Core utilities</b><br/><i>core, utils</i>"]
+    end
+
+    Data["<b>Data and configuration</b><br/><i>data-object, constants, test-data, config</i>"]
+    Report["<b>Reporting and evidence</b><br/><i>HTML, JUnit, traces</i>"]
+    SUT["<b>System under test</b><br/><i>Unsplash UI and public API</i>"]
+
+    UITests --> POM
+    APITests --> APISvc
+    POM --> Fixtures
+    APISvc --> CoreUtil
+    Fixtures --> SUT
+    CoreUtil --> SUT
+    Data -. supports .-> UITests
+    Data -. supports .-> APITests
+    UITests --> Report
+    APITests --> Report
+    CoreUtil --> Report
 
     classDef entry fill:#F8FAFC,stroke:#94A3B8,color:#1F2937
     classDef ui fill:#DBEAFE,stroke:#60A5FA,color:#1F2937
@@ -31,10 +42,12 @@ flowchart LR
     classDef report fill:#F3E8FF,stroke:#A78BFA,color:#1F2937
     classDef context fill:#FFFFFF,stroke:#94A3B8,color:#1F2937
 
-    class Tests entry
-    class UI ui
-    class API api
-    class Core core
+    class UITests entry
+    class APITests entry
+    class POM ui
+    class APISvc api
+    class Fixtures core
+    class CoreUtil core
     class Data data
     class Report report
     class SUT context

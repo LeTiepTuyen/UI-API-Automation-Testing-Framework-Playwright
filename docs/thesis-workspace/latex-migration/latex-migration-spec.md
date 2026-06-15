@@ -27,12 +27,12 @@
 | Compiler | XeLaTeX |
 | Bibliography backend / style | Biber + `biblatex` with `style=apa` (APA 7th). **Confirmed by the user on 2026-06-12** (T-023 reaffirmed); the template's generic IEEE line is intentionally overridden. The sample's `style=ieee` is NOT reused. |
 | Document class | `report`, 11pt, A4, `oneside` |
-| Page geometry | single-sided binding layout: left/inside 3.0 cm; right/top/bottom 2.0 cm |
+| Page geometry | A4, all four margins **2.0 cm** (left/right/top/bottom). **Intentional deviation from the formatting guideline's 3.0 cm binding margin, confirmed by the user on 2026-06-14** during the T-098 QA gate (user chose to keep the uniform 2.0 cm layout). |
 | Line spacing | `\onehalfspacing` (setspace) |
 | Body font | Calibri through XeLaTeX `fontspec`; fallback Carlito if Calibri is unavailable; `microtype` enabled where supported |
 | Paragraph | `\parindent` 1.25 cm; `\parskip` 0 |
 | Code listings | `listings` (NOT `minted` — Overleaf restricts shell-escape) |
-| Tables | `booktabs` + `tabularx`/`longtable`; avoid vertical rules |
+| Tables | `booktabs` + `tabularx`/`longtable`; avoid vertical rules; global row spacing uses `\arraystretch=1.22`, `\extrarowheight=1.5pt`, and modest `booktabs` rule spacing for readability |
 | Cross-references | `hyperref` + `cleveref` (`\cref`/`\Cref`) |
 | Diagrams | Mermaid SVG masters → PDF vector for LaTeX; screenshots stay PNG/JPG |
 | Citations in text | `\autocite{key}` (parenthetical) / `\textcite{key}` (narrative); never hard-code `[12]` |
@@ -92,7 +92,7 @@ Migration control docs live under `docs/thesis-workspace/latex-migration/`: this
   - **Parenthetical:** LaTeX `\autocite{key}` → `(Author, Year)`; multiple `\autocite{a,b}` → `(Author A, Year; Author B, Year)`. Markdown source: `[@key]` / `[@a; @b]`. Two authors joined by `&`.
   - **Narrative:** LaTeX `\textcite{key}` → `Author (Year)`. Markdown source: `@key`. Two authors joined by "and".
 - **Figures:** `\begin{figure}[htbp]\centering\includegraphics[width=...]{figures/.../name}\caption{...}\label{fig:...}\end{figure}`. Prefer PDF vector for diagrams.
-- **Tables:** `booktabs`; wide tables use `tabularx` with the `Y` ragged-right column; multi-page use `longtable`.
+- **Tables:** use the shared professional table style: `booktabs` horizontal rules (`\toprule`, `\midrule`, `\bottomrule`), no vertical rules, no repeated `\hline`, bottom captions, and `\label{tab:...}` immediately after `\caption{...}`. Wide prose tables use `tabularx` with the `Y` ragged-right column; multi-page tables use `longtable`. Do not insert manual `\\[... ]` spacing row by row by default; rely on the global table spacing in `config/formatting.tex` (`\arraystretch`, `\extrarowheight`, and `booktabs` rule spacing) so Chapter 2 and later chapters render consistently.
 - **Code:** fenced blocks → `lstlisting` with an appropriate language; inline code → `\code{...}` (detokenized `\texttt`).
 - **Escaping:** escape `% & _ # $ { } ~ ^ \` and URLs via `\url{}`/`hyperref`.
 
@@ -176,7 +176,7 @@ Audited `docs/final-graduation-thesis-doc/thesis-template.md` (official template
 - Template recommends abstracts **< 150 words** (hard limit: 1 page single-spaced). The current abstract is ~250 words — within the hard limit but above the recommendation. User may optionally request a condensed <150-word abstract before/at the LaTeX stage.
 
 ### Formatting note
-- The active LaTeX configuration was later updated from the earlier 12 pt Times-like baseline to the user-provided formatting guideline: Calibri-style 11 pt body text, A4, single-sided output, left/inside binding margin 3.0 cm, all other margins 2.0 cm, 1.5 line spacing, left-aligned body text, 14 pt bold left-aligned chapter headings, bottom captions, and APA references.
+- The active LaTeX configuration was later updated from the earlier 12 pt Times-like baseline to the user-provided formatting guideline: Calibri-style body text, A4, single-sided output, 1.5 line spacing, left-aligned body text, 14 pt bold left-aligned chapter headings, bottom captions, and APA references. **Two user-confirmed deviations from that guideline:** body font size raised to **12 pt** (11 pt read too small) and all four margins kept at **2.0 cm** instead of the 3.0 cm binding margin (confirmed during the 2026-06-14 T-098 QA gate).
 
 ### Tooling — TeX distribution (Cách 1 — DONE 2026-06-12)
 - **MiKTeX 25.12 installed and verified** (per-user). Tools: `pdflatex` (MiKTeX-pdfTeX 4.23), `biber` 2.21, `latexmk` 4.88. A minimal `pdflatex` compile produced a PDF (exit 0). MiKTeX on-the-fly package install set to **Always**, so compiles auto-fetch missing packages without prompting.

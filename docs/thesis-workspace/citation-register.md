@@ -151,6 +151,8 @@ Abstract note: T-036 was completed by Codex on 2026-06-11. `front-matter/abstrac
 
 ## Execution evidence to add later
 
+> **2026-06-14 — Not Reference List citations.** Per APA recoverability and thesis convention, these own non-public project execution artifacts are **not** cited in the Reference List (the `execution_*` / `visual_playwright_html_report_2026` `@misc` entries were removed from `references.bib`; user-approved Phương án A, see `reviews/self-artifact-citations-removal-2026-06-14.md`). They remain valid **internal evidence** backing figures/tables in Chapter 5 and **Appendix D**; Chapters 4–6 now refer to them via internal cross-references ("Appendix~D"), not `\autocite{}`.
+
 | Citation key | Type | Source | Intended use | Status |
 |---|---|---|---|---|
 | execution_test_run_2026 | Execution artifact | `docs/thesis-workspace/source-notes/chapter-5-execution-evidence-2026-06-03.md`; `docs/thesis-workspace/assets/tables/execution-2026-06-03/playwright-test-run-2026-06-03.log` | Test counts, pass/fail/skipped/error counts, execution time, and command output from the verified `2026-06-03` full-suite run. | READY |

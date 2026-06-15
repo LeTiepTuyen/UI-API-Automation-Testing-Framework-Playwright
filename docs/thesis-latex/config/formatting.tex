@@ -14,16 +14,30 @@
 \AtBeginDocument{\RaggedRight}
 \graphicspath{{figures/}{figures/logos/}{figures/architecture/}{figures/workflows/}{figures/screenshots/}{figures/reports/}}
 
+% Thesis table style: use booktabs rules with modest row breathing room.
+% Keep the spacing global so all chapter tables render consistently.
+\renewcommand{\arraystretch}{1.22}
+\setlength{\extrarowheight}{1.5pt}
+\setlength{\tabcolsep}{5.5pt}
+\setlength{\aboverulesep}{0.55ex}
+\setlength{\belowrulesep}{0.75ex}
+\setlength{\cmidrulesep}{0.4ex}
+
+% Level-1 headings (numbered chapters and numberless front/back-matter chapters)
+% are rendered in a single consistent style: uppercase and the same enlarged
+% font size, so "CHAPTER 1 INTRODUCTION", "ABSTRACT", "APPROVAL PAGE", and
+% "REFERENCES" all match. The \MakeUppercase before-code receives the title as
+% its argument (a documented titlesec behaviour) and uppercases it.
 \titleformat{\chapter}[block]
-  {\normalfont\bfseries\fontsize{14pt}{16pt}\selectfont\RaggedRight}
-  {Chapter \thechapter}
-  {0.75em}
-  {}
+  {\normalfont\bfseries\fontsize{16pt}{19pt}\selectfont\RaggedRight}
+  {\MakeUppercase{Chapter \thechapter}}
+  {0.6em}
+  {\MakeUppercase}
 \titleformat{name=\chapter,numberless}[block]
-  {\normalfont\bfseries\fontsize{14pt}{16pt}\selectfont\RaggedRight}
+  {\normalfont\bfseries\fontsize{16pt}{19pt}\selectfont\RaggedRight}
   {}
   {0pt}
-  {}
+  {\MakeUppercase}
 \titlespacing*{\chapter}{0pt}{0pt}{1.5\baselineskip}
 
 \titleformat{\section}
@@ -42,12 +56,42 @@
   {0.75em}
   {}
 
+% Keep body headings in title case, but write numbered chapter titles to the
+% Table of Contents in uppercase. Child section entries such as 1.1, 2.1, and
+% 3.x remain exactly as written.
+\makeatletter
+\let\thesis@chapter\chapter
+\RenewDocumentCommand{\chapter}{s o m}{%
+  \IfBooleanTF{#1}{%
+    \thesis@chapter*{#3}%
+  }{%
+    \IfNoValueTF{#2}{%
+      \thesis@chapter[\MakeUppercase{#3}]{#3}%
+    }{%
+      \thesis@chapter[\MakeUppercase{#2}]{#3}%
+    }%
+  }%
+}
+\makeatother
+
 % Table of Contents: title "Table of Contents"; dotted leaders for every level
 % (including chapter-level entries) to match the VNUK template.
 % Set via \AtBeginDocument so babel's \captionsenglish does not override it.
-\AtBeginDocument{\renewcommand{\contentsname}{Table of Contents}}
-% Only top-level entries (chapters and chapter-level front matter) are bold;
-% all section/subsection children are normal weight.
+% These auto-generated level-1 headings carry an \@mkboth in their title
+% argument, which prevents the titlesec uppercase before-code from reaching the
+% text. Set the names uppercase directly so they match the other level-1
+% headings (CHAPTER N, ABSTRACT, REFERENCES, ...).
+\AtBeginDocument{%
+  \renewcommand{\contentsname}{TABLE OF CONTENTS}%
+  \renewcommand{\listfigurename}{LIST OF FIGURES}%
+  \renewcommand{\listtablename}{LIST OF TABLES}%
+}
+% Top-level TOC entries use uppercase for visual consistency. Numbered chapters
+% are displayed as "CHAPTER N. TITLE"; child section, subsection, and appendix
+% child entries keep their case.
+\renewcommand{\cftchappresnum}{CHAPTER~}
+\renewcommand{\cftchapaftersnum}{.\quad}
+\setlength{\cftchapnumwidth}{7.3em}
 \renewcommand{\cftchapfont}{\bfseries}
 \renewcommand{\cftchappagefont}{\bfseries}
 \renewcommand{\cftchapleader}{\bfseries\cftdotfill{\cftdotsep}}
@@ -66,6 +110,15 @@
   singlelinecheck=false,
   position=bottom
 }
+
+% Reference List layout: the global 1.5 line spacing makes each multi-line
+% reference look loose and uneven. Render the bibliography single-spaced within
+% each entry, with a consistent gap between entries and an APA hanging indent so
+% the Reference List reads as a tidy, evenly spaced block.
+\renewcommand*{\bibfont}{\normalfont\singlespacing}
+\setlength{\bibitemsep}{0.6\baselineskip plus 2pt minus 1pt}
+\setlength{\bibparsep}{0pt}
+\setlength{\bibhang}{1.5em}
 
 \lstdefinestyle{thesislisting}{
   basicstyle=\ttfamily\footnotesize,
