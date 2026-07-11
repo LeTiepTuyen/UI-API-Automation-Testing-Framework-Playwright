@@ -82,6 +82,11 @@
   .num-text b{color:var(--accent-2)}
   .num-text .sub{display:block;font-size:.92rem;color:var(--muted);margin-top:.3rem;font-weight:400}
 
+  /* —— TOC-only variant: uppercase labels, angled badge (not a circle) to read as an index, not a step list —— */
+  .num-list.toc .num-text{text-transform:uppercase;letter-spacing:.02em}
+  .num-list.toc .num-badge{border-radius:6px;transform:rotate(45deg)}
+  .num-list.toc .num-badge span{display:block;transform:rotate(-45deg)}
+
   /* —— 2-col comparison boxes —— */
   .cmp2{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:2rem}
   .card{background:var(--surface);border-radius:var(--radius);padding:1.7rem 1.8rem;border:1px solid var(--line)}
@@ -237,12 +242,12 @@
   <div class="wrap">
     <div class="slide-kicker">Overview</div>
     <h1>Table of Contents</h1>
-    <div class="num-list">
-      <div class="num-item"><div class="num-badge">01</div><div class="num-text">Background, problem statement, and research objectives</div></div>
-      <div class="num-item"><div class="num-badge">02</div><div class="num-text">Proposed framework design</div></div>
-      <div class="num-item"><div class="num-badge">03</div><div class="num-text">Implementation on the selected system</div></div>
-      <div class="num-item"><div class="num-badge">04</div><div class="num-text">Verified evaluation results and tool comparison</div></div>
-      <div class="num-item"><div class="num-badge">05</div><div class="num-text">Limitations and future work</div></div>
+    <div class="num-list toc">
+      <div class="num-item"><div class="num-badge"><span>01</span></div><div class="num-text">Background, problem statement, and research objectives</div></div>
+      <div class="num-item"><div class="num-badge"><span>02</span></div><div class="num-text">Proposed framework design</div></div>
+      <div class="num-item"><div class="num-badge"><span>03</span></div><div class="num-text">Implementation on the selected system</div></div>
+      <div class="num-item"><div class="num-badge"><span>04</span></div><div class="num-text">Verified evaluation results and tool comparison</div></div>
+      <div class="num-item"><div class="num-badge"><span>05</span></div><div class="num-text">Limitations and future work</div></div>
     </div>
   </div>
   <div class="stage-strip">▸ [~20s] In the next fifteen to twenty minutes, I will walk through the problem this project addresses, the design of the proposed framework, how it was implemented, the verified evaluation results from a real test run, and finally the limitations and future work.</div>
@@ -298,9 +303,9 @@
       <div class="num-item"><div class="num-badge">02</div><div class="num-text">Sustainable automation requires <b>reusable framework abstractions</b> that improve separation of concerns, reduce duplication, and support long-term test-code maintainability.</div></div>
       <div class="num-item"><div class="num-badge">03</div><div class="num-text">Without a deliberate, maintainable design, a single UI change can force edits across many scattered files, <b>undermining maintainability and reuse</b>.</div></div>
     </div>
-    <p class="lead">This research addresses the problem of designing, implementing, and evaluating a maintainable framework that supports both browser-level and API-level regression checks.</p>
+    <p class="lead">This research addresses the problem of designing, implementing, and evaluating a maintainable framework that supports both end-to-end FE UI-level and API-level regression checks.</p>
   </div>
-  <div class="stage-strip">▸ [~35s] Manual regression checks must repeat navigation, data entry, and result verification every time the application changes — this is effortful and prone to inconsistency, and it does not scale as scenarios multiply. Sustainable automation is not automatic either: it requires reusable framework abstractions that improve separation of concerns, reduce duplication, and support long-term test-code maintainability — without that design discipline, the effort simply moves from manual repetition to script maintenance. Underlying both points is a design problem: without a deliberate, maintainable structure, a single UI change can force edits across many scattered test files, costing time and undermining long-term reuse. This is the problem this research addresses: designing, implementing, and evaluating a maintainable framework that supports both browser-level and API-level regression checks.</div>
+  <div class="stage-strip">▸ [~35s] Manual regression checks must repeat navigation, data entry, and result verification every time the application changes — this is effortful and prone to inconsistency, and it does not scale as scenarios multiply. Sustainable automation is not automatic either: it requires reusable framework abstractions that improve separation of concerns, reduce duplication, and support long-term test-code maintainability — without that design discipline, the effort simply moves from manual repetition to script maintenance. Underlying both points is a design problem: without a deliberate, maintainable structure, a single UI change can force edits across many scattered test files, costing time and undermining long-term reuse. This is the problem this research addresses: designing, implementing, and evaluating a maintainable framework that supports both end-to-end FE UI-level and API-level regression checks.</div>
 </section>
 
 <!-- ============ 6. RESEARCH OBJECTIVES ============ -->
