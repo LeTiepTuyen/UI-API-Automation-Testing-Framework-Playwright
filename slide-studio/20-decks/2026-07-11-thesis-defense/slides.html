@@ -65,7 +65,9 @@
     font-size:clamp(1.4rem,3vw,2.4rem);line-height:1.24;letter-spacing:var(--display-tracking);color:var(--ink)}
   h1 .hl{color:var(--accent)}
   h1 .dim{color:var(--muted);font-weight:600}
-  .lead{font-family:var(--font-body);font-size:clamp(1rem,1.5vw,1.15rem);color:var(--muted);margin-top:1.1rem;max-width:64ch;line-height:1.5}
+  .lead{font-family:var(--font-body);font-size:clamp(1.05rem,1.6vw,1.22rem);color:var(--accent-2);font-weight:700;font-style:italic;margin-top:1.2rem;max-width:100%;line-height:1.55}
+  .lead::before{content:"\21D2  ";font-style:normal;color:var(--accent);font-weight:800}
+  .split-text .lead{max-width:56ch}
 
   /* institutional logo mark, top-left — white-bg slides only */
   .brandmark{position:absolute;top:2.4vh;left:8vw;z-index:2;height:38px;width:auto;display:block}
@@ -293,12 +295,12 @@
     <h1>Problem Statement</h1>
     <div class="num-list">
       <div class="num-item"><div class="num-badge">01</div><div class="num-text">Manual regression checks repeat navigation, data entry, and result verification every run, which is <b>effortful and inconsistent</b>.</div></div>
-      <div class="num-item"><div class="num-badge">02</div><div class="num-text">UI-only and API-only suites each miss the other's concerns; a practical framework must <b>support both layers with clear responsibilities</b>.</div></div>
+      <div class="num-item"><div class="num-badge">02</div><div class="num-text">Sustainable automation requires <b>reusable framework abstractions</b> that improve separation of concerns, reduce duplication, and support long-term test-code maintainability.</div></div>
       <div class="num-item"><div class="num-badge">03</div><div class="num-text">Without a deliberate, maintainable design, a single UI change can force edits across many scattered files, <b>undermining maintainability and reuse</b>.</div></div>
     </div>
     <p class="lead">This research addresses the problem of designing, implementing, and evaluating a maintainable framework that supports both browser-level and API-level regression checks.</p>
   </div>
-  <div class="stage-strip">▸ [~35s] Manual regression checks must repeat navigation, data entry, and result verification every time the application changes — this is effortful and prone to inconsistency, and it does not scale as scenarios multiply. UI tests and API tests also validate different concerns: a UI-only suite can miss service-layer issues, while an API-only suite cannot fully validate user-facing workflows, so a practical framework needs to support both while keeping their responsibilities separate. Underlying both points is a design problem: without a deliberate, maintainable structure, a single UI change can force edits across many scattered test files, costing time and undermining long-term reuse. This is the problem this research addresses: designing, implementing, and evaluating a maintainable framework that supports both browser-level and API-level regression checks.</div>
+  <div class="stage-strip">▸ [~35s] Manual regression checks must repeat navigation, data entry, and result verification every time the application changes — this is effortful and prone to inconsistency, and it does not scale as scenarios multiply. Sustainable automation is not automatic either: it requires reusable framework abstractions that improve separation of concerns, reduce duplication, and support long-term test-code maintainability — without that design discipline, the effort simply moves from manual repetition to script maintenance. Underlying both points is a design problem: without a deliberate, maintainable structure, a single UI change can force edits across many scattered test files, costing time and undermining long-term reuse. This is the problem this research addresses: designing, implementing, and evaluating a maintainable framework that supports both browser-level and API-level regression checks.</div>
 </section>
 
 <!-- ============ 6. RESEARCH OBJECTIVES ============ -->
@@ -318,20 +320,41 @@
   <div class="stage-strip">▸ [~30s] This research has four objectives, each tied to one research question. First, analyze how a Playwright and TypeScript framework can structure UI and API automation for a modern web application in a maintainable way. Second, design and implement reusable framework abstractions that reduce duplication and support long-term maintainability. Third, evaluate the implemented framework using verified execution evidence, including HTML reporting and JUnit XML output — this evaluation strand also includes positioning Playwright against Cypress and Selenium, presented later in the evaluation chapter. Fourth, identify the limitations and future work that remain after implementation and evaluation.</div>
 </section>
 
-<!-- ============ 7. CHOOSING PLAYWRIGHT FOR E2E ============ -->
-<section class="slide" id="s07-playwright-e2e" data-title="Why Playwright Enables This Framework">
+<!-- ============ 7. END-TO-END TESTING METHODOLOGY ============ -->
+<section class="slide" id="s07-e2e-methodology" data-title="End-to-End Testing Methodology">
   <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
   <span class="slide-num"></span>
   <div class="wrap">
     <div class="slide-kicker">Literature Review · End-to-End Testing Methodology</div>
-    <h1>End-to-End Testing Methodology and Tool Selection Rationale</h1>
+    <h1>End-to-End Testing Methodology</h1>
     <div class="num-list">
-      <div class="num-item"><div class="num-badge">01</div><div class="num-text">End-to-end automation must target <b>representative, stable flows</b>, since broad or poorly isolated scenarios become costly and fragile.</div></div>
-      <div class="num-item"><div class="num-badge">02</div><div class="num-text">Playwright's <b>actionability checks and web-first assertions</b> address the dynamic, asynchronous nature of modern web interfaces.</div></div>
-      <div class="num-item"><div class="num-badge">03</div><div class="num-text">Playwright is the only candidate offering <b>combined browser and API automation</b> in a single framework.</div></div>
+      <div class="num-item"><div class="num-badge">01</div><div class="num-text">End-to-end tests validate an <b>integrated, user-facing flow</b>, but broad or poorly isolated scenarios become costly and fragile.</div></div>
+      <div class="num-item"><div class="num-badge">02</div><div class="num-text"><b>Flaky tests</b> are a major risk, commonly caused by asynchronous waits, environment dependency, and unstable test data.</div></div>
+      <div class="num-item"><div class="num-badge">03</div><div class="num-text"><b>API-level checks</b> complement browser-oriented end-to-end tests by validating service boundaries closer to the interface.</div></div>
     </div>
+    <p class="lead">The framework targets representative, stable flows rather than exhaustive end-to-end coverage.</p>
   </div>
-  <div class="stage-strip">▸ [~35s] One further consideration shaped the tool choice specifically, before I walk through the framework design itself. End-to-end tests validate real, integrated user-facing behavior, but the literature is clear that they must be selected carefully, since broad or poorly isolated end-to-end scenarios can become costly and fragile — this is why the framework targets representative, stable flows. Modern web interfaces are also dynamic and asynchronous, and Playwright addresses this directly through locator strategies, actionability checks, and web-first assertions, reducing reliance on fragile timing-based waits. Most importantly for this research, Playwright is the only one of the candidate tools that combines browser automation and API testing in one framework — exactly the dual UI-and-API scope this project needed; Cypress and Selenium would each require extra tooling to cover both. A full weighted comparison against Cypress and Selenium, backed by independent published benchmarks, follows later in the evaluation section.</div>
+  <div class="stage-strip">▸ [~30s] End-to-end tests validate an integrated, user-facing flow across the relevant parts of a system, but the literature is clear that they must be selected carefully: broad or poorly isolated end-to-end scenarios can become costly and fragile. Flaky tests are a major risk in this context — a test that passes or fails inconsistently without a corresponding product change reduces trust in automated results, and research identifies common causes such as asynchronous waits, environment dependency, test-order dependency, and unstable test data. For this reason, API-level checks can complement browser-oriented end-to-end tests by validating service boundaries closer to the interface, rather than placing all automated confidence in the browser suite. This is why the framework, presented next, targets representative, stable flows rather than exhaustive end-to-end coverage.</div>
+</section>
+
+<!-- ============ 7B. PLAYWRIGHT CAPABILITIES AND SELECTION RATIONALE ============ -->
+<section class="slide" id="s07b-playwright-capabilities" data-title="Playwright Capabilities and Selection Rationale">
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
+  <span class="slide-num"></span>
+  <div class="wrap">
+    <div class="slide-kicker">Literature Review · Tool Capability</div>
+    <h1>Playwright Capabilities and Selection Rationale</h1>
+    <table class="table-acad">
+      <tr><th>Capability</th><th>What it addresses</th></tr>
+      <tr><td><b>Auto-waiting and actionability checks</b></td><td>Reduces reliance on fragile, timing-based waits for dynamic UI</td></tr>
+      <tr><td><b>Web-first, auto-retrying assertions</b></td><td>Confirms expected state without manual retry logic</td></tr>
+      <tr><td><b>Fixtures with isolated test setup</b></td><td>Provides reusable, type-safe objects per test through <code>test.extend()</code></td></tr>
+      <tr><td><b>Built-in API request contexts</b></td><td>Combines UI and API automation in one framework</td></tr>
+      <tr><td><b>Built-in HTML/JUnit reporting and trace viewer</b></td><td>Produces reviewable execution evidence</td></tr>
+    </table>
+    <p class="lead">Playwright is the only candidate offering all five capabilities natively; the full weighted comparison against Cypress and Selenium follows in the evaluation chapter.</p>
+  </div>
+  <div class="stage-strip">▸ [~40s] These are the specific Playwright capabilities that justify the tool choice for this framework, each grounded in official Playwright documentation. Auto-waiting and actionability checks reduce reliance on fragile, timing-based waits for dynamic UI. Web-first, auto-retrying assertions confirm expected state without manual retry logic. Playwright's fixture system, through test.extend(), provides reusable, type-safe objects with isolated setup per test — this is the same fixture mechanism the framework design relies on, shown next. Built-in API request contexts mean UI and API automation live in one framework rather than two separate toolchains. And built-in HTML and JUnit reporting, plus the trace viewer, produce reviewable execution evidence without extra tooling. Playwright is the only one of the three candidate tools offering all five natively — the full weighted comparison against Cypress and Selenium, backed by independent published benchmarks, follows later in the evaluation section.</div>
 </section>
 
 <!-- ============ 8. OVERALL FRAMEWORK ARCHITECTURE ============ -->
