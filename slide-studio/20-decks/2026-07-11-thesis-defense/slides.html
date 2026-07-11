@@ -236,10 +236,10 @@
     <div class="slide-kicker">Overview</div>
     <h1>Table of Contents</h1>
     <div class="num-list">
-      <div class="num-item"><div class="num-badge">01</div><div class="num-text">Background, problem, and <b>research objectives</b></div></div>
-      <div class="num-item"><div class="num-badge">02</div><div class="num-text">Proposed <b>framework design</b></div></div>
-      <div class="num-item"><div class="num-badge">03</div><div class="num-text">Implementation on a real system</div></div>
-      <div class="num-item"><div class="num-badge">04</div><div class="num-text"><b>Verified evaluation</b> results and tool comparison</div></div>
+      <div class="num-item"><div class="num-badge">01</div><div class="num-text">Background, problem statement, and research objectives</div></div>
+      <div class="num-item"><div class="num-badge">02</div><div class="num-text">Proposed framework design</div></div>
+      <div class="num-item"><div class="num-badge">03</div><div class="num-text">Implementation on the selected system</div></div>
+      <div class="num-item"><div class="num-badge">04</div><div class="num-text">Verified evaluation results and tool comparison</div></div>
       <div class="num-item"><div class="num-badge">05</div><div class="num-text">Limitations and future work</div></div>
     </div>
   </div>
@@ -279,6 +279,7 @@
       <tr><td><b>Human judgment</b></td><td>Strong for exploration, usability, discovery</td><td>Limited to the implemented, encoded flows</td></tr>
       <tr><td><b>Risk</b></td><td>Human error during repetitive execution</td><td>Scripts can become stale if not maintained</td></tr>
     </table>
+    <p class="lead">Table 5.7 from the thesis, condensed for the selected regression scenarios in this framework.</p>
   </div>
   <div class="stage-strip">▸ [~45s] Automation research identifies exactly two problems it is meant to solve: making regression checks repeatable, and producing evidence that can be reviewed later instead of relying on a tester's memory. This framework demonstrates both concretely — the verified run I will present later completed all eighteen checks in 28.890057 seconds, producing a structured JUnit XML file and an HTML report. I want to be precise: this project did not measure how long the same eighteen checks would take manually, so I am not claiming a speed multiplier — that comparison stays qualitative. What the evidence does show is that manual judgment remains essential, which automation does not replace, and that automated scripts carry their own maintenance risk — exactly the problem the next slide introduces.</div>
 </section>
@@ -310,7 +311,7 @@
       <div class="num-item"><div class="num-badge">01</div><div class="num-text">Design a <b>layered UI+API framework</b> separating abstraction, workflows, services, and data.</div></div>
       <div class="num-item"><div class="num-badge">02</div><div class="num-text"><b>Implement</b> that design concretely on a real web application.</div></div>
       <div class="num-item"><div class="num-badge">03</div><div class="num-text"><b>Evaluate</b> the implementation using verified execution evidence.</div></div>
-      <div class="num-item"><div class="num-badge">04</div><div class="num-text"><b>Compare tool fit</b> — Playwright against Cypress and Selenium.</div></div>
+      <div class="num-item"><div class="num-badge">04</div><div class="num-text"><b>Compare tool fit</b>: Playwright against Cypress and Selenium.</div></div>
     </div>
   </div>
   <div class="stage-strip">▸ [~25s] This research has four objectives: first, to design a layered automation framework that separates UI abstraction, workflows, API services, and test data; second, to implement that design concretely on a real web application; third, to evaluate the implementation using verified execution evidence rather than assumptions; and fourth, to position Playwright against Cypress and Selenium for this specific project context.</div>
@@ -321,14 +322,14 @@
   <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
   <span class="slide-num"></span>
   <div class="wrap">
-    <div class="slide-kicker">Tool Consideration · From Theory to Tool Choice</div>
+    <div class="slide-kicker">Literature Review · End-to-End Testing Methodology</div>
     <h1>End-to-End Testing Methodology and Tool Selection Rationale</h1>
     <div class="num-list">
-      <div class="num-item"><div class="num-badge">01</div><div class="num-text">End-to-end tests validate integrated, user-facing behavior — but <b>must be selected carefully</b>, since broad or poorly isolated scenarios can become costly and fragile.<span class="sub">This is why the framework targets representative, stable flows rather than exhaustive end-to-end coverage.</span></div></div>
-      <div class="num-item"><div class="num-badge">02</div><div class="num-text">Modern web UIs are <b>dynamic and asynchronous</b> — Playwright addresses this directly through locator strategies, actionability checks, and web-first assertions.<span class="sub">These mechanisms reduce reliance on fragile, timing-based waits.</span></div></div>
-      <div class="num-item"><div class="num-badge">03</div><div class="num-text">Playwright is the only candidate that combines <b>browser automation and API testing in one framework</b> — exactly the dual UI+API scope this research needed.<span class="sub">Cypress and Selenium would each require extra tooling to cover both.</span></div></div>
+      <div class="num-item"><div class="num-badge">01</div><div class="num-text">End-to-end automation must target <b>representative, stable flows</b>, since broad or poorly isolated scenarios become costly and fragile.</div></div>
+      <div class="num-item"><div class="num-badge">02</div><div class="num-text">Playwright's <b>actionability checks and web-first assertions</b> address the dynamic, asynchronous nature of modern web interfaces.</div></div>
+      <div class="num-item"><div class="num-badge">03</div><div class="num-text">Playwright is the only candidate offering <b>combined browser and API automation</b> in a single framework.</div></div>
     </div>
-    <p class="lead">This is the enabling choice behind the framework design in the next section. A full weighted comparison against Cypress and Selenium — with independent published benchmarks — follows later in the evaluation.</p>
+    <p class="lead">This rationale underlies the framework design in the next section. A full weighted comparison against Cypress and Selenium, supported by external benchmarks, follows in the evaluation chapter.</p>
   </div>
   <div class="stage-strip">▸ [~35s] One further consideration shaped the tool choice specifically, before I walk through the framework design itself. End-to-end tests validate real, integrated user-facing behavior, but the literature is clear that they must be selected carefully, since broad or poorly isolated end-to-end scenarios can become costly and fragile — this is why the framework targets representative, stable flows. Modern web interfaces are also dynamic and asynchronous, and Playwright addresses this directly through locator strategies, actionability checks, and web-first assertions, reducing reliance on fragile timing-based waits. Most importantly for this research, Playwright is the only one of the candidate tools that combines browser automation and API testing in one framework — exactly the dual UI-and-API scope this project needed; Cypress and Selenium would each require extra tooling to cover both. A full weighted comparison against Cypress and Selenium, backed by independent published benchmarks, follows later in the evaluation section.</div>
 </section>
@@ -342,7 +343,7 @@
       <div class="split-text">
         <div class="slide-kicker">Framework Design · Overall Architecture</div>
         <h1>Overall Framework Architecture</h1>
-        <p class="lead">Every layer depends only on the layer directly below it — a change in one place cannot break the entire suite.</p>
+        <p class="lead">Every layer depends only on the layer directly below it. A change in one place cannot break the entire suite.</p>
       </div>
       <div class="split-visual">
         <figure>
@@ -408,7 +409,7 @@
       <div class="split-text">
         <div class="slide-kicker">Framework Design · API Automation</div>
         <h1>API Automation Design: Service-Layer Abstraction</h1>
-        <p class="lead">Endpoint logic is centralized in service classes, keeping API tests focused on scenario logic rather than request plumbing.</p>
+        <p class="lead">Endpoint logic is centralized in service classes, keeping API tests focused on scenario logic rather than request construction.</p>
       </div>
       <div class="split-visual">
         <figure>
@@ -428,6 +429,7 @@
   <div class="wrap">
     <div class="slide-kicker">Framework Design · Test Data &amp; Cleanup</div>
     <h1>Test Data and State Management Design</h1>
+    <p class="lead">Centralized test data and DTOs separate scenario logic from environment-specific values; API-based cleanup restores state after UI actions.</p>
     <figure>
       <img class="fig-img wide" src="../../../docs/thesis-workspace/assets/diagrams/out/test-data-dto-cleanup-strategy.svg" alt="Figure 3.8. Test data, DTO, and cleanup strategy for repeatable automation." />
       <div class="svg-cap">Figure 3.8 — Centralized test data/constants; API-based cleanup restores state after UI actions</div>
@@ -445,7 +447,7 @@
       <div class="split-text">
         <div class="slide-kicker">Framework Design · Automation Support Workflow</div>
         <h1>Copilot Agentic-AI Workflow Design for Automation Testing</h1>
-        <p class="lead">Design intent only — the productivity effect has not been quantitatively measured in this research.</p>
+        <p class="lead">This workflow reflects design intent. Its productivity effect has not been quantitatively measured in this research.</p>
       </div>
       <div class="split-visual">
         <figure>
@@ -470,7 +472,7 @@
       <tr><td><b>UI</b></td><td>Profile view, profile update, bookmarked photos</td><td class="num">3</td><td class="num">3</td></tr>
       <tr><td><b>API</b></td><td>Public profile, statistics, photos, collections</td><td class="num">4</td><td class="num">15</td></tr>
     </table>
-    <p class="lead">Built on Unsplash as the selected demonstration system — a real, modern web application with both a browsable UI and a documented public API.</p>
+    <p class="lead">Built on Unsplash as the selected demonstration system, a real, modern web application with both a browsable UI and a documented public API.</p>
   </div>
   <div class="stage-strip">▸ [~30s] In implementation, the framework was applied to Unsplash as the selected demonstration system — a real, modern web application with both a browsable interface and a documented public API. Three UI test scenarios were implemented: viewing a photographer's profile, updating a profile, and bookmarked photos. Fifteen API test scenarios were implemented across four specification files, covering the public profile, user statistics, user photos, and user collections endpoints — all built through the service-layer design just described.</div>
 </section>
@@ -490,7 +492,7 @@
           <tr><td>UI tests</td><td class="num">3</td><td class="num"><b>3</b></td><td class="num">0</td><td class="num">0</td><td class="num">—</td></tr>
           <tr><td><b>Full suite</b></td><td class="num"><b>18</b></td><td class="num"><b>18</b></td><td class="num">0</td><td class="num">0</td><td class="num"><b>28.890057s</b></td></tr>
         </table>
-        <p class="lead">Table 5.5 from the thesis — command <code>npx playwright test</code>, verified local run, JUnit XML + terminal log + HTML report.</p>
+        <p class="lead">Table 5.5 from the thesis, reporting the verified local run invoked with <code>npx playwright test</code>, evidenced by JUnit XML, the terminal log, and the HTML report.</p>
       </div>
       <div class="split-visual">
         <figure>
@@ -520,7 +522,7 @@
       <tr><td class="path">tests/ui/profile/update-profile.spec.ts</td><td>UI</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">22.199s</td></tr>
       <tr><td class="path">tests/ui/profile/view-profile.spec.ts</td><td>UI</td><td class="num">1</td><td class="num">0</td><td class="num">0</td><td class="num">15.399s</td></tr>
     </table>
-    <p class="lead">Table 5.6 from the thesis — every specification file passed with zero failures and zero skipped tests.</p>
+    <p class="lead">Table 5.6 from the thesis. Every specification file passed with zero failures and zero skipped tests.</p>
   </div>
   <div class="stage-strip">▸ [~35s] Breaking that down by specification file — this reproduces Table 5.6 from the thesis. The four API specification files covered the public profile, statistics, collections, and photos endpoints, each completing in under nine seconds. The three UI specification files covered bookmarked photos, profile update, and profile view, each completing in under twenty-three seconds. Every single specification file passed with zero failures and zero skipped tests — this is the complete, granular evidence behind the full-suite summary on the previous slide.</div>
 </section>
@@ -539,7 +541,7 @@
       <tr><td><b>API support</b></td><td>Built-in API testing &amp; request contexts</td><td>cy.request() HTTP requests</td><td>Needs additional libraries</td></tr>
       <tr><td><b>Reporting &amp; debugging</b></td><td>Built-in HTML/JUnit + trace viewer</td><td>Screenshots, videos, configurable reporters</td><td>Depends on integrations</td></tr>
     </table>
-    <p class="lead">11 project-specific criteria (Table 5.2), grounded in official Playwright, Cypress, and Selenium documentation.</p>
+    <p class="lead">Eleven project-specific criteria (Table 5.2), grounded in official Playwright, Cypress, and Selenium documentation.</p>
   </div>
   <div class="stage-strip">▸ [~35s] Before presenting numbers, it matters how the comparison was framed. Chapter 5 of the thesis defines eleven project-specific criteria — weighted from one to five — covering browser engine coverage, synchronization reliability for dynamic UI, combined UI-and-API support in one framework, TypeScript and Page-Object-Model architecture fit, reporting and trace artifacts, and CI-readiness, each grounded in official Playwright, Cypress, and Selenium documentation. The capability comparison shows Playwright is the only one of the three offering built-in UI and API support with integrated reporting and tracing without extra assembly — Cypress covers HTTP requests via cy.request(), and Selenium's API testing typically requires additional libraries.</div>
 </section>
@@ -555,9 +557,9 @@
       <tr><th>Score category</th><th>Playwright</th><th>Cypress</th><th>Selenium</th></tr>
       <tr><td>Primary subtotal (7 criteria)</td><td class="num">150</td><td class="num">128</td><td class="num">107</td></tr>
       <tr><td>Secondary subtotal (4 criteria)</td><td class="num">52</td><td class="num">49</td><td class="num">49</td></tr>
-      <tr><td><b>Total (out of 205)</b></td><td class="num"><b>202 — Rank 1</b></td><td class="num">177 — Rank 2</td><td class="num">156 — Rank 3</td></tr>
+      <tr><td><b>Total (out of 205)</b></td><td class="num"><b>202 (Rank 1)</b></td><td class="num">177 (Rank 2)</td><td class="num">156 (Rank 3)</td></tr>
     </table>
-    <p class="lead">Project-specific rubric (Table 5.4) — a measure of fit for this project, not a claim of universal superiority.</p>
+    <p class="lead">Project-specific rubric (Table 5.4), reflecting fit for this project rather than a claim of universal superiority.</p>
   </div>
   <div class="stage-strip">▸ [~40s] Translating that qualitative comparison into a defensible decision, the eleven weighted criteria were applied as a scoring rubric — this is Table 5.4 from the thesis. Playwright scores 202 out of a possible 205 points, Cypress scores 177, and Selenium scores 156. I want to state clearly that this is a project-specific rubric I constructed, not an independent empirical benchmark — but the gap is driven specifically by the primary, architecture-critical criteria: combined UI-and-API support, synchronization reliability, and TypeScript/Page-Object-Model fit, where Playwright scores highest. Selenium remains competitive on secondary criteria such as ecosystem maturity. This ranking should be read as project fit, not universal superiority.</div>
 </section>
@@ -571,7 +573,7 @@
     <h1>External Benchmark Context: Execution Time, CPU, and RAM Usage</h1>
     <figure>
       <img class="fig-img wide" src="../../../docs/thesis-workspace/assets/figures/external-tool-benchmark-summary-mon-panczyk-2025.png" alt="Figure 5.2. Mean execution time, CPU usage, and RAM usage for Playwright, Cypress, and Selenium across ten test cases." />
-      <div class="svg-cap">Figure 5.2 — <b>Source: Adapted from Moń and Pańczyk (2025), Tables 3–5.</b> Independent academic evidence, not this project's own measurement.</div>
+      <div class="svg-cap">Figure 5.2. <b>Source: Adapted from Moń and Pańczyk (2025), Tables 3–5.</b> Independent academic evidence, not this project's own measurement.</div>
     </figure>
   </div>
   <div class="stage-strip">▸ [~35s] To go beyond my own rubric, the thesis also brings in independent, published evidence. This chart, adapted from Moń and Pańczyk (2025), reports mean execution time, CPU usage, and RAM usage for the same three tools across ten repeated test cases — Tables 3 to 5 of their paper. The pattern is one of trade-offs, not one tool dominating everywhere: in their study, Selenium recorded the lowest execution time and RAM usage, while Playwright recorded the lowest CPU usage and stayed close to Selenium on the other two metrics. I present this as external context confirming that tool choice is a trade-off among resource dimensions, not as a measurement this project produced itself.</div>
@@ -586,7 +588,7 @@
     <h1>External Benchmark Context: Reliability Over a Twenty-Four-Hour Period</h1>
     <figure>
       <img class="fig-img wide" src="../../../docs/thesis-workspace/assets/figures/external-reliability-benchmark-almabruk-2025.png" alt="Figure 5.3. Twenty-four-hour uptime and ROCOF reliability comparison of Selenium and Playwright by hardware context." />
-      <div class="svg-cap">Figure 5.3 — <b>Source: Adapted from Almabruk et al. (2025), Tables 1 and 6.</b> Independent academic evidence, not this project's own measurement.</div>
+      <div class="svg-cap">Figure 5.3. <b>Source: Adapted from Almabruk et al. (2025), Tables 1 and 6.</b> Independent academic evidence, not this project's own measurement.</div>
     </figure>
   </div>
   <div class="stage-strip">▸ [~35s] A second external study, Almabruk et al. (2025), adds a reliability dimension: over a twenty-four-hour observation window, Selenium reached full uptime while Playwright reached 99.72 percent uptime — yet Playwright's rate of occurrence of failures, or ROCOF, was lower across the hardware contexts they reported. Because hardware assignments differed between tools in parts of that study, I present this cautiously — as reinforcing that tool selection is a genuine trade-off among reliability, speed, resource use, and architectural fit, not as a verdict that one tool is unconditionally best. Combined with my own rubric and the verified execution result from this project, this is the evidence base supporting Playwright as the right choice for this framework specifically.</div>
