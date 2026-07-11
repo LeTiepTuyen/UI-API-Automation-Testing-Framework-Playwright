@@ -292,12 +292,13 @@
     <div class="slide-kicker">Background &amp; Problem</div>
     <h1>Problem Statement</h1>
     <div class="num-list">
-      <div class="num-item"><div class="num-badge">01</div><div class="num-text">Ad-hoc UI/API scripts <b>duplicate locators and endpoint logic</b> across many test files.</div></div>
-      <div class="num-item"><div class="num-badge">02</div><div class="num-text">A single application change can <b>break tests scattered</b> across the whole suite.</div></div>
+      <div class="num-item"><div class="num-badge">01</div><div class="num-text">Manual regression checks repeat navigation, data entry, and result verification every run, which is <b>effortful and inconsistent</b>.</div></div>
+      <div class="num-item"><div class="num-badge">02</div><div class="num-text">UI-only and API-only suites each miss the other's concerns; a practical framework must <b>support both layers with clear responsibilities</b>.</div></div>
+      <div class="num-item"><div class="num-badge">03</div><div class="num-text">Without a deliberate, maintainable design, a single UI change can force edits across many scattered files, <b>undermining maintainability and reuse</b>.</div></div>
     </div>
-    <p class="lead">This is the practical maintainability problem this research addresses: building a reusable framework rather than a collection of isolated scripts.</p>
+    <p class="lead">This research addresses the problem of designing, implementing, and evaluating a maintainable framework that supports both browser-level and API-level regression checks.</p>
   </div>
-  <div class="stage-strip">▸ [~30s] Modern web applications are commonly validated through UI and API test automation, and Playwright with TypeScript is a credible modern toolchain for this. However, when automation scripts are written ad-hoc — with locators and endpoint logic duplicated across many test files — a single change in the application under test can break tests scattered across the whole suite. This is the practical maintainability problem this research addresses: building a reusable framework rather than a collection of isolated scripts.</div>
+  <div class="stage-strip">▸ [~35s] Manual regression checks must repeat navigation, data entry, and result verification every time the application changes — this is effortful and prone to inconsistency, and it does not scale as scenarios multiply. UI tests and API tests also validate different concerns: a UI-only suite can miss service-layer issues, while an API-only suite cannot fully validate user-facing workflows, so a practical framework needs to support both while keeping their responsibilities separate. Underlying both points is a design problem: without a deliberate, maintainable structure, a single UI change can force edits across many scattered test files, costing time and undermining long-term reuse. This is the problem this research addresses: designing, implementing, and evaluating a maintainable framework that supports both browser-level and API-level regression checks.</div>
 </section>
 
 <!-- ============ 6. RESEARCH OBJECTIVES ============ -->
@@ -308,13 +309,13 @@
     <div class="slide-kicker">Research Objectives</div>
     <h1>Research Objectives</h1>
     <div class="num-list">
-      <div class="num-item"><div class="num-badge">01</div><div class="num-text">Design a <b>layered UI+API framework</b> separating abstraction, workflows, services, and data.</div></div>
-      <div class="num-item"><div class="num-badge">02</div><div class="num-text"><b>Implement</b> that design concretely on a real web application.</div></div>
-      <div class="num-item"><div class="num-badge">03</div><div class="num-text"><b>Evaluate</b> the implementation using verified execution evidence.</div></div>
-      <div class="num-item"><div class="num-badge">04</div><div class="num-text"><b>Compare tool fit</b>: Playwright against Cypress and Selenium.</div></div>
+      <div class="num-item"><div class="num-badge">01</div><div class="num-text"><b>Analyze</b> how a Playwright and TypeScript framework can structure UI and API automation in a maintainable way.</div></div>
+      <div class="num-item"><div class="num-badge">02</div><div class="num-text"><b>Design and implement</b> reusable framework abstractions that reduce duplication and support long-term maintainability.</div></div>
+      <div class="num-item"><div class="num-badge">03</div><div class="num-text"><b>Evaluate</b> the implemented framework using verified execution evidence, HTML reporting, and JUnit XML output.</div></div>
+      <div class="num-item"><div class="num-badge">04</div><div class="num-text"><b>Identify limitations and future work</b> related to coverage, scalability, reliability, and evaluation depth.</div></div>
     </div>
   </div>
-  <div class="stage-strip">▸ [~25s] This research has four objectives: first, to design a layered automation framework that separates UI abstraction, workflows, API services, and test data; second, to implement that design concretely on a real web application; third, to evaluate the implementation using verified execution evidence rather than assumptions; and fourth, to position Playwright against Cypress and Selenium for this specific project context.</div>
+  <div class="stage-strip">▸ [~30s] This research has four objectives, each tied to one research question. First, analyze how a Playwright and TypeScript framework can structure UI and API automation for a modern web application in a maintainable way. Second, design and implement reusable framework abstractions that reduce duplication and support long-term maintainability. Third, evaluate the implemented framework using verified execution evidence, including HTML reporting and JUnit XML output — this evaluation strand also includes positioning Playwright against Cypress and Selenium, presented later in the evaluation chapter. Fourth, identify the limitations and future work that remain after implementation and evaluation.</div>
 </section>
 
 <!-- ============ 7. CHOOSING PLAYWRIGHT FOR E2E ============ -->
@@ -329,7 +330,6 @@
       <div class="num-item"><div class="num-badge">02</div><div class="num-text">Playwright's <b>actionability checks and web-first assertions</b> address the dynamic, asynchronous nature of modern web interfaces.</div></div>
       <div class="num-item"><div class="num-badge">03</div><div class="num-text">Playwright is the only candidate offering <b>combined browser and API automation</b> in a single framework.</div></div>
     </div>
-    <p class="lead">This rationale underlies the framework design in the next section. A full weighted comparison against Cypress and Selenium, supported by external benchmarks, follows in the evaluation chapter.</p>
   </div>
   <div class="stage-strip">▸ [~35s] One further consideration shaped the tool choice specifically, before I walk through the framework design itself. End-to-end tests validate real, integrated user-facing behavior, but the literature is clear that they must be selected carefully, since broad or poorly isolated end-to-end scenarios can become costly and fragile — this is why the framework targets representative, stable flows. Modern web interfaces are also dynamic and asynchronous, and Playwright addresses this directly through locator strategies, actionability checks, and web-first assertions, reducing reliance on fragile timing-based waits. Most importantly for this research, Playwright is the only one of the candidate tools that combines browser automation and API testing in one framework — exactly the dual UI-and-API scope this project needed; Cypress and Selenium would each require extra tooling to cover both. A full weighted comparison against Cypress and Selenium, backed by independent published benchmarks, follows later in the evaluation section.</div>
 </section>
