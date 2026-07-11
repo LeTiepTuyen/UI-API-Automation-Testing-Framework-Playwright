@@ -252,7 +252,7 @@
   <span class="slide-num"></span>
   <div class="wrap">
     <div class="slide-kicker">Background · Testing Approaches</div>
-    <h1>Manual Testing vs. Automated Testing:<br/>A Methodological Divide</h1>
+    <h1>Manual Testing and Automated Testing Approaches</h1>
     <table class="table-acad">
       <tr><th>Dimension</th><th>Manual Testing</th><th>Automated Testing</th></tr>
       <tr><td><b>Execution</b></td><td>Human tester performs the steps</td><td>Tool executes predefined scripts</td></tr>
@@ -271,7 +271,7 @@
   <span class="slide-num"></span>
   <div class="wrap">
     <div class="slide-kicker">Background · Automation Value</div>
-    <h1>What Automation Solves —<br/>Evidence From This Framework</h1>
+    <h1>Automation Value Relative to Manual Testing</h1>
     <table class="table-acad">
       <tr><th>Dimension</th><th>Manual Testing</th><th>Automation in This Framework</th></tr>
       <tr><td><b>Repeatability</b></td><td>Depends on the tester following steps consistently</td><td>A single command re-executes the same checks identically</td></tr>
@@ -289,7 +289,7 @@
   <span class="slide-num"></span>
   <div class="wrap">
     <div class="slide-kicker">Background &amp; Problem</div>
-    <h1>Maintaining Test Automation<br/>Is Harder Than Writing It</h1>
+    <h1>Problem Statement</h1>
     <div class="num-list">
       <div class="num-item"><div class="num-badge">01</div><div class="num-text">Ad-hoc UI/API scripts <b>duplicate locators and endpoint logic</b> across many test files.</div></div>
       <div class="num-item"><div class="num-badge">02</div><div class="num-text">A single application change can <b>break tests scattered</b> across the whole suite.</div></div>
@@ -305,7 +305,7 @@
   <span class="slide-num"></span>
   <div class="wrap">
     <div class="slide-kicker">Research Objectives</div>
-    <h1>What This Project Set Out to Do</h1>
+    <h1>Research Objectives</h1>
     <div class="num-list">
       <div class="num-item"><div class="num-badge">01</div><div class="num-text">Design a <b>layered UI+API framework</b> separating abstraction, workflows, services, and data.</div></div>
       <div class="num-item"><div class="num-badge">02</div><div class="num-text"><b>Implement</b> that design concretely on a real web application.</div></div>
@@ -322,7 +322,7 @@
   <span class="slide-num"></span>
   <div class="wrap">
     <div class="slide-kicker">Tool Consideration · From Theory to Tool Choice</div>
-    <h1>Why Playwright Enables This Framework's Design</h1>
+    <h1>End-to-End Testing Methodology and Tool Selection Rationale</h1>
     <div class="num-list">
       <div class="num-item"><div class="num-badge">01</div><div class="num-text">End-to-end tests validate integrated, user-facing behavior — but <b>must be selected carefully</b>, since broad or poorly isolated scenarios can become costly and fragile.<span class="sub">This is why the framework targets representative, stable flows rather than exhaustive end-to-end coverage.</span></div></div>
       <div class="num-item"><div class="num-badge">02</div><div class="num-text">Modern web UIs are <b>dynamic and asynchronous</b> — Playwright addresses this directly through locator strategies, actionability checks, and web-first assertions.<span class="sub">These mechanisms reduce reliance on fragile, timing-based waits.</span></div></div>
@@ -341,7 +341,7 @@
     <div class="split-grid">
       <div class="split-text">
         <div class="slide-kicker">Framework Design · Overall Architecture</div>
-        <h1>A Layered Architecture for Separation of Concerns</h1>
+        <h1>Overall Framework Architecture</h1>
         <p class="lead">Every layer depends only on the layer directly below it — a change in one place cannot break the entire suite.</p>
       </div>
       <div class="split-visual">
@@ -363,7 +363,7 @@
     <div class="split-grid split-reverse">
       <div class="split-text">
         <div class="slide-kicker">Framework Design · UI Abstraction</div>
-        <h1>UI Abstraction: The Page Object Model</h1>
+        <h1>UI Abstraction Design: The Page Object Model Concept</h1>
         <p class="lead">A test calls a Page Object method; only the Page Object needs to change when the page's HTML changes.</p>
       </div>
       <div class="split-visual">
@@ -385,7 +385,7 @@
     <div class="split-grid">
       <div class="split-text">
         <div class="slide-kicker">Framework Design · Runtime Composition</div>
-        <h1>Runtime Composition: Fixtures &amp; Dependency Injection</h1>
+        <h1>Runtime Composition Design: Fixture-Based Dependency Injection</h1>
         <p class="lead">A custom fixture injects reusable Page Objects, workflows, and a shared runtime context into every test.</p>
       </div>
       <div class="split-visual">
@@ -427,7 +427,7 @@
   <span class="slide-num"></span>
   <div class="wrap">
     <div class="slide-kicker">Framework Design · Test Data &amp; Cleanup</div>
-    <h1>Test Data, DTOs, and Cleanup</h1>
+    <h1>Test Data and State Management Design</h1>
     <figure>
       <img class="fig-img wide" src="../../../docs/thesis-workspace/assets/diagrams/out/test-data-dto-cleanup-strategy.svg" alt="Figure 3.8. Test data, DTO, and cleanup strategy for repeatable automation." />
       <div class="svg-cap">Figure 3.8 — Centralized test data/constants; API-based cleanup restores state after UI actions</div>
@@ -444,7 +444,7 @@
     <div class="split-grid">
       <div class="split-text">
         <div class="slide-kicker">Framework Design · Automation Support Workflow</div>
-        <h1>Copilot Agentic-AI: An Automation-Testing Support Workflow</h1>
+        <h1>Copilot Agentic-AI Workflow Design for Automation Testing</h1>
         <p class="lead">Design intent only — the productivity effect has not been quantitatively measured in this research.</p>
       </div>
       <div class="split-visual">
@@ -464,7 +464,7 @@
   <span class="slide-num"></span>
   <div class="wrap">
     <div class="slide-kicker">Implementation · Scope</div>
-    <h1>What Was Actually Built and Tested</h1>
+    <h1>Implemented Test Scope</h1>
     <table class="table-acad">
       <tr><th>Suite</th><th>Scenarios</th><th>Spec files</th><th>Tests</th></tr>
       <tr><td><b>UI</b></td><td>Profile view, profile update, bookmarked photos</td><td class="num">3</td><td class="num">3</td></tr>
@@ -483,7 +483,7 @@
     <div class="split-grid">
       <div class="split-text">
         <div class="slide-kicker">Evaluation · Verified Execution Results</div>
-        <h1>Full-Suite Summary — 3 June 2026</h1>
+        <h1>Verified Test Execution Results: Full-Suite Summary</h1>
         <table class="table-acad">
           <tr><th>Test suite</th><th>Tests</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Duration</th></tr>
           <tr><td>API tests</td><td class="num">15</td><td class="num"><b>15</b></td><td class="num">0</td><td class="num">0</td><td class="num">—</td></tr>
@@ -509,7 +509,7 @@
   <span class="slide-num"></span>
   <div class="wrap">
     <div class="slide-kicker">Evaluation · Verified Execution Results</div>
-    <h1>Per-Specification Breakdown</h1>
+    <h1>Verified Test Execution Results: Per-Specification Breakdown</h1>
     <table class="table-acad compact">
       <tr><th>Specification file</th><th>Type</th><th>Tests</th><th>Failures</th><th>Skipped</th><th>Time</th></tr>
       <tr><td class="path">tests/api/users/get-public-profile.spec.ts</td><td>API</td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td class="num">4.466s</td></tr>
@@ -531,7 +531,7 @@
   <span class="slide-num"></span>
   <div class="wrap">
     <div class="slide-kicker">Evaluation · Tool Selection Criteria</div>
-    <h1>Tool Selection: Criteria and Capability Fit</h1>
+    <h1>Tool Selection Criteria and Capability Comparison</h1>
     <table class="table-acad">
       <tr><th>Dimension</th><th>Playwright</th><th>Cypress</th><th>Selenium</th></tr>
       <tr><td><b>Browser &amp; platform</b></td><td>Chromium, Firefox, WebKit</td><td>Chrome, Firefox, Edge (experimental WebKit)</td><td>Broad WebDriver coverage</td></tr>
@@ -550,7 +550,7 @@
   <span class="slide-num"></span>
   <div class="wrap">
     <div class="slide-kicker">Evaluation · Weighted Framework Evaluation</div>
-    <h1>Weighted Framework Evaluation —<br/>Playwright Ranks First</h1>
+    <h1>Weighted Framework Evaluation</h1>
     <table class="table-acad">
       <tr><th>Score category</th><th>Playwright</th><th>Cypress</th><th>Selenium</th></tr>
       <tr><td>Primary subtotal (7 criteria)</td><td class="num">150</td><td class="num">128</td><td class="num">107</td></tr>
@@ -568,7 +568,7 @@
   <span class="slide-num"></span>
   <div class="wrap">
     <div class="slide-kicker">Evaluation · External Benchmark</div>
-    <h1>External Benchmark —<br/>Execution Time, CPU, and RAM</h1>
+    <h1>External Benchmark Context: Execution Time, CPU, and RAM Usage</h1>
     <figure>
       <img class="fig-img wide" src="../../../docs/thesis-workspace/assets/figures/external-tool-benchmark-summary-mon-panczyk-2025.png" alt="Figure 5.2. Mean execution time, CPU usage, and RAM usage for Playwright, Cypress, and Selenium across ten test cases." />
       <div class="svg-cap">Figure 5.2 — <b>Source: Adapted from Moń and Pańczyk (2025), Tables 3–5.</b> Independent academic evidence, not this project's own measurement.</div>
@@ -583,7 +583,7 @@
   <span class="slide-num"></span>
   <div class="wrap">
     <div class="slide-kicker">Evaluation · External Benchmark</div>
-    <h1>External Benchmark —<br/>Reliability Over Twenty-Four Hours</h1>
+    <h1>External Benchmark Context: Reliability Over a Twenty-Four-Hour Period</h1>
     <figure>
       <img class="fig-img wide" src="../../../docs/thesis-workspace/assets/figures/external-reliability-benchmark-almabruk-2025.png" alt="Figure 5.3. Twenty-four-hour uptime and ROCOF reliability comparison of Selenium and Playwright by hardware context." />
       <div class="svg-cap">Figure 5.3 — <b>Source: Adapted from Almabruk et al. (2025), Tables 1 and 6.</b> Independent academic evidence, not this project's own measurement.</div>
@@ -598,7 +598,7 @@
   <span class="slide-num"></span>
   <div class="wrap">
     <div class="slide-kicker">Limitations &amp; Future Work</div>
-    <h1>Being Precise About What This<br/>Evidence Does and Does Not Show</h1>
+    <h1>Limitations and Future Work</h1>
     <div class="cmp2">
       <div class="card bad">
         <div class="tag">Limitations</div>
