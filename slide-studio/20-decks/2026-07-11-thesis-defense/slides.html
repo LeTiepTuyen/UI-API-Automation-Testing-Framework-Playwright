@@ -679,7 +679,7 @@
   }
   function go(i,fromSync){
     i=Math.max(0,Math.min(total-1,i));
-    slides[i].scrollIntoView({behavior:fromSync | 'auto':'smooth',block:'start'});
+    slides[i].scrollIntoView({behavior:fromSync ? 'auto' : 'smooth',block:'start'});
     setHash(i); updateBar(i);
     if(!fromSync){ try{localStorage.setItem('thesis-defense-slide-sync', String(i)+'|'+Date.now());}catch(e){} }
   }
