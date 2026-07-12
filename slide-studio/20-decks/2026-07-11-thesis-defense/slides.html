@@ -144,6 +144,20 @@
   .split-grid.split-reverse{grid-template-columns:1fr 1fr}
   .split-grid.split-reverse .split-text{order:2}
   .split-grid.split-reverse .split-visual{order:1}
+  /* Benchmark charts contain dense axes and annotations. Give the visual
+     more room than its accompanying speaking prompts without affecting the
+     other diagram slides. */
+  .slide.split.benchmark-split .wrap{max-width:1440px}
+  .benchmark-split .split-grid{grid-template-columns:minmax(0,.78fr) minmax(0,1.22fr);gap:clamp(20px,2.7vw,42px)}
+  .benchmark-split .split-grid.split-reverse{grid-template-columns:minmax(0,1.22fr) minmax(0,.78fr)}
+  .benchmark-split .split-text h1{font-size:clamp(1.35rem,2.45vw,2.08rem);line-height:1.18}
+  .benchmark-split .layer-stack{gap:.48rem;margin-top:1rem}
+  .benchmark-split .layer{padding:.72rem .95rem;gap:.72rem}
+  .benchmark-split .layer .lbl{width:8.3rem;font-size:.84rem}
+  .benchmark-split .layer .desc{font-size:.78rem;line-height:1.28}
+  .benchmark-split .lead{font-size:clamp(.98rem,1.35vw,1.12rem);line-height:1.38;margin-top:.8rem}
+  .benchmark-split .split-visual .fig-img{max-width:100%;max-height:72vh}
+  .benchmark-split .svg-cap{font-size:.64rem;line-height:1.3;margin-top:.45rem}
   @media (max-width:860px){
     .split-grid{grid-template-columns:1fr}
     .split-grid.split-reverse .split-text,.split-grid.split-reverse .split-visual{order:initial}
@@ -242,14 +256,14 @@
     <div class="slide-kicker">Overview</div>
     <h1>Table of Contents</h1>
     <div class="num-list toc">
-      <div class="num-item"><div class="num-badge"><span>01</span></div><div class="num-text">Background, problem statement, and objectives</div></div>
-      <div class="num-item"><div class="num-badge"><span>02</span></div><div class="num-text">Implemented scope and verified execution evidence</div></div>
-      <div class="num-item"><div class="num-badge"><span>03</span></div><div class="num-text">Live demonstration and HTML report</div></div>
-      <div class="num-item"><div class="num-badge"><span>04</span></div><div class="num-text">Tool comparison and external benchmarks</div></div>
-      <div class="num-item"><div class="num-badge"><span>05</span></div><div class="num-text">Framework design, limitations, and future work</div></div>
+      <div class="num-item"><div class="num-badge"><span>01</span></div><div class="num-text">Background, problem statement, and research objectives</div></div>
+      <div class="num-item"><div class="num-badge"><span>02</span></div><div class="num-text">Core framework design and end-to-end methodology</div></div>
+      <div class="num-item"><div class="num-badge"><span>03</span></div><div class="num-text">Implemented scope, live demonstration, and execution results</div></div>
+      <div class="num-item"><div class="num-badge"><span>04</span></div><div class="num-text">Internal and external evaluation evidence</div></div>
+      <div class="num-item"><div class="num-badge"><span>05</span></div><div class="num-text">Limitations, conclusion, and discussion</div></div>
     </div>
   </div>
-  <div class="stage-strip"> [~20s] I will keep the opening short and move quickly into the evidence. The main part of the presentation is the implemented scope, the verified test run, a short live demo of the test execution and HTML report, and then the benchmark comparison. After that, I will briefly explain the framework design that supports those results.</div>
+  <div class="stage-strip"> [~8s] This presentation covers the five main parts shown on the slide.</div>
 </section>
 
 <section class="slide split" id="s02a-manual-testing" data-title="Manual Testing: Human Execution and Judgment">
@@ -275,7 +289,7 @@
       </div>
     </div>
   </div>
-  <div class="stage-strip"> [~20s] Before comparing the two approaches, let me define manual testing simply. A tester performs the steps in the application, observes what happens, and uses judgment to decide whether the result is acceptable. This is especially useful for exploratory work and usability questions, where a human needs to notice things that were not written in advance.</div>
+  <div class="stage-strip"> [~8s] Manual testing relies on a tester to execute steps and apply human judgment, especially for exploration and usability.</div>
 </section>
 
 <section class="slide split" id="s02b-test-automation" data-title="Test Automation: Repeatable Software Execution">
@@ -301,7 +315,7 @@
       </div>
     </div>
   </div>
-  <div class="stage-strip"> [~20s] Test automation is different because software performs or supports the test activity. The steps and expected results are encoded in a script, then the tool can run them again and generate evidence such as logs or reports. Its strongest use is stable regression checking. It does not replace human judgment; it makes repeatable checks easier to run and review.</div>
+  <div class="stage-strip"> [~8s] Test automation reruns encoded checks consistently and produces structured evidence. It complements, rather than replaces, human judgment.</div>
 </section>
 
 <section class="slide" id="s03-manual-vs-auto" data-title="Manual vs. Automated Testing">
@@ -319,10 +333,10 @@
       <tr><td><b>Cost pattern</b></td><td>Lower initial technical setup</td><td>Higher initial setup, reusable over repeated runs</td></tr>
     </table>
   </div>
-  <div class="stage-strip"> [~25s] This table sets the context. Manual testing is still important for exploration and judgment. Automation is useful when the same checks must be repeated and the result must be recorded clearly. So the goal here is not to replace manual testing, but to automate selected regression checks that are stable and evidence-oriented.</div>
+  <div class="stage-strip"> [~10s] Manual testing is strongest where human judgment is required; automation is most useful for stable checks that must be repeated with reviewable evidence.</div>
 </section>
 
-<section class="slide" id="s04-automation-solves" data-title="What Automation Solves">
+<section class="slide" id="s04-automation-solves" data-title="Automation Value Relative to Manual Testing">
   <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
   <span class="slide-num"></span>
   <div class="wrap">
@@ -337,7 +351,7 @@
     </table>
     <p class="lead">The framework adds repeatable execution and reviewable evidence for selected regression checks, while manual testing remains essential for human judgment.</p>
   </div>
-  <div class="stage-strip"> [~30s] For this project, the two most relevant automation values are repeatability and reviewable evidence. The framework can rerun the selected checks with one command, and the verified run produced JUnit XML plus an HTML report. I am not claiming a manual speed multiplier, because no manual baseline was measured. The evidence only supports the selected automated regression scope.</div>
+  <div class="stage-strip"> [~10s] In this framework, automation provides repeatable selected regression checks and reviewable JUnit XML and HTML-report evidence; manual testing remains necessary for human judgment.</div>
 </section>
 
 <section class="slide" id="s05-problem" data-title="Background &amp; Problem">
@@ -353,7 +367,7 @@
     </div>
     <p class="lead">This research addresses the problem of designing, implementing, and evaluating a maintainable framework that supports both end-to-end FE UI-level and API-level regression checks.</p>
   </div>
-  <div class="stage-strip"> [~30s] The practical problem is that regression checks repeat the same navigation, data entry, API verification, and result recording again and again. If automation is written as isolated scripts, it becomes hard to maintain. This research therefore focuses on a maintainable framework structure that supports both end-to-end FE UI-level checks and API-level checks.</div>
+  <div class="stage-strip"> [~10s] The problem is repetitive regression work and scattered automation scripts that become difficult to maintain. This research addresses both UI and API regression checks through one maintainable framework.</div>
 </section>
 
 <section class="slide" id="s06-objectives" data-title="Research Objectives">
@@ -369,7 +383,7 @@
       <div class="num-item"><div class="num-badge">04</div><div class="num-text"><b>Identify limitations and future work</b> related to coverage, scalability, reliability, and evaluation depth.</div></div>
     </div>
   </div>
-  <div class="stage-strip"> [~25s] The objectives are straightforward: analyze how Playwright and TypeScript can structure UI and API automation, design reusable abstractions, evaluate the implementation using real execution evidence, and identify the remaining limitations. The evaluation is important because the committee needs to see not only the design, but also what actually ran and what evidence it produced.</div>
+  <div class="stage-strip"> [~10s] These four objectives guide the research: maintainable structure, reusable abstractions, verified evaluation evidence, and clear limitations for future work.</div>
 </section>
 
 <section class="slide" id="s14-implemented-scope" data-title="Implemented Scope">
@@ -388,33 +402,6 @@
   <div class="stage-strip"> [~25s] The implemented framework was applied to Unsplash as the selected demonstration system. The UI suite contains three profile-related scenarios. The API suite contains fifteen tests across four specification files for public profile, statistics, photos, and collections. This is a representative scope, not full Unsplash coverage.</div>
 </section>
 
-<section class="slide split" id="s15-verified-results" data-title="Verified Results: Full-Suite Summary">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
-  <span class="slide-num"></span>
-  <div class="wrap">
-    <div class="split-grid">
-      <div class="split-text">
-        <div class="slide-kicker">Evaluation | Verified Execution Results</div>
-        <h1>Verified Test Execution Results: Full-Suite Summary</h1>
-        <table class="table-acad">
-          <tr><th>Test suite</th><th>Tests</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Duration</th></tr>
-          <tr><td>API tests</td><td class="num">15</td><td class="num"><b>15</b></td><td class="num">0</td><td class="num">0</td><td class="num"></td></tr>
-          <tr><td>UI tests</td><td class="num">3</td><td class="num"><b>3</b></td><td class="num">0</td><td class="num">0</td><td class="num"></td></tr>
-          <tr><td><b>Full suite</b></td><td class="num"><b>18</b></td><td class="num"><b>18</b></td><td class="num">0</td><td class="num">0</td><td class="num"><b>28.890057s</b></td></tr>
-        </table>
-        <p class="lead">Table 5.5 from the thesis, reporting the verified local run invoked with <code>npx playwright test</code>, evidenced by JUnit XML, the terminal log, and the HTML report.</p>
-      </div>
-      <div class="split-visual">
-        <figure>
-          <img class="fig-img" src="../../../docs/thesis-workspace/assets/figures/playwright-html-report-overview.png" alt="Figure 5.1. Playwright HTML report showing 18 passed tests from the verified 3 June 2026 full-suite run." />
-          <div class="svg-cap">Figure 5.1  Playwright HTML report, verified 3 June 2026 full-suite run</div>
-        </figure>
-      </div>
-    </div>
-  </div>
-  <div class="stage-strip"> [~40s] This is the key project result. The verified local run was invoked with npx playwright test on 3 June 2026. It executed fifteen API tests and three UI tests, so eighteen tests in total. All eighteen passed, with zero failed and zero skipped tests. The JUnit XML records the full-suite duration as 28.890057 seconds, and the HTML report shown here confirms the same passing run.</div>
-</section>
-
 <section class="slide" id="s15b-live-demo" data-title="Live Demonstration">
   <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
   <span class="slide-num"></span>
@@ -426,9 +413,9 @@
       <div class="num-item"><div class="num-badge">02</div><div class="num-text">Open the <b>Playwright HTML report</b> and show the passing result.</div></div>
       <div class="num-item"><div class="num-badge">03</div><div class="num-text">Connect the live report back to <b>Table 5.5</b> and the verified evidence.</div></div>
     </div>
-    <p class="lead">Recommended demo point: immediately after the full-suite result, before the detailed per-specification breakdown.</p>
+    <p class="lead">Recommended demo point: after the implemented scope and before the detailed execution results.</p>
   </div>
-  <div class="stage-strip"> [~20s + demo] At this point I will switch from the slides to the terminal and run the selected suite with npx playwright test. After the run, I will open the Playwright HTML report and show the passing status. This is the best moment for the demo because the audience has just seen the verified result, so the live run and report feel directly connected to the evaluation evidence. If the live system or network causes a problem, I can still show the saved verified HTML report from the 3 June 2026 run and clearly state that boundary.</div>
+  <div class="stage-strip"> [~20s + demo] At this point I will switch from the slides to the terminal and run the selected suite with npx playwright test. After the run, I will open the Playwright HTML report and show the passing status. This comes directly after the implemented scope, so the audience can see the framework operating before we review the detailed execution evidence. If the live system or network causes a problem, I can still show the saved verified HTML report from the 3 June 2026 run and clearly state that boundary.</div>
 </section>
 
 <section class="slide" id="s16-verified-breakdown" data-title="Verified Results: Per-Spec Breakdown">
@@ -449,7 +436,7 @@
     </table>
     <p class="lead">Table 5.6 from the thesis. Every specification file passed with zero failures and zero skipped tests.</p>
   </div>
-  <div class="stage-strip"> [~35s] This table explains where the eighteen tests came from. The four API specification files cover public profile, statistics, collections, and photos, each passing with zero failures. The three UI specification files cover bookmarked photos, profile update, and profile view, also with zero failures. This breakdown supports the full-suite summary instead of relying on only one headline number.</div>
+  <div class="stage-strip"> [~30s] This table presents the verified execution result by specification file. The four API specification files cover public profile, statistics, collections, and photos, each passing with zero failures. The three UI specification files cover bookmarked photos, profile update, and profile view, also with zero failures. This breakdown is based on the verified JUnit XML result and provides traceability to individual specification files.</div>
 </section>
 
 <section class="slide" id="s17-tool-criteria" data-title="Tool Selection: Criteria &amp; Capability">
@@ -470,32 +457,127 @@
   <div class="stage-strip"> [~35s] For tool comparison, the thesis uses project-specific criteria rather than a generic popularity ranking. The most important dimensions are synchronization, built-in UI and API support, TypeScript architecture fit, and reporting/debugging evidence. Playwright fits this framework strongly because it combines API request contexts, browser automation, fixtures, HTML/JUnit reporting, and trace support in one ecosystem.</div>
 </section>
 
-<section class="slide" id="s19-benchmark-resource" data-title="External Benchmark: Execution/CPU/RAM">
+<section class="slide" id="s18-internal-method" data-title="Internal Benchmark: Playwright and Selenium">
   <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
   <span class="slide-num"></span>
   <div class="wrap">
-    <div class="slide-kicker">Evaluation | External Benchmark</div>
-    <h1>External Benchmark Context: Execution Time, CPU, and RAM Usage</h1>
-    <figure>
-      <img class="fig-img wide" src="../../../docs/thesis-workspace/assets/figures/external-tool-benchmark-summary-mon-panczyk-2025.png" alt="Figure 5.2. Mean execution time, CPU usage, and RAM usage for Playwright, Cypress, and Selenium across ten test cases." />
-      <div class="svg-cap">Figure 5.2. <b>Source: Adapted from Mon and Panczyk (2025), Tables 3-5.</b> Independent academic evidence, not this project's own measurement.</div>
-    </figure>
+    <div class="slide-kicker">Evaluation | Internal Benchmark</div>
+    <h1>Internal Benchmark: <span class="hl">Playwright and Selenium</span></h1>
+    <div class="cmp2">
+      <div class="card good">
+        <div class="tag">Comparison Basis</div>
+        <div class="t">One-to-one API test scope</div>
+        <ul>
+          <li><b>15 API tests</b> across public profile, statistics, collections, and photos</li>
+          <li>Same endpoints, assertions, real Unsplash API, and test account</li>
+          <li><b>5 runs per framework</b>; 15/15 tests passed on every run</li>
+        </ul>
+      </div>
+      <div class="card bad">
+        <div class="tag">Measurement and Boundary</div>
+        <div class="t">Process-scoped resource sampling</div>
+        <ul>
+          <li>Average execution time, mean/peak RAM, and CPU percentage of one core</li>
+          <li>PowerShell samples the test child-process tree every <b>500 ms</b></li>
+          <li>Playwright: <b>4 parallel workers</b>; Selenium/NUnit: sequential execution</li>
+        </ul>
+      </div>
+    </div>
+    <p class="lead">This measures observed suite throughput for the recorded configurations, not hardware-normalized per-test speed.</p>
   </div>
-  <div class="stage-strip"> [~55s] This external benchmark gives context for execution time and resource usage. Lower is better in all three charts. For execution time, Selenium is slightly fastest at 6.10 seconds, Playwright is very close at 6.26 seconds, and Cypress is 6.48 seconds. For CPU usage, Playwright is best at 17.57 percent, compared with Selenium at 19.98 percent and Cypress at 20.63 percent. For RAM usage, Selenium is lowest at 28.08 percent, Playwright is close at 28.77 percent, and Cypress is highest at 33.51 percent. So this chart does not prove Playwright wins every metric. It shows a trade-off: Playwright stays competitive on speed and memory, and performs best on CPU in this external study.</div>
+  <div class="stage-strip"> [~20s] This internal benchmark compares the same fifteen API tests over five runs per framework; every run passed. It reports average execution time, RAM, and CPU, while noting that Playwright used parallel workers and Selenium ran sequentially.</div>
 </section>
 
-<section class="slide" id="s20-benchmark-reliability" data-title="External Benchmark: Reliability">
+<section class="slide split benchmark-split" id="s18a-internal-walltime" data-title="Internal API Suite Execution-Time Comparison">
   <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
   <span class="slide-num"></span>
   <div class="wrap">
-    <div class="slide-kicker">Evaluation | External Benchmark</div>
-    <h1>External Benchmark Context: Reliability Over a Twenty-Four-Hour Period</h1>
-    <figure>
-      <img class="fig-img wide" src="../../../docs/thesis-workspace/assets/figures/external-reliability-benchmark-almabruk-2025.png" alt="Figure 5.3. Twenty-four-hour uptime and ROCOF reliability comparison of Selenium and Playwright by hardware context." />
-      <div class="svg-cap">Figure 5.3. <b>Source: Adapted from Almabruk et al. (2025), Tables 1 and 6.</b> Independent academic evidence, not this project's own measurement.</div>
-    </figure>
+    <div class="split-grid">
+      <div class="split-text">
+        <div class="slide-kicker">Evaluation | Internal Experimental Benchmark</div>
+        <h1>Internal API Suite <span class="hl">Execution-Time Comparison</span></h1>
+        <div class="layer-stack">
+          <div class="layer l1"><div class="lbl">Scope</div><div class="desc"><b>15 API tests</b>, five recorded runs per framework; every run passed 15/15 tests.</div></div>
+          <div class="layer l2"><div class="lbl">Mean</div><div class="desc"><b>6.21s</b> for Playwright versus <b>7.40s</b> for Selenium.</div></div>
+          <div class="layer l1"><div class="lbl">Difference</div><div class="desc"><b>1.19s</b> or <b>16.1%</b> lower total suite execution time for Playwright.</div></div>
+        </div>
+        <p class="lead">For the recorded 15-test API suite, Playwright achieved a 1.19-second, or 16.1%, lower total suite execution time than the sequential Selenium configuration.</p>
+      </div>
+      <div class="split-visual"><figure>
+        <img class="fig-img" src="../../../docs/thesis-workspace/assets/figures/internal-total-suite-wall-time-playwright-vs-selenium.png" alt="Internal comparison of total API suite execution time for Playwright and Selenium across five recorded runs." />
+        <div class="svg-cap"><b>Source: Internal Experimental Benchmark.</b> Total execution time for the complete API suite.</div>
+      </figure></div>
+    </div>
   </div>
-  <div class="stage-strip"> [~55s] This second external benchmark adds reliability context. On uptime, Selenium is slightly higher at 100.00 percent, while Playwright reaches 99.72 percent over the twenty-four-hour period. But the ROCOF values tell another part of the story: lower ROCOF means fewer failures per second. On the HP/HDD setup, Selenium is 0.1208 while Playwright is 0.0272. On the Dell/SSD setup, Selenium is 0.1336 while Playwright is 0.0279. So the message is balanced: Selenium has the higher uptime number in this study, but Playwright shows lower failure occurrence in the reported hardware contexts. That supports the thesis conclusion that tool choice is a trade-off, and Playwright fits this framework because of both capability fit and competitive external evidence.</div>
+  <div class="stage-strip"> [~15s] This chart compares the average total execution time of the same fifteen-test API suite. Playwright averaged 6.21 seconds versus Selenium's 7.40 seconds, so it completed the recorded suite 1.19 seconds, or 16.1 percent, sooner.</div>
+</section>
+
+<section class="slide split benchmark-split" id="s18b-internal-resource" data-title="Internal API Resource-Utilization Comparison">
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
+  <span class="slide-num"></span>
+  <div class="wrap">
+    <div class="split-grid split-reverse">
+      <div class="split-text">
+        <div class="slide-kicker">Evaluation | Internal Experimental Benchmark</div>
+        <h1>Internal API <span class="hl">Resource-Utilization Comparison</span></h1>
+        <div class="layer-stack">
+          <div class="layer l2"><div class="lbl">Mean RAM</div><div class="desc"><b>823.8 MB</b> versus <b>143.7 MB</b>: Playwright used <b>5.7x</b> more.</div></div>
+          <div class="layer l2"><div class="lbl">Peak RAM</div><div class="desc"><b>1539.9 MB</b> versus <b>189.6 MB</b>: Playwright used <b>8.1x</b> more.</div></div>
+          <div class="layer l2"><div class="lbl">CPU</div><div class="desc"><b>166.9%</b> versus <b>73.9%</b> of one core: <b>2.3x</b> higher.</div></div>
+        </div>
+        <p class="lead">The 1.19-second execution-time advantage was accompanied by 5.7x higher mean RAM and 2.3x higher CPU use under Playwright's parallel, isolated execution model.</p>
+      </div>
+      <div class="split-visual"><figure>
+        <img class="fig-img" src="../../../docs/thesis-workspace/assets/figures/internal-api-benchmark-playwright-vs-selenium.png" alt="Internal comparison of mean RAM, peak RAM, and CPU use for Playwright and Selenium across 15 API tests and five runs." />
+        <div class="svg-cap"><b>Source: Internal Experimental Benchmark.</b> Five-run mean; resource measurements follow the test child-process tree.</div>
+      </figure></div>
+    </div>
+  </div>
+  <div class="stage-strip"> [~18s] This chart shows the resource cost of that faster suite completion. Playwright used 823.8 MB mean RAM versus 143.7 MB, 1,539.9 MB peak RAM versus 189.6 MB, and 166.9% CPU versus 73.9%; this is the trade-off of its parallel, isolated execution model.</div>
+</section>
+
+<section class="slide" id="s18c-practical-summary" data-title="Comparative Assessment of Playwright and Selenium">
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
+  <span class="slide-num"></span>
+  <div class="wrap">
+    <div class="slide-kicker">Evaluation | Practical Comparison</div>
+    <h1>Comparative Assessment: <span class="hl">Playwright and Selenium</span></h1>
+    <table class="table-acad compact">
+      <tr><th>Dimension</th><th>Playwright in This Framework</th><th>Selenium + C# + NUnit</th></tr>
+      <tr><td><b>Execution model</b></td><td><b>Clean-slate BrowserContext per test</b>; independent state prevents failure carry-over</td><td>Sequential by default in this setup; no built-in BrowserContext isolation model, so isolation relies on test-runner and WebDriver lifecycle design</td></tr>
+      <tr><td><b>Synchronization</b></td><td>Auto-waiting plus auto-retrying, web-first assertions</td><td>Explicit or implicit waits managed in the test design</td></tr>
+      <tr><td><b>UI + API workflow</b></td><td>Browser contexts and API request contexts in one test runner</td><td>WebDriver for UI; API support assembled through additional tooling</td></tr>
+      <tr><td><b>Evidence and debugging</b></td><td>Built-in HTML/JUnit reporters and Trace Viewer</td><td>TRX output plus separately configured reporting and debugging tools</td></tr>
+      <tr><td><b>Observed internal trade-off</b></td><td><b>6.21s</b> API-suite mean; higher RAM and CPU use</td><td><b>7.40s</b> API-suite mean; lower RAM and CPU use</td></tr>
+    </table>
+    <p class="lead">For this project, Playwright combines higher observed suite throughput with native UI/API and evidence support, while accepting a higher resource cost.</p>
+  </div>
+  <div class="stage-strip"> [~55s] These internal results are easier to read when we combine them with the framework capabilities. The first strength is test isolation. Playwright gives each test a clean browser context with its own state, such as cookies and storage. That prevents state leaking from one test into another, avoids failure carry-over, and makes parallel execution more reliable. It also provides auto-waiting and auto-retrying web-first assertions for dynamic pages, plus browser contexts and API request contexts in one test runner. For evidence, HTML and JUnit reporters work alongside Trace Viewer. In the recorded benchmark, Playwright finished the API suite in 6.21 seconds, while Selenium averaged 7.40 seconds. In this Selenium and NUnit setup, execution is sequential by default and there is no built-in BrowserContext isolation model. Isolation and parallel execution must be designed through the test runner and WebDriver lifecycle. So the conclusion is project-fit, not a universal winner: Playwright gives this UI and API framework an integrated workflow and higher observed suite throughput, with the explicit trade-off of higher RAM and CPU use.</div>
+</section>
+
+<section class="slide split benchmark-split" id="s20-benchmark-reliability" data-title="External Reliability Benchmark">
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
+  <span class="slide-num"></span>
+  <div class="wrap">
+    <div class="split-grid">
+      <div class="split-text">
+        <div class="slide-kicker">Evaluation | External Benchmark</div>
+        <h1>External Reliability Benchmark: <span class="hl">Twenty-Four-Hour Comparison</span></h1>
+        <div class="layer-stack">
+          <div class="layer l1"><div class="lbl">Uptime</div><div class="desc">Percentage of continuous operation. Selenium: <b>100.00%</b>; Playwright: <b>99.72%</b>, about <b>4 minutes</b> less over 24 hours.</div></div>
+          <div class="layer l2"><div class="lbl">ROCOF</div><div class="desc"><b>Rate of Occurrence of Failures</b>: failures per second; lower is better.</div></div>
+          <div class="layer l2"><div class="lbl">Failure Rate</div><div class="desc">Playwright is <b>4-5x lower</b>: 0.0272 vs 0.1208 on HP/HDD; 0.0279 vs 0.1336 on Dell/SSD.</div></div>
+          <div class="layer l3"><div class="lbl">Hardware</div><div class="desc">HP/HDD and Dell/SSD are two study hardware contexts; both show the same lower-ROCOF trend for Playwright.</div></div>
+        </div>
+        <p class="lead">Selenium recorded 100.00% uptime versus Playwright's 99.72%, while Playwright's ROCOF was 4-5x lower across both hardware contexts.</p>
+      </div>
+      <div class="split-visual"><figure>
+        <img class="fig-img" src="../../../docs/thesis-workspace/assets/figures/external-reliability-benchmark-almabruk-2025.png" alt="Figure 5.3. Twenty-four-hour uptime and ROCOF reliability comparison of Selenium and Playwright by hardware context." />
+        <div class="svg-cap">Figure 5.3. <b>Source: Adapted from Almabruk et al. (2025), Tables 1 and 6.</b> Independent academic evidence, not this project's own measurement.</div>
+      </figure></div>
+    </div>
+  </div>
+  <div class="stage-strip"> [~18s] This independent study compares twenty-four-hour reliability, not this project's own run. Selenium had slightly higher uptime, 100.00% versus 99.72%, but Playwright's ROCOF was four to five times lower in both hardware contexts, meaning fewer failure occurrences.</div>
 </section>
 
 <section class="slide" id="s07-e2e-methodology" data-title="End-to-End Testing Methodology">
@@ -551,7 +633,7 @@
       </div>
     </div>
   </div>
-  <div class="stage-strip"> [~25s] This design explains how the framework is organized. Test files stay at the top and express scenario intent. Page Objects handle UI interaction, workflows compose repeated flows, API services centralize endpoint logic, and core utilities manage browser and request support. The goal is to reduce scattered changes when the application changes.</div>
+  <div class="stage-strip"> [~28s] Read Figure 3.1 from top to bottom. Data and configuration support the whole framework. The test specification layer holds the UI and API scenarios. A UI test goes through Page Objects and workflows, while an API test goes through API services. Both paths use fixtures and core utilities for shared browser, request, and helper logic before calling the Unsplash UI or API. Reporting then produces the HTML and JUnit evidence. Each layer owns one clear responsibility.</div>
 </section>
 
 <section class="slide split" id="s09-pom" data-title="UI Abstraction: Page Object Model">
@@ -572,7 +654,7 @@
       </div>
     </div>
   </div>
-  <div class="stage-strip"> [~25s] For UI tests, the Page Object Model keeps selectors and page actions outside the test files. A test calls a meaningful page method, while the Page Object owns the locator and interaction details. This helps localize UI changes instead of editing the same selector logic across many tests.</div>
+  <div class="stage-strip"> [~25s] This flow moves from left to right. The test starts with user-visible intent, such as updating a profile, and calls a meaningful Page Object method. The Page Object resolves the locator and performs the browser action, then the test checks the expected result. So when a selector or page interaction changes, the update is usually localized in the Page Object rather than repeated across test files.</div>
 </section>
 
 <section class="slide split" id="s10-fixtures" data-title="Fixtures &amp; Dependency Injection">
@@ -614,7 +696,7 @@
       </div>
     </div>
   </div>
-  <div class="stage-strip"> [~20s] On the API side, service classes keep endpoint construction and request logic out of individual tests. Tests call service methods, while shared utilities handle GET, POST, PUT, DELETE, URLs, headers, and response support. This keeps API tests focused on behavior and assertions.</div>
+  <div class="stage-strip"> [~25s] This API flow also starts from the test specification. The test calls a service method, and the service combines endpoint constants, URL helpers, headers, and request data. Shared API utilities execute the request through Playwright, then the test validates the response. This keeps request construction in one place and leaves each API test focused on the expected behavior.</div>
 </section>
 
 <section class="slide" id="s12-data-dto" data-title="Test Data, DTOs, and Cleanup">
@@ -664,9 +746,9 @@
         <div class="tag">Limitations</div>
         <div class="t">What the evidence does not cover</div>
         <ul>
-          <li>Single verified run  not long-term reliability data</li>
-          <li>Representative scope  not full Unsplash coverage</li>
-          <li>Qualitative + external-benchmark tool comparison, not a local Cypress/Selenium run</li>
+          <li>Single verified run, not long-term reliability data</li>
+          <li>Representative scope, not full Unsplash coverage</li>
+          <li>Internal Selenium benchmark covers a 15-test API subset, not the full framework</li>
           <li>External live-system dependency risk</li>
           <li>Copilot workflow effectiveness not yet measured</li>
         </ul>
@@ -683,17 +765,34 @@
       </div>
     </div>
   </div>
-  <div class="stage-strip"> [~35s] These are the boundaries of the evaluation. The execution evidence is one verified local run, not long-term reliability data. The scope is representative, not full Unsplash coverage. Cypress and Selenium were compared through documentation, a project-specific rubric, and external studies, not through a local run of the same suite. Future work should therefore focus on CI/CD execution, broader coverage, stronger schema validation, non-functional testing, and trend reporting.</div>
+  <div class="stage-strip"> [~35s] These are the boundaries of the evaluation. The verified execution evidence is one local run, not long-term reliability data, and the scope is representative rather than full Unsplash coverage. The internal Selenium comparison is limited to a fifteen-test API subset, so it does not represent every framework workflow. The external reliability result provides context but remains independent academic evidence. Future work should therefore focus on CI/CD execution, broader coverage, stronger schema validation, non-functional testing, and trend reporting.</div>
 </section>
 
-<section class="slide thanks" id="s22-thanks" data-title="Conclusion &amp; Thank You">
+<section class="slide" id="s22-conclusion" data-title="Conclusion and Discussion">
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
+  <span class="slide-num"></span>
+  <div class="wrap">
+    <div class="slide-kicker">Conclusion and Discussion</div>
+    <h1>Conclusion and Discussion</h1>
+    <div class="num-list">
+      <div class="num-item"><div class="num-badge">01</div><div class="num-text">Addressed repeatable UI and API regression validation within one maintainable framework.</div></div>
+      <div class="num-item"><div class="num-badge">02</div><div class="num-text">Applied layered architecture, Page Objects, and service-layer API abstraction to separate concerns.</div></div>
+      <div class="num-item"><div class="num-badge">03</div><div class="num-text">Verified eighteen selected tests: eighteen passed, zero failed, and zero skipped.</div></div>
+      <div class="num-item"><div class="num-badge">04</div><div class="num-text">Evaluated the framework through execution evidence and scoped benchmark comparison.</div></div>
+    </div>
+    <p class="lead">The research objectives were addressed through an implemented framework, verified execution evidence, and explicit evaluation boundaries.</p>
+  </div>
+  <div class="stage-strip"> [~35s] To conclude, this research addressed the need for repeatable UI and API regression validation within one maintainable automation framework. The architecture uses layered responsibilities, Page Objects for UI abstraction, and service-layer API abstraction to separate concerns. The selected implementation was verified through eighteen tests, with eighteen passed, zero failed, and zero skipped. The evaluation combines verified execution evidence with a scoped internal and external benchmark discussion. These results address the stated objectives while the limitations define the next steps for broader coverage, repeated CI/CD execution, and deeper evaluation.</div>
+</section>
+
+<section class="slide thanks" id="s23-thanks" data-title="Thank You">
   <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
   <span class="slide-num"></span>
   <div class="wrap">
     <h1>Thank you.</h1>
-    <div class="sub">Questions &amp; Discussion</div>
+    <div class="sub">Questions and Discussion</div>
   </div>
-  <div class="stage-strip"> [~25s] To conclude, this research designed and implemented a Playwright and TypeScript framework for selected UI and API regression checks, verified it through an eighteen-test passing run, and positioned Playwright against Cypress and Selenium using project-specific criteria and external benchmark context. Thank you to my supervisor, Dr. Le Dinh Dung, and to the committee. I welcome your questions.</div>
+  <div class="stage-strip"> [~10s] Thank you to my supervisor, Dr. Le Dinh Dung, and to the committee. I welcome your questions.</div>
 </section>
 
 <div class="bar"><i id="bar"></i></div>
@@ -705,6 +804,21 @@
 
 <script>
 (function(){
+  // Main presentation sequence first; reserve slides follow the thank-you slide.
+  // This runs before the presenter chrome reads the slide collection.
+  const presentationOrder=[
+    's01-cover','s02-toc','s02a-manual-testing','s02b-test-automation',
+    's03-manual-vs-auto','s05-problem','s06-objectives',
+    's08-architecture','s09-pom','s11-api-design','s07-e2e-methodology',
+    's14-implemented-scope','s15b-live-demo','s16-verified-breakdown',
+    's18-internal-method','s18a-internal-walltime','s18b-internal-resource',
+    's20-benchmark-reliability','s21-limitations','s22-conclusion','s23-thanks',
+    's04-automation-solves','s17-tool-criteria','s18c-practical-summary','s07b-playwright-capabilities',
+    's12-data-dto','s10-fixtures','s13-copilot'
+  ];
+  const slideAnchor=document.querySelector('.bar');
+  const slidesById=new Map([...document.querySelectorAll('.slide')].map(slide=>[slide.id,slide]));
+  presentationOrder.forEach(id=>{const slide=slidesById.get(id);if(slide) slideAnchor.before(slide);});
   const slides=[...document.querySelectorAll('.slide')];
   const total=slides.length;
   slides.forEach((s,i)=>{const n=s.querySelector('.slide-num'); if(n) n.textContent=String(i+1).padStart(2,'0')+' / '+String(total).padStart(2,'0');});
