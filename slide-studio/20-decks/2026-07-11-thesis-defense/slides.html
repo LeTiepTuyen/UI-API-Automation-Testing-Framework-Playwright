@@ -252,6 +252,58 @@
   <div class="stage-strip"> [~20s] I will keep the opening short and move quickly into the evidence. The main part of the presentation is the implemented scope, the verified test run, a short live demo of the test execution and HTML report, and then the benchmark comparison. After that, I will briefly explain the framework design that supports those results.</div>
 </section>
 
+<section class="slide split" id="s02a-manual-testing" data-title="Manual Testing: Human Execution and Judgment">
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
+  <span class="slide-num"></span>
+  <div class="wrap">
+    <div class="split-grid">
+      <div class="split-text">
+        <div class="slide-kicker">Background | Core Concept</div>
+        <h1>Manual Testing: <span class="hl">Human Execution and Judgment</span></h1>
+        <div class="num-list">
+          <div class="num-item"><div class="num-badge">01</div><div class="num-text">A tester performs the test steps directly in the application.</div></div>
+          <div class="num-item"><div class="num-badge">02</div><div class="num-text">The tester observes the behavior and decides whether it meets the expected result.</div></div>
+          <div class="num-item"><div class="num-badge">03</div><div class="num-text">It is especially valuable for exploration, usability, and situations requiring human judgment.</div></div>
+        </div>
+        <p class="lead">Manual testing is defined by human execution and interpretation, not by a lack of rigor.</p>
+      </div>
+      <div class="split-visual">
+        <figure>
+          <img class="fig-img" src="manual-testing-concept.png" alt="Illustration of a tester using a checklist to inspect a web application." />
+          <div class="svg-cap">Concept summary aligned with <b>Chapter 2, Section 2.2</b> and ISTQB CTFL v4.0.1.</div>
+        </figure>
+      </div>
+    </div>
+  </div>
+  <div class="stage-strip"> [~20s] Before comparing the two approaches, let me define manual testing simply. A tester performs the steps in the application, observes what happens, and uses judgment to decide whether the result is acceptable. This is especially useful for exploratory work and usability questions, where a human needs to notice things that were not written in advance.</div>
+</section>
+
+<section class="slide split" id="s02b-test-automation" data-title="Test Automation: Repeatable Software Execution">
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
+  <span class="slide-num"></span>
+  <div class="wrap">
+    <div class="split-grid split-reverse">
+      <div class="split-text">
+        <div class="slide-kicker">Background | Core Concept</div>
+        <h1>Test Automation: <span class="hl">Repeatable Software Execution</span></h1>
+        <div class="num-list">
+          <div class="num-item"><div class="num-badge">01</div><div class="num-text">A tool executes predefined test steps and checks the encoded expected outcomes.</div></div>
+          <div class="num-item"><div class="num-badge">02</div><div class="num-text">The same checks can be rerun consistently and produce structured evidence, such as logs and reports.</div></div>
+          <div class="num-item"><div class="num-badge">03</div><div class="num-text">It is most suitable for stable, repeated regression checks that justify script maintenance.</div></div>
+        </div>
+        <p class="lead">Automation executes what has been encoded; it complements, rather than replaces, human testing.</p>
+      </div>
+      <div class="split-visual">
+        <figure>
+          <img class="fig-img" src="test-automation-concept.png" alt="Illustration of automated test execution producing a report." />
+          <div class="svg-cap">Concept summary aligned with <b>Chapter 2, Section 2.2</b> and the ISTQB test-automation definition.</div>
+        </figure>
+      </div>
+    </div>
+  </div>
+  <div class="stage-strip"> [~20s] Test automation is different because software performs or supports the test activity. The steps and expected results are encoded in a script, then the tool can run them again and generate evidence such as logs or reports. Its strongest use is stable regression checking. It does not replace human judgment; it makes repeatable checks easier to run and review.</div>
+</section>
+
 <section class="slide" id="s03-manual-vs-auto" data-title="Manual vs. Automated Testing">
   <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
   <span class="slide-num"></span>

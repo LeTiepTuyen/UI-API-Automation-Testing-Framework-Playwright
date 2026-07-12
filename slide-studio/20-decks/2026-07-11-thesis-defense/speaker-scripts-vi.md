@@ -17,6 +17,12 @@ Chào hội đồng. Em là Lê Tiệp Tuyên. Hôm nay em trình bày đồ án
 ### s02-toc
 Em sẽ đi khá nhanh phần mở đầu, sau đó tập trung vào phần hội đồng quan tâm nhất: scope đã implement, kết quả chạy test, demo chạy test và HTML report, rồi benchmark so sánh Playwright với Cypress và Selenium. Sau đó em mới giải thích ngắn framework design phía sau.
 
+### s02a-manual-testing
+Trước khi so sánh hai cách tiếp cận, em xin định nghĩa manual testing một cách đơn giản. Tester tự thao tác các bước trên application, quan sát behavior, sau đó dùng judgment để quyết định kết quả có đúng hay không. Manual testing rất phù hợp cho exploratory work và usability, vì con người có thể nhận ra các điểm chưa được quy định sẵn.
+
+### s02b-test-automation
+Test automation khác ở chỗ phần mềm sẽ thực hiện hoặc hỗ trợ hoạt động testing. Các bước test và expected result được encode trong script, sau đó tool có thể chạy lại và tạo logs hoặc reports. Giá trị mạnh nhất là regression checks ổn định và lặp lại. Automation không thay thế human judgment, mà giúp các check có thể chạy và review dễ hơn.
+
 ### s03-manual-vs-auto
 Bảng này chỉ để đặt ngữ cảnh. Manual testing vẫn rất quan trọng cho exploration và judgment. Automation phù hợp hơn với các regression checks cần lặp lại nhiều lần và cần evidence rõ ràng. Mục tiêu của framework không phải thay thế manual testing, mà là tự động hóa các check ổn định và có thể kiểm chứng.
 
