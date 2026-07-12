@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<!-- fork: 2026-07-11-v5-vnuk-academic · rationale: Technical/data-heavy content, Academic committee/faculty-defense register (style-decision-matrix.md ACADEMIC × TECHNICAL cell). Real graduation-project defense deck, GATE 2 outline approved 2026-07-11. -->
+<!-- fork: 2026-07-11-v5-vnuk-academic · rationale: Technical/data-heavy content, Academic committee/faculty-defense register (style-decision-matrix.md ACADEMIC TECHNICAL cell). Real graduation-project defense deck, GATE 2 outline approved 2026-07-11. -->
 <html lang="en">
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>A Comprehensive UI and API Automation Testing Framework Using Playwright — Thesis Defense</title>
+<title>A Comprehensive UI and API Automation Testing Framework Using Playwright - Thesis Defense</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;600;800&family=Inter:wght@400;500;600&family=Newsreader:ital,wght@0,600;1,600;1,700&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
 <style>
   :root{
-    /* —— COLOR (60-30-10) —— */
+    /*  COLOR (60-30-10)  */
     --bg:        #ffffff;
     --ink:       #16213e;
     --surface:   #f6f7fa;
     --line:      #e3e6ec;
     --muted:     #5c6472;
-    --accent:    #7a1f2e;   /* maroon — the 10% */
+    --accent:    #7a1f2e;   /* maroon  the 10% */
     --accent-ink:#ffffff;
-    --accent-2:  #0d1b3e;   /* navy — second accent, this style is genuinely bi-tone */
+    --accent-2:  #0d1b3e;   /* navy  second accent, this style is genuinely bi-tone */
 
-    /* —— TYPE —— */
+    /*  TYPE  */
     --font-display: 'Be Vietnam Pro', system-ui, sans-serif;
     --font-accent-serif: 'Newsreader', Georgia, serif;
     --font-body:    'Inter', system-ui, sans-serif;
@@ -29,13 +29,13 @@
     --display-style:  normal;
     --display-tracking: -0.01em;
 
-    /* —— DENSITY —— */
+    /*  DENSITY  */
     --pad-slide: clamp(40px, 6vw, 90px);
     --gap:       clamp(16px, 2vw, 26px);
     --radius:    14px;
     --maxw:      1120px;
 
-    /* —— optional —— */
+    /*  optional  */
     --bg-2: var(--accent-2);
     --shadow: 0 18px 44px rgba(13,27,62,.12);
     --kicker-tracking: .16em;
@@ -69,11 +69,11 @@
   .lead::before{content:"\21D2  ";font-style:normal;color:var(--accent);font-weight:800}
   .split-text .lead{max-width:56ch}
 
-  /* institutional logo mark, top-left — white-bg slides only */
+  /* institutional logo mark, top-left  white-bg slides only */
   .brandmark{position:absolute;top:2.4vh;left:8vw;z-index:2;height:38px;width:auto;display:block}
   .cover .brandmark,.thanks .brandmark{height:52px}
 
-  /* —— numbered pill badge list —— (enlarged so short agenda-style slides fill the frame, not read as templated AI padding) */
+  /*  numbered pill badge list  (enlarged so short agenda-style slides fill the frame, not read as templated AI padding) */
   .num-list{display:flex;flex-direction:column;gap:clamp(1.3rem,2.6vh,1.9rem);margin-top:2.2rem}
   .num-item{display:flex;gap:1.4rem;align-items:flex-start}
   .num-badge{flex:none;width:3.1rem;height:3.1rem;border-radius:999px;background:var(--accent);color:var(--accent-ink);
@@ -82,12 +82,12 @@
   .num-text b{color:var(--accent-2)}
   .num-text .sub{display:block;font-size:.92rem;color:var(--muted);margin-top:.3rem;font-weight:400}
 
-  /* —— TOC-only variant: uppercase labels, angled badge (not a circle) to read as an index, not a step list —— */
+  /*  TOC-only variant: uppercase labels, angled badge (not a circle) to read as an index, not a step list  */
   .num-list.toc .num-text{text-transform:uppercase;letter-spacing:.02em}
   .num-list.toc .num-badge{border-radius:6px;transform:rotate(45deg)}
   .num-list.toc .num-badge span{display:block;transform:rotate(-45deg)}
 
-  /* —— 2-col comparison boxes —— */
+  /*  2-col comparison boxes  */
   .cmp2{display:grid;grid-template-columns:1fr 1fr;gap:var(--gap);margin-top:2rem}
   .card{background:var(--surface);border-radius:var(--radius);padding:1.7rem 1.8rem;border:1px solid var(--line)}
   .card.bad{border-left:4px solid var(--accent)}
@@ -100,7 +100,7 @@
   .card ul{margin-top:1rem;padding-left:1.2rem}
   .card li{font-size:1.02rem;color:var(--muted);line-height:1.65;margin-top:.55rem}
 
-  /* —— academic data table —— */
+  /*  academic data table  */
   .table-acad{width:100%;border-collapse:collapse;margin-top:1.8rem;font-size:1rem;border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow)}
   .table-acad th{background:var(--accent-2);color:#fff;text-align:left;padding:.85rem 1.1rem;font-family:var(--font-mono);font-size:.76rem;letter-spacing:.05em;text-transform:uppercase;font-weight:500}
   .table-acad td{padding:.85rem 1.1rem;border-bottom:1px solid var(--line);color:var(--ink);vertical-align:top}
@@ -111,7 +111,7 @@
   .table-acad.compact th,.table-acad.compact td{padding:.6rem .85rem}
   .table-acad .path{font-family:var(--font-mono);font-size:.86rem}
 
-  /* —— layered architecture bands —— */
+  /*  layered architecture bands  */
   .layer-stack{display:flex;flex-direction:column;gap:.7rem;margin-top:1.6rem}
   .layer{border-radius:var(--radius);padding:1rem 1.3rem;border:1px solid var(--line);display:flex;align-items:center;gap:1rem}
   .layer .lbl{font-family:var(--font-display);font-weight:800;font-size:.95rem;flex:none;width:11rem}
@@ -131,7 +131,7 @@
   .svg-cap{font-family:var(--font-mono);font-size:.7rem;color:var(--muted);margin-top:.6rem;text-align:center}
   .svg-cap b{color:var(--accent)}
 
-  /* —— split layout: title/text one half, diagram/figure the other half ——
+  /*  split layout: title/text one half, diagram/figure the other half 
      Used for diagram-carrying slides instead of forcing every slide into the
      same top-to-bottom stack; keeps tall portrait diagrams from pushing the
      title band into the fixed brandmark/slide-num zone. */
@@ -149,7 +149,7 @@
     .split-grid.split-reverse .split-text,.split-grid.split-reverse .split-visual{order:initial}
   }
 
-  /* —— cover —— */
+  /*  cover  */
   .cover{background:var(--bg)}
   .cover h1{font-family:var(--font-accent-serif);font-style:italic;font-weight:700;
     font-size:clamp(1.9rem,4.2vw,3.3rem);line-height:1.14;color:var(--accent-2)}
@@ -158,30 +158,30 @@
   .meta-label{font-family:var(--font-mono);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
   .meta-value{font-family:var(--font-body);font-size:1rem;font-weight:600;color:var(--ink);line-height:1.3}
 
-  /* —— section divider —— */
+  /*  section divider  */
   .divider{background:var(--accent-2);color:#fff;justify-content:center;align-items:center;text-align:center}
   .divider h1{font-family:var(--font-accent-serif);font-style:italic;font-weight:600;color:#fff;
     font-size:clamp(1.7rem,4vw,3rem)}
   .divider .rule{width:64px;height:3px;background:var(--accent);margin:1.2rem auto 0}
 
-  /* —— thanks —— */
+  /*  thanks  */
   .thanks{background:var(--bg);justify-content:center;align-items:center;text-align:center}
   .thanks h1{font-family:var(--font-accent-serif);font-style:italic;font-weight:700;color:var(--accent-2);
     font-size:clamp(2.2rem,5.2vw,4rem)}
   .thanks .sub{font-family:var(--font-mono);font-size:.86rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:1.1rem}
 
-  /* stage strip — HIDDEN by default (N toggles). LOCKED CHROME. */
+  /* stage strip  HIDDEN by default (N toggles). LOCKED CHROME. */
   .stage-strip{position:absolute;left:0;right:0;bottom:6px;background:var(--accent-2);
     border-top:1px solid rgba(255,255,255,.15);color:#cfd6e6;font-family:var(--font-mono);font-size:.74rem;
     padding:.65rem 8vw;letter-spacing:.01em;line-height:1.55;display:none;z-index:2;max-height:34vh;overflow-y:auto}
   .stage-strip b{color:#fff}
   body.show-stage .stage-strip{display:block}
 
-  /* presenter chrome bar — LOCKED CHROME */
+  /* presenter chrome bar  LOCKED CHROME */
   .bar{position:fixed;bottom:0;left:0;right:0;height:3px;background:rgba(13,27,62,.12);z-index:50}
   .bar>i{display:block;height:100%;background:var(--accent);width:0;transition:width .25s}
 
-  /* sidebar TOC — LOCKED CHROME, toggled with S */
+  /* sidebar TOC  LOCKED CHROME, toggled with S */
   .sidebar{position:fixed;top:0;left:-320px;width:300px;height:100vh;
     background:var(--accent-2);border-right:1px solid rgba(255,255,255,.12);
     overflow-y:auto;z-index:60;transition:left .25s ease;
@@ -200,7 +200,7 @@
   .sidebar li.active{background:rgba(122,31,46,.35);color:#fff}
   .sidebar li.active::before{color:#fff}
 
-  /* grid overview — Esc / G — LOCKED CHROME */
+  /* grid overview  Esc / G  LOCKED CHROME */
   body.grid-mode{scroll-snap-type:none}
   body.grid-mode .slide{min-height:auto;aspect-ratio:16/9;transform:scale(1);cursor:pointer;
     border:1px solid var(--line);padding:2vh 2vw;justify-content:center}
@@ -221,7 +221,7 @@
 
 <!-- ============ 1. COVER ============ -->
 <section class="slide cover" id="s01-cover" data-title="Cover">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
   <span class="slide-num"></span>
   <div class="wrap">
     <div class="slide-kicker">Graduation Thesis Defense</div>
@@ -232,33 +232,31 @@
       <div class="meta-item"><span class="meta-label">Supervisor</span><span class="meta-value">Dr. Le Dinh Dung</span></div>
     </div>
   </div>
-  <div class="stage-strip">▸ [~15s] Good morning/afternoon. My name is Le Tiep Tuyen, and today I will present my graduation project: a comprehensive UI and API automation testing framework built using Playwright and TypeScript. This work was completed under the supervision of Dr. Le Dinh Dung.</div>
+  <div class="stage-strip"> [~15s] Good morning/afternoon. My name is Le Tiep Tuyen, and today I will present my graduation project: a Playwright and TypeScript framework for UI and API automation testing. The framework is demonstrated on selected Unsplash scenarios and evaluated through verified execution evidence.</div>
 </section>
 
-<!-- ============ 2. TABLE OF CONTENTS ============ -->
 <section class="slide" id="s02-toc" data-title="Table of Contents">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
   <span class="slide-num"></span>
   <div class="wrap">
     <div class="slide-kicker">Overview</div>
     <h1>Table of Contents</h1>
     <div class="num-list toc">
-      <div class="num-item"><div class="num-badge"><span>01</span></div><div class="num-text">Background, problem statement, and research objectives</div></div>
-      <div class="num-item"><div class="num-badge"><span>02</span></div><div class="num-text">Proposed framework design</div></div>
-      <div class="num-item"><div class="num-badge"><span>03</span></div><div class="num-text">Implementation on the selected system</div></div>
-      <div class="num-item"><div class="num-badge"><span>04</span></div><div class="num-text">Verified evaluation results and tool comparison</div></div>
-      <div class="num-item"><div class="num-badge"><span>05</span></div><div class="num-text">Limitations and future work</div></div>
+      <div class="num-item"><div class="num-badge"><span>01</span></div><div class="num-text">Background, problem statement, and objectives</div></div>
+      <div class="num-item"><div class="num-badge"><span>02</span></div><div class="num-text">Implemented scope and verified execution evidence</div></div>
+      <div class="num-item"><div class="num-badge"><span>03</span></div><div class="num-text">Live demonstration and HTML report</div></div>
+      <div class="num-item"><div class="num-badge"><span>04</span></div><div class="num-text">Tool comparison and external benchmarks</div></div>
+      <div class="num-item"><div class="num-badge"><span>05</span></div><div class="num-text">Framework design, limitations, and future work</div></div>
     </div>
   </div>
-  <div class="stage-strip">▸ [~20s] In the next fifteen to twenty minutes, I will walk through the problem this project addresses, the design of the proposed framework, how it was implemented, the verified evaluation results from a real test run, and finally the limitations and future work.</div>
+  <div class="stage-strip"> [~20s] I will keep the opening short and move quickly into the evidence. The main part of the presentation is the implemented scope, the verified test run, a short live demo of the test execution and HTML report, and then the benchmark comparison. After that, I will briefly explain the framework design that supports those results.</div>
 </section>
 
-<!-- ============ 3. MANUAL VS AUTOMATED — METHODOLOGICAL DIVIDE ============ -->
 <section class="slide" id="s03-manual-vs-auto" data-title="Manual vs. Automated Testing">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
   <span class="slide-num"></span>
   <div class="wrap">
-    <div class="slide-kicker">Background · Testing Approaches</div>
+    <div class="slide-kicker">Background | Testing Approaches</div>
     <h1>Manual Testing and Automated Testing Approaches</h1>
     <table class="table-acad">
       <tr><th>Dimension</th><th>Manual Testing</th><th>Automated Testing</th></tr>
@@ -269,31 +267,29 @@
       <tr><td><b>Cost pattern</b></td><td>Lower initial technical setup</td><td>Higher initial setup, reusable over repeated runs</td></tr>
     </table>
   </div>
-  <div class="stage-strip">▸ [~45s] Before describing the specific problem this project addresses, it is worth being precise about what automation actually changes relative to manual testing — they are complementary approaches, not competitors. Drawing on ISTQB testing theory and Garousi and Mantyla's review of automation practice, the literature identifies five methodological dimensions where they diverge: execution, judgment, evidence, maintenance, and cost pattern, as shown here. This framing sets up exactly when automation is worth building.</div>
+  <div class="stage-strip"> [~25s] This table sets the context. Manual testing is still important for exploration and judgment. Automation is useful when the same checks must be repeated and the result must be recorded clearly. So the goal here is not to replace manual testing, but to automate selected regression checks that are stable and evidence-oriented.</div>
 </section>
 
-<!-- ============ 4. WHAT AUTOMATION SOLVES ============ -->
 <section class="slide" id="s04-automation-solves" data-title="What Automation Solves">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
   <span class="slide-num"></span>
   <div class="wrap">
-    <div class="slide-kicker">Background · Automation Value</div>
+    <div class="slide-kicker">Background | Automation Value</div>
     <h1>Automation Value Relative to Manual Testing</h1>
     <table class="table-acad">
       <tr><th>Dimension</th><th>Manual Testing</th><th>Automation in This Framework</th></tr>
       <tr><td><b>Repeatability</b></td><td>Depends on the tester following steps consistently</td><td>A single command re-executes the same checks identically</td></tr>
-      <tr><td><b>Speed &amp; evidence</b></td><td>Repeated navigation, informal time/notes</td><td><b>18 tests in 28.890057s</b> — JUnit XML + HTML report</td></tr>
+      <tr><td><b>Speed &amp; evidence</b></td><td>Repeated navigation, informal time/notes</td><td><b>18 tests in 28.890057s</b>  JUnit XML + HTML report</td></tr>
       <tr><td><b>Human judgment</b></td><td>Strong for exploration, usability, discovery</td><td>Limited to the implemented, encoded flows</td></tr>
       <tr><td><b>Risk</b></td><td>Human error during repetitive execution</td><td>Scripts can become stale if not maintained</td></tr>
     </table>
     <p class="lead">Table 5.7 from the thesis, condensed for the selected regression scenarios in this framework.</p>
   </div>
-  <div class="stage-strip">▸ [~45s] Automation research identifies exactly two problems it is meant to solve: making regression checks repeatable, and producing evidence that can be reviewed later instead of relying on a tester's memory. This framework demonstrates both concretely — the verified run I will present later completed all eighteen checks in 28.890057 seconds, producing a structured JUnit XML file and an HTML report. I want to be precise: this project did not measure how long the same eighteen checks would take manually, so I am not claiming a speed multiplier — that comparison stays qualitative. What the evidence does show is that manual judgment remains essential, which automation does not replace, and that automated scripts carry their own maintenance risk — exactly the problem the next slide introduces.</div>
+  <div class="stage-strip"> [~30s] For this project, the two most relevant automation values are repeatability and reviewable evidence. The framework can rerun the selected checks with one command, and the verified run produced JUnit XML plus an HTML report. I am not claiming a manual speed multiplier, because no manual baseline was measured. The evidence only supports the selected automated regression scope.</div>
 </section>
 
-<!-- ============ 5. PROBLEM STATEMENT ============ -->
 <section class="slide" id="s05-problem" data-title="Background &amp; Problem">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
   <span class="slide-num"></span>
   <div class="wrap">
     <div class="slide-kicker">Background &amp; Problem</div>
@@ -305,12 +301,11 @@
     </div>
     <p class="lead">This research addresses the problem of designing, implementing, and evaluating a maintainable framework that supports both end-to-end FE UI-level and API-level regression checks.</p>
   </div>
-  <div class="stage-strip">▸ [~35s] Manual regression checks must repeat navigation, data entry, and result verification every time the application changes — this is effortful and prone to inconsistency, and it does not scale as scenarios multiply. Sustainable automation is not automatic either: it requires reusable framework abstractions that improve separation of concerns, reduce duplication, and support long-term test-code maintainability — without that design discipline, the effort simply moves from manual repetition to script maintenance. Underlying both points is a design problem: without a deliberate, maintainable structure, a single UI change can force edits across many scattered test files, costing time and undermining long-term reuse. This is the problem this research addresses: designing, implementing, and evaluating a maintainable framework that supports both end-to-end FE UI-level and API-level regression checks.</div>
+  <div class="stage-strip"> [~30s] The practical problem is that regression checks repeat the same navigation, data entry, API verification, and result recording again and again. If automation is written as isolated scripts, it becomes hard to maintain. This research therefore focuses on a maintainable framework structure that supports both end-to-end FE UI-level checks and API-level checks.</div>
 </section>
 
-<!-- ============ 6. RESEARCH OBJECTIVES ============ -->
 <section class="slide" id="s06-objectives" data-title="Research Objectives">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
   <span class="slide-num"></span>
   <div class="wrap">
     <div class="slide-kicker">Research Objectives</div>
@@ -322,178 +317,14 @@
       <div class="num-item"><div class="num-badge">04</div><div class="num-text"><b>Identify limitations and future work</b> related to coverage, scalability, reliability, and evaluation depth.</div></div>
     </div>
   </div>
-  <div class="stage-strip">▸ [~30s] This research has four objectives, each tied to one research question. First, analyze how a Playwright and TypeScript framework can structure UI and API automation for a modern web application in a maintainable way. Second, design and implement reusable framework abstractions that reduce duplication and support long-term maintainability. Third, evaluate the implemented framework using verified execution evidence, including HTML reporting and JUnit XML output — this evaluation strand also includes positioning Playwright against Cypress and Selenium, presented later in the evaluation chapter. Fourth, identify the limitations and future work that remain after implementation and evaluation.</div>
+  <div class="stage-strip"> [~25s] The objectives are straightforward: analyze how Playwright and TypeScript can structure UI and API automation, design reusable abstractions, evaluate the implementation using real execution evidence, and identify the remaining limitations. The evaluation is important because the committee needs to see not only the design, but also what actually ran and what evidence it produced.</div>
 </section>
 
-<!-- ============ 7. END-TO-END TESTING METHODOLOGY ============ -->
-<section class="slide" id="s07-e2e-methodology" data-title="End-to-End Testing Methodology">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
-  <span class="slide-num"></span>
-  <div class="wrap">
-    <div class="slide-kicker">Literature Review · End-to-End Testing Methodology</div>
-    <h1>End-to-End Testing Methodology</h1>
-    <div class="num-list">
-      <div class="num-item"><div class="num-badge">01</div><div class="num-text">End-to-end tests validate an <b>integrated, user-facing flow</b>, but broad or poorly isolated scenarios become costly and fragile.</div></div>
-      <div class="num-item"><div class="num-badge">02</div><div class="num-text"><b>Flaky tests</b> are a major risk, commonly caused by asynchronous waits, environment dependency, and unstable test data.</div></div>
-      <div class="num-item"><div class="num-badge">03</div><div class="num-text"><b>API-level checks</b> complement browser-oriented end-to-end tests by validating service boundaries closer to the interface.</div></div>
-    </div>
-    <p class="lead">The framework targets representative, stable flows rather than exhaustive end-to-end coverage.</p>
-  </div>
-  <div class="stage-strip">▸ [~30s] End-to-end tests validate an integrated, user-facing flow across the relevant parts of a system, but the literature is clear that they must be selected carefully: broad or poorly isolated end-to-end scenarios can become costly and fragile. Flaky tests are a major risk in this context — a test that passes or fails inconsistently without a corresponding product change reduces trust in automated results, and research identifies common causes such as asynchronous waits, environment dependency, test-order dependency, and unstable test data. For this reason, API-level checks can complement browser-oriented end-to-end tests by validating service boundaries closer to the interface, rather than placing all automated confidence in the browser suite. This is why the framework, presented next, targets representative, stable flows rather than exhaustive end-to-end coverage.</div>
-</section>
-
-<!-- ============ 7B. PLAYWRIGHT CAPABILITIES AND SELECTION RATIONALE ============ -->
-<section class="slide" id="s07b-playwright-capabilities" data-title="Playwright Capabilities and Selection Rationale">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
-  <span class="slide-num"></span>
-  <div class="wrap">
-    <div class="slide-kicker">Literature Review · Tool Capability</div>
-    <h1>Playwright Capabilities and Selection Rationale</h1>
-    <table class="table-acad">
-      <tr><th>Capability</th><th>What it addresses</th></tr>
-      <tr><td><b>Auto-waiting and actionability checks</b></td><td>Reduces reliance on fragile, timing-based waits for dynamic UI</td></tr>
-      <tr><td><b>Web-first, auto-retrying assertions</b></td><td>Confirms expected state without manual retry logic</td></tr>
-      <tr><td><b>Fixtures with isolated test setup</b></td><td>Provides reusable, type-safe objects per test through <code>test.extend()</code></td></tr>
-      <tr><td><b>Built-in API request contexts</b></td><td>Combines UI and API automation in one framework</td></tr>
-      <tr><td><b>Built-in HTML/JUnit reporting and trace viewer</b></td><td>Produces reviewable execution evidence</td></tr>
-    </table>
-    <p class="lead">Playwright is the only candidate offering all five capabilities natively; the full weighted comparison against Cypress and Selenium follows in the evaluation chapter.</p>
-  </div>
-  <div class="stage-strip">▸ [~40s] These are the specific Playwright capabilities that justify the tool choice for this framework, each grounded in official Playwright documentation. Auto-waiting and actionability checks reduce reliance on fragile, timing-based waits for dynamic UI. Web-first, auto-retrying assertions confirm expected state without manual retry logic. Playwright's fixture system, through test.extend(), provides reusable, type-safe objects with isolated setup per test — this is the same fixture mechanism the framework design relies on, shown next. Built-in API request contexts mean UI and API automation live in one framework rather than two separate toolchains. And built-in HTML and JUnit reporting, plus the trace viewer, produce reviewable execution evidence without extra tooling. Playwright is the only one of the three candidate tools offering all five natively — the full weighted comparison against Cypress and Selenium, backed by independent published benchmarks, follows later in the evaluation section.</div>
-</section>
-
-<!-- ============ 8. OVERALL FRAMEWORK ARCHITECTURE ============ -->
-<section class="slide split" id="s08-architecture" data-title="Overall Framework Architecture">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
-  <span class="slide-num"></span>
-  <div class="wrap">
-    <div class="split-grid">
-      <div class="split-text">
-        <div class="slide-kicker">Framework Design · Overall Architecture</div>
-        <h1>Overall Framework Architecture</h1>
-        <p class="lead">Every layer depends only on the layer directly below it. A change in one place cannot break the entire suite.</p>
-      </div>
-      <div class="split-visual">
-        <figure>
-          <img class="fig-img" src="../../../docs/thesis-workspace/assets/diagrams/out/framework-architecture.svg" alt="Figure 3.1. Layered architecture of the Playwright UI and API automation framework." />
-          <div class="svg-cap">Figure 3.1 — Tests → Page Objects → workflows → API services → core utilities → data/constants/config</div>
-        </figure>
-      </div>
-    </div>
-  </div>
-  <div class="stage-strip">▸ [~35s] This is the overall architecture. At the top, test specifications express intent — what scenario is being verified. Below that, Page Objects encapsulate UI interaction, and workflows compose reusable business flows such as login. API services centralize endpoint logic. Underneath, core utilities handle browser and API request management, while data objects, constants, and configuration keep structured values out of the tests themselves. Every layer above depends only on the layer directly below it — this is what keeps a change in one place from breaking the entire suite.</div>
-</section>
-
-<!-- ============ 9. PAGE OBJECT MODEL ============ -->
-<section class="slide split" id="s09-pom" data-title="UI Abstraction: Page Object Model">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
-  <span class="slide-num"></span>
-  <div class="wrap">
-    <div class="split-grid split-reverse">
-      <div class="split-text">
-        <div class="slide-kicker">Framework Design · UI Abstraction</div>
-        <h1>UI Abstraction Design: The Page Object Model Concept</h1>
-        <p class="lead">A test calls a Page Object method; only the Page Object needs to change when the page's HTML changes.</p>
-      </div>
-      <div class="split-visual">
-        <figure>
-          <img class="fig-img" src="../../../docs/thesis-workspace/assets/diagrams/out/page-object-model-concept.svg" alt="Figure 3.4. Page Object Model concept from test intent to browser interaction." />
-          <div class="svg-cap">Figure 3.4 — Test intent → Page Object method → locator strategy → browser action → assertion</div>
-        </figure>
-      </div>
-    </div>
-  </div>
-  <div class="stage-strip">▸ [~30s] For the UI layer, this project applies the Page Object Model. A test never talks to a locator directly — it calls a method on a Page Object, such as "update profile name." That method owns the locator strategy and the browser interaction, and returns control to the test for assertion. If the page's HTML changes, only the Page Object needs to change — every test that uses that method keeps working unmodified. This is the core mechanism that makes UI tests maintainable as the application evolves.</div>
-</section>
-
-<!-- ============ 10. FIXTURES & DEPENDENCY INJECTION ============ -->
-<section class="slide split" id="s10-fixtures" data-title="Fixtures &amp; Dependency Injection">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
-  <span class="slide-num"></span>
-  <div class="wrap">
-    <div class="split-grid">
-      <div class="split-text">
-        <div class="slide-kicker">Framework Design · Runtime Composition</div>
-        <h1>Runtime Composition Design: Fixture-Based Dependency Injection</h1>
-        <p class="lead">A custom fixture injects reusable Page Objects, workflows, and a shared runtime context into every test.</p>
-      </div>
-      <div class="split-visual">
-        <figure>
-          <img class="fig-img" src="../../../docs/thesis-workspace/assets/diagrams/out/fixture-dependency-injection-flow.svg" alt="Figure 3.6. Fixture-based dependency injection and shared runtime context." />
-          <div class="svg-cap">Figure 3.6 — Fixtures inject reusable Page Objects, workflows, and a shared runtime context into every test</div>
-        </figure>
-      </div>
-    </div>
-  </div>
-  <div class="stage-strip">▸ [~30s] Rather than every test constructing its own Page Objects and browser context, this framework uses Playwright's fixture system for dependency injection. A custom fixture prepares eight reusable objects — page objects like the Home, Login, Profile, and Account pages, plus the Login workflow — and injects them directly into the test function. A shared runtime context also exposes the browser page, browser context, and API request context to framework utilities after initialization. This removes repeated setup code from every single test file.</div>
-</section>
-
-<!-- ============ 11. API AUTOMATION DESIGN ============ -->
-<section class="slide split" id="s11-api-design" data-title="API Automation Design">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
-  <span class="slide-num"></span>
-  <div class="wrap">
-    <div class="split-grid split-reverse">
-      <div class="split-text">
-        <div class="slide-kicker">Framework Design · API Automation</div>
-        <h1>API Automation Design: Service-Layer Abstraction</h1>
-        <p class="lead">Endpoint logic is centralized in service classes, keeping API tests focused on scenario logic rather than request construction.</p>
-      </div>
-      <div class="split-visual">
-        <figure>
-          <img class="fig-img" src="../../../docs/thesis-workspace/assets/diagrams/out/api-service-abstraction-pipeline.svg" alt="Figure 3.7. API service abstraction and validation pipeline." />
-          <div class="svg-cap">Figure 3.7 — Endpoint logic centralized in service classes, not duplicated in test files</div>
-        </figure>
-      </div>
-    </div>
-  </div>
-  <div class="stage-strip">▸ [~25s] On the API side, endpoint construction and request logic are centralized in service classes — for example, a Users Service and a Photos Service — rather than duplicated inside each API test. These services use a shared API utility for GET, POST, PUT, and DELETE requests, and Data Transfer Objects define the shape of requests and responses. This keeps API tests focused on scenario logic, not on how to build a URL or attach headers.</div>
-</section>
-
-<!-- ============ 12. TEST DATA, DTOs, CLEANUP ============ -->
-<section class="slide" id="s12-data-dto" data-title="Test Data, DTOs, and Cleanup">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
-  <span class="slide-num"></span>
-  <div class="wrap">
-    <div class="slide-kicker">Framework Design · Test Data &amp; Cleanup</div>
-    <h1>Test Data and State Management Design</h1>
-    <p class="lead">Centralized test data and DTOs separate scenario logic from environment-specific values; API-based cleanup restores state after UI actions.</p>
-    <figure>
-      <img class="fig-img wide" src="../../../docs/thesis-workspace/assets/diagrams/out/test-data-dto-cleanup-strategy.svg" alt="Figure 3.8. Test data, DTO, and cleanup strategy for repeatable automation." />
-      <div class="svg-cap">Figure 3.8 — Centralized test data/constants; API-based cleanup restores state after UI actions</div>
-    </figure>
-  </div>
-  <div class="stage-strip">▸ [~30s] Test data, endpoint constants, and configuration values are centralized rather than hardcoded inside tests. For state-changing UI scenarios — such as updating a profile name — the framework uses an API call after the test to reset that data, so the next test run starts from a known state. This supports repeatability, though I want to be precise: this evidence covers the mechanism working correctly in the runs performed, not a long-term reliability guarantee.</div>
-</section>
-
-<!-- ============ 13. COPILOT AGENTIC-AI SUPPORT WORKFLOW ============ -->
-<section class="slide split" id="s13-copilot" data-title="Copilot Agentic-AI Support Workflow">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
-  <span class="slide-num"></span>
-  <div class="wrap">
-    <div class="split-grid">
-      <div class="split-text">
-        <div class="slide-kicker">Framework Design · Automation Support Workflow</div>
-        <h1>Copilot Agentic-AI Workflow Design for Automation Testing</h1>
-        <p class="lead">This workflow reflects design intent. Its productivity effect has not been quantitatively measured in this research.</p>
-      </div>
-      <div class="split-visual">
-        <figure>
-          <img class="fig-img" src="../../../docs/thesis-workspace/assets/diagrams/out/copilot-agentic-automation-workflow.svg" alt="Figure 3.12. Copilot Agentic-AI workflow for automation test development." />
-          <div class="svg-cap">Figure 3.12 — Test-case design, script generation, and code review support</div>
-        </figure>
-      </div>
-    </div>
-  </div>
-  <div class="stage-strip">▸ [~30s] One additional project feature is worth mentioning: a Copilot Agentic-AI workflow that supports automation development — helping design test scenarios, generate Playwright scripts consistent with this framework's conventions, and review generated code before it is accepted. I want to be explicit that this is a support tool for writing automation code, and its productivity effect has not been quantitatively measured in this research — it is presented as an implemented feature, not as a performance claim.</div>
-</section>
-
-<!-- ============ 14. IMPLEMENTED SCOPE ============ -->
 <section class="slide" id="s14-implemented-scope" data-title="Implemented Scope">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
   <span class="slide-num"></span>
   <div class="wrap">
-    <div class="slide-kicker">Implementation · Scope</div>
+    <div class="slide-kicker">Implementation | Scope</div>
     <h1>Implemented Test Scope</h1>
     <table class="table-acad">
       <tr><th>Suite</th><th>Scenarios</th><th>Spec files</th><th>Tests</th></tr>
@@ -502,22 +333,21 @@
     </table>
     <p class="lead">Built on Unsplash as the selected demonstration system, a real, modern web application with both a browsable UI and a documented public API.</p>
   </div>
-  <div class="stage-strip">▸ [~30s] In implementation, the framework was applied to Unsplash as the selected demonstration system — a real, modern web application with both a browsable interface and a documented public API. Three UI test scenarios were implemented: viewing a photographer's profile, updating a profile, and bookmarked photos. Fifteen API test scenarios were implemented across four specification files, covering the public profile, user statistics, user photos, and user collections endpoints — all built through the service-layer design just described.</div>
+  <div class="stage-strip"> [~25s] The implemented framework was applied to Unsplash as the selected demonstration system. The UI suite contains three profile-related scenarios. The API suite contains fifteen tests across four specification files for public profile, statistics, photos, and collections. This is a representative scope, not full Unsplash coverage.</div>
 </section>
 
-<!-- ============ 15. VERIFIED EXECUTION RESULTS — FULL-SUITE SUMMARY (Table 5.5) ============ -->
 <section class="slide split" id="s15-verified-results" data-title="Verified Results: Full-Suite Summary">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
   <span class="slide-num"></span>
   <div class="wrap">
     <div class="split-grid">
       <div class="split-text">
-        <div class="slide-kicker">Evaluation · Verified Execution Results</div>
+        <div class="slide-kicker">Evaluation | Verified Execution Results</div>
         <h1>Verified Test Execution Results: Full-Suite Summary</h1>
         <table class="table-acad">
           <tr><th>Test suite</th><th>Tests</th><th>Passed</th><th>Failed</th><th>Skipped</th><th>Duration</th></tr>
-          <tr><td>API tests</td><td class="num">15</td><td class="num"><b>15</b></td><td class="num">0</td><td class="num">0</td><td class="num">—</td></tr>
-          <tr><td>UI tests</td><td class="num">3</td><td class="num"><b>3</b></td><td class="num">0</td><td class="num">0</td><td class="num">—</td></tr>
+          <tr><td>API tests</td><td class="num">15</td><td class="num"><b>15</b></td><td class="num">0</td><td class="num">0</td><td class="num"></td></tr>
+          <tr><td>UI tests</td><td class="num">3</td><td class="num"><b>3</b></td><td class="num">0</td><td class="num">0</td><td class="num"></td></tr>
           <tr><td><b>Full suite</b></td><td class="num"><b>18</b></td><td class="num"><b>18</b></td><td class="num">0</td><td class="num">0</td><td class="num"><b>28.890057s</b></td></tr>
         </table>
         <p class="lead">Table 5.5 from the thesis, reporting the verified local run invoked with <code>npx playwright test</code>, evidenced by JUnit XML, the terminal log, and the HTML report.</p>
@@ -525,20 +355,35 @@
       <div class="split-visual">
         <figure>
           <img class="fig-img" src="../../../docs/thesis-workspace/assets/figures/playwright-html-report-overview.png" alt="Figure 5.1. Playwright HTML report showing 18 passed tests from the verified 3 June 2026 full-suite run." />
-          <div class="svg-cap">Figure 5.1 — Playwright HTML report, verified 3 June 2026 full-suite run</div>
+          <div class="svg-cap">Figure 5.1  Playwright HTML report, verified 3 June 2026 full-suite run</div>
         </figure>
       </div>
     </div>
   </div>
-  <div class="stage-strip">▸ [~35s] This is the evidence that matters most: a verified local full-suite run, invoked with npx playwright test, recorded fifteen API tests and three UI tests, all passing — for a full-suite total of eighteen tests, eighteen passed, zero failed, zero skipped, in 28.890057 seconds according to the JUnit XML output. This matches the Playwright HTML report shown here and reproduces Table 5.5 from the thesis exactly. This is one verified run, presented as exactly that: concrete evidence that the implemented framework executes correctly end-to-end, not a claim about long-term reliability across many runs.</div>
+  <div class="stage-strip"> [~40s] This is the key project result. The verified local run was invoked with npx playwright test on 3 June 2026. It executed fifteen API tests and three UI tests, so eighteen tests in total. All eighteen passed, with zero failed and zero skipped tests. The JUnit XML records the full-suite duration as 28.890057 seconds, and the HTML report shown here confirms the same passing run.</div>
 </section>
 
-<!-- ============ 16. VERIFIED EXECUTION RESULTS — PER-SPECIFICATION BREAKDOWN (Table 5.6) ============ -->
-<section class="slide" id="s16-verified-breakdown" data-title="Verified Results: Per-Spec Breakdown">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
+<section class="slide" id="s15b-live-demo" data-title="Live Demonstration">
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
   <span class="slide-num"></span>
   <div class="wrap">
-    <div class="slide-kicker">Evaluation · Verified Execution Results</div>
+    <div class="slide-kicker">Evaluation  Live Demonstration</div>
+    <h1>Live Demonstration: Test Run and HTML Report</h1>
+    <div class="num-list">
+      <div class="num-item"><div class="num-badge">01</div><div class="num-text">Run the selected UI and API suite with <b>npx playwright test</b>.</div></div>
+      <div class="num-item"><div class="num-badge">02</div><div class="num-text">Open the <b>Playwright HTML report</b> and show the passing result.</div></div>
+      <div class="num-item"><div class="num-badge">03</div><div class="num-text">Connect the live report back to <b>Table 5.5</b> and the verified evidence.</div></div>
+    </div>
+    <p class="lead">Recommended demo point: immediately after the full-suite result, before the detailed per-specification breakdown.</p>
+  </div>
+  <div class="stage-strip"> [~20s + demo] At this point I will switch from the slides to the terminal and run the selected suite with npx playwright test. After the run, I will open the Playwright HTML report and show the passing status. This is the best moment for the demo because the audience has just seen the verified result, so the live run and report feel directly connected to the evaluation evidence. If the live system or network causes a problem, I can still show the saved verified HTML report from the 3 June 2026 run and clearly state that boundary.</div>
+</section>
+
+<section class="slide" id="s16-verified-breakdown" data-title="Verified Results: Per-Spec Breakdown">
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
+  <span class="slide-num"></span>
+  <div class="wrap">
+    <div class="slide-kicker">Evaluation | Verified Execution Results</div>
     <h1>Verified Test Execution Results: Per-Specification Breakdown</h1>
     <table class="table-acad compact">
       <tr><th>Specification file</th><th>Type</th><th>Tests</th><th>Failures</th><th>Skipped</th><th>Time</th></tr>
@@ -552,15 +397,14 @@
     </table>
     <p class="lead">Table 5.6 from the thesis. Every specification file passed with zero failures and zero skipped tests.</p>
   </div>
-  <div class="stage-strip">▸ [~35s] Breaking that down by specification file — this reproduces Table 5.6 from the thesis. The four API specification files covered the public profile, statistics, collections, and photos endpoints, each completing in under nine seconds. The three UI specification files covered bookmarked photos, profile update, and profile view, each completing in under twenty-three seconds. Every single specification file passed with zero failures and zero skipped tests — this is the complete, granular evidence behind the full-suite summary on the previous slide.</div>
+  <div class="stage-strip"> [~35s] This table explains where the eighteen tests came from. The four API specification files cover public profile, statistics, collections, and photos, each passing with zero failures. The three UI specification files cover bookmarked photos, profile update, and profile view, also with zero failures. This breakdown supports the full-suite summary instead of relying on only one headline number.</div>
 </section>
 
-<!-- ============ 17. TOOL SELECTION: CRITERIA & CAPABILITY ============ -->
 <section class="slide" id="s17-tool-criteria" data-title="Tool Selection: Criteria &amp; Capability">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
   <span class="slide-num"></span>
   <div class="wrap">
-    <div class="slide-kicker">Evaluation · Tool Selection Criteria</div>
+    <div class="slide-kicker">Evaluation | Tool Selection Criteria</div>
     <h1>Tool Selection Criteria and Capability Comparison</h1>
     <table class="table-acad">
       <tr><th>Dimension</th><th>Playwright</th><th>Cypress</th><th>Selenium</th></tr>
@@ -569,62 +413,196 @@
       <tr><td><b>API support</b></td><td>Built-in API testing &amp; request contexts</td><td>cy.request() HTTP requests</td><td>Needs additional libraries</td></tr>
       <tr><td><b>Reporting &amp; debugging</b></td><td>Built-in HTML/JUnit + trace viewer</td><td>Screenshots, videos, configurable reporters</td><td>Depends on integrations</td></tr>
     </table>
-    <p class="lead">Eleven project-specific criteria (Table 5.2), grounded in official Playwright, Cypress, and Selenium documentation.</p>
+    <p class="lead">Condensed from Table 5.3; the eleven weighted criteria are defined in Table 5.2.</p>
   </div>
-  <div class="stage-strip">▸ [~35s] Before presenting numbers, it matters how the comparison was framed. Chapter 5 of the thesis defines eleven project-specific criteria — weighted from one to five — covering browser engine coverage, synchronization reliability for dynamic UI, combined UI-and-API support in one framework, TypeScript and Page-Object-Model architecture fit, reporting and trace artifacts, and CI-readiness, each grounded in official Playwright, Cypress, and Selenium documentation. The capability comparison shows Playwright is the only one of the three offering built-in UI and API support with integrated reporting and tracing without extra assembly — Cypress covers HTTP requests via cy.request(), and Selenium's API testing typically requires additional libraries.</div>
+  <div class="stage-strip"> [~35s] For tool comparison, the thesis uses project-specific criteria rather than a generic popularity ranking. The most important dimensions are synchronization, built-in UI and API support, TypeScript architecture fit, and reporting/debugging evidence. Playwright fits this framework strongly because it combines API request contexts, browser automation, fixtures, HTML/JUnit reporting, and trace support in one ecosystem.</div>
 </section>
 
-<!-- ============ 18. WEIGHTED FRAMEWORK EVALUATION ============ -->
-<section class="slide" id="s18-weighted-rubric" data-title="Weighted Framework Evaluation">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
-  <span class="slide-num"></span>
-  <div class="wrap">
-    <div class="slide-kicker">Evaluation · Weighted Framework Evaluation</div>
-    <h1>Weighted Framework Evaluation</h1>
-    <table class="table-acad">
-      <tr><th>Score category</th><th>Playwright</th><th>Cypress</th><th>Selenium</th></tr>
-      <tr><td>Primary subtotal (7 criteria)</td><td class="num">150</td><td class="num">128</td><td class="num">107</td></tr>
-      <tr><td>Secondary subtotal (4 criteria)</td><td class="num">52</td><td class="num">49</td><td class="num">49</td></tr>
-      <tr><td><b>Total (out of 205)</b></td><td class="num"><b>202 (Rank 1)</b></td><td class="num">177 (Rank 2)</td><td class="num">156 (Rank 3)</td></tr>
-    </table>
-    <p class="lead">Project-specific rubric (Table 5.4), reflecting fit for this project rather than a claim of universal superiority.</p>
-  </div>
-  <div class="stage-strip">▸ [~40s] Translating that qualitative comparison into a defensible decision, the eleven weighted criteria were applied as a scoring rubric — this is Table 5.4 from the thesis. Playwright scores 202 out of a possible 205 points, Cypress scores 177, and Selenium scores 156. I want to state clearly that this is a project-specific rubric I constructed, not an independent empirical benchmark — but the gap is driven specifically by the primary, architecture-critical criteria: combined UI-and-API support, synchronization reliability, and TypeScript/Page-Object-Model fit, where Playwright scores highest. Selenium remains competitive on secondary criteria such as ecosystem maturity. This ranking should be read as project fit, not universal superiority.</div>
-</section>
-
-<!-- ============ 19. EXTERNAL BENCHMARK — EXECUTION/CPU/RAM ============ -->
 <section class="slide" id="s19-benchmark-resource" data-title="External Benchmark: Execution/CPU/RAM">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
   <span class="slide-num"></span>
   <div class="wrap">
-    <div class="slide-kicker">Evaluation · External Benchmark</div>
+    <div class="slide-kicker">Evaluation | External Benchmark</div>
     <h1>External Benchmark Context: Execution Time, CPU, and RAM Usage</h1>
     <figure>
       <img class="fig-img wide" src="../../../docs/thesis-workspace/assets/figures/external-tool-benchmark-summary-mon-panczyk-2025.png" alt="Figure 5.2. Mean execution time, CPU usage, and RAM usage for Playwright, Cypress, and Selenium across ten test cases." />
-      <div class="svg-cap">Figure 5.2. <b>Source: Adapted from Moń and Pańczyk (2025), Tables 3–5.</b> Independent academic evidence, not this project's own measurement.</div>
+      <div class="svg-cap">Figure 5.2. <b>Source: Adapted from Mon and Panczyk (2025), Tables 3-5.</b> Independent academic evidence, not this project's own measurement.</div>
     </figure>
   </div>
-  <div class="stage-strip">▸ [~35s] To go beyond my own rubric, the thesis also brings in independent, published evidence. This chart, adapted from Moń and Pańczyk (2025), reports mean execution time, CPU usage, and RAM usage for the same three tools across ten repeated test cases — Tables 3 to 5 of their paper. The pattern is one of trade-offs, not one tool dominating everywhere: in their study, Selenium recorded the lowest execution time and RAM usage, while Playwright recorded the lowest CPU usage and stayed close to Selenium on the other two metrics. I present this as external context confirming that tool choice is a trade-off among resource dimensions, not as a measurement this project produced itself.</div>
+  <div class="stage-strip"> [~55s] This external benchmark gives context for execution time and resource usage. Lower is better in all three charts. For execution time, Selenium is slightly fastest at 6.10 seconds, Playwright is very close at 6.26 seconds, and Cypress is 6.48 seconds. For CPU usage, Playwright is best at 17.57 percent, compared with Selenium at 19.98 percent and Cypress at 20.63 percent. For RAM usage, Selenium is lowest at 28.08 percent, Playwright is close at 28.77 percent, and Cypress is highest at 33.51 percent. So this chart does not prove Playwright wins every metric. It shows a trade-off: Playwright stays competitive on speed and memory, and performs best on CPU in this external study.</div>
 </section>
 
-<!-- ============ 20. EXTERNAL BENCHMARK — RELIABILITY ============ -->
 <section class="slide" id="s20-benchmark-reliability" data-title="External Benchmark: Reliability">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
   <span class="slide-num"></span>
   <div class="wrap">
-    <div class="slide-kicker">Evaluation · External Benchmark</div>
+    <div class="slide-kicker">Evaluation | External Benchmark</div>
     <h1>External Benchmark Context: Reliability Over a Twenty-Four-Hour Period</h1>
     <figure>
       <img class="fig-img wide" src="../../../docs/thesis-workspace/assets/figures/external-reliability-benchmark-almabruk-2025.png" alt="Figure 5.3. Twenty-four-hour uptime and ROCOF reliability comparison of Selenium and Playwright by hardware context." />
       <div class="svg-cap">Figure 5.3. <b>Source: Adapted from Almabruk et al. (2025), Tables 1 and 6.</b> Independent academic evidence, not this project's own measurement.</div>
     </figure>
   </div>
-  <div class="stage-strip">▸ [~35s] A second external study, Almabruk et al. (2025), adds a reliability dimension: over a twenty-four-hour observation window, Selenium reached full uptime while Playwright reached 99.72 percent uptime — yet Playwright's rate of occurrence of failures, or ROCOF, was lower across the hardware contexts they reported. Because hardware assignments differed between tools in parts of that study, I present this cautiously — as reinforcing that tool selection is a genuine trade-off among reliability, speed, resource use, and architectural fit, not as a verdict that one tool is unconditionally best. Combined with my own rubric and the verified execution result from this project, this is the evidence base supporting Playwright as the right choice for this framework specifically.</div>
+  <div class="stage-strip"> [~55s] This second external benchmark adds reliability context. On uptime, Selenium is slightly higher at 100.00 percent, while Playwright reaches 99.72 percent over the twenty-four-hour period. But the ROCOF values tell another part of the story: lower ROCOF means fewer failures per second. On the HP/HDD setup, Selenium is 0.1208 while Playwright is 0.0272. On the Dell/SSD setup, Selenium is 0.1336 while Playwright is 0.0279. So the message is balanced: Selenium has the higher uptime number in this study, but Playwright shows lower failure occurrence in the reported hardware contexts. That supports the thesis conclusion that tool choice is a trade-off, and Playwright fits this framework because of both capability fit and competitive external evidence.</div>
 </section>
 
-<!-- ============ 21. LIMITATIONS & FUTURE WORK ============ -->
+<section class="slide" id="s07-e2e-methodology" data-title="End-to-End Testing Methodology">
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
+  <span class="slide-num"></span>
+  <div class="wrap">
+    <div class="slide-kicker">Literature Review | End-to-End Testing Methodology</div>
+    <h1>End-to-End Testing Methodology</h1>
+    <div class="num-list">
+      <div class="num-item"><div class="num-badge">01</div><div class="num-text">End-to-end tests validate an <b>integrated, user-facing flow</b>, but broad or poorly isolated scenarios become costly and fragile.</div></div>
+      <div class="num-item"><div class="num-badge">02</div><div class="num-text"><b>Flaky tests</b> are a major risk, commonly caused by asynchronous waits, environment dependency, and unstable test data.</div></div>
+      <div class="num-item"><div class="num-badge">03</div><div class="num-text"><b>API-level checks</b> complement browser-oriented end-to-end tests by validating service boundaries closer to the interface.</div></div>
+    </div>
+    <p class="lead">The framework targets representative, stable flows rather than exhaustive end-to-end coverage.</p>
+  </div>
+  <div class="stage-strip"> [~25s] End-to-end testing is valuable because it follows a user-facing flow, but it can become fragile if the scope is too broad. That is why this framework targets representative, stable flows. API checks complement the browser checks by validating service behavior closer to the interface, instead of placing all confidence in UI automation alone.</div>
+</section>
+
+<section class="slide" id="s07b-playwright-capabilities" data-title="Playwright Capabilities and Selection Rationale">
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
+  <span class="slide-num"></span>
+  <div class="wrap">
+    <div class="slide-kicker">Literature Review | Tool Capability</div>
+    <h1>Playwright Capabilities and Selection Rationale</h1>
+    <table class="table-acad">
+      <tr><th>Capability</th><th>What it addresses</th></tr>
+      <tr><td><b>Auto-waiting and actionability checks</b></td><td>Reduces reliance on fragile, timing-based waits for dynamic UI</td></tr>
+      <tr><td><b>Web-first, auto-retrying assertions</b></td><td>Confirms expected state without manual retry logic</td></tr>
+      <tr><td><b>Fixtures with isolated test setup</b></td><td>Provides reusable, type-safe objects per test through <code>test.extend()</code></td></tr>
+      <tr><td><b>Built-in API request contexts</b></td><td>Combines UI and API automation in one framework</td></tr>
+      <tr><td><b>Built-in HTML/JUnit reporting and trace viewer</b></td><td>Produces reviewable execution evidence</td></tr>
+    </table>
+    <p class="lead">Playwright is the only candidate offering all five capabilities natively; the full weighted comparison against Cypress and Selenium follows in the evaluation chapter.</p>
+  </div>
+  <div class="stage-strip"> [~30s] These Playwright capabilities explain why the tool fits the framework. Auto-waiting and web-first assertions reduce timing-based flakiness. Fixtures support reusable setup. API request contexts allow UI and API checks in the same toolchain. HTML, JUnit, and trace support produce reviewable evidence. These capabilities connect the tool choice to the evaluation shown earlier.</div>
+</section>
+
+<section class="slide split" id="s08-architecture" data-title="Overall Framework Architecture">
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
+  <span class="slide-num"></span>
+  <div class="wrap">
+    <div class="split-grid">
+      <div class="split-text">
+        <div class="slide-kicker">Framework Design | Overall Architecture</div>
+        <h1>Overall Framework Architecture</h1>
+        <p class="lead">Layered responsibilities reduce scattered changes across tests, UI abstractions, services, utilities, data, and configuration.</p>
+      </div>
+      <div class="split-visual">
+        <figure>
+          <img class="fig-img" src="../../../docs/thesis-workspace/assets/diagrams/out/framework-architecture.svg" alt="Figure 3.1. Layered architecture of the Playwright UI and API automation framework." />
+          <div class="svg-cap">Figure 3.1  Tests to Page Objects to workflows to API services to core utilities to data/constants/config</div>
+        </figure>
+      </div>
+    </div>
+  </div>
+  <div class="stage-strip"> [~25s] This design explains how the framework is organized. Test files stay at the top and express scenario intent. Page Objects handle UI interaction, workflows compose repeated flows, API services centralize endpoint logic, and core utilities manage browser and request support. The goal is to reduce scattered changes when the application changes.</div>
+</section>
+
+<section class="slide split" id="s09-pom" data-title="UI Abstraction: Page Object Model">
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
+  <span class="slide-num"></span>
+  <div class="wrap">
+    <div class="split-grid split-reverse">
+      <div class="split-text">
+        <div class="slide-kicker">Framework Design | UI Abstraction</div>
+        <h1>UI Abstraction Design: The Page Object Model Concept</h1>
+        <p class="lead">A test calls a Page Object method; selector and interaction changes are localized in the Page Object layer.</p>
+      </div>
+      <div class="split-visual">
+        <figure>
+          <img class="fig-img" src="../../../docs/thesis-workspace/assets/diagrams/out/page-object-model-concept.svg" alt="Figure 3.2. Page Object Model concept from test intent to browser interaction." />
+          <div class="svg-cap">Figure 3.2. Test intent to Page Object method to locator strategy to browser action to assertion</div>
+        </figure>
+      </div>
+    </div>
+  </div>
+  <div class="stage-strip"> [~25s] For UI tests, the Page Object Model keeps selectors and page actions outside the test files. A test calls a meaningful page method, while the Page Object owns the locator and interaction details. This helps localize UI changes instead of editing the same selector logic across many tests.</div>
+</section>
+
+<section class="slide split" id="s10-fixtures" data-title="Fixtures &amp; Dependency Injection">
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
+  <span class="slide-num"></span>
+  <div class="wrap">
+    <div class="split-grid">
+      <div class="split-text">
+        <div class="slide-kicker">Framework Design | Runtime Composition</div>
+        <h1>Runtime Composition Design: Fixture-Based Dependency Injection</h1>
+        <p class="lead">A custom fixture injects reusable Page Objects, workflows, and a shared runtime context into every test.</p>
+      </div>
+      <div class="split-visual">
+        <figure>
+          <img class="fig-img" src="../../../docs/thesis-workspace/assets/diagrams/out/fixture-dependency-injection-flow.svg" alt="Figure 3.4. Fixture-based dependency injection and shared runtime context." />
+          <div class="svg-cap">Figure 3.4. Fixtures inject reusable Page Objects, workflows, and a shared runtime context into every test</div>
+        </figure>
+      </div>
+    </div>
+  </div>
+  <div class="stage-strip"> [~25s] Fixtures are used to inject reusable Page Objects, workflows, and runtime context into tests. This means each test does not need to construct its own objects. The setup is centralized, typed, and reusable, so the test body can focus on the scenario being verified.</div>
+</section>
+
+<section class="slide split" id="s11-api-design" data-title="API Automation Design">
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
+  <span class="slide-num"></span>
+  <div class="wrap">
+    <div class="split-grid split-reverse">
+      <div class="split-text">
+        <div class="slide-kicker">Framework Design | API Automation</div>
+        <h1>API Automation Design: Service-Layer Abstraction</h1>
+        <p class="lead">Endpoint logic is centralized in service classes, keeping API tests focused on scenario logic rather than request construction.</p>
+      </div>
+      <div class="split-visual">
+        <figure>
+          <img class="fig-img" src="../../../docs/thesis-workspace/assets/diagrams/out/api-service-abstraction-pipeline.svg" alt="Figure 3.6. API service abstraction and validation pipeline." />
+          <div class="svg-cap">Figure 3.6. Endpoint logic centralized in service classes, not duplicated in test files</div>
+        </figure>
+      </div>
+    </div>
+  </div>
+  <div class="stage-strip"> [~20s] On the API side, service classes keep endpoint construction and request logic out of individual tests. Tests call service methods, while shared utilities handle GET, POST, PUT, DELETE, URLs, headers, and response support. This keeps API tests focused on behavior and assertions.</div>
+</section>
+
+<section class="slide" id="s12-data-dto" data-title="Test Data, DTOs, and Cleanup">
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
+  <span class="slide-num"></span>
+  <div class="wrap">
+    <div class="slide-kicker">Framework Design | Test Data &amp; Cleanup</div>
+    <h1>Test Data and State Management Design</h1>
+    <p class="lead">Centralized test data and DTOs separate scenario logic from environment-specific values; API-based cleanup restores state after UI actions.</p>
+    <figure>
+      <img class="fig-img wide" src="../../../docs/thesis-workspace/assets/diagrams/out/test-data-dto-cleanup-strategy.svg" alt="Figure 3.7. Test data, DTO, and cleanup strategy for repeatable automation." />
+      <div class="svg-cap">Figure 3.7. Centralized test data/constants; API-based cleanup restores state after UI actions</div>
+    </figure>
+  </div>
+  <div class="stage-strip"> [~20s] Test data, DTOs, endpoint constants, and configuration values are centralized. For state-changing UI tests, the framework can use an API cleanup call after the test. This supports repeatability, but it should still be treated as a design mechanism, not as long-term reliability evidence.</div>
+</section>
+
+<section class="slide split" id="s13-copilot" data-title="Copilot Agentic-AI Support Workflow">
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
+  <span class="slide-num"></span>
+  <div class="wrap">
+    <div class="split-grid">
+      <div class="split-text">
+        <div class="slide-kicker">Framework Design | Automation Support Workflow</div>
+        <h1>Copilot Agentic-AI Workflow Design for Automation Testing</h1>
+        <p class="lead">This workflow reflects design intent. Its productivity effect has not been quantitatively measured in this research.</p>
+      </div>
+      <div class="split-visual">
+        <figure>
+          <img class="fig-img" src="../../../docs/thesis-workspace/assets/diagrams/out/copilot-agentic-automation-workflow.svg" alt="Figure 3.11. Copilot Agentic-AI workflow for automation test development." />
+          <div class="svg-cap">Figure 3.11. Test-case design, script generation, and code review support</div>
+        </figure>
+      </div>
+    </div>
+  </div>
+  <div class="stage-strip"> [~20s] The project also documents a Copilot Agentic-AI workflow for automation development. It supports test scenario design, Playwright script generation, and code review against framework conventions. Its productivity effect was not measured, so I present it only as a support feature, not as an evaluation result.</div>
+</section>
+
 <section class="slide" id="s21-limitations" data-title="Limitations &amp; Future Work">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
   <span class="slide-num"></span>
   <div class="wrap">
     <div class="slide-kicker">Limitations &amp; Future Work</div>
@@ -634,8 +612,8 @@
         <div class="tag">Limitations</div>
         <div class="t">What the evidence does not cover</div>
         <ul>
-          <li>Single verified run — not long-term reliability data</li>
-          <li>Representative scope — not full Unsplash coverage</li>
+          <li>Single verified run  not long-term reliability data</li>
+          <li>Representative scope  not full Unsplash coverage</li>
           <li>Qualitative + external-benchmark tool comparison, not a local Cypress/Selenium run</li>
           <li>External live-system dependency risk</li>
           <li>Copilot workflow effectiveness not yet measured</li>
@@ -653,18 +631,17 @@
       </div>
     </div>
   </div>
-  <div class="stage-strip">▸ [~40s] I want to be direct about the boundaries of this work. The evidence covers one verified local run, not long-term reliability data. The UI and API coverage is representative of common scenarios, not the complete Unsplash surface. The Playwright/Cypress/Selenium comparison rests on my own weighted rubric plus two external published studies — Cypress and Selenium were not locally executed against this specific system. Because tests target a live external system, external dependency remains a risk, though it was not observed as a failure in the verified run. And the Copilot Agentic-AI workflow's effectiveness has not been quantitatively evaluated — I state that clearly rather than assume it. For future work, this points directly to CI/CD integration for repeated automated runs, expanded coverage with stronger schema validation, non-functional testing, and historical trend reporting across multiple runs.</div>
+  <div class="stage-strip"> [~35s] These are the boundaries of the evaluation. The execution evidence is one verified local run, not long-term reliability data. The scope is representative, not full Unsplash coverage. Cypress and Selenium were compared through documentation, a project-specific rubric, and external studies, not through a local run of the same suite. Future work should therefore focus on CI/CD execution, broader coverage, stronger schema validation, non-functional testing, and trend reporting.</div>
 </section>
 
-<!-- ============ 22. CONCLUSION & THANKS ============ -->
 <section class="slide thanks" id="s22-thanks" data-title="Conclusion &amp; Thank You">
-  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education — The University of Danang" />
+  <img class="brandmark" src="../../40-assets/brand/logo-vnuk-dhdn.png" alt="VN-UK Institute for Research &amp; Executive Education  The University of Danang" />
   <span class="slide-num"></span>
   <div class="wrap">
     <h1>Thank you.</h1>
     <div class="sub">Questions &amp; Discussion</div>
   </div>
-  <div class="stage-strip">▸ [~25s] In conclusion, this research designed and implemented a layered Playwright and TypeScript automation framework for UI and API testing, demonstrated it on Unsplash as a real system, and verified with a concrete execution run that it works end-to-end. Beyond that, the evaluation chapter shows — through a weighted project-specific rubric and two independent published benchmarks — that Playwright is the best-fitting tool for this framework's combined UI-and-API, TypeScript-based design, while being explicit about what remains outside the current evidence. Thank you to my supervisor, Dr. Le Dinh Dung, and to the committee for your time and attention. I welcome your questions.</div>
+  <div class="stage-strip"> [~25s] To conclude, this research designed and implemented a Playwright and TypeScript framework for selected UI and API regression checks, verified it through an eighteen-test passing run, and positioned Playwright against Cypress and Selenium using project-specific criteria and external benchmark context. Thank you to my supervisor, Dr. Le Dinh Dung, and to the committee. I welcome your questions.</div>
 </section>
 
 <div class="bar"><i id="bar"></i></div>
@@ -697,12 +674,12 @@
     const id=slides[i].id;
     if(location.hash.slice(1)!==id){ history.pushState({i},'','#'+id); }
     lastHashIdx=i;
-    document.title=(slides[i].dataset.title||id)+' · Thesis Defense';
+    document.title=(slides[i].dataset.title||id)+' | Thesis Defense';
     tocItems.forEach((li,j)=>li.classList.toggle('active',j===i));
   }
   function go(i,fromSync){
     i=Math.max(0,Math.min(total-1,i));
-    slides[i].scrollIntoView({behavior:fromSync?'auto':'smooth',block:'start'});
+    slides[i].scrollIntoView({behavior:fromSync | 'auto':'smooth',block:'start'});
     setHash(i); updateBar(i);
     if(!fromSync){ try{localStorage.setItem('thesis-defense-slide-sync', String(i)+'|'+Date.now());}catch(e){} }
   }
@@ -711,10 +688,10 @@
      Open this same file in two windows (same URL/path), drag one to the
      external monitor and fullscreen it there (leave stage-strip OFF there),
      press N on the laptop window only to reveal the script. Navigate from
-     EITHER window with arrows/space — both stay in sync via localStorage.
+     EITHER window with arrows/space  both stay in sync via localStorage.
      Requires both windows to load the exact same origin+path (works over
      the repo-root-preview server; may not work with two file:// tabs in
-     some browsers — prefer the local server for presenting). */
+     some browsers  prefer the local server for presenting). */
   window.addEventListener('storage', e=>{
     if(e.key!=='thesis-defense-slide-sync' || !e.newValue) return;
     const i=parseInt(e.newValue.split('|')[0],10);
