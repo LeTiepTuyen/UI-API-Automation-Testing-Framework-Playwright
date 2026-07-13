@@ -479,13 +479,12 @@
         <ul>
           <li>Average execution time, mean/peak RAM, and CPU percentage of one core</li>
           <li>PowerShell samples the test child-process tree every <b>500 ms</b></li>
-          <li>Playwright: <b>4 parallel workers</b>; Selenium/NUnit: sequential execution</li>
         </ul>
       </div>
     </div>
     <p class="lead">This measures observed suite throughput for the recorded configurations, not hardware-normalized per-test speed.</p>
   </div>
-  <div class="stage-strip"> [~20s] This internal benchmark compares the same fifteen API tests over five runs per framework; every run passed. It reports average execution time, RAM, and CPU, while noting that Playwright used parallel workers and Selenium ran sequentially.</div>
+  <div class="stage-strip"> [~18s] This internal benchmark compares the same fifteen API tests over five runs per framework; every run passed. It reports average execution time, RAM, and CPU for the recorded configurations.</div>
 </section>
 
 <section class="slide split benchmark-split" id="s18a-internal-walltime" data-title="Internal API Suite Execution-Time Comparison">
